@@ -373,44 +373,6 @@ function(req, res, next) {
 	});
 });
 
-router.get('/data/dip/kategori/(:id)', 
-berita_populer_data, 
-data_download,
-data_download_home,
-data_subdomain,
-pranala_data,
-	function(req, res, next) {
-  		//panggil fungsi panggilApi dengan methode apiGET dan create callback function
-		panggilApi.panggilDipKat(function (data) {
-		    // render to the index.jade dan pass data dari panggilan api
-		    let id = req.params.id;
-			let dataKeluaran;
-		    data.dip.forEach((keluaran)=>{
-		    	if(keluaran.kat_dip == id) {
-		    		dataKeluaran = keluaran;
-		    	}
-		    });
-		    res.render('portal/data', { 
-				title: 'Daftar Informasi Publik', 
-				menu:'data/dip/kategori',
-				bread1:'Data',
-				bread1_url:'data',
-				bread2:'DIP',
-				bread2_url:'data/dip',
-				desc: 'Kategori',
-				desc2:'Daftar Informasi Publik',
-				icon: 'fa-file-text-o',
-				beritapopuler: req.berita_populers,
-				datasubdomain:req.data_subdomains,
-				datadownload:req.datadownload,
-				datadownloadhome:req.datadownloadhome,
-				pranala:req.pranala,
-				dip :dataKeluaran,
-				session: req.session
-		    });
-		});
-	});
-
 /* 	-------HALAMAN BERITA------- */
 router.get('/berita', 
 siaranpers_data, 
