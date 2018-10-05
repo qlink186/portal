@@ -1,0 +1,364 @@
+.white-wrapper
+    .container
+        .row
+            .col-sm-12
+                if session.is_login
+                    script(type='text/javascript').
+                        jQuery(document).ready(function($)
+                        {
+                            $("#table-peg").dataTable(
+                                {
+                                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                                dom: "<'row'<'col-md-5 col-xs-12'l><'col-md-7 col-xs-12 hidden-xs'Tf>r>"+
+                                        "t"+
+                                        "<'row'<'col-md-6 col-xs-12'i><'col-md-6 col-xs-12'p>>",
+                                tableTools: {
+                                    sSwfPath: "#{base_url}adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                                },
+                                "ajax": {
+                                    "url": '#{api_url}peg',
+                                    "dataSrc": "pegawai"
+                                },
+                                "columns": [
+                                    {
+                                        "searchable": false,
+                                        "class":"hidden-xs",
+                                        "render": function ( data, type, row ){
+                                            var peg_foto = '#{base_url}images/pegawai/small/'+row["foto_peg"];
+                                            var peg_nama = row["nama_gelar"];
+                                            return '<div class="album-image"><a class="thumb" href="#"><img width="74" height="74" class="img-responsive center-block" src="'+peg_foto+'" alt="'+peg_nama+'" /></a></div>';
+                                        },
+                                        "targets": 0
+                                    },
+                                    {
+                                        "searchable": true,
+                                        "render": function ( data, type, row){
+                                            var peg_nama_opd = row["nama_opd"] ;
+                                            var peg_akronim_opd = row["akronim_opd"];
+                                            var peg_id = row["id_peg"];
+                                            var peg_foto = '#{base_url}images/pegawai/big/'+row["foto_peg"];
+                                            var peg_nama = row["nama_gelar"];
+                                            var peg_ket_nip = row["ket_nip"];
+                                            var peg_nip = row["nip"];
+                                            var peg_status_panjang = row["status_peg_panjang"];
+                                            var peg_jabatan = row["jabatan"];
+                                            var peg_ket_jab= row["ket_jabatan"];
+                                            var peg_tempat_lahir = row["tmp_lahir"];
+                                            var peg_tanggal_lahir = row["tgl_lahir"];
+                                            var peg_jk = row["jk"];
+                                            var peg_agama = row["agama"];
+                                            // fungsi tampil golongan ruang
+                                            if (row["gol"] == '-') {
+                                                var peg_gol_ruang = '';
+                                            } else {
+                                                var peg_gol_ruang = '<tr><td>Gol Ruang</td><td>:</td><td>'+row["gol"]+', '+row["ruang"]+'</td></tr>';
+                                            };
+
+                                            // fungsi tampil alamat
+                                            if (row["tampil_alamat"] == 1) {
+                                                var peg_alamat = '';
+                                            } else {
+                                                if ( row["alamat"] == null){
+                                                    var peg_alamat = '';
+                                                } else {
+                                                    var peg_alamat = '<tr><td width="80px">Alamat</td><td>:</td><td>'+row["alamat"]+', RT '+row["alamat_rt"]+' / RW '+row["alamat_rw"]+', Kel. '+row["kel"]+', Kec. '+row["kec"]+', Kota '+row["kotakab"]+', Provinsi Kepulauan Riau - '+row["kode_pos"]+'</td></tr>';
+                                                }
+                                            };
+
+                                            // fungsi tampil ponsel 1
+                                            if ( row["tampil_ponsel1"] == 1){
+                                                    var peg_ponsel_1 = '';
+                                            } else {
+                                                if (row["ponsel1"] == null) {
+                                                    var peg_ponsel_1 = '';
+                                                } else {
+                                                    var peg_ponsel_1 = '<tr><td width="80px">Ponsel</td><td>:</td><td><a href="tel:'+row["ponsel1"]+'"/>'+row["ponsel1"]+'</td></tr>';
+                                                }
+                                            };
+                                            // fungsi tampil ponsel 2
+                                            if ( row["tampil_ponsel2"] == 1){
+                                                    var peg_ponsel_2 = '';
+                                            } else {
+                                                if (row["ponsel2"] == null) {
+                                                    var peg_ponsel_2 = '';
+                                                } else {
+                                                    var peg_ponsel_2 = '<tr><td width="80px">Ponsel 2</td><td>:</td><td><a href="tel:'+row["ponsel2"]+'"/>'+row["ponsel2"]+'</td></tr>';
+                                                }
+                                            };
+
+                                            // fungsi tampil email 1
+                                            if ( row["tampil_email1"] == 1){
+                                                    var peg_email_1 = '';
+                                            } else {
+                                                if (row["email"] == null) {
+                                                    var peg_email_1 = '';
+                                                } else {
+                                                    var peg_email_1 = '<tr><td width="80px">E-mail</td><td>:</td><td><a href="mailto:'+row["email"]+'" target="_top"/>'+row["email"]+'</td></tr>';
+                                                }
+                                            };
+
+                                            // fungsi tampil email 2
+                                            if ( row["tampil_email2"] == 1){
+                                                    var peg_email_2 = '';
+                                            } else {
+                                                if (row["email2"] == null) {
+                                                    var peg_email_2 = '';
+                                                } else {
+                                                    var peg_email_2 = '<tr><td width="80px">E-mail 2</td><td>:</td><td><a href="mailto:'+row["email2"]+'" target="_top"/>'+row["email2"]+'</td></tr>';
+                                                }
+                                            };
+
+                                            // fungsi tampil Facebook
+                                            if (row["facebook"] == null) {
+                                                var peg_fb = '';
+                                            } else {
+                                                var peg_fb = '<tr><td width="80px">Facebook</td><td>:</td><td><a href="'+row["facebook"]+'" target="_BLANK"/>'+row["facebook"]+'</td></tr>';
+                                            };
+
+                                            // fungsi tampil Twitter
+                                            if (row["twitter"] == null) {
+                                                var peg_tw = '';
+                                            } else {
+                                                var peg_tw = '<tr><td width="80px">Twitter</td><td>:</td><td><a href="'+row["twitter"]+'" target="_BLANK"/>'+row["twitter"]+'</td></tr>';
+                                            };
+
+                                            // fungsi tampil Telegram
+                                            if (row["telegram"] == null) {
+                                                var peg_telegram = '';
+                                            } else {
+                                                var peg_telegram = '<tr><td width="80px">Telegram</td><td>:</td><td><a href="'+row["telegram"]+'" target="_BLANK"/>'+row["telegram"]+'</td></tr>';
+                                            };
+
+                                            // fungsi tampil Tentang Pegawai
+                                            if (row["tentang_peg"] == null) {
+                                                var peg_tentang = '';
+                                            } else {
+                                                var peg_tentang = '<tr><td colspan="3" class="text-center"><blockquote>"'+row["tentang_peg"]+'"</blockquote></td></tr>';
+                                            };
+
+                                            return '<table class="table table-condensed hidden-xs"><tbody><tr><td width="80px">Nama</td><td>:</td><td><strong>'+peg_nama+'</strong></td></tr><tr><td>'+peg_ket_nip+'</td><td>:</td><td>'+peg_nip+'</td></tr>'+peg_gol_ruang+'<tr><td colspan="3"><div id="'+peg_id+'" class="panel-collapse collapse"><table class="table table-condensed hidden-xs"><tr><td width="80px">Ket. Jabatan</td><td>:</td><td>'+peg_ket_jab+'</td></tr><tr><td width="80px">Jenis Kelamin</td><td>:</td><td>'+peg_jk+'</td></tr><tr><td width="80px">Agama</td><td>:</td><td>'+peg_agama+'</td></tr>'+peg_alamat+peg_ponsel_1+peg_ponsel_2+peg_email_1+peg_email_2+peg_fb+peg_tw+peg_telegram+peg_tentang+'</table></div><button class="btn btn-icon btn-icon-standalone btn-xs btn-primary" data-toggle="collapse" href="#'+peg_id+'"><i class="fa-eye"></i><span>Selengkapnya</span></button></td></tr></tbody></table><table class="table table-condensed visible-xs"><tr><td colspan="3"><img class="img-responsive visible-xs center-block text-center" width="100%" src="'+peg_foto+'" alt="'+peg_nama+'"/></td></tr><tr><td colspan="3" class="text-center"><p class="lead" style="font-size:16px;">'+peg_nama+peg_tentang+'</p></td></tr><tr><td width="100px">'+peg_ket_nip+'</td><td>:</td><td>'+peg_nip+'</td></tr>'+peg_gol_ruang+'<tr><td width="100px">Unit Kerjta</td><td>:</td><td>'+peg_nama_opd+' ('+peg_akronim_opd+')</td></tr><tr><td width="100px">Jabatan</td><td>:</td><td>'+peg_jabatan+'</td></tr><tr><td width="100px">Ket. Jabatan</td><td>:</td><td>'+peg_ket_jab+'</td></tr><tr><td colspan="3"><div class="panel-collapse collapse" id="'+peg_id+'small"><table class="table table-condensed visible-xs"><tr><td width="100px">Status Kepegawaian</td><td>:</td><td>'+peg_status_panjang+'</td></tr><tr><td width="100px">Tempat, Tanggal Lahir</td><td>:</td><td>'+peg_tempat_lahir+', '+peg_tanggal_lahir+'</td></tr><tr><td width="100px">Jenis Kelamin</td><td>:</td><td>'+peg_jk+'</td></tr><tr><td width="100px">Agama</td><td>:</td><td>'+peg_agama+'</td></tr>'+peg_alamat+peg_ponsel_1+peg_ponsel_2+peg_email_1+peg_email_2+peg_fb+peg_tw+peg_telegram+'</table></div><button class="btn btn-icon btn-icon-standalone btn-md btn-primary btn-block" data-toggle="collapse" href="#'+peg_id+'small"><i class="fa-eye"></i><span>Selengkapnya</span></button></td></tr></table>';
+                                        },
+                                        "targets": 1
+                                    },
+                                    { "data": "nama_opd", "class":"hidden-xs"},
+                                    { "data": "jabatan", "class":"hidden-xs"},
+                                    { "data": "status_peg", "class":"hidden-xs" },
+                                    { "data": "tgl_lahir", "class":"hidden-xs" },
+                                    { 
+                                        "searchable": true,
+                                        "orderable": true,
+                                        "class":"hidden-xs",
+                                        "data" : "gol_darah",
+                                        "render": function ( data, type, row ){
+                                            var peg_darah = row["gol_darah"];
+                                            if (!peg_darah){
+                                                var peg_darah = '-';
+                                            };
+                                            return peg_darah;
+                                        },
+                                        "targets": 6
+                                    }
+                                ],
+                                "processing":true,
+                                "deferRender": true,
+                                select: true
+                            }).yadcf([
+                                {column_number : 0, filter_type: 'text'},
+                                {column_number : 1, filter_type: 'text'},
+                                {column_number : 2},
+                                {column_number : 3},
+                                {column_number : 4},
+                                {column_number : 5, filter_type: 'text'},
+                                {column_number : 6}
+                            ]);
+                        });
+                    table#table-peg.table.table-hover.table-responsive(width='100%')
+                        thead
+                            tr
+                                th.text-center(width='55px').hidden-xs Foto
+                                th.text-center(width='350px') Data Pegawai
+                                th.text-center.hidden-xs Unit Kerja
+                                th.text-center.hidden-xs Jabatan
+                                th.text-center.hidden-xs Stat
+                                th.text-center.hidden-xs Tgl. Lahir
+                                th.text-center.hidden-xs Gol. Darah
+                else
+                    script(type='text/javascript').
+                        jQuery(document).ready(function($)
+                        {
+                            $("#table-peg").dataTable(
+                                {
+                                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                                dom: "<'row'<'col-md-5 col-xs-12'l><'col-md-7 col-xs-12 hidden-xs'Tf>r>"+
+                                        "t"+
+                                        "<'row'<'col-md-6 col-xs-12'i><'col-md-6 col-xs-12'p>>",
+                                tableTools: {
+                                    sSwfPath: "#{base_url}adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                                },
+                                "ajax": {
+                                    "url": '#{base_url}api/peg',
+                                    "dataSrc": "pegawai"
+                                },
+                                "columns": [
+                                    {
+                                        "searchable": false,
+                                        "class":"hidden-xs",
+                                        "render": function ( data, type, row ){
+                                            var peg_foto = '#{base_url}images/pegawai/small/'+row["foto_peg"];
+                                            var peg_nama = row["nama_gelar"];
+                                            return '<div class="album-image"><a class="thumb" href="#"><img width="74" height="74" class="img-responsive center-block" src="'+peg_foto+'" alt="'+peg_nama+'" /></a></div>';
+                                        },
+                                        "targets": 0
+                                    },
+                                    {
+                                        "searchable": true,
+                                        "render": function ( data, type, row){
+                                            var peg_nama_opd = row["nama_opd"] ;
+                                            var peg_akronim_opd = row["akronim_opd"];
+                                            var peg_id = row["id_peg"];
+                                            var peg_foto = '#{base_url}images/pegawai/big/'+row["foto_peg"];
+                                            var peg_nama = row["nama_gelar"];
+                                            var peg_ket_nip = row["ket_nip"];
+                                            var peg_nip = row["nip"];
+                                            var peg_status_panjang = row["status_peg_panjang"];
+                                            var peg_jabatan = row["jabatan"];
+                                            var peg_ket_jab= row["ket_jabatan"];
+                                            var peg_tempat_lahir = row["tmp_lahir"];
+                                            var peg_tanggal_lahir = row["tgl_lahir"];
+                                            var peg_jk = row["jk"];
+                                            var peg_agama = row["agama"];
+                                            // fungsi tampil golongan ruang
+                                            if (row["gol"] == '-') {
+                                                var peg_gol_ruang = '';
+                                            } else {
+                                                var peg_gol_ruang = '<tr><td>Gol Ruang</td><td>:</td><td>'+row["gol"]+', '+row["ruang"]+'</td></tr>';
+                                            };
+
+                                            // fungsi tampil alamat
+                                            if (row["tampil_alamat"] == 0) {
+                                                var peg_alamat = '';
+                                            } else {
+                                                if ( row["alamat"] == null){
+                                                    var peg_alamat = '';
+                                                } else {
+                                                    var peg_alamat = '<tr><td width="80px">Alamat</td><td>:</td><td>'+row["alamat"]+', RT '+row["alamat_rt"]+' / RW '+row["alamat_rw"]+', Kel. '+row["kel"]+', Kec. '+row["kec"]+', Kota '+row["kotakab"]+', Provinsi Kepulauan Riau - '+row["kode_pos"]+'</td></tr>';
+                                                }
+                                            };
+
+                                            // fungsi tampil ponsel 1
+                                            if ( row["tampil_ponsel1"] == 0){
+                                                    var peg_ponsel_1 = '';
+                                            } else {
+                                                if (row["ponsel1"] == null) {
+                                                    var peg_ponsel_1 = '';
+                                                } else {
+                                                    var peg_ponsel_1 = '<tr><td width="80px">Ponsel</td><td>:</td><td><a href="tel:'+row["ponsel1"]+'"/>'+row["ponsel1"]+'</td></tr>';
+                                                }
+                                            };
+                                            // fungsi tampil ponsel 2
+                                            if ( row["tampil_ponsel2"] == 0){
+                                                    var peg_ponsel_2 = '';
+                                            } else {
+                                                if (row["ponsel2"] == null) {
+                                                    var peg_ponsel_2 = '';
+                                                } else {
+                                                    var peg_ponsel_2 = '<tr><td width="80px">Ponsel 2</td><td>:</td><td><a href="tel:'+row["ponsel2"]+'"/>'+row["ponsel2"]+'</td></tr>';
+                                                }
+                                            };
+
+                                            // fungsi tampil email 1
+                                            if ( row["tampil_email1"] == 0){
+                                                    var peg_email_1 = '';
+                                            } else {
+                                                if (row["email"] == null) {
+                                                    var peg_email_1 = '';
+                                                } else {
+                                                    var peg_email_1 = '<tr><td width="80px">E-mail</td><td>:</td><td><a href="mailto:'+row["email"]+'" target="_top"/>'+row["email"]+'</td></tr>';
+                                                }
+                                            };
+
+                                            // fungsi tampil email 2
+                                            if ( row["tampil_email2"] == 0){
+                                                    var peg_email_2 = '';
+                                            } else {
+                                                if (row["email2"] == null) {
+                                                    var peg_email_2 = '';
+                                                } else {
+                                                    var peg_email_2 = '<tr><td width="80px">E-mail 2</td><td>:</td><td><a href="mailto:'+row["email2"]+'" target="_top"/>'+row["email2"]+'</td></tr>';
+                                                }
+                                            };
+
+                                            // fungsi tampil Facebook
+                                            if (row["facebook"] == null) {
+                                                var peg_fb = '';
+                                            } else {
+                                                var peg_fb = '<tr><td width="80px">Facebook</td><td>:</td><td><a href="'+row["facebook"]+'" target="_BLANK"/>'+row["facebook"]+'</td></tr>';
+                                            };
+
+                                            // fungsi tampil Twitter
+                                            if (row["twitter"] == null) {
+                                                var peg_tw = '';
+                                            } else {
+                                                var peg_tw = '<tr><td width="80px">Twitter</td><td>:</td><td><a href="'+row["twitter"]+'" target="_BLANK"/>'+row["twitter"]+'</td></tr>';
+                                            };
+
+                                            // fungsi tampil Telegram
+                                            if (row["telegram"] == null) {
+                                                var peg_telegram = '';
+                                            } else {
+                                                var peg_telegram = '<tr><td width="80px">Telegram</td><td>:</td><td><a href="'+row["telegram"]+'" target="_BLANK"/>'+row["telegram"]+'</td></tr>';
+                                            };
+
+                                            // fungsi tampil Tentang Pegawai
+                                            if (row["tentang_peg"] == null) {
+                                                var peg_tentang = '';
+                                            } else {
+                                                var peg_tentang = '<tr><td colspan="3" class="text-center"><blockquote>"'+row["tentang_peg"]+'"</blockquote></td></tr>';
+                                            };
+
+                                            return '<table class="table table-condensed hidden-xs"><tbody><tr><td width="80px">Nama</td><td>:</td><td><strong>'+peg_nama+'</strong></td></tr><tr><td>'+peg_ket_nip+'</td><td>:</td><td>'+peg_nip+'</td></tr>'+peg_gol_ruang+'<tr><td colspan="3"><div id="'+peg_id+'" class="panel-collapse collapse"><table class="table table-condensed hidden-xs"><tr><td width="80px">Ket. Jabatan</td><td>:</td><td>'+peg_ket_jab+'</td></tr><tr><td width="80px">Jenis Kelamin</td><td>:</td><td>'+peg_jk+'</td></tr><tr><td width="80px">Agama</td><td>:</td><td>'+peg_agama+'</td></tr>'+peg_alamat+peg_ponsel_1+peg_ponsel_2+peg_email_1+peg_email_2+peg_fb+peg_tw+peg_telegram+peg_tentang+'</table></div><button class="btn btn-icon btn-icon-standalone btn-xs btn-primary" data-toggle="collapse" href="#'+peg_id+'"><i class="fa-eye"></i><span>Selengkapnya</span></button></td></tr></tbody></table><table class="table table-condensed visible-xs"><tr><td colspan="3"><img class="img-responsive visible-xs center-block text-center" width="100%" src="'+peg_foto+'" alt="'+peg_nama+'"/></td></tr><tr><td colspan="3" class="text-center"><p class="lead" style="font-size:16px;">'+peg_nama+peg_tentang+'</p></td></tr><tr><td width="100px">'+peg_ket_nip+'</td><td>:</td><td>'+peg_nip+'</td></tr>'+peg_gol_ruang+'<tr><td width="100px">Unit Kerjta</td><td>:</td><td>'+peg_nama_opd+' ('+peg_akronim_opd+')</td></tr><tr><td width="100px">Jabatan</td><td>:</td><td>'+peg_jabatan+'</td></tr><tr><td width="100px">Ket. Jabatan</td><td>:</td><td>'+peg_ket_jab+'</td></tr><tr><td colspan="3"><div class="panel-collapse collapse" id="'+peg_id+'small"><table class="table table-condensed visible-xs"><tr><td width="100px">Status Kepegawaian</td><td>:</td><td>'+peg_status_panjang+'</td></tr><tr><td width="100px">Tempat, Tanggal Lahir</td><td>:</td><td>'+peg_tempat_lahir+', '+peg_tanggal_lahir+'</td></tr><tr><td width="100px">Jenis Kelamin</td><td>:</td><td>'+peg_jk+'</td></tr><tr><td width="100px">Agama</td><td>:</td><td>'+peg_agama+'</td></tr>'+peg_alamat+peg_ponsel_1+peg_ponsel_2+peg_email_1+peg_email_2+peg_fb+peg_tw+peg_telegram+'</table></div><button class="btn btn-icon btn-icon-standalone btn-md btn-primary btn-block" data-toggle="collapse" href="#'+peg_id+'small"><i class="fa-eye"></i><span>Selengkapnya</span></button></td></tr></table>';
+                                        },
+                                        "targets": 1
+                                    },
+                                    { "data": "nama_opd", "class":"hidden-xs"},
+                                    { "data": "jabatan", "class":"hidden-xs"},
+                                    { "data": "status_peg", "class":"hidden-xs" },
+                                    { "data": "tgl_lahir", "class":"hidden-xs" },
+                                    { 
+                                        "searchable": true,
+                                        "orderable": true,
+                                        "class":"hidden-xs",
+                                        "data" : "gol_darah",
+                                        "render": function ( data, type, row ){
+                                            var peg_darah = row["gol_darah"];
+                                            if (!peg_darah){
+                                                var peg_darah = '-';
+                                            };
+                                            return peg_darah;
+                                        },
+                                        "targets": 6
+                                    }
+                                ],
+                                "processing":true,
+                                "deferRender": true,
+                                select: true
+                            }).yadcf([
+                                {column_number : 0, filter_type: 'text'},
+                                {column_number : 1, filter_type: 'text'},
+                                {column_number : 2},
+                                {column_number : 3},
+                                {column_number : 4},
+                                {column_number : 5, filter_type: 'text'},
+                                {column_number : 6}
+                            ]);
+                        });
+                    table#table-peg.table.table-hover.table-responsive(width='100%')
+                        thead
+                            tr
+                                th.text-center(width='55px').hidden-xs Foto
+                                th.text-center(width='350px') Data Pegawai
+                                th.text-center.hidden-xs Unit Kerja
+                                th.text-center.hidden-xs Jabatan
+                                th.text-center.hidden-xs Stat
+                                th.text-center.hidden-xs Tgl. Lahir
+                                th.text-center.hidden-xs Gol. Darah

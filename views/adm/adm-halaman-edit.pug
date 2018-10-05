@@ -1,0 +1,22 @@
+extends adm-layout/base
+block content
+    section.content-header
+        h1
+            |   Halaman Profil
+            small Edit
+        ol.breadcrumb
+            li
+                a(href='./adm')
+                    i.fa.fa-dashboard 
+                    |   Beranda
+            li
+                a(href='./adm-halaman-list') Halaman Profil
+            li.active Data Halaman Profil
+    // Main content
+    section.content
+        .row
+            .col-xs-12
+                include adm-modul/mod-halaman-edit.pug
+            // /.col
+        // /.row
+    // /.content

@@ -1,0 +1,30 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Gallery
+            // /.box-header
+            .box-body.pad
+                form(action="/adm-gallery-tambah", method="post", enctype="multipart/form-data")
+                    .form-group
+                        label.col-sm-2.control-label(for='nama')
+                            |   Nama Album
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='nama', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='gambar')
+                            |   Gambar
+                            span.required *
+                        .col-sm-10
+                            input#gambar.form-control(type='file', name='uploaded_image', required='required', multiple)
+                            br
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box

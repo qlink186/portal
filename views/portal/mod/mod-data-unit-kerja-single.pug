@@ -1,0 +1,306 @@
+//.container
+    .main-wrapper.search-env
+        .row
+            .col-md-12
+                include mod-search-home
+- var kosong = "DATA BELUM TERSEDIA";
+.white-wrapper
+    .container
+        .row
+            .col-md-12
+                h5.subpage-title
+                    span=opd.nama_opd
+                    a.btn-xs.btn-flat.flat-danger.pull-right(href=base_url+'data/unitkerja')
+                        span UNIT KERJA LAINNYA
+        .row
+            .col-sm-4
+                .panel.panel-default.panel-border
+                    .panel-heading
+                        h5.panel-title Alamat Kantor
+                        .panel-options
+                            a(href='#', data-toggle='panel')
+                                span.collapse-icon &ndash;
+                                span.expand-icon +
+                    .panel-body(style="padding:20px;")
+                        .album-image
+                            img.center-block(src=base_url+'images/kantor/'+opd.foto_kantor, width="150px")
+                            br
+                        hr
+                        table.table.table-condensed
+                            tbody
+                                tr
+                                    td Alamat
+                                    td :
+                                    td #{opd.alamat}
+                                        if (opd.kel != null)
+                                            span , #{opd.kel}, #{opd.kec}, #{opd.kotakab}, Provinsi Kepulauan Riau - #{opd.kode_pos}
+                                        else
+                                            span ,Kota Tanjungpinang, Kepulauan Riau
+                                if (opd.telp != null)
+                                    tr
+                                        td Telp.
+                                        td :
+                                        td
+                                            - var tel = opd.telp;
+                                            - var tel = tel.replace('Telp.', '');
+                                            a(href='tel:'+tel target='_top') #{tel}
+                                if (opd.fax != null)
+                                    tr
+                                        td Fax
+                                        td :
+                                        td 
+                                            - var fx = opd.fax;
+                                            - var fx = tel.replace('Fax.', '');
+                                            span #{fx}
+                                if (opd.email != null)
+                                    tr
+                                        td Email
+                                        td :
+                                        td
+                                            a(href='mailto:'+opd.email target='_top') #{opd.email}
+                                if (opd.link != null)
+                                    tr
+                                        td Website
+                                        td :
+                                        td
+                                            a(href=opd.link target='_BLANK') #{opd.link}
+                .panel.panel-default.panel-border
+                    .panel-heading
+                        h5.panel-title Struktur Organisasi
+                        .panel-options
+                            a(href='#', data-toggle='panel')
+                                span.collapse-icon &ndash;
+                                span.expand-icon +
+                    .panel-body(style="padding:20px;")
+                        .album-image
+                            a.post-zoom(href=base_url+'data-download/so-'+opd.id_opd+'-'+opd.link_opd+'.jpg', rel='prettyPhoto[struktur_org]')
+                                img.center-block(src=base_url+'images/ico/struktur-org-icon.png', width="150px")
+                            br
+                            a.btn.btn-red.btn-sm.btn-icon.btn-icon-standalone.btn-block(href=base_url+'data-download/so-'+opd.id_opd+'-'+opd.link_opd+'.jpg')
+                                i.fa-download
+                                span Download Struktur Organisasi
+            .col-sm-8
+                .panel.panel-default.panel-border.panel-tabs(style="margin-bottom:30px")
+                    .panel-heading
+                        .panel-options
+                            ul.nav.nav-tabs
+                                li.active
+                                    a(href='#ruang_lingkup_keg', data-toggle='tab') 
+                                        span.hidden-xs Ruang Lingkup Kegiatan
+                                        span.visible-xs Ruang Lingkup Keg.
+                                li
+                                    a(href='#tugas', data-toggle='tab') Tugas
+                                li
+                                    a(href='#fungsi', data-toggle='tab') Fungsi
+                    .panel-body
+                        .tab-content
+                            #ruang_lingkup_keg.tab-pane.active
+                                if (opd.ruang_lingkup_keg != null)
+                                    p=opd.ruang_lingkup_keg
+                                else
+                                    p.text-center=kosong
+                            #tugas.tab-pane
+                                if (opd.tugas != null)
+                                    p=opd.tugas
+                                else
+                                    p.text-center=kosong
+                            #fungsi.tab-pane
+                                if (opd.fungsi != null)
+                                    - var fung = opd.fungsi;
+                                    - var fung = fung.replace("<ol>", "");
+                                    - var fung = fung.replace("</ol>", "");
+                                    - var fung = fung.replace("<li>", "");
+                                    - var fung = fung.replace("</li>", "");
+                                    - var fung = fung.replace("&lt;li&gt;", "");
+                                    - var fung = fung.replace("&lt;/li&gt;", "");
+                                    - var fung = fung.replace("&lt;li&gt;&lt;/li&gt;", "");
+                                    p #{fung}
+                                else
+                                    p.text-center=kosong
+                if (opd.kepala_opd != null)
+                    .panel.panel-default.panel-border
+                        .panel-heading
+                            h5.panel-title Profil Pimpinan Instansi (#{opd.akronim_opd})
+                            .panel-options
+                                a(href='#', data-toggle='panel')
+                                    span.collapse-icon &ndash;
+                                    span.expand-icon +
+                        .panel-body(style="padding:20px;")
+                            .row.no-padding
+                                .col-sm-3
+                                    .album-image
+                                        img.center-block.hidden-xs(src=base_url+'images/pegawai/small/'+opd.foto_peg, width="100%")
+                                        img.center-block.visible-xs(src=base_url+'images/pegawai/big/'+opd.foto_peg, width="300px")
+                                .col-sm-9
+                                    table.table.table-condensed
+                                        tbody
+                                            tr
+                                                td Nama
+                                                td :
+                                                td
+                                                    strong=opd.nama_gelar
+                                            tr
+                                                td NIP
+                                                td :
+                                                td=opd.nip
+                                            tr
+                                                td Gol. ruang
+                                                td :
+                                                td #{opd.gol} / #{opd.ruang}
+                                            if (opd.tentang_peg != null)
+                                                tr
+                                                    td.text-center(colspan='3') 
+                                                        strong #{opd.tentang_peg}
+                .panel.panel-default.panel-border
+                    .panel-heading
+                        h5.panel-title Data Kepegawaian
+                        .panel-options
+                            a(href='#', data-toggle='panel')
+                                span.collapse-icon &ndash;
+                                span.expand-icon +
+                    .panel-body(style="padding:10px 20px")
+                        .row
+                            .col-sm-6
+                                strong BERDASARKAN JENIS KEPEGAWAIAN
+                                table.table.table-condensed
+                                    tbody
+                                        tr
+                                            td(width="160px") 
+                                                strong Jumlah Keseluruhan
+                                            td :
+                                            td 
+                                                strong #{opd.jum_peg_all} Orang
+                                        tr
+                                            td PNS
+                                            td :
+                                            td #{opd.jum_peg_pns} Orang
+                                        if opd.jum_peg_cpns != 0
+                                            tr
+                                                td CPNS
+                                                td :
+                                                td #{opd.jum_peg_cpns} Orang
+                                        if opd.jum_peg_ptt != 0
+                                            tr
+                                                td PTT
+                                                td :
+                                                td #{opd.jum_peg_ptt} Orang
+                                        if opd.jum_peg_os != 0
+                                            tr
+                                                td Outsourcing
+                                                td :
+                                                td #{opd.jum_peg_os} Orang
+                                        if opd.jum_peg_ta != 0
+                                            tr
+                                                td Tenaga Ahli
+                                                td :
+                                                td #{opd.jum_peg_os} Orang
+                                        if opd.jum_peg_pkl != 0
+                                            tr
+                                                td Siswa PKL
+                                                td :
+                                                td #{opd.jum_peg_pkl} Orang
+                                strong BERDASARKAN JENIS KELAMIN
+                                table.table.table-condensed
+                                    tbody
+                                        tr
+                                            td(width="160px") Laki-laki
+                                            td :
+                                            td #{opd.jum_peg_laki} Orang
+                                        tr
+                                            td Perempuan
+                                            td :
+                                            td #{opd.jum_peg_perempuan} Orang
+                            .col-sm-6
+                                strong BERDASARKAN GOLONGAN RUANG
+                                table.table.table-condensed
+                                    tbody
+                                        if opd.jum_peg_gol_4e != 0
+                                            tr
+                                                td(width="160px") IV/e (Pembina Utama)
+                                                td :
+                                                td #{opd.jum_peg_gol_4e} Orang
+                                        if opd.jum_peg_gol_4d != 0
+                                            tr
+                                                td(width="160px") IV/d (Pembina Utama Madya)
+                                                td :
+                                                td #{opd.jum_peg_gol_4d} Orang
+                                        if opd.jum_peg_gol_4c != 0
+                                            tr
+                                                td(width="160px") IV/c (Pembina Utama Muda)
+                                                td :
+                                                td #{opd.jum_peg_gol_4c} Orang
+                                        if opd.jum_peg_gol_4b != 0
+                                            tr
+                                                td(width="160px") IV/b (Pembina Tk. I)
+                                                td :
+                                                td #{opd.jum_peg_gol_4b} Orang
+                                        if opd.jum_peg_gol_4a != 0
+                                            tr
+                                                td(width="160px") IV/a (Pembina)
+                                                td :
+                                                td #{opd.jum_peg_gol_4a} Orang
+                                        if opd.jum_peg_gol_3d != 0
+                                            tr
+                                                td(width="160px") III/d (Penata Tk. I)
+                                                td :
+                                                td #{opd.jum_peg_gol_3d} Orang
+                                        if opd.jum_peg_gol_3c != 0
+                                            tr
+                                                td(width="160px") III/c (Penata)
+                                                td :
+                                                td #{opd.jum_peg_gol_3c} Orang
+                                        if opd.jum_peg_gol_3b != 0
+                                            tr
+                                                td(width="160px") III/b (Penata Muda Tk. I)
+                                                td :
+                                                td #{opd.jum_peg_gol_3b} Orang
+                                        if opd.jum_peg_gol_3a != 0
+                                            tr
+                                                td(width="160px") III/a (Penata Muda)
+                                                td :
+                                                td #{opd.jum_peg_gol_3a} Orang
+                                        
+                                        if opd.jum_peg_gol_2d != 0
+                                            tr
+                                                td(width="160px") II/d (Pengatur Tk. I)
+                                                td :
+                                                td #{opd.jum_peg_gol_2d} Orang
+                                        if opd.jum_peg_gol_2c != 0
+                                            tr
+                                                td(width="160px") II/c (Pengatur)
+                                                td :
+                                                td #{opd.jum_peg_gol_2c} Orang
+                                        if opd.jum_peg_gol_2b != 0
+                                            tr
+                                                td(width="160px") II/b (Pengatur Muda Tk. I)
+                                                td :
+                                                td #{opd.jum_peg_gol_2b} Orang
+                                        if opd.jum_peg_gol_2a != 0
+                                            tr
+                                                td(width="160px") II/a (Pengatur Muda)
+                                                td :
+                                                td #{opd.jum_peg_gol_2a} Orang
+                                        
+                                        if opd.jum_peg_gol_1d != 0
+                                            tr
+                                                td(width="160px") I/d (Juru Tk. I)
+                                                td :
+                                                td #{opd.jum_peg_gol_1d} Orang
+                                        if opd.jum_peg_gol_1c != 0
+                                            tr
+                                                td(width="160px") I/c (Juru)
+                                                td :
+                                                td #{opd.jum_peg_gol_1c} Orang
+                                        if opd.jum_peg_gol_1b != 0
+                                            tr
+                                                td(width="160px") I/b (Juru Muda Tk. I)
+                                                td :
+                                                td #{opd.jum_peg_gol_1b} Orang
+                                        if opd.jum_peg_gol_1a != 0
+                                            tr
+                                                td(width="160px") I/a (Juru Muda)
+                                                td :
+                                                td #{opd.jum_peg_gol_1a} Orang
+        .row
+            .col-sm-12
+                include mod-dip-single

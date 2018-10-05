@@ -1,0 +1,494 @@
+.page-title
+    .title-env
+        h1.title=title
+        p.description=desc
+    .breadcrumb-env
+        ol.breadcrumb.bc-1
+            li
+                a(href=base_url)
+                    i.fa-home
+                    |   Dahsboard
+            li
+                a(href=base_url+'artikel-list') Artikel
+            li.active
+                strong=title
+.row
+    .col-sm-12
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title
+                    i.entypo-comment
+                    |   Komentar Artikel
+                .panel-options
+                    a(href='#', data-toggle='panel')
+                        span.collapse-icon &ndash;
+                        span.expand-icon +
+            .panel-body
+                .col-sm-12
+                    script(type='text/javascript').
+                        jQuery(document).ready(function($)
+                        {
+                            $("#table-artikel-komentar").dataTable(
+                                {
+                                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                                dom: "<'row'<'col-sm-5'l><'col-sm-7'Tf>r>"+
+                                        "t"+
+                                        "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+                                tableTools: {
+                                    sSwfPath: "./adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                                },
+                                select: true
+                            }).yadcf([
+                                {column_number : 0, filter_type: 'text'},
+                                {column_number : 1, filter_type: 'text'}
+                            ]);
+                        });
+                    table#table-artikel-komentar.table.table-hover.responsive
+                        thead
+                            tr
+                                th(width='300px') Artikel
+                                th Komentar
+                        tfoot
+                            tr
+                                th Artikel
+                                th Komentar
+                        tbody
+                            tr.dataTerbit
+                                td(width='300px')
+                                    table.table.table-hover.table-condensed
+                                        tr
+                                            td
+                                                .album-image
+                                                    a.thumb(href='#', data-action='edit')
+                                                        img.img-responsive(src=base_url+'images/berita/small/0a84137e221bc4add674917744832f61.jpg')
+                                        tr
+                                            td
+                                                .label.statusDok
+                                                    |   ARTIKEL TERBIT
+                                        tr
+                                            td
+                                                h4
+                                                    |   Tokoh Umat Beragama adakan Deklarasi Damai 
+                                        tr
+                                            td
+                                                |   HUMAS Kota Tanjungpinang - Dalam rangka mewujudkan pilkada damai di Kota Tanjungpinang Kementrian Agama Kota Tanjungpinang melaksanakan temu tokoh dan deklarasi damai tokoh umat beragama dengan pengurus rumah ibadah se- Kota Tanjungpinang dengan Tema "Jangan Jadikan Rumah Ibadah Sebagai Arena Kampanye Pilkada" di Aula Asrama Haji, Jum'at (2/3).
+                                                |   Kegiatan yang dibuka secara resmi oleh Pejabat (Pj) Walikita Tanjungpinang Drs. Raja Ariza, MM ini dikuti seluruh  tokoh agama dan pengurus rumah ibadah baik islam, kristen, katolik, konghucu, hindu dan buda se -Kota Tanjungpinang.
+                                                |   Dalam sambutannya Raja Ariza menjelaskan bahwa sebagai pemerintah memiliki tugas untuk memfasilitasi dan menciptakan pilkada yang damai di Kota Tanjungpinang dengan tetap  menjaga netralitas", ujarnya. .....
+                                        tr
+                                            td
+                                                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                    i.fa-comment
+                                                    span 36 Komentar
+                                                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                    i.fa-eye
+                                                    span 15 Viewer
+                                        tr
+                                            td
+                                                button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                    i.entypo-pencil
+                                                    span   Ubah Artikel
+                                                button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                                                    i.entypo-trash
+                                                    span Hapus Artikel
+                                td
+                                    table.table.table-bordered.table-condesed.table-hover(cellspacing='0', width='100%')
+                                        tbody
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates | @jackgates 
+                                                                        em - 19 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center(width='40px')
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Mat Taher | @tahergaul
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates 
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates 
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates 
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td.center(colspan='2')
+                                                    form.form-inline(role='form')
+                                                        .form-group
+                                                            textarea.form-control.input-unstyled.input-lg.autogrow(placeholder="Tambah Komentar anda", cols='73')
+                                                        br
+                                                        br
+                                                        .form-group.pull-right
+                                                            button.btn.btn-blue.btn-icon.btn-icon-standalone.btn-sm.pull-right(type='button', href='javascript:;', onclick="jQuery('#konfirmTambahKomentar').modal('show', {backdrop: 'fade'});")
+                                                                i.entypo-comment
+                                                                span TAMBAH KOMENTAR
+                            tr.dataDraft
+                                td(width='300px')
+                                    table.table.table-hover.table-condensed
+                                        tr
+                                            td
+                                                .album-image
+                                                    a.thumb(href='#', data-action='edit')
+                                                        img.img-responsive(src=base_url+'images/berita/small/0a84137e221bc4add674917744832f61.jpg')
+                                        tr
+                                            td
+                                                .label.statusDok
+                                                    |   ARTIKEL BELUM DITERBITKAN
+                                        tr
+                                            td
+                                                h4
+                                                    |   Tokoh Umat Beragama adakan Deklarasi Damai 
+                                        tr
+                                            td
+                                                |   HUMAS Kota Tanjungpinang - Dalam rangka mewujudkan pilkada damai di Kota Tanjungpinang Kementrian Agama Kota Tanjungpinang melaksanakan temu tokoh dan deklarasi damai tokoh umat beragama dengan pengurus rumah ibadah se- Kota Tanjungpinang dengan Tema "Jangan Jadikan Rumah Ibadah Sebagai Arena Kampanye Pilkada" di Aula Asrama Haji, Jum'at (2/3).
+                                                |   Kegiatan yang dibuka secara resmi oleh Pejabat (Pj) Walikita Tanjungpinang Drs. Raja Ariza, MM ini dikuti seluruh  tokoh agama dan pengurus rumah ibadah baik islam, kristen, katolik, konghucu, hindu dan buda se -Kota Tanjungpinang.
+                                                |   Dalam sambutannya Raja Ariza menjelaskan bahwa sebagai pemerintah memiliki tugas untuk memfasilitasi dan menciptakan pilkada yang damai di Kota Tanjungpinang dengan tetap  menjaga netralitas", ujarnya. .....
+                                        tr
+                                            td
+                                                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                    i.fa-comment
+                                                    span 36 Komentar
+                                                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                    i.fa-eye
+                                                    span 15 Viewer
+                                        tr
+                                            td
+                                                button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                    i.entypo-pencil
+                                                    span   Ubah Artikel
+                                                button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                                                    i.entypo-trash
+                                                    span Hapus Artikel
+                                td
+                                    table.table.table-bordered.table-condesed.table-hover(cellspacing='0', width='100%')
+                                        tbody
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates | @jackgates 
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center(width='40px')
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Mat Taher | @tahergaul
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates 
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates 
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates 
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td.center(colspan='2')
+                                                    form.form-inline(role='form')
+                                                        .form-group
+                                                            textarea.form-control.input-unstyled.input-lg.autogrow(placeholder="Tambah Komentar anda", cols='73')
+                                                        br
+                                                        br
+                                                        .form-group.pull-right
+                                                            button.btn.btn-blue.btn-icon.btn-icon-standalone.btn-sm.pull-right(type='button', href='javascript:;', onclick="jQuery('#konfirmTambahKomentar').modal('show', {backdrop: 'fade'});")
+                                                                i.entypo-comment
+                                                                span TAMBAH KOMENTAR
+                            tr.dataHapus
+                                td(width='300px')
+                                    table.table.table-hover.table-condensed
+                                        tr
+                                            td
+                                                .album-image
+                                                    a.thumb(href='#', data-action='edit')
+                                                        img.img-responsive(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg')
+                                        tr
+                                            td
+                                                .label.statusDok
+                                                    |   ARTIKEL TELAH DI HAPUS
+                                        tr
+                                            td
+                                                h4
+                                                    |   This is a lead parapraph.
+                                        tr
+                                            td
+                                                |   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies. Nulla vel lectus ut est vehicula hendrerit vel id nisi. Sed ac posuere odio. Nullam sit amet elit tincidunt, molestie turpis id, laoreet odio. In pharetra ut magna sit amet interdum. Vestibulum mauris purus, tincidunt a tincidunt ut, molestie ut ligula. .....
+                                        tr
+                                            td
+                                                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                    i.fa-comment
+                                                    span 36 Komentar
+                                                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                    i.fa-eye
+                                                    span 15 Viewer
+                                        tr
+                                            td
+                                                button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                    i.entypo-pencil
+                                                    span Ubah Artikel
+                                                button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                                                    i.entypo-trash
+                                                    span Hapus Artikel
+                                td
+                                    table.table.table-bordered.table-condesed.table-hover(cellspacing='0', width='100%')
+                                        tbody
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates 
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center(width='40px')
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates 
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates 
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates 
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td
+                                                    .row
+                                                        .col-sm-1.center
+                                                            a.xe-user-img(href='#')
+                                                                img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='40')
+                                                        .col-sm-11
+                                                            .xe-comment
+                                                                a.xe-user-name(href='#')
+                                                                    h4 Jack Gates 
+                                                                        em - 17 Maret 2018
+                                                                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+                                                td.center
+                                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                                        i.entypo-pencil
+                                                        span   Ubah
+                                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKomentar').modal('show', {backdrop: 'fade'});")
+                                                        i.entypo-trash
+                                                        span Hapus
+                                            tr
+                                                td.center(colspan='2')
+                                                    form.form-inline(role='form')
+                                                        .form-group
+                                                            textarea.form-control.input-unstyled.input-lg.autogrow(placeholder="Tambah Komentar anda", cols='73')
+                                                        br
+                                                        br
+                                                        .form-group.pull-right
+                                                            button.btn.btn-blue.btn-icon.btn-icon-standalone.btn-sm.pull-right(type='button', href='javascript:;', onclick="jQuery('#konfirmTambahKomentar').modal('show', {backdrop: 'fade'});")
+                                                                i.entypo-comment
+                                                                span TAMBAH KOMENTAR
+include mod-modal-artikel-list.pug
+include mod-modal-artikel-komentar.pug
+include mod-notifikasi-toastr.pug

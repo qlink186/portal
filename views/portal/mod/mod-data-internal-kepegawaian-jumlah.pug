@@ -1,0 +1,156 @@
+.row
+    .col-sm-12
+        .post-content
+            h5.subpage-title
+                span DATA KEPEGAWAIAN 
+                span=session.user.nama_opd
+    for jum in jumpeg
+        .col-sm-4
+            .xe-widget.xe-vertical-counter.xe-vertical-counter-danger(data-count='.num', data-from='0', data-to=jum.jum_peg_all, data-duration='3')
+                .xe-icon
+                    i.fa-users
+                .xe-label
+                    strong.num 0
+                    span TOTAL PEGAWAI
+        .col-sm-8
+            .post-content
+                h5 
+                    strong BERDASARKAN JENIS KEPEGAWAIAN
+                table.table.table-condensed
+                    tbody
+                        tr
+                            td(width="160px") Jumlah Keseluruhan
+                            td :
+                            td #{jum.jum_peg_all} Orang
+                        tr
+                            td PNS
+                            td :
+                            td #{jum.jum_peg_pns} Orang
+                        if jum.jum_peg_cpns != 0
+                            tr
+                                td CPNS
+                                td :
+                                td #{jum.jum_peg_cpns} Orang
+                        if jum.jum_peg_ptt != 0
+                            tr
+                                td PTT
+                                td :
+                                td #{jum.jum_peg_ptt} Orang
+                        if jum.jum_peg_os != 0
+                            tr
+                                td Outsourcing
+                                td :
+                                td #{jum.jum_peg_os} Orang
+                        if jum.jum_peg_ta != 0
+                            tr
+                                td Tenaga Ahli
+                                td :
+                                td #{jum.jum_peg_os} Orang
+                        if jum.jum_peg_pkl != 0
+                            tr
+                                td Siswa PKL
+                                td :
+                                td #{jum.jum_peg_pkl} Orang
+                h5
+                    strong BERDASARKAN JENIS KELAMIN
+                table.table.table-condensed
+                    tbody
+                        tr
+                            td(width="160px") Laki-laki
+                            td :
+                            td #{jum.jum_peg_laki} Orang
+                        tr
+                            td Perempuan
+                            td :
+                            td #{jum.jum_peg_perempuan} Orang
+                h5
+                    strong BERDASARKAN GOLONGAN RUANG
+                table.table.table-condensed
+                    tbody
+                        if jum.jum_peg_gol_4e != 0
+                            tr
+                                td(width="160px") IV/e (Pembina Utama)
+                                td :
+                                td #{jum.jum_peg_gol_4e} Orang
+                        if jum.jum_peg_gol_4d != 0
+                            tr
+                                td(width="160px") IV/d (Pembina Utama Madya)
+                                td :
+                                td #{jum.jum_peg_gol_4d} Orang
+                        if jum.jum_peg_gol_4c != 0
+                            tr
+                                td(width="160px") IV/c (Pembina Utama Muda)
+                                td :
+                                td #{jum.jum_peg_gol_4c} Orang
+                        if jum.jum_peg_gol_4b != 0
+                            tr
+                                td(width="160px") IV/b (Pembina Tk. I)
+                                td :
+                                td #{jum.jum_peg_gol_4b} Orang
+                        if jum.jum_peg_gol_4a != 0
+                            tr
+                                td(width="160px") IV/a (Pembina)
+                                td :
+                                td #{jum.jum_peg_gol_4a} Orang
+                        if jum.jum_peg_gol_3d != 0
+                            tr
+                                td(width="160px") III/d (Penata Tk. I)
+                                td :
+                                td #{jum.jum_peg_gol_3d} Orang
+                        if jum.jum_peg_gol_3c != 0
+                            tr
+                                td(width="160px") III/c (Penata)
+                                td :
+                                td #{jum.jum_peg_gol_3c} Orang
+                        if jum.jum_peg_gol_3b != 0
+                            tr
+                                td(width="160px") III/b (Penata Muda Tk. I)
+                                td :
+                                td #{jum.jum_peg_gol_3b} Orang
+                        if jum.jum_peg_gol_3a != 0
+                            tr
+                                td(width="160px") III/a (Penata Muda)
+                                td :
+                                td #{jum.jum_peg_gol_3a} Orang
+                        
+                        if jum.jum_peg_gol_2d != 0
+                            tr
+                                td(width="160px") II/d (Pengatur Tk. I)
+                                td :
+                                td #{jum.jum_peg_gol_2d} Orang
+                        if jum.jum_peg_gol_2c != 0
+                            tr
+                                td(width="160px") II/c (Pengatur)
+                                td :
+                                td #{jum.jum_peg_gol_2c} Orang
+                        if jum.jum_peg_gol_2b != 0
+                            tr
+                                td(width="160px") II/b (Pengatur Muda Tk. I)
+                                td :
+                                td #{jum.jum_peg_gol_2b} Orang
+                        if jum.jum_peg_gol_2a != 0
+                            tr
+                                td(width="160px") II/a (Pengatur Muda)
+                                td :
+                                td #{jum.jum_peg_gol_2a} Orang
+                        
+                        if jum.jum_peg_gol_1d != 0
+                            tr
+                                td(width="160px") I/d (Juru Tk. I)
+                                td :
+                                td #{jum.jum_peg_gol_1d} Orang
+                        if jum.jum_peg_gol_1c != 0
+                            tr
+                                td(width="160px") I/c (Juru)
+                                td :
+                                td #{jum.jum_peg_gol_1c} Orang
+                        if jum.jum_peg_gol_1b != 0
+                            tr
+                                td(width="160px") I/b (Juru Muda Tk. I)
+                                td :
+                                td #{jum.jum_peg_gol_1b} Orang
+                        if jum.jum_peg_gol_1a != 0
+                            tr
+                                td(width="160px") I/a (Juru Muda)
+                                td :
+                                td #{jum.jum_peg_gol_1a} Orang

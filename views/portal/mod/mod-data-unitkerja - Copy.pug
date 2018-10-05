@@ -1,0 +1,139 @@
+.white-wrapper
+    .container
+        .row
+            .col-sm-12
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#table-unit-kerja").dataTable(
+                            {
+                            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                            dom: "<'row'<'col-md-5 col-xs-12'l><'col-md-7 col-xs-12 hidden-xs'Tf>r>"+
+                                    "t"+
+                                    "<'row'<'col-md-6 col-xs-12'i><'col-md-6 col-xs-12'p>>",
+                            tableTools: {
+                                sSwfPath: "./adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                            },
+                            "deferRender": true,
+                            select: true
+                        }).yadcf([
+                            {column_number : 0, filter_type: 'text'},
+                            {column_number : 1, filter_type: 'text'},
+                            {column_number : 2, filter_type: 'text'},
+                            {column_number : 3, filter_type: 'text'},
+                        ]);
+                    });
+                table#table-unit-kerja.table.table-hover.responsive
+                    thead
+                        tr
+                            th.text-center(width='55px').hidden-xs Gambar
+                            th.text-center Nama Instansi
+                            th.text-center.hidden-xs Kepala Unit
+                            th.text-center.hidden-xs Pranala Luar
+                    tbody
+                        for dataopd, index in dataunitkerja
+                            - var opdNamaKepala = dataopd.nama_gelar
+                            - var opdTelp = dataopd.telp
+                            - var opdFax = dataopd.fax
+                            - var opdAlamat = dataopd.alamat
+                            - var opdLink = dataopd.link
+                            - var ceknull = true
+                            tr
+                                td.hidden-xs
+                                    .album-image
+                                        a.thumb(href=base_url+'data/unitkerja/'+dataopd.id_opd)
+                                            img.img-responsive.center-block(src=base_url+'images/link-opd/small/'+dataopd.logo+'.png')
+                                td
+                                    table.table.table-condensed
+                                        tbody
+                                            tr
+                                                td(colspan='3')
+                                                    img.img-responsive.visible-xs.center-block(src=base_url+'images/link-opd/small/'+dataopd.logo+'.png')
+                                                    br.visible-xs
+                                                    a.text-center.visible-xs.lead(href=base_url+'data/unitkerja/'+dataopd.id_opd)=dataopd.nama_opd
+                                                    a.hidden-xs.lead(href=base_url+'data/unitkerja/'+dataopd.id_opd)=dataopd.nama_opd
+                                            tr
+                                                td(width='80')
+                                                    |   Akronim
+                                                td
+                                                    |    : 
+                                                td=dataopd.akronim_opd
+                                            #opdNamaKepala
+                                                if opdNamaKepala
+                                                    tr.visible-xs
+                                                        td
+                                                            |   Kepala Dinas
+                                                        td
+                                                            |    : 
+                                                        td
+                                                            table.table.table-condensed
+                                                                tbody
+                                                                    tr
+                                                                        td
+                                                                            p.lead=opdNamaKepala
+                                                                    tr
+                                                                        td=dataopd.nip
+                                                                    tr
+                                                                        td
+                                                                            |   #{dataopd.gol}, #{dataopd.ruang}
+                                                else if ceknull
+                                                else
+                                            #opdTelp
+                                                if opdTelp
+                                                    tr
+                                                        td
+                                                            |   Telp
+                                                        td
+                                                            |    : 
+                                                        td=opdTelp
+                                                else if ceknull
+                                                else
+                                            #opdFax
+                                                if opdFax
+                                                    tr
+                                                        td
+                                                            |   Fax
+                                                        td
+                                                            |    : 
+                                                        td=opdFax
+                                                else if ceknull
+                                                else
+                                            #opdAlamat
+                                                if opdAlamat
+                                                    tr
+                                                        td
+                                                            |   Alamat
+                                                        td
+                                                            |    : 
+                                                        td #{opdAlamat}, #{dataopd.kel}, #{dataopd.kec}, #{dataopd.kotakab}, Provinsi Kepulauan Riau - #{dataopd.kode_pos}
+                                                else if ceknull
+                                                else
+                                            #opdLink
+                                                if opdLink
+                                                    tr.visible-xs
+                                                        td
+                                                            |   Website
+                                                        td
+                                                            |    : 
+                                                        td
+                                                            a(href='http://'+opdLink, target='_BLANK')=opdLink
+                                                else if ceknull
+                                                else
+                                #opdNamaKepala
+                                    if opdNamaKepala
+                                        td(width='200px').hidden-xs
+                                            table.table.table-condensed
+                                                tbody
+                                                    tr
+                                                        td
+                                                            p.lead=opdNamaKepala
+                                                    tr
+                                                        td=dataopd.nip
+                                                    tr
+                                                        td
+                                                            |   #{dataopd.gol}, #{dataopd.ruang}
+                                    else if ceknull
+                                        td.hidden-xs Data Belum Tersedia
+                                    else
+                                td.hidden-xs
+                                    a(href='http://'+dataopd.link, target='_BLANK')=dataopd.link

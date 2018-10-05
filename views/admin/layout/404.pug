@@ -1,0 +1,13 @@
+.page-error.centered
+    .error-symbol
+        i.fa-warning
+    
+    h2= error.status
+        small= message
+    p Kami tidak dapat menemukan apa yang anda cari!
+    p Silakan kembali ke halaman sebelumnya
+    pre #{error.stack}
+.page-error-search.centered
+    a.go-back(href=base_url)
+        i.fa-angle-left
+        |   Kembali ke Beranda

@@ -1,0 +1,15 @@
+.white-wrapper
+    .container
+        .row
+            .col-sm-12
+                h5.subpage-title
+                    span Pranala Luar
+                .grid.cs-style-3
+                    for link, index in pranala
+                        .col-xs-12.col-sm-4.col-md-3
+                            figure(style="margin-bottom:15px;")
+                                img.img-responsive.center-block(src=base_url+'images/pranala-luar/small/'+link.logo, alt=link.ket_link)
+                                figcaption
+                                    a(href=link.alamat_link, target='_BLANK')
+                                        h5.text-center=link.nama_link
+                                        span.text-center=link.ket_link

@@ -1,0 +1,235 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Tambah Pegawai
+            // /.box-header
+            .box-body.pad
+                form(action="/adm-kepegawaian-tambah", method="post")
+                    .form-group
+                        label.col-sm-2.control-label(for='nip')
+                            |   NIP
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='nip', placeholder='Masukkan NIP', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='nip')
+                            |   NIK
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='nik', placeholder='Masukkan NIK', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='nama')
+                            |   Nama
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='nama', placeholder='Masukkan Nama', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='gelar_depan')
+                            |   Gelar Depan
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='gelar_depan', placeholder='Masukkan Gelar Depan', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='gelar_belakang')
+                            |   Gelar Belakang
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='gelar_belakang', placeholder='Masukkan Gelar Belakang', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='idodp')
+                            |   OPD
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih OPD', name='id_opd')
+                                    each val in opd
+                                        option(value=(val.id_opd))=val.nama_opd
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='jk')
+                            |   Jenis Kelamin
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Jenis Kelamin', name='jk')
+                                option(value='P') Perempuan
+                                option(value='L') Laki-laki
+                            br     
+                    .form-group
+                        label.col-sm-2.control-label(for='kawin')
+                            |   Status Perkawinan
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Status Perkawinan', name='kawin')
+                                option(value='N') Belum Menikah
+                                option(value='Y') Sudah Menikah  
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='agama')
+                            |   Agama
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Agama', name='agama')
+                                    each val in agama
+                                        option(value=(val.id_agama))=val.agama
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='alamat')
+                            |   Alamat
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='alamat', placeholder='Masukkan Alamat', required='required')
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='alamat_rt')
+                            |   Alamat RT
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='alamat_rt', placeholder='Masukkan Alamat RT', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='alamat_rw')
+                            |   Alamat RW
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='alamat_rw', placeholder='Masukkan Alamat RW', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='status_pegawai')
+                            |   Alamat Kota
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Kategori', name='alamat_kota')
+                                    each val in kotakab
+                                        option(value=(val.id_kotakab))=val.kotakab
+                            br  
+                    .form-group
+                        label.col-sm-2.control-label(for='status_pegawai')
+                            |   Alamat Kecamatan
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Kategori', name='alamat_kec')
+                                    each val in kec
+                                        option(value=(val.id_kec))=val.kec
+                            br  
+                    .form-group
+                        label.col-sm-2.control-label(for='status_pegawai')
+                            |   Alamat Kelurahan
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Kategori', name='alamat_kel')
+                                    each val in kel
+                                        option(value=(val.id_kel))=val.kel
+                            br  
+                    .form-group
+                        label.col-sm-2.control-label(for='golongan_darah')
+                            |   Golongan Darah
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Golongan darah', name='gol_darah')
+                                option(value='A') A
+                                option(value='B') B
+                                option(value='AB') AB
+                                option(value='O') O
+                            br  
+                    .form-group
+                        label.col-sm-2.control-label(for='status_pegawai')
+                            |   Status Pegawai
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Kategori', name='status_peg')
+                                    each val in status_peg
+                                        option(value=(val.id_status_peg))=val.ket_peg
+                            br   
+                    .form-group
+                        label.col-sm-2.control-label(for='golongan_ruang')
+                            |   Golongan ruang
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Kategori', name='gol_ruang')
+                                    each val in gol_ruang
+                                        option(value=(val.id_gol))=val.gol+' - '+val.ruang
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='eselon')
+                            |   Eselon
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Kategori', name='eselon')
+                                    each val in eselon
+                                        option(value=(val.id_eselon))=val.eselon
+                            br   
+                    .form-group
+                        label.col-sm-2.control-label(for='jabatan')
+                            |   Jabatan
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Kategori', name='jabatan')
+                                    each val in jabatan
+                                        option(value=(val.id_jabatan))=val.jabatan
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='ket_jabatan')
+                            |   Keterangan Jabatan
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='ket_jabatan', placeholder='Masukkan Keterangan Jabatan', required='required')
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='pendidikan')
+                            |   Pendidikan Terakhir
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Kategori', name='pend_terakhir')
+                                    each val in pendidikan
+                                        option(value=(val.id_pend))=val.tk_pend+' - '+val.ket_pend
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='pendidikan_umum')
+                            |   Pendidikan Umum
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Kategori', name='pend_umum')
+                                    each val in pendidikan_umum
+                                        option(value=(val.id_pend_umum))=val.pendidikan_umum
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='tanggal_lulus')
+                            |   Tanggal Lulus
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='date', name='tgl_lulus', placeholder='Masukkan Tanggal Lulus', required='required')
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='tempat_lahir')
+                            |   Tempat Lahir
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='tmp_lahir', placeholder='Masukkan Tempat Lahir', required='required')
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='tgl_lahir')
+                            |   Tanggal Lahir
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='date', name='tgl_lahir', placeholder='Masukkan Tanggal Lahir', required='required')
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='tamat_cpns')
+                            |   Tamat CPNS
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='date', name='tmt_cpns', placeholder='Masukkan Tamat CPNS', required='required')
+                            br  
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box

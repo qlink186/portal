@@ -1,0 +1,18 @@
+// Main Footer
+// Choose between footer styles: "footer-type-1" or "footer-type-2"
+// Add class "sticky" to  always stick the footer to the end of page (if page contents is small)
+// Or class "fixed" to  always fix the footer to the end of page
+footer.main-footer.sticky.footer-type-1
+    .footer-inner
+        // Add your copyright text here
+        .footer-text
+            |   &copy; 2018&nbsp;
+            strong Diskominfo&nbsp;
+            |   Theme by&nbsp;
+            a(href='http://kominfo.tanjungpinangkota.go.id', target='_blank') Diskominfo TIK Team&nbsp;
+            |   -&nbsp;
+            a(href='http://kominfo.tanjungpinangkota.go.id', target='_blank') Pemerintah Kota Tanjungpinang
+        // Go to Top Link, just add rel="go-top" to any link to add this functionality
+        .go-up
+            a(href='#', rel='go-top')
+                i.fa-angle-up

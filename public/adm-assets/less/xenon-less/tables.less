@@ -1,0 +1,598 @@
+@table-horizontal-padding: 8px;
+
+.table {
+	@border-color: #eeeeee;
+	
+	&.table-bordered {
+		border-color: @border-color;
+		
+		> thead,
+		> tbody,
+		> tfood {
+			
+			> tr {
+				
+				> td, > th {
+					border-color: @border-color;
+				}
+			}
+		}
+	}
+	
+	> thead,
+	> tbody,
+	> tfood {
+		
+		> tr {
+			
+			> td, > th {
+				padding: 12px @table-horizontal-padding;
+				
+				.text-center& {
+					text-align: center !important;
+				}
+				
+				.middle-align& {
+					vertical-align: middle;
+				}
+				
+				&.middle-align {
+					vertical-align: middle;
+				}
+			}
+			
+			&.no-borders {
+				
+				> td, > th {
+					border-left: 0;
+					border-right: 0;
+				}
+			}
+		}
+	}
+	
+	// Default Structure
+	> thead {
+		
+		> tr {
+		
+			> td, > th {
+				position: relative;
+				border-bottom: 1px solid @border-color;
+				color: @brand-primary;
+				font-size: @font-size-base - 1;
+				
+				&:after {
+					content: '';
+					display: block;
+					position: absolute;
+					left: 0; right: 0; bottom: 1px;
+					height: 1px;
+					background-color: @border-color;
+				}
+			}
+		}
+	}
+	
+	> tbody,
+	> tfoot {
+		
+		> tr {
+			&.dataTerbit,
+			&.dataDraft,
+			&.dataHapus{
+				.panel-collapse{
+					.panel-body{
+						padding-top:5px;
+						padding-bottom:5px;
+						margin-bottom: 0;
+					}
+					.table-condensed{
+						background: none;
+						tr{
+							td{
+								font-size: @font-size-base - 2;
+							}
+						}
+					}
+				}
+			}
+			&.dataTerbit{
+				border-left:5px solid @xe-turquoise;
+				&:hover{
+					background-color: lighten(@xe-turquoise, 63%);
+				}
+				> td{
+					p{
+						&.lead{
+							color: @xe-turquoise;
+						}
+					}
+					.btn-secondary{
+						display: none;
+					}
+					.btn-komentar, .btn-viewer{
+						font-size:@font-size-base - 3;
+					}
+					>.tombolKetDok{
+						background-color:@xe-turquoise;
+						color: @main-text-active-color;
+						font-size:@font-size-base - 3;
+						&:hover{
+							background-color: darken(@xe-turquoise, 10%);
+						}
+						i{
+							background-color: darken(@xe-turquoise, 5%);
+						}
+					}
+					.statusDok{
+						display:block; font-size:14px; margin-bottom:@base-padding; background-color:@xe-turquoise; color: @main-text-active-color;
+					}
+				}
+			}
+
+			&.dataDraft{
+				border-left:5px solid @secondary-text-color;
+				background-color: @border-color;
+				&:hover{
+					background-color: lighten(@xe-black, 75%);
+				}
+				> td{
+					p{
+						&.lead{
+							color: @secondary-text-color;
+						}
+					}
+					.btn-primary{
+						display: none;
+					}
+					.btn-komentar, .btn-viewer{
+						display: none;
+					}
+					hr{
+						display: none;
+					}
+					>.tombolKetDok{
+						background-color:@main-active-color;
+						color: @main-text-active-color;
+						font-size:@font-size-base - 3;
+						&:hover{
+							background-color: darken(@main-active-color, 10%);
+						}
+						i{
+							background-color: darken(@main-active-color, 5%);
+						}
+					}
+					.statusDok{
+						display:block; font-size:14px; margin-bottom:@base-padding; background-color:@main-active-color; color: @main-text-active-color;
+					}
+				}
+			}
+
+			&.dataHapus{
+				border-left:5px solid @xe-red;
+				background-color: lighten(@xe-pink, 30%);
+				&:hover{
+					background-color: lighten(@xe-pink, 25%);
+				}
+				> td{
+					color: @main-text-color;
+					p{
+						&.lead{
+							color: @xe-pink;
+						}
+						color: @main-text-color;
+					}
+					.btn-danger{
+						display: none;
+					}
+					.btn-komentar, .btn-viewer{
+						font-size:@font-size-base - 3;
+					}
+					>.tombolKetDok{
+						background-color:@xe-red;
+						color: @main-text-active-color;
+						font-size:@font-size-base - 3;
+						&:hover{
+							background-color: darken(@xe-red, 10%);
+						}
+						i{
+							background-color: darken(@xe-red, 5%);
+						}
+					}
+					.statusDok{
+						display:block; font-size:14px; margin-bottom:@base-padding; background-color:@xe-red; color: @main-text-active-color;
+					}
+					.album-image{
+						img{
+							opacity: 0.5;
+							filter: alpha(opacity=50); /* For IE8 and earlier */
+							&:hover{
+								opacity: 1;
+								filter: alpha(opacity=100); /* For IE8 and earlier */
+							}
+						}
+					}
+				}
+			}
+			
+			> td, > th {
+				border-top: 0;
+				border-bottom: 1px solid @border-color;
+				font-size: @font-size-base - 2;
+				color: @main-border-color;
+
+				h4 {
+					margin-top:5px;
+					margin-bottom: 5px;
+					em {
+						font-size: 10px;
+						color: @gray;
+					}
+				}
+				
+				.progress, .btn {
+					margin-bottom: 0;
+				}
+
+				.aduanlisttiket{
+					font-size: @font-size-base - 3;
+					text-align: center;
+					strong{
+						font-size: @font-size-base + 6;
+					}
+				}
+				.status-aduan {
+					.infoAduanDraft,
+					.infoAduanDitanggapi,
+					.infoAduanDiteruskan,
+					.infoAduanKomentar
+					{
+						
+					}
+					.infoAduanDraft{}
+					.infoAduanDitanggapi{}
+					.infoAduanDiteruskan{}
+					.infoAduanKomentar{}
+				}
+			}
+		}
+	}
+	&#dataArtikelKategori{
+		tbody{
+			tr{
+				&.dataTerbit{
+					.btn-danger{
+						display: none;
+					}
+					.btn-primary{
+						display: none;
+					}
+				}
+			}
+		}
+		
+	}
+	
+	> tfoot {
+		
+		> tr {
+			
+			> td, > th {
+				border-left: 0;
+				border-bottom: 0;
+				border-top: 1px solid @border-color;
+				padding: @base-padding;
+				position: relative;
+				color: @brand-primary;
+				
+				&:after {
+					content: '';
+					display: block;
+					position: absolute;
+					left: 0; right: 0; top: 1px;
+					height: 1px;
+					background-color: @border-color;
+				}
+			}
+		}
+	}
+	
+	// Condensed
+	&.table-condensed {
+		
+		> thead,
+		> tbody,
+		> tfoot {
+			
+			> tr {
+				
+				> td, > th {
+					padding: 3px 2px;
+					font-size: @font-size-base - 1;
+				}
+			}
+		}
+	}
+	
+	// Table Style 2
+	&.table-model-2 {
+		
+		> thead {
+			
+			> tr {
+				background: #f6f6f6;
+				
+				> td, > th {
+					
+					&:after {
+						display: none;
+					}
+				}
+			}
+		}
+		
+	
+		> thead,
+		> tbody,
+		> tfood {
+			
+			> tr {
+				
+				> td, > th {
+					border-color: @default-border-color;
+				}
+			}
+		}
+		
+		&.table-bordered {
+			border-color: @default-border-color;
+		}
+	}
+	
+	
+	// Middle align
+	tbody.middle-align {
+		
+		> tr {
+			
+			> th, > td {
+				vertical-align: middle;
+			}
+		}
+	}
+}
+
+.panel {
+	
+	> .table {
+	
+		> thead {
+			
+			> tr {
+				//background-color: #f6f6f6;
+				
+				> td, > th {
+					
+					&:after {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+.dataTables_wrapper {
+	@border-color: #eeeeee;
+	
+	.dataTables_length, 
+	.dataTables_filter, 
+	.dataTables_info,
+	.dataTables_paginate {
+		//&:extend(.clearfix all);
+	}
+	
+	.dataTables_length, 
+	.dataTables_filter {
+		padding-bottom: @base-padding/2;
+		&:extend(.clearfix all);
+	}
+	
+	.dataTables_filter {
+	
+		.form-control {
+			margin-left: @base-padding;
+		}
+	}
+	
+	.dataTables_info,
+	.dataTables_paginate {
+		//&:extend(.clearfix all);
+		padding-top: @base-padding;
+	}
+	
+	.DTTT_container {
+		float: right;
+		border: 1px solid @border-color;
+		position: relative;
+		margin-top: -2px;
+		margin-left: @base-margin;
+		&:extend(.clearfix all);
+		
+		+ .dataTables_filter {
+			float: right;
+		}
+		
+		.DTTT_button {
+			position: relative;
+			display: block;
+			float: left;
+			padding: @base-padding - 3 @base-padding;
+			
+			span {
+				position: relative;
+				z-index: 100;
+				cursor: pointer;
+			}
+			
+			&:hover {
+				background: #f5f5f5;
+				
+				div {
+					background: #f5f5f5;
+				}
+			}
+			
+			+ .DTTT_button {
+				border-left: 1px solid @border-color;
+			}
+		}
+	}
+	
+	table.dataTable thead > tr > th {
+		padding-left: @table-horizontal-padding;
+		padding-right: @table-horizontal-padding;
+	}
+	
+	tr {
+		
+		&.replace-inputs {
+			
+			> th, > td {
+				vertical-align: top;
+			}
+		}
+		
+		.dataTables_empty {
+			border-bottom: 1px solid @border-color;
+		}
+		
+		.yadcf-filter-wrapper {
+			position: relative;
+			margin-top: @base-padding;
+			border-top: 1px solid @border-color;
+			margin-left: -@table-horizontal-padding;
+			margin-right: -@table-horizontal-padding;
+			display: block;
+			padding: @base-padding @table-horizontal-padding;
+			padding-bottom: 0;
+			
+			// Reset Button
+			.yadcf-filter-reset-button {
+				.btn-unstyled;
+				position: absolute;
+				top: 0;
+				right: 0;
+				padding: 2px @base-padding/2;
+				padding-top: 0;
+				background: #f5f5f5;
+				color: @main-text-color;
+				line-height: 1;
+				font-weight: normal;
+				font-size: 11px;
+				.opacity(0);
+			}
+			
+			&:hover .yadcf-filter-reset-button {
+				.opacity(1);
+			}
+			
+			// Filter Input
+			.yadcf-filter {
+				display: block;
+				width: 100%;
+				margin: 0;
+
+				&[type="text"], &select {
+					background: #fff;
+					border: 1px solid @input-border;
+					font-weight: normal;
+					outline: none;
+					padding: 0 @base-padding;
+					height: @input-height-small;
+					.box-shadow(none);
+				}
+			}
+
+			select {
+				background: #fff;
+				border: 1px solid @input-border;
+				font-weight: normal;
+				outline: none;
+				padding: 0 @base-padding - 9;
+				height: @input-height-small;
+				.box-shadow(none);
+			}
+			
+			.yadcf-filter-wrapper-inner {
+				display: table;
+				width: 100%;
+				
+				.yadcf-filter-range {
+					display: table-cell;
+					width: 100%;
+					font-weight: normal;
+					background: #fff;
+					border: 1px solid @input-border;
+					font-weight: normal;
+					outline: none;
+					padding: 0 @base-padding/2;
+					height: @input-height-base;
+					text-align: center;
+					.box-shadow(none);
+				}
+				
+				.yadcf-filter-range-number-seperator {
+					padding: 0 @base-padding/2;
+					display: table-cell;
+					width: 10%;
+					
+					&:after {
+						content: '–';
+						color: @main-text-color;
+						font-size: @font-size-small - 1;
+						font-weight: normal;
+					}
+				}
+			}
+		}
+		
+	}
+	
+	.table {
+		
+		thead {
+			
+			> tr {
+				
+				.sorting,
+				.sorting_asc,
+				.sorting_desc {
+					background: none;
+					
+					&:before {
+						font-family: 'fontawesome';
+						content: '\f0dc';
+						float: right;
+						display: block;
+						.opacity(.5);
+					}
+				}
+				
+				.sorting_asc:before {
+					content: '\f0de';
+				}
+				
+				.sorting_desc:before {
+					content: '\f0dd';
+				}
+				
+				.no-sorting:before {
+					display: none;
+				}
+			}
+		}
+	}
+}

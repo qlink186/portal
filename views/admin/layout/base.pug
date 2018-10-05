@@ -1,0 +1,15 @@
+doctype 5
+html(lang='id')
+    head
+        include header.pug
+        title= title
+    body.page-body(data-url='http://tanjungpinangkota.go.id')
+        .page-container
+            include sidebar.pug
+            .main-content
+                include topbar.pug
+                block content
+                include footer.pug
+            include chat.pug
+        include chat-sticky.pug
+        include js.pug

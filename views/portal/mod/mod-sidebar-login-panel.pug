@@ -1,0 +1,39 @@
+.login-panel
+    if session.user
+        h5.subpage-title Profil
+        ul.profil-author
+            li.text-center
+                img(src=base_url+'images/pegawai/big/'+session.user.foto_peg, alt='user-pic')
+                .profil #{session.user.nama_gelar}
+                .profil-info(class='hak-'+session.user.id_hakakses) #{session.user.hakakses}
+                .profil-opd #{session.user.nama_opd}
+                - var tentangPeg = session.user.tentang_peg
+                - var ceknull = null
+                #tentangPeg
+                    if tentangPeg
+                        .profil-tentang 
+                            em "#{tentangPeg}"
+                    else if ceknull
+                    else
+            li.profil-menu
+                a.btn.btn-default.btn-single.pull-left(href=base_url+'adm', target='_BLANK') Dashboard
+                a.btn.btn-danger.btn-single.pull-right(href=base_url+'logouthome') Logout
+    else
+        h5.subpage-title LOGIN
+        form#login.fade-in-effect(action=base_url, method='post', role='form')
+            .form-group
+                input#txtUsername.form-control.flat-input(type='text', placeholder='Username', name='txtUsername', autocomplete='on')
+            .form-group
+                input#txtPassword.form-control.flat-input(type='password', placeholder='Password', name='txtPassword', autocomplete='off')
+            .form-group
+                label
+                    input.cbr(type='checkbox', unchecked='')
+                    |   Ingatkan saya
+                span.pull-right 
+                    a.popover-danger(data-toggle='popover', data-trigger='hover', data-placement='top', data-content="Silakan Hubungi Administrator Portal di Dinas Komunikasi dan Informatika Kota Tanjungpinang, Terima Kasih", data-original-title='Lupa Password?') Lupa Password?
+            if (messages.msg_error)
+                #errors-container.form-group
+                    =messages.msg_error
+            .form-group
+                button.btn.btn-default.btn-single(type='button' disabled='') Register
+                button.btn.btn-danger.btn-single.pull-right(type='submit') Masuk

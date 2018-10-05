@@ -1,0 +1,92 @@
+.white-wrapper
+    .container
+        if menu=='pages/profil'
+            include mod-pages-profil
+        else if menu=='pages/visimisi'
+            include mod-pages-visimisi
+        else if menu=='pages/lambangmoto'
+            include mod-pages-lambangmoto
+        else if menu=='pages/kepaladaerah'
+            include mod-pages-kepaladaerah
+        else if menu=='pages/strukturorg'
+            include mod-pages-strukturorg
+        else if menu=='pages/profilinstansi'
+            include mod-data-unitkerja
+        else if menu=='pages/aksidaerah'
+            include mod-pages-aksidaerah
+        else if menu=='pages/aksidaerah/rencanaanggaran'
+            include mod-pages-aksidaerah-kosong
+        else if menu=='pages/aksidaerah/pengadaan'
+            include mod-pages-aksidaerah-kosong
+        else if menu=='pages/aksidaerah/perizinan'
+            include mod-pages-aksidaerah-kosong
+        else if menu=='pages/aksidaerah/sdm'
+            include mod-pages-aksidaerah-kosong
+        else if menu=='pages/aksidaerah/apip'
+            include mod-pages-aksidaerah-kosong
+        else if menu=='pages/aksidaerah/spip'
+            include mod-pages-aksidaerah-kosong
+        else if menu=='pages/aksidaerah/aset'
+            include mod-pages-aksidaerah-kosong
+        else if menu=='pages/aksidaerah/partisipasipublik'
+            include mod-pages-aksidaerah-kosong
+        else if menu=='pages/aksidaerah/pendidikan'
+            include mod-pages-aksidaerah-kosong
+        else if menu=='pages/aksidaerah/kesehatan'
+            include mod-pages-aksidaerah-kesehatan
+        else if menu=='pages/aksidaerah/infra'
+            include mod-pages-aksidaerah-kosong
+        else if menu=='pages/aksidaerah/pendapatan'
+            include mod-pages-aksidaerah-kosong
+        else if menu=='pages/hubungi-kami'
+            include mod-pages-hubungi-kami
+        else
+            .row
+                .col-sm-4
+                    a(href=base_url+'pages/profil')
+                        .xe-widget.xe-counter.xe-counter-blue
+                            .xe-icon
+                                i.linecons-user
+                            .xe-label
+                                strong.num Selayang Pandang
+                                span Pemerintah Kota Tanjungpinang
+                .col-sm-4
+                    a(href=base_url+'pages/visimisi')
+                        .xe-widget.xe-counter.xe-counter-blue
+                            .xe-icon
+                                i.linecons-user
+                            .xe-label
+                                strong.num Visi dan Misi
+                                span Pemerintah Kota Tanjungpinang
+                .col-sm-4
+                    a(href=base_url+'pages/lambangmoto')
+                        .xe-widget.xe-counter.xe-counter-blue
+                            .xe-icon
+                                i.linecons-user
+                            .xe-label
+                                strong.num Lambang dan Motto
+                                span Pemerintah Kota Tanjungpinang
+                .col-sm-4
+                    a(href=base_url+'pages/kepaladaerah')
+                        .xe-widget.xe-counter.xe-counter-blue
+                            .xe-icon
+                                i.linecons-user
+                            .xe-label
+                                strong.num Kepala Daerah
+                                span Pemerintah Kota Tanjungpinang
+                .col-sm-4
+                    a(href=base_url+'pages/kepaladaerah')
+                        .xe-widget.xe-counter.xe-counter-blue
+                            .xe-icon
+                                i.linecons-user
+                            .xe-label
+                                strong.num Struktur Organisasi
+                                span Pemerintah Kota Tanjungpinang
+                .col-sm-4
+                    a(href=base_url+'pages/hubungi-kami')
+                        .xe-widget.xe-counter.xe-counter-blue
+                            .xe-icon
+                                i.linecons-user
+                            .xe-label
+                                strong.num Hubungi Kami
+                                span Pemerintah Kota Tanjungpinang

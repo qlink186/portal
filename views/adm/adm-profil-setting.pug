@@ -1,0 +1,17 @@
+extends adm-layout/base
+block content
+    section.content-header
+        h1
+            |   Pengaturan Profil
+        ol.breadcrumb
+            li
+                a(href='./adm')
+                    i.fa.fa-dashboard 
+                    |   Dashboard
+            li
+                a(href='#') Pengaturan
+            li.active Pengaturan Profil
+    // Main content
+    section.content
+        include adm-modul/mod-profil-setting.pug
+    // /.content

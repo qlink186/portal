@@ -1,0 +1,114 @@
+.page-title
+    .title-env
+        h1.title=title
+        p.description=desc
+    .breadcrumb-env
+        ol.breadcrumb.bc-1
+            li
+                a(href=base_url)
+                    i.fa-home
+                    |   Dahsboard
+            li
+                a(href=base_url+menu) Artikel
+            li.active
+                strong=title
+.row
+    .col-sm-5
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title
+                    i.fa-plus-square
+                    |   Tambah Kategori
+                .panel-options
+                    a(href='#', data-toggle='panel')
+                        span.collapse-icon &ndash;
+                        span.expand-icon +
+            .panel-body
+                .col-sm-12
+                    form.form-inline(role='form')
+                        .form-group
+                            input.form-control.input-lg(type='text', size='25   ', placeholder='Kategori')
+                        .form-group
+                            button.btn.btn-secondary.btn-single.btn-lg(type='button', href='javascript:;', onclick="jQuery('#konfirmTambahKategori').modal('show', {backdrop: 'fade'});") Tambah
+                    br
+    .col-sm-7
+        // Data Kategori Artikel
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title
+                    i.entypo-tag 
+                    |   Data Kategori Artikel 
+                    small Kategori yang telah memiliki artikel tidak bisa dihapus
+                .panel-options
+                    a(href='#', data-toggle='panel')
+                        span.collapse-icon &ndash;
+                        span.expand-icon +
+            .panel-body
+                .col-sm-12
+                    script(type='text/javascript').
+                        jQuery(document).ready(function($)
+                        {
+                            $("#dataArtikelKategori").dataTable().yadcf([
+                                {column_number : 0, filter_type: 'text'},
+                                {column_number : 1, filter_type: 'range_number'},
+                                {column_number : 2, filter_type: 'none'},
+                            ]);
+                        });
+                    table#dataArtikelKategori.table.datatable.table-hover.table-responsive.middle-align
+                        thead
+                            tr.replace-inputs
+                                th.text-center Kategori
+                                th.text-center(width='100') Jum. Artikel
+                                th.text-center(width='80') Aksi
+                        tbody
+                            tr.dataDraft
+                                td 
+                                    h5(style='margin:0;') Umum
+                                td.text-center 0
+                                td.text-center
+                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                        i.entypo-pencil
+                                        span   Ubah
+                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKategori').modal('show', {backdrop: 'fade'});")
+                                        i.entypo-trash
+                                        span Hapus
+                            tr.dataTerbit
+                                td 
+                                    h5(style='margin:0;') Teknologi
+                                td.text-center 3
+                                td.text-center
+                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                        i.entypo-pencil
+                                        span   Ubah
+                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKategori').modal('show', {backdrop: 'fade'});")
+                                        i.entypo-trash
+                                        span Hapus
+                            tr.dataTerbit
+                                td 
+                                    h5(style='margin:0;') Budaya
+                                td.text-center 5
+                                td.text-center
+                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                        i.entypo-pencil
+                                        span   Ubah
+                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKategori').modal('show', {backdrop: 'fade'});")
+                                        i.entypo-trash
+                                        span Hapus
+                            tr.dataDraft
+                                td 
+                                    h5(style='margin:0;') Agama
+                                td.text-center 0
+                                td.text-center
+                                    button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                        i.entypo-pencil
+                                        span   Ubah
+                                    button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapusKategori').modal('show', {backdrop: 'fade'});")
+                                        i.entypo-trash
+                                        span Hapus
+                        tfoot
+                            tr
+                                th.text-center Kategori
+                                th.text-center Jum. Artikel
+                                th.text-center Aksi
+include mod-modal-artikel-kategori.pug
+include mod-notifikasi-toastr.pug

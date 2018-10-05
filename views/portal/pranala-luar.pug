@@ -1,0 +1,9 @@
+extends layout/base 
+block content
+    .jarakNav
+    include layout/breadcrumb
+    if menu=='pranala-luar'
+        include mod/mod-pranala-luar
+        include mod/mod-subdomain
+    else
+        include mod/mod-subdomain

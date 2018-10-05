@@ -1,0 +1,22 @@
+extends adm-layout/base
+block content
+    section.content-header
+        h1
+            |   Edit
+            small Artikel / Berita
+        ol.breadcrumb
+            li
+                a(href='./adm')
+                    i.fa.fa-dashboard 
+                    |   Beranda
+            li
+                a(href='/adm-artikel') Artikel
+            li.active Edit Artikel
+    // Main content
+    section.content
+        .row
+            .col-xs-12
+                include adm-modul/mod-artikel-edit-editor.pug
+            // /.col
+        // /.row
+    // /.content

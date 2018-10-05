@@ -1,0 +1,128 @@
+.panel.panel-default
+    .panel-heading
+        h3.panel-title
+            i.el-home 
+            |   Data 
+            strong Alamat
+    .panel-body
+        form.form-horizontal.validate(role='form', method='post')
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilAlamatProvinsi') Provinsi
+                .col-sm-5
+                    input#isianProfilAlamatProvinsi.form-control(type='text', name='dataAlamatProvinsi', placeholder='Kepualauan Riau', disabled='')
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilAlamatKecamatan') Kecamatan*
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#isianProfilAlamatKecamatan").select2({
+                            placeholder: 'Pilih Kecamatan...',
+                            allowClear: true
+                        }).on('select2-open', function()
+                        {
+                            // Adding Custom Scrollbar
+                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                        });
+                        
+                    });
+                .col-sm-5
+                    select#isianProfilAlamatKecamatan.form-control(name='dataAlamatKecamatan', data-validate='required', data-message-required='Kecamatan Wajib Diisi')
+                        option
+                        optgroup(label='Kota Tanjungpinang')
+                            option Tanjungpinang Kota
+                            option Tanjungpinang Timur
+                            option Tanjungpinang Barat
+                            option Bukit Bestari
+                        optgroup(label='Kota Batam')
+                            option Albania
+                            option Andorra
+                            option Armenia
+                            option Austria
+                            option Azerbaijan
+                            option Belarus
+                        optgroup(label='Kabupaten Karimun')
+                            option Afghanistan
+                            option Bahrain
+                            option Bangladesh
+                            option Bhutan
+                            option Brunei
+                            option Cambodia
+                            option China
+                            option East Timor
+                            option India
+                    em.small Silakan Pilih Data Kecamatan dengan klik list di atas
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilAlamatKelurahan') Kelurahan*
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#isianProfilAlamatKelurahan").select2({
+                            placeholder: 'Pilih Kelurahan...',
+                            allowClear: true
+                        }).on('select2-open', function()
+                        {
+                            // Adding Custom Scrollbar
+                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                        });
+                        
+                    });
+                .col-sm-5
+                    select#isianProfilAlamatKelurahan.form-control(name='dataAlamatKelurahan', data-validate='required', data-message-required='Kelurahan Wajib Diisi')
+                        option
+                        optgroup(label='North America')
+                            option Alabama
+                            option Alaska
+                            option Arizona
+                            option Arkansas
+                            option California
+                            option Colorado
+                        optgroup(label='Europe')
+                            option Albania
+                            option Andorra
+                            option Armenia
+                            option Austria
+                            option Azerbaijan
+                            option Belarus
+                        optgroup(label='Asia')
+                            option Afghanistan
+                            option Bahrain
+                            option Bangladesh
+                            option Bhutan
+                            option Brunei
+                            option Cambodia
+                            option China
+                            option East Timor
+                            option India
+                    em.small Silakan Pilih Data Kelurahan dengan klik list di atas
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilAlamatRT') RT*
+                .col-sm-2
+                    input#isianProfilAlamatRT.form-control(type='text', name='dataAlamatRT', data-validate='required', data-message-required='Data RT Wajib diisi', data-mask='decimal', maxlength='3', placeholder='001')
+                label.col-sm-1.control-label(for='isianProfilAlamatRW') RW*
+                .col-sm-2
+                    input#isianProfilAlamatRW.form-control(type='text', name='dataAlamatRW', data-validate='required', data-message-required='Data RW Wajib diisi', data-mask='decimal', maxlength='3', placeholder='001')
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilAlamatAlamat') Alamat*
+                .col-sm-10
+                    textarea#isianProfilAlamatAlamat.form-control.autogrow(name='dataAlamatJalan', data-validate='required', data-message-required='Alamat Wajib diisi', rows='5', placeholder='Jl. Sana Sini Blok Z, No 123, Perum. Suka Damai')
+                    em.small Diisi dengan nama Jalan, Gang, Perumahan, Kampung, dst.
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label Tampilkan Alamat Untuk Umum*
+                .col-sm-10
+                    label.radio-inline
+                        input.cbr.cbr-secondary(type='radio', name='tampilAlamat', checked='')
+                        |   Tampilkan Seluruhnya 
+                    label.radio-inline
+                        input.cbr.cbr-pink(type='radio', name='tampilAlamat')
+                        |   Hanya Kelurahan, Kecamatan, dan Provinsi Saja
+            .form-group-separator
+            .form-group
+                .col-sm-12
+                    button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-icon-standalone.pull-right(type='submit')
+                        i.fa-save
+                        span Simpan

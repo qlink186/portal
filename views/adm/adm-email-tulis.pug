@@ -1,0 +1,18 @@
+extends adm-layout/base
+block content
+    // Content Header (Page header)
+    section.content-header
+        h1
+            |   Tulis E-Mail
+        ol.breadcrumb
+            li
+                a(href='#')
+                    i.fa.fa-dashboard
+                    |   Dahsboard
+            li
+                |   Email
+            li.active Tulis E-Mail
+    // Main content
+    section.content
+        include adm-modul/mod-email-tulis.pug
+    // /.content

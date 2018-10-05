@@ -1,0 +1,6 @@
+h5.subpage-title Kategori Berita
+ul.widget-list
+    for kat, index in beritakat
+        li
+            a(href=base_url+'berita/kategori/'+kat.link_kat) #{kat.kategori}&nbsp;
+                span.label.label-default=kat.jum

@@ -1,0 +1,42 @@
+.row
+    .col-sm-12
+        h5.subpage-title
+            span DAFTAR INFORMASI PUBLIK (DIP) INSTANSI KOTA TANJUNGPINANG
+        .row.no-padding
+            for op in opd
+                .col-sm-3
+                    .panel.panel-default.panel-border.panel-shadow.collapsed
+                        // Add class "collapsed" to minimize the panel
+                        .panel-heading
+                            a(href='#', data-toggle='panel')
+                                h5.panel-title #{op.akronim_opd}
+                        .panel-body(style="padding:10px")
+                            strong.text-center #{op.nama_opd}
+                            .album-image
+                                img.center-block(src=base_url+'images/kantor/'+op.foto_kantor, width="75%")
+                                br
+                            table.table.table-condensed.table-hovers
+                                tbody
+                                    tr
+                                        td Jumlah Data
+                                        td :
+                                        td #{op.jum_data_all}
+                                    tr
+                                        td Jumlah Informasi Serta Merta
+                                        td :
+                                        td #{op.jum_data_sm}
+                                    tr
+                                        td Jumlah Informasi Setiap Saat
+                                        td :
+                                        td #{op.jum_data_ss}
+                                    tr
+                                        td Jumlah Informasi Berkala
+                                        td :
+                                        td #{op.jum_data_bk}
+                            .btn-group.btn-group-justified
+                                a.btn.btn-danger.bg-lg(type='button', href=base_url+'data/unitkerja/'+op.link_opd) Selengkapnya
+.row
+    .col-sm-12
+        h5.subpage-title
+            span DAFTAR INFORMASI PUBLIK (DIP) DILINGKUNGAN PEMERINTAH KOTA TANJUNGPINANG
+        include mod-download-area

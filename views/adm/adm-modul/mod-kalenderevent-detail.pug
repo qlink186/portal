@@ -1,0 +1,16 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Kalender Event
+            // /.box-header
+            .box-body.no-padding
+                .mailbox-read-info
+                    h3 #{kalenderevent.judul}
+                    span.mailbox-read-time.pull-right #{kalenderevent.tgl_post} 
+                .mailbox-read-message
+                    p Tanggal Event : #{kalenderevent.tgl_event}
+                    br
+                    p!=kalenderevent.keterangan
+        // /.box

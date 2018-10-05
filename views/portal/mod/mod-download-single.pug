@@ -1,0 +1,65 @@
+.white-wrapper
+    .container
+        .row
+            .col-sm-10
+                .post-content
+                    h5.subpage-title
+                        span=dw.nama_file
+            .col-sm-2
+                .post-content
+                    a.btn-sm.btn-flat.flat-danger.pull-right(href=base_url+'data/download-area')
+                        strong DATA LAINNYA
+        .row
+            .col-sm-2
+                table.table.table-condensed
+                    tbody
+                        tr
+                            td
+                                img.img-responsive.center-block(src=base_url+'adm-assets/images/ico/'+dw.format_file+'.svg')
+                                br
+                        tr
+                            td.text-center
+                                a.btn.btn-red.btn-sm.btn-icon.btn-icon-standalone(href=dw.alamat_file)
+                                    i.fa-download
+                                    span Download
+            .col-sm-10
+                table.table.table-condensed.table-hover
+                    tbody
+                        tr
+                            td(width="110px").text-right
+                                strong Judul
+                            td :
+                            td
+                                strong=dw.nama_file
+                        tr
+                            td.text-right
+                                strong Deskripsi
+                            td :
+                            td=dw.deskripsi_file
+                        if (dw.ket_file)
+                            tr
+                                td.text-right
+                                    strong Keterangan
+                                td :
+                                td=dw.ket_file
+                        else
+                        tr
+                            td.text-right
+                                strong Jenis Dokumen
+                            td :
+                            td=dw.jenis_file
+                        tr
+                            td.text-right
+                                strong Jenis Informasi
+                            td :
+                            td=dw.kategori_dip
+                        tr
+                            td.text-right
+                                strong Tanggal Dokumen
+                            td :
+                            td=dw.tgl_file
+                        tr
+                            td.text-right
+                                strong Tanggal Upload
+                            td :
+                            td=dw.tgl_upload2

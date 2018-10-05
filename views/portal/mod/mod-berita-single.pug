@@ -1,0 +1,60 @@
+.container
+    .main-wrapper.search-env
+        .row
+            .col-md-12
+                include mod-search-home
+.white-wrapper
+    .container
+        .row
+            .col-md-9
+                h5.subpage-title
+                    span=beritaview.judul_berita
+                    a.btn-xs.btn-flat.flat-danger.pull-right(href=base_url+'berita')
+                        span BERITA LAINNYA
+                .post
+                    .post-thumb-single
+                        img.img-responsive(src=base_url+'images/berita/big/'+beritaview.gambar, alt=beritaview.judul_berita)
+                        .image-overlay
+                        a.post-zoom(href=base_url+'images/berita/big/'+beritaview.gambar, rel='prettyPhoto[pp_berita_single]')
+                            i.fa-eye
+                    // /.post-thumb-single
+                    .post-content(style='margin-top:20px')
+                        p!=beritaview.isi_berita
+                        
+                    // /.post-content
+                    .post-meta
+                        ul.meta-list
+                            li
+                                span Terbit: 
+                                span.black=beritaview.tgl_terbit
+                            li
+                                span Kategori:
+                                span.black=beritaview.kategori
+                            li
+                                span Penulis: 
+                                span.black=beritaview.nama_penulis
+                            li
+                                a.read-more(href=base_url+'berita')
+                                    i.fa-arrow-left 
+                                    span  Berita Lainnya
+                    // /.post-meta
+                    .post-author
+                        h5.subpage-title Tentang Penulis
+                        .post-author-info
+                            .media
+                                a.pull-left(href='#')
+                                    if beritaview.foto_peg==null
+                                        img.media-object(width='74', height='74', src=base_url+'images/pegawai/small/peg.jpg', alt='User Image')
+                                    else
+                                        img.media-object(width='74', height='74', src=base_url+'images/pegawai/small/'+beritaview.foto_peg, alt='User Image')
+                                .media-body
+                                    h5.media-heading
+                                        a(href='#')=beritaview.nama_penulis
+                                        span  - #{beritaview.nama_opd}
+                                    if beritaview.tentang_peg
+                                        |   #{beritaview.tentang_peg}
+                                    else if beritaview.tentang_peg==null
+                                        |   Jujur Bertutur Bijak Bertindak
+                // /.article
+            .col-md-3
+                include mod-sidebar-1

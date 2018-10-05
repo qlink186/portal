@@ -1,0 +1,52 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Siaran Pers
+            // /.box-header
+            .box-body.pad
+                form(action="/adm-siaranpers-edit/", method="post")
+                    input#id_berita.form-control(type='hidden', name='id_siaranpers', value=siaranpers.id_siaranpers)
+                    .form-group
+                        label.col-sm-2.control-label(for='title')
+                            |   Judul Siaran Pers
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='judul', required='required' value=siaranpers.judul)
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='gambar')
+                            |   Gambar
+                            span.required *
+                        .col-sm-10
+                            input#gambar.form-control(type='file', name='uploaded_image', required='required')
+                            br
+                    .form-group
+                        label.col-sm-12.control-label(for='isi')
+                            |   Isi Siaran Pers
+                            span.required *
+                        .col-sm-12
+                            textarea#editor2(name='editorsiaranpers', rows='15', cols='80') #{siaranpers.isi}
+                            br
+                            if session.user.id_hakakses != 3
+                                .form-group
+                                    label.col-sm-2.control-label(for='publish')
+                                        |   Status Siaran Pers
+                                        span.required *
+                                    .col-sm-10
+                                        select.form-control(required='required', placeholder='Pilih tampilkan diumum', name='publish')
+                                            if siaranpers.tayang_umum == 0
+                                                option(value=0) Draft                                                
+                                                option(value=1) Published
+                                            else                                      
+                                                option(value=1) Published
+                                                option(value=0) Draft          
+                                        br
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box

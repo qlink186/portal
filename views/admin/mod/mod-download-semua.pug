@@ -1,0 +1,330 @@
+
+// Custom column filtering
+.panel.panel-default
+    .panel-heading
+        button.btn.btn-blue.btn-icon.btn-icon-standalone.btn-lg
+            i.fa-upload
+            span
+                strong UNGGAH DOKUMEN
+        .panel-options
+            a(href='#', data-toggle='panel')
+                span.collapse-icon &ndash;
+                span.expand-icon +
+            a(href='#', data-toggle='remove')
+                |   &times;
+    .panel-body
+        script(type='text/javascript').
+            jQuery(document).ready(function($)
+            {
+                $("#table-download-list-semua").dataTable(
+                    {
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                    dom: "<'row'<'col-sm-5'l><'col-sm-7'Tf>r>"+
+                            "t"+
+                            "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+                    tableTools: {
+                        sSwfPath: "#{base_url}adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                    },
+                    select: true
+                }).yadcf([
+                    {column_number : 0, filter_type: 'text'},
+                    {column_number : 1, filter_type: 'text'},
+                    {column_number : 2},
+                    {column_number : 3},
+                    {column_number : 4},
+                    {column_number : 5},
+                    {column_number : 6},
+                    {column_number : 7},
+                    {column_number : 8, filter_type: 'text'},
+                ]);
+            });
+        table#table-download-list-semua.table.datatable.table-hover.table-responsive
+            thead
+                tr
+                    th(width='50px') Format
+                    th(width='350px') Judul Dokumen / Deskripsi Dokumen
+                    th Th. Dok.
+                    th Jenis Dokumen
+                    th(width='40px') Kat. Dok.
+                    th Pemilik
+                    th Status
+                    th Unit Kerja
+                    th(width='40px') Aksi
+            tbody
+                tr.dataDraft
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive(src=base_url+'adm-assets/images/ico/pdf.svg')
+                    td
+                        p.lead.text-danger PERATURAN WALIKOTA TANJUNGPINANG NOMOR 29 TAHUN 2014 TENTANG PENGELOLAAN PELAYANAN INFORMASI PUBLIK
+                        button(data-toggle='collapse', href='#ketDok1').btn.btn-icon.btn-icon-standalone.btn-xs.tombolKetDok
+                            i.fa-thumb-tack
+                            span Keterangan Dokumen
+                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                            i.fa-download
+                            span 100 X Unduh
+                        #ketDok1.panel-collapse.collapse
+                            .panel-body
+                                table.table.table-hover.table-condensed
+                                    tbody
+                                        tr
+                                            td(colspan='2')
+                                                strong   Deskripsi Dokumen:
+                                        tr
+                                            td(colspan='2')
+                                                |   Neglected
+                                                strong principle ask rapturous
+                                                |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                                                del chatty regard vulgar
+                                                |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                                table.table.table-hover.table-condensed
+                                    tbody
+                                        tr
+                                            td
+                                                |   Tanggal Dokumen
+                                            td
+                                                |   19 April 2017
+                                        tr
+                                            td
+                                                |   Jenis Dokumen
+                                            td
+                                                |   Peraturan Walikota
+                                        tr
+                                            td
+                                                |   Kategori Dokumen
+                                            td
+                                                |   Informasi Setiap Saat
+                                        tr
+                                            td
+                                                |   Unit Kerja
+                                            td
+                                                |   Dinas Komunikasi dan Informatika
+                                        tr
+                                            td
+                                                |   Status Dokumen
+                                            td
+                                                |   Umum (Bebas Unduh)
+                                        tr
+                                            td
+                                                |   Pengunggah
+                                            td
+                                                strong Aprinaldi&nbsp;
+                                                span - Dinas Komunikasi dan Informatika
+                                        tr
+                                            td
+                                                |   Tanggal Unggah
+                                            td
+                                                |   16 April 2014
+                    td
+                        |   2014
+                    td
+                        |   Peraturan Walikota
+                    td
+                        |   SM
+                    td
+                        |   Aprinaldi
+                    td
+                        |   UMUM
+                    td
+                        |   Dinas Komunikasi dan Informatika
+                    td.center
+                        .label.statusDok
+                            |   DRAFT
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-icon.btn-icon-standalone.btn-xs.btn-secondary.btn-block(type='button')
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-trash
+                            span Hapus
+                tr.dataTerbit
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive(src=base_url+'adm-assets/images/ico/ppt.svg')
+                    td
+                        p.lead.text-danger Surat Keputusan Walikota Tanjungpinang Nomor 197 Tahun 2017 tentang Penerimaan Dana Alokasi Khusus Non Fisik Bantuan Operasional Penyelenggaraan Pendidikan Anak Usia Dini Tahun 2017
+                        button(data-toggle='collapse', href='#ketDok2').btn.btn-icon.btn-icon-standalone.btn-xs.tombolKetDok
+                            i.fa-thumb-tack
+                            span Keterangan Dokumen
+                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                            i.fa-download
+                            span 100 X Unduh
+                        #ketDok2.panel-collapse.collapse
+                            .panel-body
+                                table.table.table-hover.table-condensed
+                                    tbody
+                                        tr
+                                            td(colspan='2')
+                                                strong   Deskripsi Dokumen:
+                                        tr
+                                            td(colspan='2')
+                                                |   Neglected
+                                                strong principle ask rapturous
+                                                |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                                                del chatty regard vulgar
+                                                |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                                table.table.table-hover.table-condensed
+                                    tbody
+                                        tr
+                                            td
+                                                |   Tanggal Dokumen
+                                            td
+                                                |   19 April 2017
+                                        tr
+                                            td
+                                                |   Jenis Dokumen
+                                            td
+                                                |   Peraturan Walikota
+                                        tr
+                                            td
+                                                |   Kategori Dokumen
+                                            td
+                                                |   Informasi Setiap Saat
+                                        tr
+                                            td
+                                                |   Unit Kerja
+                                            td
+                                                |   Dinas Komunikasi dan Informatika
+                                        tr
+                                            td
+                                                |   Status Dokumen
+                                            td
+                                                |   Umum (Bebas Unduh)
+                                        tr
+                                            td
+                                                |   Pengunggah
+                                            td
+                                                a(href='#')
+                                                    strong Aprinaldi&nbsp;
+                                                span - Dinas Komunikasi dan Informatika
+                                        tr
+                                            td
+                                                |   Tanggal Unggah
+                                            td
+                                                |   16 April 2014
+                    td
+                        |   2015
+                    td
+                        |   Peraturan Walikota
+                    td
+                        |   HU
+                    td
+                        |   Aprinaldi
+                    td
+                        |   UMUM
+                    td
+                        |   Dinas Komunikasi dan Informatika
+                    td.center
+                        .label.statusDok
+                            |   TERBIT
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-icon.btn-icon-standalone.btn-xs.btn-secondary.btn-block(type='button')
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-trash
+                            span Hapus
+                tr.dataHapus
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive(src=base_url+'adm-assets/images/ico/doc.svg')
+                    td
+                        p.lead.text-danger Surat Keputusan Walikota Tanjungpinang Nomor 286 Tahun 2017 tentang Belanja Hibah Kepada Badan / Lembaga / Organisasi Tahun Anggaran 2017
+                        button(data-toggle='collapse', href='#ketDok3').btn.btn-icon.btn-icon-standalone.btn-xs.tombolKetDok
+                            i.fa-thumb-tack
+                            span Keterangan Dokumen
+                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                            i.fa-download
+                            span 100 X Unduh
+                        #ketDok3.panel-collapse.collapse
+                            .panel-body
+                                table.table.table-hover.table-condensed
+                                    tbody
+                                        tr
+                                            td(colspan='2')
+                                                strong   Deskripsi Dokumen:
+                                        tr
+                                            td(colspan='2')
+                                                |   Neglected
+                                                strong principle ask rapturous
+                                                |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                                                del chatty regard vulgar
+                                                |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                                table.table.table-hover.table-condensed
+                                    tbody
+                                        tr
+                                            td
+                                                |   Tanggal Dokumen
+                                            td
+                                                |   19 April 2017
+                                        tr
+                                            td
+                                                |   Jenis Dokumen
+                                            td
+                                                |   Peraturan Walikota
+                                        tr
+                                            td
+                                                |   Kategori Dokumen
+                                            td
+                                                |   Informasi Setiap Saat
+                                        tr
+                                            td
+                                                |   Unit Kerja
+                                            td
+                                                |   Dinas Komunikasi dan Informatika
+                                        tr
+                                            td
+                                                |   Status Dokumen
+                                            td
+                                                |   Umum (Bebas Unduh)
+                                        tr
+                                            td
+                                                |   Pengunggah
+                                            td
+                                                strong Aprinaldi&nbsp;
+                                                span - Dinas Komunikasi dan Informatika
+                                        tr
+                                            td
+                                                |   Tanggal Unggah
+                                            td
+                                                |   16 April 2014
+                    td
+                        |   2015
+                    td
+                        |   Surat Keluar
+                    td
+                        |   SM
+                    td
+                        |   Aprinaldi
+                    td
+                        |   OPD
+                    td
+                        |   Dinas Komunikasi dan Informatika
+                    td.center
+                        .label.statusDok
+                            |   DIHAPUS
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-icon.btn-icon-standalone.btn-xs.btn-secondary.btn-block(type='button')
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-trash
+                            span Hapus

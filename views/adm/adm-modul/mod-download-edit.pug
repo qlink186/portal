@@ -1,0 +1,100 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Edit Download File
+            // /.box-header
+            .box-body.pad
+                form(action="/adm-download-edit", method="post")
+                    input#title.form-control(type='hidden', name='id_download', value=download.id_download)
+                    input#title.form-control(type='hidden', name='link_file', value=download.link_file)
+                    //- input#title.form-control(type='hidden', name='nama_file', value=download.id_download)
+                    .form-group
+                        label.col-sm-2.control-label(for='nama_file')
+                            |   Nama File
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='nama_file', value=download.nama_file, required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='deskripsi_file')
+                            |   Deskripsi File
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='deskripsi_file', value=download.deskripsi_file, required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='idodp')
+                            |   OPD
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih OPD', name='id_opd')
+                                option(value=(download.id_opd))=download.nama_opd
+                                each val in opd
+                                    if (val.id_opd != download.id_opd)
+                                        option(value=(val.id_opd))=val.nama_opd
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='file')
+                            |   File
+                            span.required *
+                        .col-sm-10
+                            a(href='/download/'+download.link_file) #{download.nama_file}
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='upload_file')
+                            |   Change File
+                            span.required *
+                        .col-sm-10
+                            input#file.form-control(type='file', name='uploaded_file')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='jenisfile')
+                            |   Jenis File
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih jenis file', name='jenis_file')
+                                option(value=(download.jenis_file))=download.nama_jenis_file
+                                each val in opd
+                                    if (val.id_jenis_file != download.jenis_file)
+                                        option(value=(val.id_jenis_file))=val.jenis_file
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='kategori_file')
+                            |   Kategori File
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih kategori file', name='kategori_file')
+                                option(value=(download.kategori_file))=download.kategori_dip
+                                each val in opd
+                                    if (val.id_kategori_dip != download.kategori_file)
+                                        option(value=(val.id_kategori_dip))=val.kategori_dip
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='tgl_file')
+                            |   Tanggal File
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='date', name='tgl_file', required='required' value=download.tgl_file)
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='status_file')
+                            |   Status File
+                            span
+                        .col-sm-10
+                            select.form-control(placeholder='Pilih status file', name='status_file')
+                                if (download.status_file == '1')
+                                    option(value='1') Active    
+                                    option(value='0') Not Active 
+                                else                                
+                                    option(value='0') Not Active 
+                                    option(value='1') Active                                
+                            br                      
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box

@@ -1,0 +1,349 @@
+.row
+    .col-md-3
+        // Profile Image
+        .box.box-primary
+            .box-body.box-profile
+                if (peg.foto_peg)
+                    img.profile-user-img.img-responsive.img-circle(src='/images/pegawai/small/'+peg.foto_peg+'.jpg', alt='User profile picture')
+                h3.profile-username.text-center #{peg.nama}
+                p.text-muted.text-center #{peg.hakakses}
+                p.text-muted.text-center 
+                    strong
+                        |   NIP. #{peg.nip}
+                p.text-muted.text-center #{peg.nama_opd}
+                hr
+                p.text-center
+                    a(href='mailto:'+peg.email) #{peg.email}
+                    br
+                    a(href='mailto:'+peg.email2) #{peg.email2}
+            // /.box-body
+        // /.box
+        // About Me Box
+        .box.box-primary
+            .box-header.with-border
+                h3.box-title Setup
+            // /.box-header
+            .box-body
+                strong
+                    i.fa.fa-image.margin-r-5
+                    |   Change Profile Picture
+                hr
+                strong
+                    i.fa.fa-key.margin-r-5
+                    |   Change Password
+                hr
+            // /.box-body
+        // /.box
+    // /.col
+    .col-md-9
+        .nav-tabs-custom
+            ul.nav.nav-tabs
+                //- li.active
+                //-     a(href='#activity', data-toggle='tab')
+                //-         i.fa.fa-hourglass-1 &nbsp;
+                //-         |   Activity
+                //- li
+                //-     a(href='#timeline', data-toggle='tab')
+                //-         i.fa.fa-bell &nbsp;
+                //-         |   Timeline
+                li.active
+                    a(href='#tab-data-diri', data-toggle='tab')
+                        i.fa.fa-info &nbsp;
+                        |   Data Diri
+                li
+                    a(href='#tab-alamat', data-toggle='tab')
+                        i.fa.fa-map-marker &nbsp;
+                        |   Alamat
+                li
+                    a(href='#tab-kepegawaian', data-toggle='tab')
+                        i.fa.fa-institution &nbsp;
+                        |   Kepegawaian
+                li
+                    a(href='#tab-pendidikan', data-toggle='tab')
+                        i.fa.fa-mortar-board &nbsp;
+                        |   Pendidikan
+                li
+                    a(href='#tab-kontak', data-toggle='tab')
+                        i.fa.fa-phone &nbsp;
+                        |   Kontak
+                //- li
+                //-     a(href='#tab-data-akun', data-toggle='tab')
+                //-         i.fa.fa-user &nbsp;
+                //-         |   Data Akun
+            
+            form.form-horizontal(action="/adm-profile-edit", method="post")
+                .tab-content
+                    //- #activity.active.tab-pane
+                        // Post
+                        
+                    // /.tab-pane                
+                    #tab-data-diri.active.tab-pane
+                        br
+                        input#title.form-control(type='hidden', name='id_peg', value=peg.id_peg)
+                        .form-group
+                            label.col-sm-2.control-label(for='nama-lengkap') Nama Lengkap
+                                span.required *
+                            .col-sm-8
+                                input#nama-lengkap.form-control(required='required', type='text', placeholder='Nama Lengkap', value=peg.nama, name='nama')
+                                span.help-block Tanpa gelar, kecuali: Raja, Syarifah, Said, dsb.
+                        .form-group
+                            label.col-sm-2.control-label(for='gelar-depan') Gelar Depan
+                            .col-sm-8
+                                input#gelar-depan.form-control(type='text', placeholder='Contoh: Drs., Dr., Drg. H, Prof. Dr. Hj., dsb', value=peg.gelar_depan, name='gelar_depan')
+                        .form-group
+                            label.col-sm-2.control-label(for='gelar-belakang') Gelar Belakang
+                            .col-sm-8
+                                input#gelar-belakang.form-control(type='text', placeholder='Contoh: SH, ST, S.Kom, dsb', value=peg.gelar_belakang, name='gelar_belakang')
+                        .form-group
+                            label.col-sm-2.control-label(for='nip') NIP / NRPTT / NO. OS
+                                span.required *
+                            .col-sm-8
+                                input#nip.form-control(required='required', type='text', maxlength='18', placeholder='Diisi Tanpa Spasi', data-placement='top', data-original-title='NIP / NRPTT / NO. OS' value=peg.nip, name='nip')
+                                span.help-block Tanpa spasi
+                        .form-group
+                            label.col-sm-2.control-label(for='nik') NIK
+                                span.required *
+                            .col-sm-8
+                                input#nik.form-control(required='required', type='text', maxlength='16', placeholder='Diisi Tanpa Spasi', data-placement='top', data-original-title='Nomor Induk Kependudukan' value=peg.nik, name='nik')
+                                span.help-block Tanpa spasi
+                        .form-group
+                            label.col-sm-2.control-label(for='jk') Jenis Kelamin
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Jenis Kelamin', name='jk')
+                                    if peg.jk == 'P'                                
+                                        option(value='P') Perempuan
+                                        option(value='L') Laki-laki
+                                    else                                
+                                        option(value='L') Laki-laki
+                                        option(value='P') Perempuan
+                        .form-group
+                            label.col-sm-2.control-label(for='kawin') Status Pernikahan
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Status Perkawinan', name='kawin')
+                                    if peg.kawin == 'N'
+                                        option(value='N') Belum Menikah
+                                        option(value='Y') Sudah Menikah  
+                                    else                                     
+                                        option(value='Y') Sudah Menikah
+                                        option(value='N') Belum Menikah
+                        .form-group
+                            label.col-sm-2.control-label(for='tmp-lahir') Tempat Lahir
+                                span.required *
+                            .col-sm-8
+                                input.form-control(type='text', placeholder='Tempat Lahir', name='tmp_lahir', value=peg.tmp_lahir )
+                        .form-group
+                            label.control-label.col-sm-2(for='tgl-lahir') Tanggal Lahir
+                                span.required *
+                            .col-sm-8
+                                input.form-control(type='text', data-inputmask="'alias': 'dd-mm-yyyy'", data-mask='', placeholder='31-12-1980', value=peg.tgl_lahir, name='tgl_lahir' )
+                                span.help-block Format DD-MM-YYYY
+                        .form-group
+                            label.col-sm-2.control-label(for='gol-darah') Golongan Darah
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Golongan darah', name='gol_darah')
+                                    if peg.gol_darah                                
+                                        option(value=(peg.gol_darah))=peg.gol_darah
+                                        if peg.gol_darah == 'A'   
+                                            option(value='B') B
+                                            option(value='AB') AB
+                                            option(value='O') O 
+                                        else if peg.gol_darah == 'B'     
+                                            option(value='A') A
+                                            option(value='AB') AB
+                                            option(value='O') O
+                                        else if peg.gol_darah == 'AB'
+                                            option(value='A') A
+                                            option(value='B') B
+                                            option(value='O') O
+                                        else
+                                            option(value='A') A
+                                            option(value='B') B
+                                            option(value='AB') AB
+                                    else
+                                        option(value='A') A
+                                        option(value='B') B
+                                        option(value='AB') AB
+                                        option(value='O') O
+                        .form-group
+                            label.col-sm-2.control-label(for='agama') Agama
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Agama', name='agama')
+                                    option(value=(peg.agama))=peg.nama_agama
+                                    each val in agama
+                                        if(val.id_agama != peg.agama)
+                                            option(value=(val.id_agama))=val.agama
+                        .form-group
+                            .col-sm-offset-9.col-sm-8
+                                button.btn.btn-danger(type='submit') Simpan
+                        br
+                    // /.tab-pane
+                    #tab-alamat.tab-pane
+                        br
+                        .form-group
+                            label.col-sm-2.control-label(for='prov') Provinsi
+                                span.required *
+                            .col-sm-8
+                                input#prov.form-control(disabled="disabled", type='text', placeholder='Kepulauan Riau',value='Kepulauan Riau')
+                        .form-group
+                            label.col-sm-2.control-label(for='kota-kab') Kota / Kab
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Kategori', name='alamat_kota')
+                                    option(value=(peg.alamat_kota))=peg.nama_kotakab
+                                    each val in kotakab
+                                        if(val.id_kotakab != peg.alamat_kota)
+                                            option(value=(val.id_kotakab))=val.kotakab                  
+                        .form-group
+                            label.col-sm-2.control-label(for='alamat-kec') Kecamatan
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Kategori', name='alamat_kec')
+                                    option(value=(peg.alamat_kec))=peg.nama_kec
+                                    each val in kec
+                                        if(val.id_kec != peg.alamat_kec)
+                                            option(value=(val.id_kec))=val.kec
+                        .form-group
+                            label.col-sm-2.control-label(for='alamat-kel') Kelurahan
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Kategori', name='alamat_kel')
+                                    option(value=(peg.alamat_kel))=peg.nama_kel
+                                    each val in kel
+                                        if(val.id_kel != peg.alamat_kel)
+                                            option(value=(val.id_kel))=val.kel
+                        .form-group
+                            label.col-sm-2.control-label(for='alamat') Alamat
+                                span.required *
+                            .col-sm-8
+                                textarea#alamat.autogrow.form-control.transition-height(rows='3', placeholder='Contoh: Jl. Ngalor Ngidul, Gg. Lika-liku No. 123, Perum. Suka Bersih-bersih', name='alamat') #{peg.alamat}
+                        .form-group
+                            label.col-sm-2.control-label(for='rt') RT
+                                span.required *
+                            .col-sm-2
+                                input#rt.form-control(required='required', type='text', name='alamat_rt', placeholder='001', value=peg.alamat_rt)
+                            label.col-sm-1.control-label(for='rw') RW
+                                span.required *
+                            .col-sm-2
+                                input#rw.form-control(required='required', type='text', name='alamat_rw', placeholder='003', value=peg.alamat_rw) 
+                        .form-group
+                            .col-sm-offset-9.col-sm-8
+                                button.btn.btn-danger(type='submit') Simpan
+                        br
+                    #tab-kepegawaian.tab-pane
+                        br
+                        .form-group
+                            label.col-sm-2.control-label(for='stat-peg') Status Kepegawaian
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Kategori', name='status_peg')
+                                    option(value=(peg.status_peg))=peg.nama_ket_peg
+                                    each val in status_peg
+                                        if(val.id_status_peg != peg.status_peg)
+                                            option(value=(val.id_status_peg))=val.ket_peg
+                        .form-group
+                            label.col-sm-2.control-label(for='gol-ruang') Golongan Ruang
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Kategori', name='gol_ruang')
+                                    option(value=(peg.gol_ruang))=peg.gol+' - '+peg.ruang
+                                    each val in gol_ruang
+                                        if(val.id_gol != peg.gol_ruang)
+                                            option(value=(val.id_gol))=val.gol+' - '+val.ruang
+                        .form-group
+                            label.col-sm-2.control-label(for='eselon') Eselon
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Kategori', name='eselon')
+                                    option(value=(peg.eselon))=peg.nama_eselon
+                                    each val in eselon
+                                        if(val.id_eselon != peg.eselon)
+                                            option(value=(val.id_eselon))=val.eselon
+                        .form-group
+                            label.col-sm-2.control-label(for='jabatan') Jabatan
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Kategori', name='jabatan')
+                                    option(value=(peg.jabatan))=peg.nama_jabatan
+                                    each val in jabatan
+                                        if(val.id_jabatan != peg.jabatan)
+                                            option(value=(val.id_jabatan))=val.jabatan
+                        .form-group
+                            label.col-sm-2.control-label(for='ket-jab') Keterangan Jabatan
+                                span.required *
+                            .col-sm-8
+                                textarea#ket-jab.autogrow.form-control.transition-height(required='required', rows='4') #{peg.ket_jabatan}
+                        .form-group
+                            label.control-label.col-sm-2(for='tmt-pns') Tamat PNS
+                            .col-sm-8
+                                input#tmt-pns.form-control( type='text', value=peg.tmt_pns)
+                                span.help-block Format DD-MM-YYYY
+                        .form-group
+                            label.control-label.col-sm-2(for='tmt-cpns') Tamat CPNS
+                            .col-sm-8
+                                input#tmt-cpns.form-control( type='text', value=peg.tmt_cpns)
+                                span.help-block Format DD-MM-YYYY
+                        .form-group
+                            .col-sm-offset-9.col-sm-8
+                                button.btn.btn-danger(type='submit') Simpan
+                        br
+                    #tab-pendidikan.tab-pane
+                        br
+                        .form-group
+                            label.col-sm-2.control-label(for='pend-terakhir') Pendidikan Terakhir
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Kategori', name='pend_terakhir')
+                                    option(value=(peg.pend_terakhir))=peg.tk_pend+' - '+peg.ket_pend
+                                    each val in pendidikan
+                                        if(val.id_pend != peg.pend_terakhir)
+                                            option(value=(val.id_pend))=val.tk_pend+' - '+val.ket_pend
+                        .form-group
+                            label.col-sm-2.control-label(for='pend-jurusan') Jurusan
+                                span.required *
+                            .col-sm-8
+                                select.form-control(required='required', placeholder='Pilih Kategori', name='pend_umum')
+                                    option(value=(peg.pend_umum))=peg.pendidikan_umum
+                                    each val in pendidikan_umum
+                                        if(val.id_pend_umum != peg.pend_umum)
+                                            option(value=(val.id_pend_umum))=val.pendidikan_umum
+                        .form-group
+                            label.control-label.col-sm-2(for='pend-tahun') Tahun Lulus
+                                span.required *
+                            .col-sm-2
+                                input#pend-tahun.form-control(required='required', type='text', name='tgl_lulus', placeholder='2017' value=peg.tgl_lulus)
+                                span.help-block Format YYYY
+                        .form-group
+                            .col-sm-offset-9.col-sm-8
+                                button.btn.btn-danger(type='submit') Simpan
+                        br
+                    #tab-kontak.tab-pane
+                        br
+                        .form-group
+                            label.control-label.col-sm-2(for='ponsel1') Nomor Ponsel 1
+                                span.required *
+                            .col-sm-3
+                                input#phone1.form-control(required='required', type='text', name='ponsel1', placeholder='+62 812 1234 5678', value=peg.ponsel1)
+                            label.control-label.col-sm-2(for='ponsel2') Nomor Ponsel 2
+                            .col-sm-3
+                                input#phone2.form-control(type='text', name='ponsel2',  placeholder='+62 812 1234 5678', value=peg.ponsel2)
+                        .form-group
+                            label.control-label.col-sm-2(for='phone1') Email 1
+                                span.required *
+                            .col-sm-3
+                                input#phone1.form-control(required='required', type='text', name='email', placeholder='email@domain.com', value=peg.email)
+                            label.control-label.col-sm-2(for='phone1') Email 2
+                            .col-sm-3
+                                input#phone2.form-control(type='text', name='email2', placeholder='email@domain.com',value=peg.email2)
+                        .form-group
+                            .col-sm-offset-9.col-sm-8
+                                button.btn.btn-danger(type='submit') Simpan
+                        br
+                    // /.tab-pane
+                // /.tab-content
+        // /.nav-tabs-custom
+    // /.col
+// /.row

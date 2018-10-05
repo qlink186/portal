@@ -1,0 +1,37 @@
+.box.box-solid
+    .box-header.with-border
+        h3.box-title Folder
+        .box-tools
+            button.btn.btn-box-tool(type='button', data-widget='collapse')
+                i.fa.fa-minus
+    .box-body.no-padding
+        ul.nav.nav-pills.nav-stacked
+            li(class=(menu === 'adm-email-inbox' ? 'active' : ''))
+                a(href='./adm-email-inbox')
+                    i.fa.fa-inbox
+                    |   Kotak Masuk
+                    span.label.label-danger.pull-right 4
+            li(class=(menu === 'adm-email-terkirim' ? 'active' : ''))
+                a(href='./adm-email-terkirim')
+                    i.fa.fa-truck
+                    |   Item Terkirim &nbsp;
+            li(class=(menu === 'adm-email-kotakkeluar' ? 'active' : ''))
+                a(href='./adm-email-kotakkeluar')
+                    i.fa.fa-send
+                    |   Kotak Keluar
+            li(class=(menu === 'adm-email-terhapus' ? 'active' : ''))
+                a(href='./adm-email-terhapus')
+                    i.fa.fa-trash
+                    |   Item Terhapus &nbsp;
+            li(class=(menu === 'adm-email-junk' ? 'active' : ''))
+                a(href='./adm-email-junk')
+                    i.fa.fa-warning
+                    |   Junk &nbsp;
+                    span.label.label-warning.pull-right 3
+            li(class=(menu === 'adm-email-draft' ? 'active' : ''))
+                a(href='./adm-email-draft')
+                    i.fa.fa-star-o
+                    |   Draft &nbsp;
+                    span.label.label-default.pull-right 3
+    // /.box-body
+// /. box

@@ -1,0 +1,42 @@
+.row
+    .col-md-6
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Tambah Kategori
+            // /.box-header
+            .box-body.pad
+                form(action="/adm-artikel-kategori-tulis", method="post", enctype="multipart/form-data")
+                    .form-group
+                        label.col-sm-2.control-label(for='kategori')
+                            |   Kategori
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='kategori', required='required')
+                            br                            
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-9
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Tambah
+    .col-md-6
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   List Kategori
+            // /.box-header
+            .box-body.pad
+            - data = kategori_list
+                table.table.table-bordered.table-striped.table-hover
+                    thead
+                        tr: th.text-center.middle-align ID Kategori
+                            th.text-center.middle-align Kategori
+                            th.text-center.middle-align Aksi
+                    tbody
+                    each val in data
+                        tr: td.text-center.middle-align= val.id_kategori
+                            td.text-center.middle-align= val.kategori
+                            td.text-center.middle-align
+                                |   #[a(href='/adm-artikel-kategori-delete/'+val.id_kategori).btn.btn-xs.btn-success.tombol-table Delete]
+            // /.box-body
+        // /.box

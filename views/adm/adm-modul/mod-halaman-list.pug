@@ -1,0 +1,17 @@
+.box
+    .box-body
+        table(width="100%").table.table-bordered.table-striped
+            thead
+                tr
+                    th.text-center.middle-align ID Halaman
+                    th.text-center.middle-align Menu Profile
+                    th.text-center.middle-align Aksi
+            tbody
+                for dp, index in halaman_profil
+                    tr
+                        td.text-center.middle-align #{dp.id_halaman}
+                        td #{dp.judul_halaman}
+                        td.text-center.middle-align
+                            |   #[a(href='../adm-halaman-edit/'+dp.id_halaman).btn.btn-xs.btn-success.tombol-table Edit Halaman]
+    // /.box-body
+// /.box

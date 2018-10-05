@@ -1,0 +1,71 @@
+.panel.panel-default
+    .panel-heading
+        h3.panel-title
+            i.fa-graduation-cap
+            |   Data 
+            strong Pendidikan
+    .panel-body
+        form.form-horizontal.validate(role='form', method='post')
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilPendTerakhir') Pendidikan Terakhir*
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#isianProfilPendTerakhir").select2({
+                            placeholder: 'Pilih Jenjang Pendidikan...',
+                            allowClear: true
+                        }).on('select2-open', function()
+                        {
+                            // Adding Custom Scrollbar
+                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                        });
+                        
+                    });
+                .col-sm-7
+                    select#isianProfilPendTerakhir.form-control(name='dataKepegawaianPendTerakhir', data-validate='required', data-message-required='Pendidikan Terakhir Wajib Diisi')
+                        option
+                        option SD
+                        option SMP / MTS
+                        option SMA / SMK / MAN
+                        option D1
+                        option D2
+                    em.small Silakan Pilih Jenjang Pendidikan Terakhir dengan klik list di atas
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilPendJurusan') Jurusan*
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#isianProfilPendJurusan").select2({
+                            placeholder: 'Pilih Jurusan Pendidikan...',
+                            allowClear: true
+                        }).on('select2-open', function()
+                        {
+                            // Adding Custom Scrollbar
+                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                        });
+                        
+                    });
+                .col-sm-7
+                    select#isianProfilPendJurusan.form-control(name='dataPendJurusan', data-validate='required', data-message-required='Jurusan Wajib Diisi')
+                        option
+                        option Teknik Mesin
+                        option Teknik Informatika
+                        option Administrasi
+                        option Bisnis
+                        option Lainnya
+                    em.small Silakan Pilih Jenjang Pendidikan Terakhir dengan klik list di atas
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilPendLulus') Tahun Lulus
+                .col-sm-2
+                    .input-group.input-group-sm.input-group-minimal
+                        span.input-group-addon
+                            i.fa-calendar
+                        input#isianProfilPendLulus.form-control(type='text', data-mask='y',name='dataPendLulus', data-validate='required', data-message-required='Tahun Lulus Wajib Diisi', placeholder='1990')
+            .form-group-separator
+            .form-group
+                .col-sm-12
+                    button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-icon-standalone.pull-right(type='submit')
+                        i.fa-save
+                        span Simpan

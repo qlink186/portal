@@ -1,0 +1,38 @@
+.white-wrapper
+    .container
+        .row
+            .col-md-9
+                h5.subpage-title
+                    span=siaranpersview.judul
+                    //a.btn-xs.btn-flat.flat-danger.pull-right(href=base_url+'berita')
+                        span BERITA LAINNYA
+                .post
+                    .post-thumb-single
+                        img.img-responsive(src=siaranpersview.alamat_file_big, alt=siaranpersview.judul)
+                        .image-overlay
+                        a.post-zoom(href=siaranpersview.alamat_file_big, rel='prettyPhoto[pp_siaran_pers_single]')
+                            i.fa-eye
+                    // /.post-thumb-single
+                    .post-content(style='margin-top:20px')
+                        h4.text-center
+                            strong=siaranpersview.judul
+                        h4.text-center Nomor : #{siaranpersview.no_pengumuman} 
+                        h5.text-center Tanggal : #{siaranpersview.tgl_tulis} 
+                        p!=siaranpersview.isi
+                        
+                    // /.post-content
+                    .post-meta
+                        ul.meta-list
+                            li
+                                span Terbit: 
+                                span.black=siaranpersview.tgl_terbit
+                            li
+                                span Instansi:
+                                span.black=siaranpersview.opd
+                            //li
+                                a.read-more(href=base_url+'pengumuman')
+                                    i.fa-arrow-left 
+                                    span  Pengumuman Lainnya
+                // /.article
+            .col-md-3
+                include mod-sidebar-1

@@ -1,0 +1,300 @@
+.navbar1.hidden-xs
+    .container
+        a.tombol-navbar(href='#')
+            i.el-phone
+            |   +62 771 - 7334004 - 05 
+        a.tombol-navbar(href='#')
+            i.el-mail
+            |   kominfo@tanjungpinangkota.go.id
+        if session.user
+            a.tombol-navbar.pull-right(href=base_url+'logouthome')
+                strong Logout 
+                i.fa-sign-out
+            a.tombol-navbar.pull-right(href=base_url+'setting-profile', target='_BLANK')
+                strong #{session.user.nama_gelar} 
+                i.fa-user
+        else
+            a.tombol-navbar.pull-right(href=base_url+'adm')
+                strong Login 
+                i.fa-lock
+        a.tombol-navbar.pull-right(href=base_url+'pages/hubungi-kami')
+            |   Hubungi Kami 
+            i.el-comment
+nav.navbar.horizontal-menu.navbar-fixed-top.navbar-minimal.navbar2(data-spy='affix', data-offset-top='25')
+    // set fixed position by adding class "navbar-fixed-top"
+    .navbar-inner.container
+        // Navbar Brand
+        .navbar-brand
+            a.logo(href=base_url)
+                img.hidden-xs(src=base_url+'images/logo_title_b_icon_170.png',  alt='Logo Pemerintah Kota Tanjungpinang')
+                img.visible-xs(src=base_url+'images/logo_title_w_icon_250.png', alt='Logo Pemerintah Kota Tanjungpinang')
+        // Mobile Toggles Links
+        .nav.navbar-mobile
+            // This will toggle the mobile menu and will be visible only on mobile devices
+            .mobile-menu-toggle
+                // This will open the popup with user profile settings, you can use for any purpose, just be creative
+                //a(href='#', data-toggle='settings-pane', data-animate='true')
+                    i.linecons-cog
+                //a(href='#', data-toggle='user-info-menu-horizontal')
+                    i.fa-bell-o
+                    span.badge.badge-success 7
+                // data-toggle="mobile-menu-horizontal" will show horizontal menu links only
+                // data-toggle="mobile-menu" will show sidebar menu links only
+                // data-toggle="mobile-menu-both" will show sidebar and horizontal menu links
+                a(href='#', data-toggle='mobile-menu-horizontal')
+                    i.fa-bars
+        .navbar-mobile-clear
+        // main menu
+        ul.navbar-nav.navbar-right.click-to-expand
+            li(class=(menu === '/' ? 'active' : ''))
+                a(href=base_url)
+                    i.linecons-home
+                    span.title Beranda
+            li(class=(menu === 'pages' ? 'active' : ''), class=(menu === 'pages/profil' ? 'active' : ''), class=(menu === 'pages/visimisi' ? 'active' : ''), class=(menu === 'pages/lambangmoto' ? 'active' : ''), class=(menu === 'pages/kepaladaerah' ? 'active' : ''), class=(menu === 'pages/strukturorg' ? 'active' : ''), class=(menu === 'pages/profilinstansi' ? 'active' : ''))
+                a(href=base_url+'pages')
+                    i.linecons-user
+                    span.title Profil
+                ul
+                    li(class=(menu === 'pages/profil' ? 'active' : ''))
+                        a(href=base_url+'pages/profil')
+                            i.fa-bullhorn
+                            span.title Selayang Pandang
+                    li(class=(menu === 'pages/visimisi' ? 'active' : ''))
+                        a(href=base_url+'pages/visimisi')
+                            i.fa-tasks
+                            span.title Visi dan Misi
+                    li(class=(menu === 'pages/lambangmoto' ? 'active' : ''))
+                        a(href=base_url+'pages/lambangmoto')
+                            i.fa-shield
+                            span.title Lambang dan Motto
+                    li(class=(menu === 'pages/kepaladaerah' ? 'active' : ''))
+                        a(href=base_url+'pages/kepaladaerah')
+                            i.el-torso
+                            span.title Kepala Daerah
+                    li(class=(menu === 'pages/strukturorg' ? 'active' : ''))
+                        a(href=base_url+'pages/strukturorg')
+                            i.fa-group
+                            span.title Struktur Organisasi
+                    li(class=(menu === 'pages/profilinstansi' ? 'active' : ''))
+                        a(href=base_url+'pages/profilinstansi')
+                            i.fa-bank
+                            span.title Profil Instansi
+            li(class=(menu === 'berita' ? 'active' : ''))
+                a(href=base_url+'berita')
+                    i.linecons-note
+                    span.title Berita
+            li(class=(menu === 'gallery' ? 'active' : ''))
+                a(href=base_url+'gallery')
+                    i.linecons-photo
+                    span.title Gallery
+            //li(class=(menu === 'pages/aksidaerah' ? 'active' : ''))
+                a(href=base_url+'pages/aksidaerah')
+                    i.fa-fire
+                    span.title Aksi Daerah PPK
+            li
+                a(href='http://sirup.lkpp.go.id', target='_blank')
+                    i.fa-line-chart
+                    span.title RUP 2018
+            li(class=(menu === 'pages/aksidaerah' ? 'active' : ''), class=(menu === 'pages/aksidaerah/rencanaanggaran' ? 'active' : ''), class=(menu === 'pages/aksidaerah/pengadaan' ? 'active' : ''), class=(menu === 'pages/aksidaerah/perizinan' ? 'active' : ''), class=(menu === 'pages/aksidaerah/sdm' ? 'active' : ''), class=(menu === 'pages/aksidaerah/apip' ? 'active' : ''), class=(menu === 'pages/aksidaerah/spip' ? 'active' : ''), class=(menu === 'pages/aksidaerah/aset' ? 'active' : ''), class=(menu === 'pages/aksidaerah/pastisipasipublik' ? 'active' : ''), class=(menu === 'pages/aksidaerah/pendidikan' ? 'active' : ''), class=(menu === 'pages/aksidaerah/kesehatan' ? 'active' : ''), class=(menu === 'pages/aksidaerah/infra' ? 'active' : ''), class=(menu === 'pages/aksidaerah/pendapatan' ? 'active' : ''))
+                a(href=base_url+'pages/aksidaerah')
+                    i.linecons-eye
+                    span.title RAD-PPK
+                ul
+                    li(class=(menu === 'pages/aksidaerah/rencanaanggaran' ? 'active' : ''))
+                        a(href=base_url+'pages/aksidaerah/rencanaanggaran')
+                            i.fa-calculator
+                            span.title Perencanaan dan Penganggaran
+                    li(class=(menu === 'pages/aksidaerah/pengadaan' ? 'active' : ''))
+                        a(href=base_url+'pages/aksidaerah/pengadaan')
+                            i.fa-tasks
+                            span.title Pengadaan Barang dan Jasa
+                    li(class=(menu === 'pages/aksidaerah/perizinan' ? 'active' : ''))
+                        a(href=base_url+'pages/aksidaerah/perizinan')
+                            i.fa-coffee
+                            span.title Perizinan Terpadu Satu Pintu
+                    li(class=(menu === 'pages/aksidaerah/sdm' ? 'active' : ''))
+                        a(href=base_url+'pages/aksidaerah/sdm')
+                            i.fa-group
+                            span.title Manajemen SDM
+                    li(class=(menu === 'pages/aksidaerah/apip' ? 'active' : ''))
+                        a(href=base_url+'pages/aksidaerah/apip')
+                            i.fa-legal
+                            span.title Penguatan Peran APIP
+                    li(class=(menu === 'pages/aksidaerah/spip' ? 'active' : ''))
+                        a(href=base_url+'pages/aksidaerah/spip')
+                            i.fa-institution
+                            span.title Kematangan SPIP
+                    li(class=(menu === 'pages/aksidaerah/aset' ? 'active' : ''))
+                        a(href=base_url+'pages/aksidaerah/aset')
+                            i.fa-anchor
+                            span.title Pembenahan Aset
+                    li(class=(menu === 'pages/aksidaerah/pastisipasipublik' ? 'active' : ''))
+                        a(href=base_url+'pages/aksidaerah/pastisipasipublik')
+                            i.fa-microphone
+                            span.title Partisipasi Publik
+                    li(class=(menu === 'pages/aksidaerah/pendidikan' ? 'active' : ''))
+                        a(href=base_url+'pages/aksidaerah/pendidikan')
+                            i.fa-mortar-board
+                            span.title Pendidikan
+                    li(class=(menu === 'pages/aksidaerah/kesehatan' ? 'active' : ''))
+                        a(href=base_url+'pages/aksidaerah/kesehatan')
+                            i.fa-ambulance
+                            span.title Kesehatan
+                    li(class=(menu === 'pages/aksidaerah/infra' ? 'active' : ''))
+                        a(href=base_url+'pages/aksidaerah/infra')
+                            i.fa-building
+                            span.title Infrastruktur
+                    li(class=(menu === 'pages/aksidaerah/pendapatan' ? 'active' : ''))
+                        a(href=base_url+'pages/aksidaerah/pendapatan')
+                            i.fa-money
+                            span.title Pendapatan Daerah
+            li(class=(menu === 'data' ? 'active' : ''), class=(menu === 'data/unitkerja' ? 'active' : ''), class=(menu === 'data/peg' ? 'active' : ''), class=(menu === 'data/download-area' ? 'active' : ''), class=(menu === 'data/subdomain' ? 'active' : ''), class=(menu === 'data/internal' ? 'active' : ''), class=(menu === 'data/internal/sekre' ? 'active' : ''), class=(menu === 'data/internal/kepegawaian' ? 'active' : ''), class=(menu === 'data/internal/bid-tik' ? 'active' : ''), class=(menu === 'data/internal/reg-subdomain' ? 'active' : ''), class=(menu === 'data/internal/reg-email' ? 'active' : ''),class=(menu === 'data/dip' ? 'active' : ''), class=(menu === 'data/dip/sm' ? 'active' : ''), class=(menu === 'data/dip/ss' ? 'active' : ''), class=(menu === 'data/dip/bk' ? 'active' : ''), class=(menu === 'data/dip/dk' ? 'active' : ''), class=(menu === 'data/dip/hu' ? 'active' : ''))
+                a(href=base_url+'data')
+                    i.linecons-attach
+                    span.title Data
+                ul
+                    li(class=(menu === 'data/dip' ? 'active' : ''))
+                        a(href=base_url+'data/dip')
+                            i.linecons-database
+                            span.title Daftar Informasi Publik (DIP)
+                        ul
+                            li(class=(menu === 'data/dip/sm' ? 'active' : ''))
+                                a(href=base_url+'data/dip/sm')
+                                    i.fa-eye
+                                    span.title Daftar Informasi Serta Merta
+                            li(class=(menu === 'data/dip/ss' ? 'active' : ''))
+                                a(href=base_url+'data/dip/ss')
+                                    i.fa-file-text
+                                    span.title Daftar Informasi Tersedia Setiap Saat
+                            li(class=(menu === 'data/dip/bk' ? 'active' : ''))
+                                a(href=base_url+'data/dip/bk')
+                                    i.fa-bullhorn
+                                    span.title Daftar Informasi yang diumumkan secara berkala
+                            //li(class=(menu === 'data/dip/dk' ? 'active' : ''))
+                                a(href=base_url+'data/dip/dk')
+                                    i.fa-key
+                                    span.title Daftar Informasi yang dikecualikan
+                            li(class=(menu === 'data/dip/hu' ? 'active' : ''))
+                                a(href='http://jdih.tanjungpinangkota.go.id' target='_BLANK')
+                                    i.fa-gavel
+                                    span.title Daftar Informasi Hukum
+                    li(class=(menu === 'data/unitkerja' ? 'active' : ''))
+                        a(href=base_url+'data/unitkerja')
+                            i.fa-institution
+                            span.title Data Unit Kerja
+                    li(class=(menu === 'data/peg' ? 'active' : ''))
+                        a(href=base_url+'data/peg')
+                            i.fa-users
+                            span.title Data Pegawai
+                    li(class=(menu === 'data/download-area' ? 'active' : ''))
+                        a(href=base_url+'data/download-area')
+                            i.fa-file-text-o
+                            span.title Download Area
+                    li(class=(menu === 'data/subdomain' ? 'active' : ''))
+                        a(href=base_url+'data/subdomain')
+                            i.fa-link
+                            span.title Data Subdomain
+                    if session.is_login
+                        li(class=(menu === 'data/internal' ? 'active' : ''))
+                            a(href=base_url+'data/internal')
+                                i.fa-file-text-o
+                                span.title Data Internal 
+                                    =session.user.akronim_opd
+                            if (session.user.id_opd='516000000')
+                                ul
+                                    li(class=(menu === 'data/internal/bid-sekre' ? 'active' : ''))
+                                        a(href=base_url+'data/internal/bid-sekre')
+                                            i.fa-link
+                                            span.title Sekretariat
+                                        ul
+                                            li(class=(menu === 'data/internal/kepegawaian' ? 'active' : ''))
+                                                a(href=base_url+'data/internal/kepegawaian')
+                                                    i.fa-link
+                                                    span.title Data Kepegawaian
+                                            li(class=(menu === 'data/internal/reg-email' ? 'active' : ''))
+                                                a(href=base_url+'data/internal/reg-email')
+                                                    i.fa-link
+                                                    span.title Data Surat Keluar
+                                            li(class=(menu === 'data/internal/reg-email' ? 'active' : ''))
+                                                a(href=base_url+'data/internal/reg-email')
+                                                    i.fa-link
+                                                    span.title Data Nota Dinas
+                                    li(class=(menu === 'data/internal/bid-inf' ? 'active' : ''))
+                                        a(href=base_url+'data/internal/bid-inf')
+                                            i.fa-link
+                                            span.title Bidang Pengelolaan Inf.
+                                        ul
+                                            li(class=(menu === 'data/internal/reg-subdomain' ? 'active' : ''))
+                                                a(href=base_url+'data/internal/reg-subdomain')
+                                                    i.fa-link
+                                                    span.title Data AAA
+                                            li(class=(menu === 'data/internal/reg-email' ? 'active' : ''))
+                                                a(href=base_url+'data/internal/reg-email')
+                                                    i.fa-link
+                                                    span.title Data BBB
+                                    li(class=(menu === 'data/internal/bid-tik' ? 'active' : ''))
+                                        a(href=base_url+'data/internal/bid-tik')
+                                            i.fa-link
+                                            span.title Bidang TIK
+                                        ul
+                                            li(class=(menu === 'data/internal/reg-subdomain' ? 'active' : ''))
+                                                a(href=base_url+'data/internal/reg-subdomain')
+                                                    i.fa-link
+                                                    span.title Data Registrasi Subdomain
+                                            li(class=(menu === 'data/internal/reg-email' ? 'active' : ''))
+                                                a(href=base_url+'data/internal/reg-email')
+                                                    i.fa-link
+                                                    span.title Data Registrasi Email
+                                            li(class=(menu === 'data/internal/reg-jastip' ? 'active' : ''))
+                                                a(href=base_url+'data/internal/reg-jastip')
+                                                    i.fa-link
+                                                    span.title Data Jasa Titipan
+                                            li(class=(menu === 'data/internal/reg-menara' ? 'active' : ''))
+                                                a(href=base_url+'data/internal/reg-menara')
+                                                    i.fa-link
+                                                    span.title Data Sebaran Menara
+                                    li(class=(menu === 'data/internal/bid-stasan' ? 'active' : ''))
+                                        a(href=base_url+'data/internal/bid-stasan')
+                                            i.fa-link
+                                            span.title Bidang Statistik & Persandian
+                                        ul
+                                            li(class=(menu === 'data/internal/reg-subdomain' ? 'active' : ''))
+                                                a(href=base_url+'data/internal/reg-subdomain')
+                                                    i.fa-link
+                                                    span.title Data AAA
+                                            li(class=(menu === 'data/internal/reg-email' ? 'active' : ''))
+                                                a(href=base_url+'data/internal/reg-email')
+                                                    i.fa-link
+                                                    span.title Data BBB
+            li
+                a(href='#')
+                    i.linecons-star
+                    span.title Layanan
+                ul
+                    li
+                        a(href='http://ujar.tanjungpinangkota.go.id')
+                            i.fa-comment-o
+                            span.title Ujar
+                    li
+                        a(href=base_url+'data/dip')
+                            i.fa-folder-o
+                            span.title PPID
+                    li
+                        a(href='http://mail.tanjungpinangkota.go.id')
+                            i.linecons-mail
+                            span.title E-Mail
+            li.visible-xs
+                if session.user
+                    a(href=base_url+'logouthome')
+                        i.fa-sign-out
+                        span.title Logout
+                else
+                    a(href=base_url+'adm')
+                        i.fa-sign-in
+                        span.title Login
+script(type='text/javascript').
+    $('.navbar2').affix({
+        offset: {
+            top: $('.navbar2').offset().top
+        }
+    });

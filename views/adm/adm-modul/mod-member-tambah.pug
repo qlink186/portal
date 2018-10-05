@@ -1,0 +1,48 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Tambah Member
+            // /.box-header
+            .box-body.pad
+                form(action="/adm-member-tambah", method="post")
+                    .form-group
+                        label.col-sm-2.control-label(for='username')
+                            |   Username
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='username', placeholder='Masukkan Username', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='password')
+                            |   Password
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='password', name='paswd', placeholder='Masukkan Password', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='id_peg')
+                            |   Pegawai
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Pegawai', name='id_peg')
+                                each val in peg
+                                    option(value=(val.id_peg))=val.nama
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='id_hakakses')
+                            |   Hak Akses
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Hak Akses', name='id_hakakses')
+                                each val in hakakses
+                                    option(value=(val.id_hakaskses))=val.hakakses
+                            br                    
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box

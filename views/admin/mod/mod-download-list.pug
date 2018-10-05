@@ -1,0 +1,51 @@
+.page-title
+    .title-env
+        h1.title=title
+        p.description=desc
+    .breadcrumb-env
+        ol.breadcrumb.bc-1
+            li
+                a(href=adm_url)
+                    i.fa-home
+                    |   Dashboard
+            li
+                a(href=adm_url) Download Area
+            li.active
+                strong=title
+.row
+    .col-md-12
+        ul.nav.nav-tabs
+            li.active
+                a(href='#semuaDownloadFile', data-toggle='tab')
+                    i.fa-home &nbsp;
+                    span.hidden-xs
+                        |   Semua Dokumen&nbsp;
+                    span.badge.badge-white 15
+            li
+                a(href='#statusDownloadUmum', data-toggle='tab')
+                    i.entypo-archive &nbsp;
+                    span.hidden-xs
+                        |   UMUM&nbsp;
+                    span.badge.badge-default 15
+            li
+                a(href='#statusDownloadMember', data-toggle='tab') 
+                    i.entypo-check &nbsp;
+                    span.hidden-xs
+                        |   MEMBER ONLY&nbsp;
+                    pan.badge.badge-secondary 15
+            li
+                a(href='#dihapusDownload', data-toggle='tab') 
+                    i.entypo-trash &nbsp;
+                    span.hidden-xs
+                        |   Dihapus&nbsp;
+                    pan.badge.badge-danger 15
+        .tab-content
+            #semuaDownloadFile.tab-pane.active
+                include mod-download-semua.pug
+            #statusDownloadUmum.tab-pane
+                h3 Status File : UMUM
+            #statusDownloadMember.tab-pane
+                h3 Status File : MEMBER
+            #dihapusDownload.tab-pane
+                h3 Dihapus
+include mod-aduan-modal.pug 

@@ -1,0 +1,295 @@
+
+.page-title
+    .title-env
+        h1.title=title
+        p.description=desc
+    .breadcrumb-env
+        ol.breadcrumb.bc-1
+            li
+                a(href=base_url)
+                    i.fa-home
+                    |   Dashboard
+            li
+                a(href=base_url+'gallery') Gallery
+            li.active
+                strong=title
+script(type='text/javascript').
+    // Sample Javascript code for this page
+    jQuery(document).ready(function($)
+    {
+        // Sample Select all images
+        $("#select-all").on('change', function(ev)
+        {
+            var is_checked = $(this).is(':checked');
+    
+            $(".album-image input[type='checkbox']").prop('checked', is_checked).trigger('change');
+        });
+    
+        // Edit Modal
+        $('.gallery-env a[data-action="edit"]').on('click', function(ev)
+        {
+            ev.preventDefault();
+            $("#gallery-image-modal").modal('show');
+        });
+    
+        // Delete Modal
+        $('.gallery-env a[data-action="trash"]').on('click', function(ev)
+        {
+            ev.preventDefault();
+            $("#gallery-image-delete-modal").modal('show');
+        });
+    
+    
+        // Sortable
+        $('.gallery-env a[data-action="sort"]').on('click', function(ev)
+        {
+            ev.preventDefault();
+    
+            var is_sortable = $(".album-images").sortable('instance');
+    
+            if( ! is_sortable)
+            {
+                $(".gallery-env .album-images").sortable({
+                    items: '> div',
+                    containment: 'parent'
+                });
+    
+                $(".album-sorting-info").stop().slideDown(300);
+            }
+            else
+            {
+                $(".album-images").sortable('destroy');
+                $(".album-sorting-info").stop().slideUp(300);
+            }
+        });
+    });
+section.gallery-env
+    .row
+        // Gallery Album Optipns and Images
+        .col-sm-10.gallery-right
+            // Album Header
+            .album-header
+                h2
+                    i.fa-file-image-o
+                    |   Gambar
+                ul.album-options.list-unstyled.list-inline
+                    li
+                        input#select-all.cbr(type='checkbox')
+                        label(for='select-all') Select all
+                    li
+                        a(href='#')
+                            i.fa-upload
+                            |   Tambah Gambar
+                    li
+                        a(href='#', data-action='sort')
+                            i.fa-arrows
+                            |   Ulang Urutan
+                    li
+                        a(href='#', data-action='edit')
+                            i.fa-edit
+                            |   Edit
+                    li
+                        a(href='#', data-action='trash')
+                            i.fa-trash
+                            |   Sampah
+            // Sorting Information
+            .album-sorting-info
+                .album-sorting-info-inner.clearfix
+                    a.btn.btn-secondary.btn-xs.btn-single.btn-icon.btn-icon-standalone.pull-right(href='#', data-action='sort')
+                        i.fa-save
+                        span Save Urutan Ini
+                    i.fa-arrows-alt
+                    |   Geser Gambar Untuk Mengurutkan
+            // Album Images
+            .album-images.row
+                // Album Image
+                .col-md-3.col-sm-4.col-xs-6
+                    .album-image
+                        a.thumb(href='#', data-action='edit')
+                            img.img-responsive(src=base_url+'adm-assets/images/album-img-1.png')
+                        a.name(href='#')
+                            span IMG_007.jpg
+                            em 01 December 2014
+                        .image-options
+                            a(href='#', data-action='edit')
+                                i.fa-pencil
+                            |  &nbsp;&nbsp;
+                            a(href='#', data-action='trash')
+                                i.fa-trash
+                        .image-checkbox
+                            input.cbr(type='checkbox')
+                // Album Image
+                .col-md-3.col-sm-4.col-xs-6
+                    .album-image
+                        a.thumb(href='#', data-action='edit')
+                            img.img-responsive(src=base_url+'adm-assets/images/album-img-2.png')
+                        a.name(href='#')
+                            span IMG_008.jpg
+                            em 23 November 2014
+                        .image-options
+                            a(href='#', data-action='edit')
+                                i.fa-pencil
+                            |  &nbsp;&nbsp;
+                            a(href='#', data-action='trash')
+                                i.fa-trash
+                        .image-checkbox
+                            input.cbr(type='checkbox')
+                // Album Image
+                .col-md-3.col-sm-4.col-xs-6
+                    .album-image
+                        a.thumb(href='#', data-action='edit')
+                            img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                        a.name(href='#')
+                            span IMG_060.jpg
+                            em 06 November 2014
+                        .image-options
+                            a(href='#', data-action='edit')
+                                i.fa-pencil
+                                |  &nbsp;&nbsp;
+                            a(href='#', data-action='trash')
+                                i.fa-trash
+                        .image-checkbox
+                            input.cbr(type='checkbox')
+                // Album Image
+                .col-md-3.col-sm-4.col-xs-6
+                    .album-image
+                        a.thumb(href='#', data-action='edit')
+                            img.img-responsive(src=base_url+'adm-assets/images/album-img-4.png')
+                        a.name(href='#')
+                            span IMG_1008.jpg
+                            em 26 October 2014
+                        .image-options
+                            a(href='#', data-action='edit')
+                                i.fa-pencil
+                            |  &nbsp;&nbsp;
+                            a(href='#', data-action='trash')
+                                i.fa-trash
+                        .image-checkbox
+                            input.cbr(type='checkbox')
+                // Album Image
+                .col-md-3.col-sm-4.col-xs-6
+                    .album-image
+                        a.thumb(href='#', data-action='edit')
+                            img.img-responsive(src=base_url+'adm-assets/images/album-img-5.png')
+                        a.name(href='#')
+                            span IMG_023.jpg
+                            em 02 October 2014
+                        .image-options
+                            a(href='#', data-action='edit')
+                                i.fa-pencil
+                            |  &nbsp;&nbsp;
+                            a(href='#', data-action='trash')
+                                i.fa-trash
+                        .image-checkbox
+                            input.cbr(type='checkbox')
+                // Album Image
+                .col-md-3.col-sm-4.col-xs-6
+                    .album-image
+                        a.thumb(href='#', data-action='edit')
+                            img.img-responsive(src=base_url+'adm-assets/images/album-img-6.png')
+                        a.name(href='#')
+                            span IMG_012.jpg
+                            em 18 September 2014
+                        .image-options
+                            a(href='#', data-action='edit')
+                                i.fa-pencil
+                            |  &nbsp;&nbsp;
+                            a(href='#', data-action='trash')
+                                i.fa-trash
+                        .image-checkbox
+                            input.cbr(type='checkbox')
+                // Album Image
+                .col-md-3.col-sm-4.col-xs-6
+                    .album-image
+                        a.thumb(href='#', data-action='edit')
+                            img.img-responsive(src=base_url+'adm-assets/images/album-img-7.png')
+                        a.name(href='#')
+                            span IMG_207.jpg
+                            em 28 August 2014
+                        .image-options
+                            a(href='#', data-action='edit')
+                                i.fa-pencil
+                            |  &nbsp;&nbsp;
+                            a(href='#', data-action='trash')
+                                i.fa-trash
+                        .image-checkbox
+                            input.cbr(type='checkbox')
+                // Album Image
+                .col-md-3.col-sm-4.col-xs-6
+                    .album-image
+                        a.thumb(href='#', data-action='edit')
+                            img.img-responsive(src=base_url+'adm-assets/images/album-img-8.png')
+                        a.name(href='#')
+                            span IMG_002.jpg
+                            em 27 October 2013
+                        .image-options
+                            a(href='#', data-action='edit')
+                                i.fa-pencil
+                            |  &nbsp;&nbsp;
+                            a(href='#', data-action='trash')
+                                i.fa-trash
+                        .image-checkbox
+                            input.cbr(type='checkbox')
+            button.btn.btn-white.btn-block
+                i.fa-bars
+                |   Tampilkan Gambar Lainnya
+        // Gallery Sidebar
+        .col-sm-2.gallery-left
+            .gallery-sidebar
+                a.btn.btn-block.btn-secondary.btn-icon.btn-icon-standalone.btn-icon-standalone-right(href='#')
+                    i.linecons-photo
+                    span Buat Album
+                ul.list-unstyled
+                    li.active
+                        a(href='#')
+                            i.fa-folder-open-o
+                            span &nbsp;General
+                    li
+                        a(href='#')
+                            i.fa-folder-o
+                            span &nbsp;Office
+                    li
+                        a(href='#')
+                            i.fa-folder-o
+                            span &nbsp;Las Vegas
+                    li
+                        a(href='#')
+                            i.fa-folder-o
+                            span &nbsp;Thailand
+                    li
+                        a(href='#')
+                            i.fa-folder-o
+                            span &nbsp;Nature
+
+// Gallery Modal Image
+#gallery-image-modal.modal.fade
+    .modal-dialog
+        .modal-content
+            .modal-gallery-image
+                img.img-responsive(src=base_url+'adm-assets/images/album-image-full.jpg')
+            .modal-body
+                .row
+                    .col-md-12
+                        .form-group
+                            label.control-label(for='field-1') Title
+                            input#field-1.form-control(type='text', placeholder='Enter image title')
+                .row
+                    .col-md-12
+                        .form-group
+                            label.control-label(for='field-1') Description
+                            textarea#field-2.form-control.autogrow(placeholder='Enter image description', style='min-height: 80px;')
+            .modal-footer.modal-gallery-top-controls
+                button.btn.btn-xs.btn-white(type='button', data-dismiss='modal') Close
+                button.btn.btn-xs.btn-info(type='button') Crop Image
+                button.btn.btn-xs.btn-secondary(type='button') Save
+// Gallery Delete Image (Confirm)
+#gallery-image-delete-modal.modal.fade(data-backdrop='static')
+    .modal-dialog
+        .modal-content
+            .modal-header
+                h4.modal-title Konfirmasi Pengahapusan Gambar
+            .modal-body
+                |   Apakah anda yakin menghapus gambar ini?
+            .modal-footer
+                button.btn.btn-white(type='button', data-dismiss='modal') Batal
+                button.btn.btn-danger(type='button') Hapus

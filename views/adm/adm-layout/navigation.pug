@@ -1,0 +1,26 @@
+header.main-header
+    // Logo
+    a.logo(href='#')
+        //- // mini logo for sidebar mini 50x50 pixels
+        //- span.logo-mini
+        //-     b T
+        //-     | PI
+        // logo for regular state and mobile devices
+        span.logo-lg
+            b Halaman Admin
+    // Header Navbar: style can be found in header.less
+    nav.navbar.navbar-static-top
+        //- // Sidebar toggle button
+        //- a.sidebar-toggle(href='#', data-toggle='push-menu', role='button')
+        //-     span.sr-only Toggle navigation
+
+        .navbar-custom-menu
+            ul.nav.navbar-nav
+                //- include ../adm-modul/mod-nav-messages.pug
+                //- include ../adm-modul/mod-nav-notif.pug
+                //- include ../adm-modul/mod-nav-tasks.pug
+                include ../adm-modul/mod-nav-user-menu.pug
+                //- // Control Sidebar Toggle Button
+                //- li
+                //-     a(href='#', data-toggle='control-sidebar')
+                //-         i.fa.fa-gears

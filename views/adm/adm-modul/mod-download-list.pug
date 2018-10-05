@@ -1,0 +1,25 @@
+.box
+    .box-body
+        table(width="100%").table.table-bordered.table-striped
+            thead
+                tr
+                    th.text-center.middle-align Nama OPD
+                    th.text-center.middle-align Nama File
+                    th.text-center.middle-align Jenis File
+                    th.text-center.middle-align Tanggal
+                    th.text-center.middle-align Aksi
+            tbody
+                for dp, index in all_download
+                    tr
+                        td.text-center.middle-align #{dp.nama_opd}
+                        td #{dp.nama_file}
+                        td.text-center.middle-align #{dp.jenis_file}
+                        td.text-center.middle-align #{dp.tgl_file}
+                        td.text-center.middle-align
+                            |   #[a(href='/download/'+dp.link_file).btn.btn-xs.btn-success.tombol-table Unduh]
+                            |   #[a(href='/adm-download-edit/'+dp.id_download).btn.btn-xs.btn-success.tombol-table Edit]
+                            |   #[a(href='/adm-download-delete/'+dp.id_download).btn.btn-xs.btn-success.tombol-table Delete]
+                            
+        
+    // /.box-body
+// /.box

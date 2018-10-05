@@ -1,0 +1,191 @@
+.white-wrapper
+    .container
+        .row
+            .col-sm-12
+                include mod-judul-pages
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#table-unit-kerja").dataTable(
+                            {
+                            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                            "sDom": "<'row'<'col-md-5 col-xs-12'l><'col-md-7 col-xs-12 hidden-xs'Tf>r>"+
+                                    "t"+
+                                    "<'row'<'col-md-6 col-xs-12'i><'col-md-6 col-xs-12'p>>",
+                            tableTools: {
+                                sSwfPath: "./adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                            },
+                            "ajax": {
+                                "url": "#{api_url}unitkerja",
+                                "dataSrc": "opd"
+                            },
+                            "columns": [
+                                {
+                                    "searchable": false,
+                                    "class":"hidden-xs",
+                                    "render": function ( data, type, row ){
+                                        var id_opd = row["id_opd"];
+                                        var logo = row["logo"];
+                                        var link_opd = row["link_opd"];
+                                        return '<div class="album-image"><a class="thumb" href="#{base_url}data/unitkerja/'+link_opd+'"><img class="img-responsive center-block" src="#{base_url}images/link-opd/small/'+logo+'.png"/></a></div>';
+                                    },
+                                    "targets": 0
+                                },
+                                {
+                                    "searchable": true,
+                                    "render": function ( data, type, row ){
+                                        var logo = row["logo"];
+                                        var id_opd = row["id_opd"];
+                                        var nama_opd = row["nama_opd"];
+                                        var akronim_opd = row["akronim_opd"];
+                                        var link_opd = row["link_opd"];
+                                        var kepala_opd = row["kepala_opd"];
+                                        var nama_gelar = row["nama_gelar"];
+                                        var nip = row["nip"];
+                                        var gol = row["gol"];
+                                        var ruang = row["ruang"];
+                                        var telp = row["telp"];
+                                        var fax = row["fax"];
+                                        var email = row["email"];
+                                        var alamat = row["alamat"];
+                                        var kel = row["kel"];
+                                        var kec = row["kec"];
+                                        var kotakab = row["kotakab"];
+                                        var kode_pos = row["kode_pos"];
+                                        var link = row["link"];
+                                        var ruang_lingkup_keg = row["ruang_lingkup_keg"];
+                                        var tugas = row["tugas"];
+                                        var fungsi = row["fungsi"];
+
+                                        if (kepala_opd == null) {
+                                            var kepala = '';
+                                        } else {
+                                            var kepala = '<tr class="visible-xs"><td>Pimpinan</td><td>:</td><td><table><tbody><tr><td><p class="lead">'+nama_gelar+'</p></td></tr><tr><td>'+nip+'</td></tr><tr><td>'+gol+', '+ruang+'</td></tr></tbody></table></td></tr>';
+                                        };
+
+                                        if (telp == null) {
+                                            var telepon = '';
+                                        } else {
+                                            var telepon = '<tr><td>Telp.</td><td>:</td><td>'+telp+'</td></tr>';
+                                        };
+
+                                        if (fax == null) {
+                                            var faximile = '';
+                                        } else {
+                                            var faximile = '<tr><td>Telp.</td><td>:</td><td>'+fax+'</td></tr>';
+                                        };
+
+                                        if (alamat == null) {
+                                            var alamat_kantor = '';
+                                        } else {
+                                            var alamat_kantor = '<tr><td>Alamat</td><td>:</td><td>'+alamat+', '+kel+', '+kec+', '+kotakab+', Provinsi Kepulauan Riau - '+kode_pos+'</td></tr>';
+                                        };
+
+                                        if (email == null) {
+                                            var email_kantor = '';
+                                        } else {
+                                            var email_kantor = '<tr><td>Email</td><td>:</td><td><a href="mailto:'+email+'" target="_TOP">'+email+'</a></td></tr>';
+                                        };
+
+                                        if (link == null) {
+                                            var alamat_web = '';
+                                        } else {
+                                            var alamat_web = '<tr class="visible-xs"><td>Website</td><td>:</td><td><a href="http://'+link+'" target="_BLANK">'+link+'</a></td></tr>';
+                                        };
+
+                                        if (ruang_lingkup_keg == null) {
+                                            var kegnya = '';
+                                        } else {
+                                            var kegnya = '<table class="table table-condensed"><tbody><tr><td><strong>Ruang Lingkup Kegiatan</strong></td></tr><tr><td>'+ruang_lingkup_keg+'</td></tr></tbody></table>';
+                                        };
+
+                                        if (tugas == null) {
+                                            var tugasnya = '';
+                                        } else {
+                                            var tugasnya = '<table class="table table-condensed"><tbody><tr><td><strong>Tugas</strong></td></tr><tr><td>'+tugas+'</td></tr></tbody></table>';
+                                        };
+
+                                        if (fungsi == null) {
+                                            var fungsinya = '';
+                                        } else {
+                                            var fungsinya = '<table class="table table-condensed"><tbody><tr><td><strong>Fungsi</strong></td></tr><tr><td>'+fungsi+'</td></tr></tbody></table>';
+                                        };
+
+
+
+
+                                        return '<table class="table table-condensed">'
+                                                +   '<tbody>'
+                                                +       '<tr>'
+                                                +           '<td colspan="3">'
+                                                +               '<img class="img-responsive visible-xs center-block" src="#{base_url}images/link-opd/small/'+logo+'.png" />'
+                                                +               '<br class="visible-xs" />'
+                                                +               '<a class="text-center visible-xs lead" href="#{base_url}data/unitkerja/'+link_opd+'">'+nama_opd+'<br>('+akronim_opd+')</a><a class="hidden-xs lead" href="#{base_url}data/unitkerja/'+link_opd+'">'+nama_opd+' ('+akronim_opd+')</a>'
+                                                +           '</td>'
+                                                +       '</tr>'
+                                                +       kepala+telepon+faximile+alamat_kantor+email_kantor+alamat_web
+                                                +   '</tbody>'
+                                                +'</table>'
+                                                +kegnya+tugasnya+fungsinya;
+                                    },
+                                    "targets": 1
+                                },
+                                {
+                                    "searchable": true,
+                                    "class":"hidden-xs",
+                                    "width":"200px",
+                                    "render": function ( data, type, row ){
+                                        if (row["kepala_opd"] == null) {
+                                            var kepala = 'Data Belum Tersedia';
+                                        } else {
+                                            var kepala = '<table class="table table-condensed"><tbody><tr><td><p class="lead">'+row["nama_gelar"]+'</p></td></tr><tr><td>'+row["nip"]+'</td></tr><tr><td>'+row["gol"]+', '+row["ruang"]+'</td></tr></tbody></table>';
+                                        };
+                                        return kepala;
+                                    },
+                                    "targets": 2
+                                },
+                                {
+                                    "searchable": true,
+                                    "class":"hidden-xs",
+                                    "render": function ( data, type, row ){
+                                        if (row["link"] == null) {
+                                            var link = 'Data Belum Tersedia';
+                                        } else {
+                                            var link = '<a href="http://'+row["link"]+'" targer="_BLANK">'+row["link"]+'</a>';
+                                        };
+                                        return link;
+                                    },
+                                    "targets": 3
+                                }
+                            ],
+                            "processing":true,
+                            "deferRender": true,
+                            select: true,
+                            "oLanguage": {
+                                "sLengthMenu": "Tampilkan _MENU_ Unit Kerja per halaman",
+                                "sZeroRecords": "Unit Kerja yang anda cari tidak ditemukan",
+                                "sInfo": "Menampilkan Unit Kerja ke _START_ sampai ke _END_, dari _TOTAL_ Unit Kerja",
+                                "sInfoEmpty": "Menampilkan Unit Kerja ke 0 sampai 0 dari total 0 Unit Kerja",
+                                "sEmptyTable": "Tidak ada Unit Kerja yang tersedia",
+                                "sInfoFiltered": "(Filter dari _MAX_ Unit Kerja)",
+                                "oPaginate": {
+                                    "sFirst": "Pertama",
+                                    "sLast": "Terakhir",
+                                    "sNext": "Selanjutnya",
+                                    "sPrevious": "Sebelumnya"
+                                }
+                            }
+                        }).yadcf([
+                            {column_number : 0, filter_type: 'text'},
+                            {column_number : 1, filter_type: 'text'},
+                            {column_number : 2, filter_type: 'text'},
+                            {column_number : 3, filter_type: 'text'}
+                        ]);
+                    });
+                table#table-unit-kerja.table.table-hover.table-responsive(width='100%')
+                    thead
+                        tr
+                            th.text-center(width='55px').hidden-xs Gambar
+                            th.text-center Nama Instansi
+                            th.text-center.hidden-xs Kepala Unit
+                            th.text-center.hidden-xs Pranala Luar

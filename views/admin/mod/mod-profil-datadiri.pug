@@ -1,0 +1,116 @@
+.panel.panel-default
+    .panel-heading
+        h3.panel-title 
+            i.el-user 
+            |   Data 
+            strong Diri
+    .panel-body
+        form.form-horizontal.validate(role='form', method='post')
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilNamaLengkap') Nama Lengkap*
+                .col-sm-10
+                    input#isianProfilNamaLengkap.form-control.input-lg(type='text' name='datanama', data-validate='required', data-message-required='Nama Lengkap Wajib Diisi dengan ketentuan Tanpa gelar, kecuali: Raja, Syarifah, Said, dsb.', placeholder='Nama Lengkap')
+                    em.small Tanpa gelar, kecuali: Raja, Syarifah, Said, dsb.
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilGelarDepan') Gelar
+                .col-sm-5
+                    input#isianProfilGelarDepan.form-control(type='text', placeholder='Gelar Depan')
+                label.control-label(for='isianProfilGelarBelakang')
+                .col-sm-5
+                    input#isianProfilGelarBelakang.form-control(type='text', placeholder='Gelar Belakang')
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilNip') NIP / NRPTT / NO. OS*
+                .col-sm-5
+                    input#isianProfilNip.form-control(type='text', name='datanip', data-validate='required', data-message-required='NIP atau NRPTT atau NO OS wajib diisi', data-mask='decimal', maxlength='18', placeholder='197002281988041003')
+                    em.small Tanpa spasi
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilNik') NIK*
+                .col-sm-5
+                    input#isianProfilNik.form-control(type='text', name='datanik', data-validate='required', data-message-required='NIK wajib diisi', data-mask='9999999999999999', placeholder='2172040304700001')
+                    em.small Tanpa spasi
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label Jenis Kelamin*
+                .col-sm-10
+                    label.radio-inline
+                        input.cbr.cbr-blue(type='radio', name='jenisKelamin', checked='')
+                        |   Laki-laki 
+                        i.el-male
+                    label.radio-inline
+                        input.cbr.cbr-pink(type='radio', name='jenisKelamin')
+                        |   Perempuan 
+                        i.el-female
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label Status Pernikahan*
+                .col-sm-10
+                    label.radio-inline
+                        input.cbr.cbr-success(type='radio', name='statusPernikahan', checked='')
+                        |   Menikah
+                    label.radio-inline
+                        input.cbr.cbr-red(type='radio', name='statusPernikahan')
+                        |   Belum / Tidak Menikah
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilTempatLahir') Tempat Lahir*
+                .col-sm-5
+                    input#isianProfilTempatLahir.form-control(type='text', name='dataTempatLahir', data-validate='required', data-message-required='Tempat Lahir wajib diisi', placeholder='Tanjungpinang')
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilTanggalLahir') Tanggal Lahir Lahir*
+                .col-sm-5
+                    .input-group
+                        input#isianProfilTanggalLahir.form-control.datepicker(type='text', name='dataTanggalLahir', data-validate='required', data-message-required='Tanggal Lahir wajib diisi', data-start-view='2', data-format='D, dd MM yyyy')
+                        .input-group-addon
+                            a(href='#')
+                                i.linecons-calendar
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label Golongan Darah*
+                .col-sm-10
+                    label.radio-inline
+                        input.cbr.cbr-red(type='radio', name='golonganDarah', checked='')
+                        |   O
+                    label.radio-inline
+                        input.cbr.cbr-red(type='radio', name='golonganDarah')
+                        |   A
+                    label.radio-inline
+                        input.cbr.cbr-red(type='radio', name='golonganDarah')
+                        |   B
+                    label.radio-inline
+                        input.cbr.cbr-red(type='radio', name='golonganDarah')
+                        |   AB
+                    label.radio-inline
+                        input.cbr.cbr-red(type='radio', name='golonganDarah')
+                        |   Tidak Diketahui
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label Agama*
+                .col-sm-10
+                    label.radio-inline
+                        input.cbr.cbr-purple(type='radio', name='agama', checked='')
+                        |   Islam
+                    label.radio-inline
+                        input.cbr.cbr-purple(type='radio', name='agama')
+                        |   Katolik
+                    label.radio-inline
+                        input.cbr.cbr-purple(type='radio', name='agama')
+                        |   Protestan
+                    label.radio-inline
+                        input.cbr.cbr-purple(type='radio', name='agama')
+                        |   Hindu
+                    label.radio-inline
+                        input.cbr.cbr-purple(type='radio', name='agama')
+                        |   Budha
+                    label.radio-inline
+                        input.cbr.cbr-purple(type='radio', name='agama')
+                        |   Kong Hu Chu
+            .form-group-separator
+            .form-group
+                .col-sm-12
+                    button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-icon-standalone.pull-right(type='submit')
+                        i.fa-save
+                        span Simpan

@@ -1,0 +1,59 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Tambah Member
+            // /.box-header
+            .box-body.pad
+                form(action="/adm-member-edit", method="post")
+                    input#title.form-control(type='hidden', name='id_user', value=member.id_user)
+                    .form-group
+                        label.col-sm-2.control-label(for='username')
+                            |   Username
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='username', value=member.username, required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='id_peg')
+                            |   Pegawai
+                            span
+                        .col-sm-10
+                            select.form-control(placeholder='Pilih Pegawai', name='id_peg')
+                                option(value=(member.id_peg))=member.nama
+                                each val in peg
+                                    if val.id_peg != member.id_peg
+                                        option(value=(val.id_peg))=val.nama
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='id_hakakses')
+                            |   Hak Akses
+                            span
+                        .col-sm-10
+                            select.form-control(placeholder='Pilih Hak Akses', name='id_hakakses')
+                                option(value=(member.id_hakakses))=member.hakakses
+                                each val in hakakses
+                                    if val.id_hakaskses != member.id_hakakses
+                                        option(value=(val.id_hakaskses))=val.hakakses
+                            br   
+                    .form-group
+                        label.col-sm-2.control-label(for='status_user')
+                            |   Status User
+                            span
+                        .col-sm-10
+                            select.form-control(placeholder='Pilih Hak Akses', name='status_user')
+                                if (member.status_user == '1')
+                                    option(value='1') Aktif    
+                                    option(value='0') Tidak Aktif  
+                                else  
+                                    option(value='0') Tidak Aktif 
+                                    option(value='1') Actif                               
+                            br                 
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box

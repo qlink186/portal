@@ -1,0 +1,22 @@
+extends adm-layout/base
+block content
+    section.content-header
+        h1
+            |   Slideshow
+            small List
+        ol.breadcrumb
+            li
+                a(href='./adm')
+                    i.fa.fa-dashboard 
+                    |   Beranda
+            li
+                a(href='./adm-slideshow') Artikel
+            li.active Data Slideshow
+    // Main content
+    section.content
+        .row
+            .col-xs-12
+                include adm-modul/mod-slideshow-list.pug
+            // /.col
+        // /.row
+    // /.content

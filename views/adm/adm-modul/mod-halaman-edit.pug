@@ -1,0 +1,32 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Halaman Profil
+            // /.box-header
+            .box-body.pad
+                form(action="/adm-halaman-edit/", method="post")
+                    input#id_halaman.form-control(type='hidden', name='id_halaman', value=halaman_profil.id_halaman)
+                    .form-group
+                        label.col-sm-2.control-label(for='title')
+                            |   Judul Halaman
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='judulhalaman', required='required' value=halaman_profil.judul_halaman)
+                            br
+                    .form-group
+                        label.col-sm-12.control-label(for='isi')
+                            |   Konten Halaman
+                            span.required *
+                        .col-sm-12
+                            textarea#editorhalamanprofil(name='editorhalamanprofil', rows='15', cols='80') #{halaman_profil.isi_halaman}
+                            br
+                            
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box

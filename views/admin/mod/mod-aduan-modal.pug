@@ -1,0 +1,57 @@
+// Edit Aduan Modal
+#modal-edit-comment.modal.fade
+    .modal-dialog(style='width: 60%;')
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                h4.modal-title Edit Aduan
+            .modal-body
+                .row
+                    .col-sm-2
+                        a(href='#')
+                            img.img-rounded.img-responsive(src=base_url+'adm-assets/images/member-1.jpg')
+                        br
+                        span Comments: 1026
+                        br
+                        span Member since: 2007
+                    .col-sm-10
+                        .row
+                            .col-md-12
+                                .form-group
+                                    label.control-label(for='field-1') Nama
+                                    input#field-3.form-control(type='text', value='Ksenia Sawicka')
+                        .row
+                            .col-md-12
+                                .form-group
+                                    label.control-label(for='field-1') Aduan
+                                    textarea#field-2.form-control(style='min-height: 120px;')
+                                        |   Servants contempt as although addition dashwood is procured. Interest in yourself an do of numerous feelings cheerful confined.
+                                        |   By an packages rejoiced exercise. To ought on am marry rooms doubt music. Mention entered an through company as. Up arrived no painful between. It declared is prospect an insisted pleasure.
+                                        |   Put use set uncommonly announcing and travelling. Allowance sweetness direction to as necessary. Principle oh explained excellent do my suspected conveying in. Excellent you did therefore perfectly supposing described.
+                        .row
+                            .col-md-4
+                                .form-group
+                                    label.control-label(for='field-1') Tanggal Pengaduan
+                                    p
+                                        strong Tuesday, 20 March - 20:05
+                            .col-md-4
+                                .form-group
+                                    label.control-label(for='field-1') Article
+                                    p
+                                        a(href='#')
+                                            strong The Women of the Flames
+                            .col-md-4
+                                .form-group
+                                    label.control-label(for='field-1') Aksi
+                                    p
+                                        button.btn.btn-green.btn-sm.btn-icon.icon-left(type='button', href='#') Terbitkan
+                                            i.entypo-check
+                                        |   &nbsp;
+                                        button.btn.btn-red.btn-sm.btn-icon.icon-left(type='button', href='#') Hapus
+                                            i.entypo-cancel
+            .modal-footer
+                button.btn.btn-default.btn-sm.btn-icon.icon-left(type='button', data-dismiss='modal') Batal Perubahan
+                    i.entypo-back
+                |   &nbsp;
+                button.btn.btn-blue.btn-sm.btn-icon.icon-left(type='button') Simpan Perubahan
+                    i.entypo-floppy

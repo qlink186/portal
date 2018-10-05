@@ -1,0 +1,263 @@
+.page-title
+    .title-env
+        h1.title=title
+        p.description=desc
+    .breadcrumb-env
+        ol.breadcrumb.bc-1
+            li
+                a(href=base_url)
+                    i.fa-home
+                    |   Dahsboard
+            li
+                a(href=base_url+'artikel-list') Artikel
+            li.active
+                strong=title
+.row
+    form.validate(role='form', method='post')
+
+        .col-sm-9
+            .panel.panel-default
+                .panel-heading
+                    h3.panel-title
+                        i.linecons-pencil
+                        |   Tulis Artikel
+                    .panel-options
+                        a(href='#', data-toggle='panel')
+                            span.collapse-icon &ndash;
+                            span.expand-icon +
+                .panel-body
+                    .col-sm-12
+                        .form-group
+                            input#field-15.form-control.input-lg(type='text', placeholder='Judul Artikel', name='judulArtikel', data-validate='required', data-message-required='Judul Artikel Wajib diisi')
+                            em.small Judul hanya diperbolehkan dengan karakter A-Z, a-z dan angka 0-9 atau gabungan keduanya
+                        .form-group-separator              
+                        script(type='text/javascript').
+                            jQuery(document).ready(function($)
+                            {
+                                var i = 1,
+                                    $example_dropzone_filetable = $("#example-dropzone-filetable"),
+                                    example_dropzone = $("#advancedDropzone").dropzone({
+                                    url: './adm-assets/images/upload-file.php',
+                                    
+                                    // Events
+                                    addedfile: function(file)
+                                    {
+                                        if(i == 1)
+                                        {
+                                            $example_dropzone_filetable.find('tbody').html('');
+                                        }
+                                        
+                                        var size = parseInt(file.size/1024, 10);
+                                        size = size < 1024 ? (size + " KB") : (parseInt(size/1024, 10) + " MB");
+                                        
+                                        var $entry = $('<tr>\
+                                                        <td class="text-center">'+(i++)+'</td>\
+                                                        <td>'+file.name+'</td>\
+                                                        <td><div class="progress progress-striped"><div class="progress-bar progress-bar-warning"></div></div></td>\
+                                                        <td>'+size+'</td>\
+                                                        <td>Uploading...</td>\
+                                                    </tr>');
+                                        
+                                        $example_dropzone_filetable.find('tbody').append($entry);
+                                        file.fileEntryTd = $entry;
+                                        file.progressBar = $entry.find('.progress-bar');
+                                    },
+                                    
+                                    uploadprogress: function(file, progress, bytesSent)
+                                    {
+                                        file.progressBar.width(progress + '%');
+                                    },
+                                    
+                                    success: function(file)
+                                    {
+                                        file.fileEntryTd.find('td:last').html('<span class="text-success">Uploaded</span>');
+                                        file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
+                                    },
+                                    
+                                    error: function(file)
+                                    {
+                                        file.fileEntryTd.find('td:last').html('<span class="text-danger">Failed</span>');
+                                        file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
+                                    }
+                                });
+                                
+                                $("#advancedDropzone").css({
+                                    minHeight: 150
+                                });
+
+                            });
+                        br
+                        .row
+                            .col-sm-12
+                                .row
+                                    .col-sm-4.text-center
+                                        #advancedDropzone.droppable-area
+                                    .col-sm-8
+                                        table#example-dropzone-filetable.table.table-bordered.table-striped
+                                            thead
+                                                tr
+                                                    th.text-center(width='1%') #
+                                                    th(width='50%') Name
+                                                    th(width='20%') Upload Progress
+                                                    th Size
+                                                    th Status
+                                            tbody
+                                                tr
+                                                    td(colspan='5') Files list will appear here
+                        .form-group
+                            textarea.form-control.ckeditor(rows='15')
+        .col-sm-3
+            .panel.panel-default
+                .panel-heading
+                    h3.panel-title Atribut Artikel
+                    .panel-options
+                        a(href='#', data-toggle='panel')
+                            span.collapse-icon &ndash;
+                            span.expand-icon +
+                        a(href='#', data-toggle='remove')
+                .panel-body
+                    .col-sm-12
+                        .form-group
+                            label.control-label Tanggal Tulis*
+                            .input-group
+                                input.form-control.datepicker(type='text', data-format='D, dd MM yyyy',  name='tanggalTulis', data-validate='required', data-message-required='Tanggal Tulis Wajib diisi')
+                                .input-group-addon
+                                    a(href='#')
+                                        i.linecons-calendar
+                        .form-group
+                            label.control-label Kategori*
+                            script(type='text/javascript').
+                                jQuery(document).ready(function($)
+                                {
+                                    $("#kategoriArtikel").select2({
+                                        placeholder: 'Pilih Kategori ....',
+                                        allowClear: true
+                                    }).on('select2-open', function()
+                                    {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                    });
+                                });
+                            select#kategoriArtikel.form-control(name='kategoriArtikel', data-validate='required', data-message-required='Kategori Wajib diisi')
+                                option
+                                option Umum
+                                option Pendidikan
+                                option OPD
+                                option Budaya
+                                option Seni
+                                option Teknologi Informasi
+                        .form-group
+                            label.control-label(for='tagsinput-1') Tag Artikel
+                            script(type='text/javascript').
+                                jQuery(document).ready(function($)
+                                {
+                                    var i = -1,
+                                        colors = ['primary', 'secondary', 'red', 'blue', 'warning', 'success', 'purple'];
+                                    
+                                    colors = shuffleArray(colors);
+                                    
+                                    $("#tagArtikel").tagsinput({
+                                        tagClass: function()
+                                        {
+                                            i++;
+                                            return "label label-" + colors[i%colors.length];
+                                        }
+                                    });
+                                });
+                                
+                                // Just for demo purpose
+                                function shuffleArray(array)
+                                {
+                                    for (var i = array.length - 1; i > 0; i--) 
+                                    {
+                                        var j = Math.floor(Math.random() * (i + 1));
+                                        var temp = array[i];
+                                        array[i] = array[j];
+                                        array[j] = temp;
+                                    }
+                                    return array;
+                                }
+                            input#tagArtikel.form-control(type='text')
+                            em.small Ketik tag artikel kemudian enter
+                        .form-group
+                            label.control-label Instansi Artikel*
+                            script(type='text/javascript').
+                                jQuery(document).ready(function($)
+                                {
+                                    $("#instansiiArtikel").select2({
+                                        placeholder: 'Pilih Instansi ....',
+                                        allowClear: true
+                                    }).on('select2-open', function()
+                                    {
+                                        // Adding Custom Scrollbar
+                                        $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                                    });
+                                });
+                            select#instansiiArtikel.form-control(name='instansiArtikel', data-validate='required', data-message-required='Instansi Wajib diisi')
+                                option
+                                option Diskominfo
+                                option PUPR
+                                option BKD
+                                option DKP2KB
+                                option Perpustakaan dan Arsip
+                                option BPKAD
+                            em.small Instansi Sumber Artikel
+                        .form-group
+                            strong Tampilkan Artikel pada:
+                            br
+                            div(style='margin-top:5px;')
+                            input#artikelTampilUmum.iswitch.iswitch-sm.iswitch-secondary(type='checkbox', checked='')
+                            label.middle-align(for='artikelTampilUmum') Portal Pemko
+                            hr(style='margin-bottom:5px;')
+                            input#artikelTampilInstansi.iswitch.iswitch-sm.iswitch-blue(type='checkbox', checked='')
+                            label(for='artikelTampilInstansi') Website Instansi
+                            hr(style='margin-bottom:5px;')
+                            input#artikelTampilPribadi.iswitch.iswitch-sm.iswitch-purple(type='checkbox', checked='')
+                            label(for='artikelTampilPribadi') Blog Pribadi
+                            hr
+                            em.small Artikel Akan ditampilkan sesuai dengan pilihan
+                        hr
+                        .form-group
+                            button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-icon-standalone-right.btn-block.btn-sm(type='submit')
+                                i.fa-save
+                                span Simpan
+                            button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-icon-standalone-right.btn-block.btn-sm(type='submit')
+                                i.fa-paper-plane
+                                span Terbitkan
+                            button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-icon-standalone-right.btn-block.btn-sm(type='submit')
+                                i.fa-trash
+                                span Hapus
+            .panel.panel-default
+                .panel-heading
+                    h3.panel-title Status Artikel
+                    .panel-options
+                        a(href='#', data-toggle='panel')
+                            span.collapse-icon &ndash;
+                            span.expand-icon +
+                        a(href='#', data-toggle='remove')
+                .panel-body
+                    .col-sm-12
+                        table.table.table-hover.table-condensed
+                            tr
+                                td(width='80px') Status Artikel
+                                td 
+                                    strong TERBIT
+                            tr
+                                td Penulis
+                                td 
+                                    strong Aprinaldi, S.Kom
+                            tr
+                                td Username
+                                td Qlink186
+                            tr
+                                td Instansi Artikel
+                                td Dinas Komunikasi dan Informatika
+                            tr
+                                td Tanggal Terbit
+                                td Selasa, 10 maret 2018
+                            tr
+                                td Jumlah Viewer
+                                td 15 Viewer
+                            tr
+                                td Jumlah Komentar
+                                td 25 Komentar

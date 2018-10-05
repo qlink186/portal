@@ -1,0 +1,142 @@
+.footer-sticked-chat
+    // Start: Footer Sticked Chat
+    script(type='text/javascript').
+        function toggleSampleChatWindow()
+        {
+        var $chat_win = jQuery("#sample-chat-window");
+        $chat_win.toggleClass('open');
+        if($chat_win.hasClass('open'))
+        {
+        var $messages = $chat_win.find('.ps-scrollbar');
+        if($.isFunction($.fn.perfectScrollbar))
+        {
+        $messages.perfectScrollbar('destroy');
+        setTimeout(function(){
+        $messages.perfectScrollbar();
+        $chat_win.find('.form-control').focus();
+        }, 300);
+        }
+        }
+        jQuery("#sample-chat-window form").on('submit', function(ev)
+        {
+        ev.preventDefault();
+        });
+        }
+        jQuery(document).ready(function($)
+        {
+        $(".footer-sticked-chat .chat-user, .other-conversations-list a").on('click', function(ev)
+        {
+        ev.preventDefault();
+        toggleSampleChatWindow();
+        });
+        $(".mobile-chat-toggle").on('click', function(ev)
+        {
+        ev.preventDefault();
+        $(".footer-sticked-chat").toggleClass('mobile-is-visible');
+        });
+        });
+    ul.chat-conversations.list-unstyled
+        // Extra Chat Conversations collected not to exceed window width
+        li.browse-more
+            a.chat-user(href='#')
+                i.linecons-comment
+                span 3
+            // These conversations are hidden in screen
+            ul.other-conversations-list
+                li
+                    // Minimal User Info Link
+                    a(href='#')
+                        span &times;
+                li
+                    // Minimal User Info Link
+                    a(href='#')
+                        span &times;
+                li
+                    // Minimal User Info Link
+                    a(href='#')
+                        span &times;
+        li#sample-chat-window
+            // User Info Link
+            a.chat-user(href='#')
+                span.user-status.is-online
+            span.badge.badge-purple 4
+            // Conversation Window
+            .conversation-window
+                // User Info Link in header (used to close the chat bar)
+                a.chat-user(href='#')
+                    span.close &times;
+                    span.user-status.is-online
+                ul.conversation-messages.ps-scrollbar.ps-scroll-down
+                    // Will indicate time
+                    li.time Thursday 04, December &apos;14
+                    li
+                        .user-info
+                            a(href='#')
+                                img(src='./adm-assets/images/user-1.png', width='30', height='30', alt='user-image')
+                        .message-entry
+                            p Hello John, how are you?
+                    li.me
+                        // adding class="me" will indicate that "you" are sending a message
+                        .message-entry
+                            p Hi Art, I am fine :) How about you?
+                        .user-info
+                            a(href='#')
+                                img(src='./adm-assets/images/user-4.png', width='30', height='30', alt='user-image')
+                    li
+                        .user-info
+                            a(href='#')
+                                img(src='./adm-assets/images/user-1.png', width='30', height='30', alt='user-image')
+                        .message-entry
+                            p
+                    li.me
+                        // adding class="me" will indicate that "you" are sending a message
+                        .message-entry
+                            p
+                            p Timed voice share led his widen noisy young.
+                            p His six detract besides add moonlight newspaper.
+                        .user-info
+                            a(href='#')
+                                img(src='./adm-assets/images/user-4.png', width='30', height='30', alt='user-image')
+                    li
+                        .user-info
+                            a(href='#')
+                                img(src='./adm-assets/images/user-1.png', width='30', height='30', alt='user-image')
+                        .message-entry
+                            p Hello John, how are you?
+                    li.me
+                        // adding class="me" will indicate that "you" are sending a message
+                        .message-entry
+                            p Hi Art, I am fine :) How about you?
+                        .user-info
+                            a(href='#')
+                                img(src='./adm-assets/images/user-4.png', width='30', height='30', alt='user-image')
+                    li
+                        .user-info
+                            a(href='#')
+                                img(src='./adm-assets/images/user-1.png', width='30', height='30', alt='user-image')
+                        .message-entry
+                            p Hello John, how are you?
+                    // Will indicate time
+                    li.time Today 17:12
+                    li.me
+                        // adding class="me" will indicate that "you" are sending a message
+                        .message-entry
+                            p Hi Art, I am fine :) How about you?
+                        .user-info
+                            a(href='#')
+                                img(src='./adm-assets/images/user-4.png', width='30', height='30', alt='user-image')
+                form.chat-form(method='post')
+                    input.form-control(type='text', placeholder='Enter your message...')
+        li
+            // User Info Link
+            a.chat-user(href='#')
+                span.user-status.is-idle
+        li
+            // User Info Link
+            a.chat-user(href='#')
+                span.user-status.is-busy
+    a.mobile-chat-toggle(href='#')
+        i.linecons-comment
+        span.num 6
+        span.badge.badge-purple 4
+    // End: Footer Sticked Chat

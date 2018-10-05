@@ -1,0 +1,66 @@
+<button class="btn btn-info btn-icon btn-icon-standalone btn-xs btn-block" type="button"><i class="entypo-pencil"></i><span>Ubah</span></button>
+<button class="btn btn-secondary btn-icon btn-icon-standalone btn-xs btn-block" type="button" href="javascript:;" onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});"><i class="entypo-check"></i><span>Terbitkan</span></button>
+<button class="btn btn-primary btn-icon btn-icon-standalone btn-xs btn-block" type="button" href="javascript:;" onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});"><i class="entypo-archive"></i><span>Draft</span></button>
+<button class="btn btn-danger btn-icon btn-icon-standalone btn-xs btn-block" type="button" href="javascript:;" onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});"><i class="entypo-trash"></i><span>Hapus</span></button>
+
+button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+	i.entypo-pencil
+	span   Ubah
+button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+	i.entypo-check
+	span Terbitkan
+button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+	i.entypo-archive
+	span Draft
+button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+	i.entypo-trash
+	span Hapus
+
+td.hidden-xs
+		img.img-responsive.center-block(src=base_url+'adm-assets/images/ico/'+dw.format_file+'.svg')
+	td
+		table.table.table-condensed
+			tbody
+				tr
+					td(colspan='3')
+						a(href=base_url+'data-download/'+dw.link_file).lead=dw.nama_file
+				tr
+					td.visible-xs
+						|   Deskripsi
+					td.visible-xs
+						|    : 
+					td.visible-xs=dw.deskripsi_file
+					td.hidden-xs=dw.deskripsi_file
+				tr.visible-xs
+					td
+						|   Jenis Dokumen
+					td
+						|    : 
+					td=dw.jenis_file
+				tr.visible-xs
+					td
+						|   Jenis Informasi
+					td
+						|    : 
+					td
+						.label.label-secondary=dw.kategori_dip
+				tr.visible-xs
+					td
+						|   Tanggal Dokumen
+					td
+						|    : 
+					td=dw.tgl_file
+				tr.visible-xs
+					td(colspan='3')
+						a.btn.btn-red.btn-xs.btn-icon.btn-icon-standalone.pull-right(href=base_url+'data-download/'+dw.link_file)
+							i.fa-download
+							span Download Dokumen (.
+								=dw.format_file+')'
+	td.hidden-xs.text-center=dw.jenis_file
+	td.hidden-xs.text-center
+		.label.label-secondary=dw.kat_dip
+	td.hidden-xs.text-center=dw.tgl_file
+	td.hidden-xs.text-center
+		a.btn.btn-red.btn-sm.btn-icon.btn-icon-standalone(href=base_url+'data-download/'+dw.link_file)
+			i.fa-download
+			span Download

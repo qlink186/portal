@@ -1,0 +1,25 @@
+h5.subpage-title Berita Populer
+script(type='text/javascript').
+    $(document).ready(function(){
+        $.ajax({
+            url: '#{api_url}berita_populer',
+            dataType: "json",
+            success: function(data) {
+                $.each(data.berita,function(key,row){
+                    var id_berita = row["id_berita"];
+                    var link_berita = row["link_berita"];
+                    var gambar = row["gambar"];
+                    var judul_berita = row["judul_berita"];
+                    var tgl_post = row["tgl_post"];
+                    $('#tes').append('<li>'
+                    +       '<a href="#{base_url}berita/'+link_berita+'">'
+                    +           '<img src="#{base_url}images/berita/thumb/'+gambar+'" alt="'+judul_berita+'">'
+                    +           '<h5>'+judul_berita+'</h5>'
+                    +           '<span>Terbit '+tgl_post
+                    +       '</a>'
+                    +   '</li>');
+                });
+                }//end data return. 
+            });
+        });
+ul#tes.recent-posts

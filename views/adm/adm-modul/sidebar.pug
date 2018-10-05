@@ -1,0 +1,147 @@
+.col-md-3.sidebar
+    //- .widget.search
+    //-     form.search-form
+    //-         input.form-control(type='text', placeholder='Cari ...')
+    //- // /.search
+    .widget
+        h5.subpage-title Login Form
+        .login-register-form-section
+            ul.nav.nav-tabs(role='tablist')
+                li.active
+                    a(href='#login', data-toggle='tab') Login
+                li
+                    a(href='#register', data-toggle='tab') Buku Tamu
+            .tab-content
+                #login.tab-pane.fade.in.active(role='tabpanel')
+                    form.form-horizontal(action="/loginhome/",method="post")
+                        .form-group
+                            .input-group
+                                .input-group-addon
+                                    i.fa.fa-user
+                                input(type="text",placeholder="Username",name="txtUsername").form-control
+                        .form-group
+                            .input-group
+                                .input-group-addon
+                                    i.fa.fa-key
+                                input(type="password",placeholder="Password",name="txtPassword").form-control
+                        .form-group.center.rememberme
+                            p
+                            |	lupa password? 
+                            a(href='#') klik disini
+                        input.btn.btn-success.btn-custom(type='submit', value='Login')
+                        - if (messages.msg_error) 
+                            .alert.alert-danger.alert-dismissable 
+                                .notif-login-salah
+                                    button.close(type='button', data-dismiss='alert', aria-hidden='true') 
+                                        | !{messages.msg_error}
+                #register.tab-pane.fade(role='tabpanel')
+                    form.form-horizontal(method='post', action='')
+                        //- .form-group
+                        //-     .input-group
+                        //-         .input-group-addon
+                        //-             i.fa.fa-user
+                        //-         input.form-control(type='text', name='register_username', placeholder='Username', required='required', value='')
+                        .form-group
+                            .input-group
+                                .input-group-addon
+                                    i.fa.fa-male
+                                input.form-control(type='text', name='register_fullname', placeholder='Full name', required='required', value='')
+                        .form-group
+                            .input-group
+                                .input-group-addon
+                                    i.fa.fa-envelope
+                                input.form-control(type='email', name='register_email', placeholder='Email', required='required', value='')
+                        .form-group
+                            .input-group
+                                .input-group-addon
+                                    i.fa.fa-phone
+                                input.form-control(type='text', name='register_phonenumber', placeholder='No. HP', required='required', value='')
+                        //- .form-group
+                        //-     .input-group
+                        //-         .input-group-addon
+                        //-             i.fa.fa-lock
+                        //-         input.form-control(type='password', name='register_password', placeholder='Password', required='required')
+                        //- .form-group
+                        //-     .input-group
+                        //-         .input-group-addon
+                        //-             i.fa.fa-lock
+                        //-         input.form-control(type='password', name='register_cpassword', placeholder='Confirm Password', required='required')
+                        input.btn.btn-success.btn-custom(type='submit', value='Register')
+    .widget
+        h5.subpage-title Kalender Event
+        include modul-sidebar-event-list.pug
+    .widget.categories
+        h5.subpage-title Kategori Berita
+        ul.widget-list
+            li
+                a(href='#') Umum
+            li
+                a(href='#') Kegiatan
+            li
+                a(href='#') Teknologi
+            li
+                a(href='#') Informasi
+            li
+                a(href='#') Data
+    // /.categories
+    .widget.popular-posts
+        h5.subpage-title Berita Populer
+        ul.recent-posts
+            li
+                img(src='assets/img/blog/thumb-1/170801-Wakil%20Walikota%20Ayo%20Bawa%20Balita%20ke%20Posyandu.JPG', alt='Post Image')
+                h5
+                    a(href='post-1.html') Wakil Walikota: Ayo Bawa Balita ke Posyandu
+                    small Posted 01 Agustus 2017
+            li
+                img(src='assets/img/blog/thumb-1/170801-Pencanangan%20BBGRM.jpg', alt='Post Image')
+                h5
+                    a(href='post-1.html') Pencanangan BBGRM dan Hari Kesatuan Gerak PKK Berlangsung Meriah
+                    small Posted 01 Agustus 2017
+            li
+                img(src='assets/img/blog/thumb-1/170801-Fasilitas%20Forum%20CSR.jpg', alt='Post Image')
+                h5
+                    a(href='post-1.html') Fasilitas Forum CSR
+                    small Posted 31 Juli 2017
+    // /.popular-posts
+    //- .widget.tagcloud
+    //-     h5.subpage-title Tag Terbanyak
+    //-     ul.tagcloud-list
+    //-         li
+    //-             a(href='#') photoshop
+    //-         li
+    //-             a(href='#') html
+    //-         li
+    //-             a(href='#') css
+    //-         li
+    //-             a(href='#') html5
+    //-         li
+    //-             a(href='#') css3
+    //-         li
+    //-             a(href='#') illustration
+    //-         li
+    //-             a(href='#') javascript
+    //-         li
+    //-             a(href='#') jquery
+    //-         li
+    //-             a(href='#') bootstrap 2
+    //-         li
+    //-             a(href='#') bootstrap 3
+    //-         li
+    //-             a(href='#') php
+    //-         li
+    //-             a(href='#') mysql
+    //-         li
+    //-             a(href='#') wordpress
+    //-         li
+    //-             a(href='#') ajax
+    //-         li
+    //-             a(href='#') webmatrix
+    //- // /.tagcloud
+    //- .widget.text
+    //-     h5.subpage-title Text Widget
+    //-     p
+    //-         | Eam virtute petentium te. Sit ubique assentior similique et, cum tibique comprehensam at. Nam cu diam idque virtute, pro nihil bonorum percipitur et, illum simul eloquentiam per ea. Alii elit qui ad, prima singulis similique an per. Iudico sanctus eam no. Qui corpora accusamus no, eum id eripuit instructior.
+    //- // /.text
+    .widget
+        #gpr-kominfo-widget-container
+// /.sidebar

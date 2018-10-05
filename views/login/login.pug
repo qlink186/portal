@@ -1,0 +1,127 @@
+doctype html
+html(lang='id')
+    head
+        include ../admin/layout/header.pug
+        title= title
+    body.page-body.login-page(data-url='http://tanjungpinangkota.go.id')
+        .login-container
+            .row
+                .col-sm-6
+                    script(type='text/javascript').
+                        jQuery(document).ready(function($)
+                        {
+                            // Reveal Login form
+                            setTimeout(function(){ $(".fade-in-effect").addClass('in'); }, 1);
+
+
+                            $("form#login").validate({
+                                rules: {
+                                    txtUsername: {
+                                        required: true
+                                    },
+
+                                    txtPassword: {
+                                        required: true
+                                    }
+                                },
+                                messages: {
+                                    txtUsername: {
+                                        required: 'Username Kosong!!!'
+                                    },
+
+                                    txtPassword: {
+                                        required: 'Password Kosong!!!'
+                                    }
+                                },
+                                // Form Processing via AJAX
+                                submitHandler: function(form)
+                                {
+                                    show_loading_bar(70); // Fill progress bar to 70% (just a given value)
+
+                                    var opts = {
+                                        "closeButton": true,
+                                        "debug": false,
+                                        "positionClass": "toast-top-full-width",
+                                        "onclick": null,
+                                        "showDuration": "300",
+                                        "hideDuration": "1000",
+                                        "timeOut": "5000",
+                                        "extendedTimeOut": "1000",
+                                        "showEasing": "swing",
+                                        "hideEasing": "linear",
+                                        "showMethod": "fadeIn",
+                                        "hideMethod": "fadeOut"
+                                    };
+
+                                    $.ajax({
+                                        url: "#{base_url}",
+                                        method: 'POST',
+                                        dataType: 'json',
+                                        data: {
+                                            txtUsername: $(form).find('#txtUsername').val(),
+                                            txtPassword: $(form).find('#txtPassword').val()
+                                        },
+                                        success: function(data)
+                                        {
+                                            show_loading_bar({
+                                                delay: .5,
+                                                pct: 100,
+                                                finish: function(){
+                                                    toastr.success("Login Berhasil", opts);
+                                                    window.location.href = '#{base_url}admin';
+                                                }
+                                            });
+
+                                        },
+                                        error: function (data) {
+                                            show_loading_bar({
+                                                delay: .5,
+                                                pct: 100,
+                                                finish: function () {
+                                                    console.log(data);
+                                                    if (data.status === 200) {
+                                                        toastr.success("Sedang Proses", opts);
+                                                        window.location.href = '#{base_url}admin';
+                                                    } else {
+                                                        toastr.error("Gagal", opts);
+                                                        window.location.href = '#{base_url}admin';
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    });
+
+                                }
+                            });
+
+                            // Set Form focus
+                            $("form#login .form-group:has(.form-control):first .form-control").focus();
+                            setTimeout(function() {
+                                $('#errors-container').delay(3000).fadeOut(300); 
+                            });
+                        });
+                    // Add class "fade-in-effect" for login form effect
+                    form#login.login-form.fade-in-effect(method='post', role='form')
+                        .login-header
+                            a.logo(href=base_url)
+                                img(src=base_url+'images/logo_title_w_icon_300.png', alt='', width='300')
+                            p Silakan masukkan username dan password Anda di bawah ini.
+                        .form-group
+                            label.control-label(for='txtUsername') Username
+                            input#txtUsername.form-control.input-dark(type='text', name='txtUsername', autocomplete='on')
+                        .form-group
+                            label.control-label(for='txtPassword') Password
+                            input#txtPassword.form-control.input-dark(type='password', name='txtPassword', autocomplete='off')
+                        if (messages.msg_error)
+                            #errors-container.form-group
+                                =messages.msg_error
+                        .form-group
+                            button.btn.btn-dark.btn-block.text-left(type='submit')
+                                i.fa-lock
+                                |   MASUK
+                        .login-footer
+                            a.popover-secondary(data-toggle='popover', data-trigger='hover', data-placement='top', data-content="Silakan Hubungi Administrator Portal di Dinas Komunikasi dan Informatika Kota Tanjungpinang, Terima Kasih", data-original-title='Lupa Password?') Lupa Password?
+                            .info-links
+                                a(href='#') Ketentuan Layanan&nbsp;-&nbsp;
+                                a(href='#') Kebijakan Privasi
+        include ../admin/layout/js.pug

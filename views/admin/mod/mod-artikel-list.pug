@@ -1,0 +1,51 @@
+.page-title
+    .title-env
+        h1.title=title
+        p.description=desc
+    .breadcrumb-env
+        ol.breadcrumb.bc-1
+            li
+                a(href=base_url)
+                    i.fa-home
+                    |   Dashboard
+            li
+                a(href=base_url+'artikel') Artikel
+            li.active
+                strong=title
+.row
+    .col-md-12
+        ul.nav.nav-tabs.nav-tabs-justified
+            li.active
+                a(href='#semuaartikel', data-toggle='tab')
+                    i.fa-home &nbsp;
+                    span.hidden-xs
+                        |   Semua Artikel&nbsp;
+                    span.badge.badge-white.jumBeritaAll
+            li
+                a(href='#draftartikel', data-toggle='tab')
+                    i.entypo-archive &nbsp;
+                    span.hidden-xs
+                        |   Draft&nbsp;
+                    span.badge.badge-default.jumBeritaDraft
+            li
+                a(href='#diterbitkanartikel', data-toggle='tab')
+                    i.entypo-check &nbsp;
+                    span.hidden-xs
+                        |   Diterbitkan&nbsp;
+                    pan.badge.badge-secondary.jumBeritaTerbit
+            li
+                a(href='#dihapusartikel', data-toggle='tab')
+                    i.entypo-trash &nbsp;
+                    span.hidden-xs
+                        |   Dihapus&nbsp;
+                    pan.badge.badge-danger.jumBeritaHapus
+        .tab-content
+            #semuaartikel.tab-pane.active
+                include mod-artikel-semua
+            #draftartikel.tab-pane
+                include mod-artikel-draft
+            #diterbitkanartikel.tab-pane
+                include mod-artikel-terbit
+            #dihapusartikel.tab-pane
+                include mod-artikel-hapus
+include mod-aduan-modal

@@ -1,0 +1,36 @@
+.box
+    .box-body
+        table(width="100%").table.table-bordered.table-striped
+            thead
+                tr
+                    th(style="width:80px").text-center.middle-align Foto
+                    th(style="width:200px").text-center.middle-align Nama Pegawai
+                    th(style="width:150px").text-center.middle-align Jabatan
+                    th(style="width:100px").text-center.middle-align Status Pegawai
+                    th.text-center.middle-align Tgl. Lahir
+                    th(style="width:350px").text-center.middle-align Alamat
+                    th(style="width:100px").text-center.middle-align Aksi
+            tbody
+                for dp, index in all_pegawai 
+                    tr
+                        td
+                            |   #[img.img-responsive(src='images/pegawai/small/'+dp.foto_peg+'.jpg', alt='Foto Pegawai', style='max-width:75px;')]
+                        td
+                            strong 
+                                |   #[a(href='/adm-kepegawaian-detail/'+dp.id_peg) #{dp.gelar_depan} #{dp.nama} #{dp.gelar_belakang}]
+                            br
+                            |   #{dp.nip}
+                            br
+                            |   #{dp.gol} - #{dp.ruang}
+                        td.text-center.middle-align #{dp.jabatan}
+                        td.text-center.middle-align #{dp.status_peg}
+                        td.text-center.middle-align #{dp.tgl_lahir}
+                        td 
+                            |   #{dp.alamat}
+                            br
+                            |   Kel. #{dp.kel}, Kec. #{dp.kec}, Kota #{dp.kotakab}, Provinsi Kepulauan Riau, #{dp.kode_pos}
+                        td.text-center.middle-align
+                            |   #[a(href='/adm-kepegawaian-edit/'+dp.id_peg).btn.btn-xs.btn-success.tombol-table Edit]
+                            |   #[a(href='/adm-kepegawaian-delete/'+dp.id_peg).btn.btn-xs.btn-success.tombol-table Delete]
+    // /.box-body
+// /.box

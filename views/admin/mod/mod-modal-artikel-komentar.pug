@@ -1,0 +1,44 @@
+#konfirmHapusKomentar.modal.fade
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                h4.modal-title Apakah Anda yakin 
+                    strong menghapus 
+                    |   Komentar ini?
+            .modal-body.row
+                .col-sm-2.center
+                    a.xe-user-img(href='#')
+                        img.img-circle(src=base_url+'adm-assets/images/user-2.png', width='80')
+                .col-sm-10
+                    .xe-comment
+                        a.xe-user-name(href='#')
+                            h4 Jack Gates | @jackgates 
+                                em - 19 Maret 2018
+                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+            .modal-footer
+                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-sm(type='button', data-dismiss='modal') 
+                    i.el-cancel
+                    span BATAL
+                button#tombolKonfirmHapusKomentar.btn.btn-danger.btn-icon.btn-icon-standalone.btn-sm(type='button')
+                    i.entypo-trash
+                    span HAPUS KOMENTAR
+#konfirmTambahKomentar.modal.fade
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                h4.modal-title Apakah Anda yakin 
+                    strong menambahkan 
+                    |   Komentar ini?
+            .modal-body.row
+                .col-sm-12
+                    .xe-comment
+                        p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies.
+            .modal-footer
+                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-sm(type='button', data-dismiss='modal') 
+                    i.el-cancel
+                    span BATAL
+                button#tombolTambahKomentar.btn.btn-blue.btn-icon.btn-sm.btn-icon-standalone(type='button')
+                    i.entypo-comment
+                    span TAMBAH KOMENTAR

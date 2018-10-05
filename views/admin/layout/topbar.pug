@@ -1,0 +1,162 @@
+
+nav.navbar.user-info-navbar(role='navigation')
+    // User Info, Notifications and Menu Bar
+    // Left links for user info navbar
+    ul.user-info-menu.left-links.list-inline.list-unstyled
+        li.hidden-sm.hidden-xs
+            a(href='#', data-toggle='sidebar')
+                i.fa-bars
+        li.dropdown.hover-line
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+                i.fa-envelope-o
+                span.badge.badge-green 15
+            ul.dropdown-menu.messages
+                li
+                    ul.dropdown-menu-list.list-unstyled.ps-scrollbar
+                        li.active
+                            // "active" class means message is unread
+                            a(href='#')
+                                span.line
+                                    strong Luc Chartier&nbsp;
+                                    span.light.small - Kemarin
+                                span.line.desc.small This ain’t our first item, it is the best of the rest.
+                        li.active
+                            a(href='#')
+                                span.line
+                                    strong Salma Nyberg&nbsp;
+                                    span.light.small - 2 days ago
+                                span.line.desc.small Oh he decisively impression attachment friendship so if everything.
+                        li
+                            a(href='#')
+                                span.line
+                                    |   Hayden Cartwright&nbsp;
+                                    span.light.small - a week ago
+                                span.line.desc.small Whose her enjoy chief new young. Felicity if ye required likewise so doubtful.
+                        li
+                            a(href='#')
+                                span.line
+                                    |   Aprinaldi
+                                    span.light.small - 16 days ago
+                                span.line.desc.small On so attention necessary at by provision otherwise existence direction.
+                        // Repeated
+                        li.active
+                            // "active" class means message is unread
+                            a(href='#')
+                                span.line
+                                    strong Luc Chartier&nbsp;
+                                    span.light.small - yesterday
+                                span.line.desc.small On so attention necessary at by provision otherwise existence direction.
+                        li.active
+                            a(href='#')
+                                span.line
+                                    strong Salma Nyberg&nbsp;
+                                    span.light.small - 2 days ago
+                                span.line.desc.small On so attention necessary at by provision otherwise existence direction.
+                        li
+                            a(href='#')
+                                span.line
+                                    |   Tes&nbsp;
+                                    span.light.small - a week ago
+                                span.line.desc.small On so attention necessary at by provision otherwise existence direction.
+                        li
+                            a(href='#')
+                                span.line
+                                    |   Tes5&nbsp;
+                                    span.light.small - 16 days ago
+                                span.line.desc.small On so attention necessary at by provision otherwise existence direction.
+                li.external
+                    a(href='mailbox-main.html')
+                        span Semua Pesan
+                        i.fa-link-ext
+        li.dropdown.hover-line
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+                i.fa-bell-o
+                span.badge.badge-purple 7
+            ul.dropdown-menu.notifications
+                li.top
+                    p.small
+                        a.pull-right(href='#') Tandai semua telah dibaca
+                        |   Anda Memiliki&nbsp;
+                        strong 3
+                        |   Notifikasi
+                li
+                    ul.dropdown-menu-list.list-unstyled.ps-scrollbar
+                        li.active.notification-success
+                            a(href='#')
+                                i.fa-user
+                                span.line
+                                    strong New user registered
+                                span.line.small.time
+                                    |   3 Detik yang lalu
+                        li.active.notification-secondary
+                            a(href='#')
+                                i.fa-lock
+                                span.line
+                                    strong Privacy settings have been changed
+                                span.line.small.time
+                                    |   10 Menit Yang Lalu
+                        li.notification-primary
+                            a(href='#')
+                                i.fa-thumbs-up
+                                span.line
+                                    strong Someone special liked this
+                                span.line.small.time
+                                    |   Kyknya ga ada
+                        li.notification-danger
+                            a(href='#')
+                                i.fa-calendar
+                                span.line
+                                    |   Pembatalan Even
+                                span.line.small.time
+                                    |   10 Jam yang Lalu
+                        li.notification-info
+                            a(href='#')
+                                i.fa-database
+                                span.line
+                                    |   Status Server Stabil
+                                span.line.small.time
+                                    |   Kemarin Pada 10:30
+                        li.notification-warning
+                            a(href='#')
+                                i.fa-envelope-o
+                                span.line
+                                    |   Ada Komentar Baru
+                                span.line.small.time
+                                    |   Minggu Kemaren
+                li.external
+                    a(href='#')
+                        span Lihat Semua Notifikasi
+                        i.fa-link-ext
+    // Right links for user info navbar
+    ul.user-info-menu.right-links.list-inline.list-unstyled
+        li.search-form
+            // You can add "always-visible" to show make the search input visible
+            form(name='userinfo_search_form', method='get', action='extra-search.html')
+                input.form-control.search-field(type='text', name='s', placeholder='Type to search...')
+                button.btn.btn-link(type='submit')
+                    i.linecons-search
+        li.dropdown.user-profile
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+                span
+                    |   #{session.user.nama_gelar} 
+                    i.fa-angle-down
+            ul.dropdown-menu.user-profile-menu.list-unstyled
+                li
+                    a(href=adm_url+'artikel-tulis')
+                        i.fa-edit
+                        |   Buat Artikel Baru
+                li
+                    a(href=adm_url+'setting')
+                        i.fa-wrench
+                        |   Pengaturan
+                li
+                    a(href=adm_url+'setting-profile')
+                        i.fa-user
+                        |   Profil
+                li.last
+                    a(href=base_url+'logout')
+                        i.fa-lock
+                        |   Logout
+        li
+            a(href='#', data-toggle='chat')
+                i.fa-comments-o

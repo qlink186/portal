@@ -1,0 +1,41 @@
+.box
+    .box-body
+    - data = siaranpers
+        table.table.table-bordered.table-striped.table-hover
+            thead
+                tr: th(style="width:500px").text-center.middle-align Judul
+                    th.text-center.middle-align Penulis
+                    th.text-center.middle-align Tanggal Terbit
+                    //- th Tgl. Terbit
+                    th.text-center.middle-align Status
+            tbody
+            each val in data
+                if session.user.id_hakakses == 3
+                    if val.id_user == session.user.id_user
+                        tr: td
+                            a(href='./adm-siaranpers-detail/'+ val.id_siaranpers) #{val.judul}
+                            td.text-center.middle-align= ((val.gelar_depan)?val.gelar_depan:'') +' '+ val.penulis +' '+ ((val.gelar_belakang)?val.gelar_belakang:'')
+                            td.text-center.middle-align= val.tgl_post
+                            //- td= val.tgl_terbit
+                            td.text-center.middle-align
+                                if val.tayang_umum == 0
+                                    |   #[a(href='/adm-siaranpers-edit/'+val.id_siaranpers).btn.btn-xs.btn-success.tombol-table Edit]
+                                if session.user.id_hakakses == 0
+                                    |   #[a(href='/adm-siaranpers-delete/'+val.id_siaranpers).btn.btn-xs.btn-success.tombol-table Delete]
+                                    if val.tayang_umum == 0
+                                    //- |   #[a(href='/adm-siaranpers-terbitkan/'+val.id_siaranpers).btn.btn-xs.btn-success.tombol-table Terbitkan]
+                else
+                    tr: td
+                        a(href='./adm-siaranpers-detail/'+ val.id_siaranpers) #{val.judul}
+                        td.text-center.middle-align= ((val.gelar_depan)?val.gelar_depan:'') +' '+ val.penulis +' '+ ((val.gelar_belakang)?val.gelar_belakang:'')
+                        td.text-center.middle-align= val.tgl_post
+                        //- td= val.tgl_terbit
+                        td.text-center.middle-align
+                            if val.tayang_umum == 0
+                                |   #[a(href='/adm-siaranpers-edit/'+val.id_siaranpers).btn.btn-xs.btn-success.tombol-table Edit]
+                            if session.user.id_hakakses == 0
+                                |   #[a(href='/adm-siaranpers-delete/'+val.id_siaranpers).btn.btn-xs.btn-success.tombol-table Delete]
+                                if val.tayang_umum == 0
+                                //- |   #[a(href='/adm-siaranpers-terbitkan/'+val.id_siaranpers).btn.btn-xs.btn-success.tombol-table Terbitkan]
+    // /.box-body
+// /.box

@@ -1,0 +1,22 @@
+extends adm-layout/base
+block content
+    section.content-header
+        h1
+            |   Tulis
+            small Artikel / Berita
+        ol.breadcrumb
+            li
+                a(href='./adm')
+                    i.fa.fa-dashboard 
+                    |   Beranda
+            li
+                a(href='./adm-artikel') Artikel
+            li.active Tulis Artikel
+    // Main content
+    section.content
+        .row
+            .col-xs-12
+                include adm-modul/mod-artikel-tulis.pug
+            // /.col
+        // /.row
+    // /.content

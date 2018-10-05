@@ -1,0 +1,99 @@
+
+.page-title
+    .title-env
+        h1.title=title
+        p.description=desc
+    .breadcrumb-env
+        ol.breadcrumb.bc-1
+            li
+                a(href=base_url)
+                    i.fa-home
+                    |   Dahsboard
+            li
+                a(href=base_url+'adm-member') Member
+            li.active
+                strong=title
+.row
+    .col-md-12
+        .tabs-vertical-env
+            ul.nav.tabs-vertical
+                li
+                    a.btn.disabled(href='#')
+                        h4
+                            i.fa-users 
+                            |   DATA MEMBER
+                li.active
+                    a(href='#memberSemua', data-toggle='tab') Semua
+                        span.badge.badge-primary.pull-right 36
+                li
+                    a(href='#memberSuper', data-toggle='tab').suAdminStatus Super Admin
+                        span.badge.badge-red.pull-right 1
+                li
+                    a(href='#memberKepegawaian', data-toggle='tab').adminStatus Adm. Kepegawaian
+                        span.badge.badge-blue.pull-right 3
+                li
+                    a(href='#memberAdminPelaporan', data-toggle='tab').adminStatus Adm. Pelaporan Masy.
+                        span.badge.badge-blue.pull-right 2
+                li
+                    a(href='#memberOperatorPelaporan', data-toggle='tab').opStatus Op. Pelaporan Masy.
+                        span.badge.badge-orange.pull-right 46
+                li
+                    a(href='#memberEmail', data-toggle='tab').adminStatus Adm. Email
+                        span.badge.badge-blue.pull-right 2
+                li
+                    a(href='#memberAdminPpid', data-toggle='tab').adminStatus Adm. PPID
+                        span.badge.badge-blue.pull-right 2
+                li
+                    a(href='#memberOperatorPpid', data-toggle='tab').opStatus PPID Pembantu
+                        span.badge.badge-orange.pull-right 46
+                li
+                    a(href='#memberEditor', data-toggle='tab').editorStatus Editor
+                        span.badge.badge-turquoise.pull-right 3
+                li
+                    a(href='#memberAdminStatistik', data-toggle='tab').adminStatus Adm. Statistik
+                        span.badge.badge-blue.pull-right 2
+                li
+                    a(href='#memberOperatorStatistik', data-toggle='tab').opStatus Op. Statistik
+                        span.badge.badge-orange.pull-right 46
+                li
+                    a(href='#memberPeg', data-toggle='tab').memberPegStatus Member Pegawai
+                        span.badge.badge-grey.pull-right 100
+                li
+                    a(href='#memberBiasa', data-toggle='tab').memberBiasaStatus Member Biasa
+                        span.badge.badge-grey.pull-right 100
+            .tab-content
+                #memberSemua.tab-pane.active
+                    include mod-member-list-semua.pug
+                #memberSuper.tab-pane
+                    include mod-member-list-super-admin.pug
+                #memberKepegawaian.tab-pane
+                    h4
+                        |   Data User Admin Kepegawaian
+                #memberAdminPelaporan.tab-pane
+                    h4
+                        |   Data User Admin Pelaporan Masyarakat
+                #memberOperatorPelaporan.tab-pane
+                    include mod-member-list-aduan-op.pug
+                #memberEmail.tab-pane
+                    h4
+                        |   Data User Admin E-Mail
+                #memberAdminPpid.tab-pane
+                    h4
+                        |   Data User Admin PPID
+                #memberOperatorPpid.tab-pane
+                    h4
+                        |   Data User PPID Pembantu
+                #memberEditor.tab-pane
+                    include mod-member-list-editor.pug
+                #memberAdminStatistik.tab-pane
+                    h4
+                        |   Data User Admin Statistik Sektoral
+                #memberOperatorStatistik.tab-pane
+                    h4
+                        |   Data User Operator Statistik Sektoral
+                #memberPeg.tab-pane
+                    h4
+                        |   Data User Member Pegawai
+                #memberBiasa.tab-pane
+                    h4
+                        |   Data User Member Biasa

@@ -1,0 +1,58 @@
+.page-title
+    .title-env
+        h1.title=title
+        p.description=desc
+        ol.breadcrumb.bc-1
+            li
+                a(href=base_url)
+                    i.fa-home
+                    |   Dashboard
+            li
+                a(href=base_url+'adm-aduan') Aduan
+            li.active
+                strong=title
+.row
+    .col-md-12
+        ul.nav.nav-tabs.nav-tabs-justified
+            li.active
+                a(href='#semuaaduan', data-toggle='tab')
+                    i.fa-home &nbsp;
+                    span.hidden-xs
+                        |   Semua&nbsp;
+                    span.badge.badge-white 15
+            li
+                a(href='#draftaduan', data-toggle='tab')
+                    i.entypo-archive &nbsp;
+                    span.hidden-xs
+                        |   Draft&nbsp;
+                    span.badge.badge-grey 15
+            li
+                a(href='#penerusanaduan', data-toggle='tab') 
+                    i.entypo-forward &nbsp;
+                    span.hidden-xs
+                        |   Diteruskan&nbsp;
+                    span.badge.badge-blue 15
+            li
+                a(href='#ditanggapi', data-toggle='tab') 
+                    i.entypo-check &nbsp;
+                    span.hidden-xs
+                        |   Ditanggapi&nbsp;
+                    span.badge.badge-secondary 15
+            li
+                a(href='#dihapus', data-toggle='tab') 
+                    i.entypo-trash &nbsp;
+                    span.hidden-xs
+                        |   Dihapus&nbsp;
+                    span.badge.badge-red 15
+        .tab-content
+            #semuaaduan.tab-pane.active
+                include mod-aduan-semua.pug
+            #draftaduan.tab-pane
+                h3 Daftar Aduan
+            #penerusanaduan.tab-pane
+                h3 Penerusan Aduan
+            #ditanggapi.tab-pane
+                h3 Ditanggapi
+            #dihapus.tab-pane
+                h3 Dihapus
+include mod-aduan-modal.pug 

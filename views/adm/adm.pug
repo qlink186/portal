@@ -1,0 +1,56 @@
+extends adm-layout/base 
+block content 
+    // Content Header (Page header)
+    section.content-header
+        h1
+            small Control panel
+        ol.breadcrumb
+            li
+                a(href='./adm')
+                    i.fa.fa-dashboard
+                    |   Dahsboard
+    // Main content
+    section.content
+        include adm-modul/mod-status-dashboard.pug
+        .row
+        
+            //- // Left col
+            //- section.col-lg-7.connectedSortable
+
+            //-     include adm-modul/mod-quick-email.pug
+            //- // /.Left col
+            //- // right col (We are only adding the ID to make the widgets sortable)
+            //- section.col-lg-5.connectedSortable
+            
+                //- // Calendar
+                //- .box.box-solid.bg-green-gradient
+                //-     .box-header
+                //-         i.fa.fa-calendar
+                //-         h3.box-title Calendar
+                //-         // tools box
+                //-         .pull-right.box-tools
+                //-             // button with a dropdown
+                //-             .btn-group
+                //-                 button.btn.btn-success.btn-sm.dropdown-toggle(type='button', data-toggle='dropdown')
+                //-                     i.fa.fa-bars
+                //-                 ul.dropdown-menu.pull-right(role='menu')
+                //-                     li
+                //-                         a(href='#') Add new event
+                //-                     li
+                //-                         a(href='#') Clear events
+                //-                     li.divider
+                //-                     li
+                //-                         a(href='#') View calendar
+                //-             button.btn.btn-success.btn-sm(type='button', data-widget='collapse')
+                //-                 i.fa.fa-minus
+                //-             button.btn.btn-success.btn-sm(type='button', data-widget='remove')
+                //-                 i.fa.fa-times
+                //-         // /. tools
+                //-     // /.box-header
+                //-     .box-body.no-padding
+                //-         // The calendar
+                //-         #calendar(style='width: 100%')
+                //-     // /.box-body
+                    
+            // right col
+        // /.row (main row)

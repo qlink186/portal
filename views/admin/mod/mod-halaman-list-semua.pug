@@ -1,0 +1,507 @@
+.page-title
+    .title-env
+        h1.title=title
+        p.description=desc
+    .breadcrumb-env
+        ol.breadcrumb.bc-1
+            li
+                a(href=base_url)
+                    i.fa-home
+                    |   Dahsboard
+            li
+                a(href=base_url+menu) Halaman
+            li.active
+                strong=title
+.panel.panel-default
+    .panel-heading
+        h3.panel-title
+            i.entypo-flow-cascade 
+            |   Data 
+            strong
+                |   Seluruh Halaman
+    .panel-body
+        script(type='text/javascript').
+            jQuery(document).ready(function($)
+            {
+                $("#table-halaman-list-semua").dataTable(
+                    {
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                    dom: "<'row'<'col-sm-5'l><'col-sm-7'Tf>r>"+
+                            "t"+
+                            "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+                    tableTools: {
+                        sSwfPath: "#{base_url}adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                    },
+                    responsive: true,
+                    select: true
+                }).yadcf([
+                    {column_number : 0, filter_type: 'text'},
+                    {column_number : 1, filter_type: 'text'},
+                    {column_number : 2},
+                    {column_number : 3},
+                    {column_number : 4},
+                    {column_number : 5},
+                    {column_number : 6, filter_type: 'text'},
+                ]);
+            });
+        table#table-halaman-list-semua.table.table-hover.responsive
+            thead
+                tr
+                    th Gambar
+                    th.max250 Judul | Isi
+                    th Penulis
+                    th Tgl Tulis
+                    th Tgl Terbit / Hapus
+                    th Stat
+                    th Aksi
+            tbody
+                tr.dataDraft
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive.max200(src=base_url+'images/berita/small/0a84137e221bc4add674917744832f61.jpg')
+                    td
+                        p.lead.text-danger This is a lead parapraph.
+                        p
+                            |   Neglected
+                            strong principle ask rapturous
+                            |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                            del chatty regard vulgar
+                            |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                    td
+                        |   Aprinaldi
+                    td
+                        |   30 Desember 2017
+                    td
+                        |   1 Januari 2018
+                    td
+                        |   DRAFT
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                            i.entypo-trash
+                            span Hapus
+                tr.dataTerbit
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive.max200(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg')
+                    td
+                        p.lead This is a lead parapraph.
+                        .input-group.input-group-sm.input-block
+                            input#copasurl.form-control.no-right-border.form-focus-success(type='text', value='http://tanjungpinangkota.go.id/pages/'+menu, readonly='')
+                            span.input-group-btn
+                                button#salinLink.btn.btn-success(data-toggle='tooltip', data-placement='top', type='button') Salin URL
+                        p
+                            |   Neglected
+                            strong principle ask rapturous
+                            |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                            del chatty regard vulgar
+                            |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                    td
+                        |   Aprinaldi
+                    td
+                        |   12 Februari 2017
+                    td
+                        |   13 Maret 2018
+                    td
+                        |   TERBIT
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                            i.entypo-trash
+                            span Hapus
+                tr.dataTerbit
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive.max200(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg')
+                    td
+                        p.lead This is a lead parapraph.
+                        .input-group.input-group-sm.input-block
+                            input#copasurl.form-control.no-right-border.form-focus-success(type='text', value='http://tanjungpinangkota.go.id/pages/'+menu, readonly='')
+                            span.input-group-btn
+                                button#salinLink.btn.btn-success(data-toggle='tooltip', data-placement='top', type='button') Salin URL
+                        p
+                            |   Neglected
+                            strong principle ask rapturous
+                            |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                            del chatty regard vulgar
+                            |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                    td
+                        |   Aprinaldi
+                    td
+                        |   12 Februari 2017
+                    td
+                        |   13 Maret 2018
+                    td
+                        |   TERBIT
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                            i.entypo-trash
+                            span Hapus
+                tr.dataTerbit
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive.max200(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg')
+                    td
+                        p.lead This is a lead parapraph.
+                        .input-group.input-group-sm.input-block
+                            input#copasurl.form-control.no-right-border.form-focus-success(type='text', value='http://tanjungpinangkota.go.id/pages/'+menu, readonly='')
+                            span.input-group-btn
+                                button#salinLink.btn.btn-success(data-toggle='tooltip', data-placement='top', type='button') Salin URL
+                        p
+                            |   Neglected
+                            strong principle ask rapturous
+                            |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                            del chatty regard vulgar
+                            |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                    td
+                        |   Aprinaldi
+                    td
+                        |   12 Februari 2017
+                    td
+                        |   13 Maret 2018
+                    td
+                        |   TERBIT
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                            i.entypo-trash
+                            span Hapus
+                tr.dataTerbit
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive.max200(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg')
+                    td
+                        p.lead This is a lead parapraph.
+                        .input-group.input-group-sm.input-block
+                            input#copasurl.form-control.no-right-border.form-focus-success(type='text', value='http://tanjungpinangkota.go.id/pages/'+menu, readonly='')
+                            span.input-group-btn
+                                button#salinLink.btn.btn-success(data-toggle='tooltip', data-placement='top', type='button') Salin URL
+                        p
+                            |   Neglected
+                            strong principle ask rapturous
+                            |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                            del chatty regard vulgar
+                            |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                    td
+                        |   Aprinaldi
+                    td
+                        |   12 Februari 2017
+                    td
+                        |   13 Maret 2018
+                    td
+                        |   TERBIT
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                            i.entypo-trash
+                            span Hapus
+                tr.dataTerbit
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive.max200(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg')
+                    td
+                        p.lead This is a lead parapraph.
+                        .input-group.input-group-sm.input-block
+                            input#copasurl.form-control.no-right-border.form-focus-success(type='text', value='http://tanjungpinangkota.go.id/pages/'+menu, readonly='')
+                            span.input-group-btn
+                                button#salinLink.btn.btn-success(data-toggle='tooltip', data-placement='top', type='button') Salin URL
+                        p
+                            |   Neglected
+                            strong principle ask rapturous
+                            |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                            del chatty regard vulgar
+                            |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                    td
+                        |   Aprinaldi
+                    td
+                        |   12 Februari 2017
+                    td
+                        |   13 Maret 2018
+                    td
+                        |   TERBIT
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                            i.entypo-trash
+                            span Hapus
+                tr.dataTerbit
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive.max200(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg')
+                    td
+                        p.lead This is a lead parapraph.
+                        .input-group.input-group-sm.input-block
+                            input#copasurl.form-control.no-right-border.form-focus-success(type='text', value='http://tanjungpinangkota.go.id/pages/'+menu, readonly='')
+                            span.input-group-btn
+                                button#salinLink.btn.btn-success(data-toggle='tooltip', data-placement='top', type='button') Salin URL
+                        p
+                            |   Neglected
+                            strong principle ask rapturous
+                            |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                            del chatty regard vulgar
+                            |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                    td
+                        |   Aprinaldi
+                    td
+                        |   12 Februari 2017
+                    td
+                        |   13 Maret 2018
+                    td
+                        |   TERBIT
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                            i.entypo-trash
+                            span Hapus
+                tr.dataDraft
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive.max200(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg')
+                    td
+                        p.lead This is a lead parapraph.
+                        .input-group.input-group-sm.input-block
+                            input#copasurl.form-control.no-right-border.form-focus-success(type='text', value='http://tanjungpinangkota.go.id/pages/'+menu, readonly='')
+                            span.input-group-btn
+                                button#salinLink.btn.btn-success(data-toggle='tooltip', data-placement='top', type='button') Salin URL
+                        p
+                            |   Neglected
+                            strong principle ask rapturous
+                            |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                            del chatty regard vulgar
+                            |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                    td
+                        |   Aprinaldi
+                    td
+                        |   12 Februari 2017
+                    td
+                        |   13 Maret 2018
+                    td
+                        |   TERBIT
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                            i.entypo-trash
+                            span Hapus
+                tr.dataTerbit
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive.max200(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg')
+                    td
+                        p.lead This is a lead parapraph.
+                        .input-group.input-group-sm.input-block
+                            input#copasurl.form-control.no-right-border.form-focus-success(type='text', value='http://tanjungpinangkota.go.id/pages/'+menu, readonly='')
+                            span.input-group-btn
+                                button#salinLink.btn.btn-success(data-toggle='tooltip', data-placement='top', type='button') Salin URL
+                        p
+                            |   Neglected
+                            strong principle ask rapturous
+                            |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                            del chatty regard vulgar
+                            |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                    td
+                        |   Aprinaldi
+                    td
+                        |   12 Februari 2017
+                    td
+                        |   13 Maret 2018
+                    td
+                        |   TERBIT
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                            i.entypo-trash
+                            span Hapus
+                tr.dataDraft
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive.max200(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg')
+                    td
+                        p.lead This is a lead parapraph.
+                        .input-group.input-group-sm.input-block
+                            input#copasurl.form-control.no-right-border.form-focus-success(type='text', value='http://tanjungpinangkota.go.id/pages/'+menu, readonly='')
+                            span.input-group-btn
+                                button#salinLink.btn.btn-success(data-toggle='tooltip', data-placement='top', type='button') Salin URL
+                        p
+                            |   Neglected
+                            strong principle ask rapturous
+                            |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                            del chatty regard vulgar
+                            |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                    td
+                        |   Aprinaldi
+                    td
+                        |   12 Februari 2017
+                    td
+                        |   13 Maret 2018
+                    td
+                        |   TERBIT
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                            i.entypo-trash
+                            span Hapus
+                tr.dataTerbit
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive.max200(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg')
+                    td
+                        p.lead This is a lead parapraph.
+                        .input-group.input-group-sm.input-block
+                            input#copasurl.form-control.no-right-border.form-focus-success(type='text', value='http://tanjungpinangkota.go.id/pages/'+menu, readonly='')
+                            span.input-group-btn
+                                button#salinLink.btn.btn-success(data-toggle='tooltip', data-placement='top', type='button') Salin URL
+                        p
+                            |   Neglected
+                            strong principle ask rapturous
+                            |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                            del chatty regard vulgar
+                            |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                    td
+                        |   Aprinaldi
+                    td
+                        |   12 Februari 2017
+                    td
+                        |   13 Maret 2018
+                    td
+                        |   TERBIT
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                            i.entypo-trash
+                            span Hapus
+                tr.dataHapus
+                    td
+                        .album-image
+                            a.thumb(href='#', data-action='edit')
+                                img.img-responsive.max200(src=base_url+'images/berita/small/0b018c031a8c54d804b23b1660001326.jpg')
+                    td
+                        p.lead This is a lead parapraph.
+                        p
+                            |   Neglected
+                            strong principle ask rapturous
+                            |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                            del chatty regard vulgar
+                            |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                    td
+                        |   Aprinaldi
+                    td
+                        |   30 Desember 2017
+                    td
+                        |   1 Januari 2018
+                    td
+                        |   HAPUS
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmTerbitkan').modal('show', {backdrop: 'fade'});")
+                            i.entypo-check
+                            span Terbitkan
+                        button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmDraft').modal('show', {backdrop: 'fade'});")
+                            i.entypo-archive
+                            span Draft
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button', href='javascript:;', onclick="jQuery('#konfirmHapus').modal('show', {backdrop: 'fade'});")
+                            i.entypo-trash
+                            span Hapus
+include mod-modal-halaman.pug
+include mod-notifikasi-toastr.pug

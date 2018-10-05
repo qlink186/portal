@@ -1,0 +1,34 @@
+#konfirmTambahKategori.modal.fade
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                h4.modal-title Apakah Anda yakin 
+                    strong Menambah 
+                    |   Kategori ini?
+            .modal-body
+                h3.text-center This is a lead parapraph.
+            .modal-footer
+                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-sm(type='button', data-dismiss='modal') 
+                    i.el-cancel
+                    span BATAL
+                button#tombolKonfirmTambahKategori.btn.btn-success.btn-icon.btn-icon-standalone.btn-sm(type='button')
+                    i.entypo-plus-squared
+                    span TAMBAH KATEGORI
+#konfirmHapusKategori.modal.fade
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type='button', data-dismiss='modal', aria-hidden='true') &times;
+                h4.modal-title Apakah Anda yakin 
+                    strong menghapus 
+                    |   Kategori ini?
+            .modal-body
+                h3.text-center This is a lead parapraph.
+            .modal-footer
+                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-sm(type='button', data-dismiss='modal') 
+                    i.el-cancel
+                    span BATAL
+                button#tombolKonfirmHapusKategori.btn.btn-danger.btn-icon.btn-icon-standalone.btn-sm(type='button')
+                    i.entypo-trash
+                    span HAPUS KATEGORI

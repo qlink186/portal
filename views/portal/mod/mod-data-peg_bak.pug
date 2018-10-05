@@ -1,0 +1,781 @@
+.white-wrapper
+    .container
+        .row
+            .col-sm-12
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#table-peg").dataTable(
+                            {
+                            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                            dom: "<'row'<'col-md-5 col-xs-12'l><'col-md-7 col-xs-12 hidden-xs'Tf>r>"+
+                                    "t"+
+                                    "<'row'<'col-md-6 col-xs-12'i><'col-md-6 col-xs-12'p>>",
+                            tableTools: {
+                                sSwfPath: "#{base_url}adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                            },
+                            "processing":true,
+                            select: true
+                        }).yadcf([
+                            {column_number : 0, filter_type: 'text'},
+                            {column_number : 1, filter_type: 'text'},
+                            {column_number : 2},
+                            {column_number : 3},
+                            {column_number : 4},
+                            {column_number : 5, filter_type: 'text'},
+                            {column_number : 6}
+                        ]);
+                    });
+                table#table-peg.table.table-hover.table-responsive
+                    thead
+                        tr
+                            th.text-center(width='55px').hidden-xs Foto
+                            th.text-center(width='350px') Data Pegawai
+                            th.text-center.hidden-xs Unit Kerja
+                            th.text-center.hidden-xs Jabatan
+                            th.text-center.hidden-xs Stat
+                            th.text-center.hidden-xs Tgl. Lahir
+                            th.text-center.hidden-xs Gol. Darah
+                    tbody
+                        for datapeg, index in peg
+                            - var sess = session.is_login
+                            - var pegAlamat = datapeg.alamat
+                            - var pegAlamatLengkap = datapeg.alamat+', RT '+datapeg.alamat_rt+', RW '+datapeg.alamat_rw+', Kel. '+datapeg.kel+', Kec. '+datapeg.kec+', '+datapeg.kotakab+', Kepulauan Riau - '+datapeg.kode_pos
+                            - var pegGolRuang = datapeg.gol_ruang
+                            - var pegGolDarah = datapeg.gol_darah
+                            - var pegPonsel1 = datapeg.ponsel1
+                            - var pegPonsel2 = datapeg.ponsel2
+                            - var pegEmail1 = datapeg.email1
+                            - var pegEmail2 = datapeg.email2
+                            - var pegFB = datapeg.facebook
+                            - var pegTw = datapeg.twitter
+                            - var pegTelegram = datapeg.telegram
+                            - var pegTentang = datapeg.tentang_peg
+                            - var pegTampilAlamat = datapeg.tampil_alamat
+                            - var pegTampilPonsel1 = datapeg.tampil_ponsel1
+                            - var pegTampilPonsel2 = datapeg.tampil_ponsel2
+                            - var pegTampilEmail1 = datapeg.tampil_email1
+                            - var pegTampilEmail2 = datapeg.tampil_email2
+                            - var ceknull = true
+                            - var cekkosong = 0
+                            #sess
+                                if sess
+                                    tr
+                                        td.hidden-xs
+                                            .album-image
+                                                a.thumb(href='#')
+                                                    img.img-responsive.center-block(width='74', height='74', src=base_url+'images/pegawai/small/'+datapeg.foto_peg+'.jpg', alt=datapeg.nama_gelar)
+                                        td
+                                            table.table.table-condensed.hidden-xs
+                                                tbody
+                                                    tr
+                                                        td(width='80px')
+                                                            |   Nama
+                                                        td
+                                                            |    : 
+                                                        td
+                                                            strong=datapeg.nama_gelar
+                                                    tr
+                                                        td=datapeg.ket_nip
+                                                        td
+                                                            |    : 
+                                                        td=datapeg.nip
+                                                    #pegGolRuang
+                                                        if pegGolRuang=='-'
+                                                        else if pegGolRuang
+                                                            tr
+                                                                td
+                                                                    |   Gol. Ruang
+                                                                td
+                                                                    |    : 
+                                                                td
+                                                                    |   #{datapeg.gol}, #{datapeg.ruang}
+                                                        else
+                                                    tr
+                                                        td(colspan='3')
+                                                            .panel-collapse.collapse(id=datapeg.id_peg)
+                                                                table.table.table-condensed.hidden-xs
+                                                                    tr
+                                                                        td
+                                                                            |   Ket. Jabatan
+                                                                        td
+                                                                            |    : 
+                                                                        td=datapeg.ket_jabatan
+                                                                    tr
+                                                                        td(width='80px')
+                                                                            |   Jenis Kelamin
+                                                                        td
+                                                                            |    : 
+                                                                        td=datapeg.jk
+                                                                    tr
+                                                                        td
+                                                                            |   Agama
+                                                                        td
+                                                                            |    : 
+                                                                        td=datapeg.agama
+                                                                    #pegAlamat
+                                                                        if pegAlamat
+                                                                            tr
+                                                                                td
+                                                                                    |   Alamat
+                                                                                td
+                                                                                    |    : 
+                                                                                td=pegAlamatLengkap
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegPonsel1
+                                                                        if pegPonsel1
+                                                                            tr
+                                                                                td
+                                                                                    |   Ponsel 1
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href='tel:'+pegPonsel1)=pegPonsel1
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegPonsel2
+                                                                        if pegPonsel2
+                                                                            tr
+                                                                                td
+                                                                                    |   Ponsel 2
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href='tel:'+pegPonsel2)=pegPonsel2
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegEmail1
+                                                                        if pegEmail1
+                                                                            tr
+                                                                                td
+                                                                                    |   Email 1
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href='mailto:'+pegEmail1, target='_top')=pegEmail1
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegEmail2
+                                                                        if pegEmail2
+                                                                            tr
+                                                                                td
+                                                                                    |   Email 2
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href='mailto:'+pegEmail2, target='_top')=pegEmail2
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegFB
+                                                                        if pegFB
+                                                                            tr
+                                                                                td
+                                                                                    |   Akun FB
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href=pegFB, target='_BLANK')=pegFB
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegTw
+                                                                        if pegTw
+                                                                            tr
+                                                                                td
+                                                                                    |   Akun Twitter
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href=pegTw, target='_BLANK')=pegTw
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegTelegram
+                                                                        if pegTelegram
+                                                                            tr
+                                                                                td
+                                                                                    |   Akun Telegram
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href=pegTelegram, target='_BLANK')=pegTelegram
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegTentang
+                                                                        if pegTentang
+                                                                            tr
+                                                                                td(colspan='3')
+                                                                                    blockquote
+                                                                                        |   "#{pegTentang}"
+                                                                        else if ceknull
+                                                                        else
+                                                            button(data-toggle='collapse', href='#'+datapeg.id_peg).btn.btn-icon.btn-icon-standalone.btn-xs.btn-primary
+                                                                i.fa-eye
+                                                                span Selengkapnya 
+                                            table.table.table-condensed.visible-xs
+                                                tbody
+                                                    tr
+                                                        td(colspan='3')
+                                                            img.img-responsive.visible-xs.center-block.text-center(width='100%', src=base_url+'images/pegawai/big/'+datapeg.foto_peg+'.jpg', alt='User Image')
+                                                    tr
+                                                        td(colspan='3').text-center
+                                                            p.lead(style='font-size:16px;')=datapeg.nama_gelar
+                                                            #pegTentang
+                                                                if pegTentang
+                                                                    blockquote
+                                                                        |   "#{pegTentang}"
+                                                                else if ceknull
+                                                                else
+                                                    tr
+                                                        td(width='100px')=datapeg.ket_nip
+                                                        td
+                                                            |    : 
+                                                        td=datapeg.nip
+                                                    #pegGolRuang
+                                                        if pegGolRuang=='-'
+                                                        else if pegGolRuang
+                                                            tr
+                                                                td
+                                                                    |   Gol. Ruang
+                                                                td
+                                                                    |    : 
+                                                                td
+                                                                    |   #{datapeg.gol}, #{datapeg.ruang}
+                                                        else
+                                                    tr
+                                                        td
+                                                            |   Unit Kerja
+                                                        td
+                                                            |    : 
+                                                        td
+                                                            |   #{datapeg.nama_opd} (#{datapeg.akronim_opd})
+                                                    tr
+                                                        td
+                                                            |   Jabatan
+                                                        td
+                                                            |    : 
+                                                        td=datapeg.jabatan
+                                                    tr
+                                                        td
+                                                            |   Ket. Jabatan
+                                                        td
+                                                            |    : 
+                                                        td=datapeg.ket_jabatan
+                                                    tr
+                                                        td(colspan='3')
+                                                            .panel-collapse.collapse(id=datapeg.id_peg+'small')
+                                                                table.table.table-condensed.visible-xs
+                                                                    tr
+                                                                        td(width='100px')
+                                                                            |   Status Kepegawaian
+                                                                        td
+                                                                            |    : 
+                                                                        td=datapeg.status_peg_panjang
+                                                                    tr
+                                                                        td
+                                                                            |   Tempat, Tanggal Lahir
+                                                                        td
+                                                                            |    : 
+                                                                        td
+                                                                            |   #{datapeg.tmp_lahir}, #{datapeg.tgl_lahir}
+                                                                    tr
+                                                                        td
+                                                                            |   Jenis Kelamin
+                                                                        td
+                                                                            |    : 
+                                                                        td=datapeg.jk
+                                                                    tr
+                                                                        td
+                                                                            |   Agama
+                                                                        td
+                                                                            |    : 
+                                                                        td=datapeg.agama
+                                                                    #pegGolDarah
+                                                                        if pegGolDarah
+                                                                            tr
+                                                                                td
+                                                                                    |   Golongan Darah
+                                                                                td
+                                                                                    |    : 
+                                                                                td=pegGolDarah
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegAlamat
+                                                                        if pegAlamat
+                                                                            tr
+                                                                                td
+                                                                                    |   Alamat
+                                                                                td
+                                                                                    |    : 
+                                                                                td=pegAlamatLengkap
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegPonsel1
+                                                                        if pegPonsel1
+                                                                            tr
+                                                                                td
+                                                                                    |   Ponsel 1
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href='tel:'+pegPonsel1)=pegPonsel1
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegPonsel2
+                                                                        if pegPonsel2
+                                                                            tr
+                                                                                td
+                                                                                    |   Ponsel 2
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href='tel:'+pegPonsel2)=pegPonsel2
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegEmail1
+                                                                        if pegEmail1
+                                                                            tr
+                                                                                td
+                                                                                    |   Email 1
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href='mailto:'+pegEmail1, target='_top')=pegEmail1
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegEmail2
+                                                                        if pegEmail2
+                                                                            tr
+                                                                                td
+                                                                                    |   Email 2
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href='mailto:'+pegEmail2, target='_top')=pegEmail2
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegFB
+                                                                        if pegFB
+                                                                            tr
+                                                                                td
+                                                                                    |   Akun FB
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href=pegFB, target='_BLANK')=pegFB
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegTw
+                                                                        if pegTw
+                                                                            tr
+                                                                                td
+                                                                                    |   Akun Twitter
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href=pegTw, target='_BLANK')=pegTw
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegTelegram
+                                                                        if pegTelegram
+                                                                            tr
+                                                                                td
+                                                                                    |   Akun Telegram
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href=pegTelegram, target='_BLANK')=pegTelegram
+                                                                        else if ceknull
+                                                                        else
+                                                            button(data-toggle='collapse', href='#'+datapeg.id_peg+'small').btn.btn-icon.btn-icon-standalone.btn-md.btn-primary.btn-block
+                                                                i.fa-eye
+                                                                span Selengkapnya
+                                        td.hidden-xs=datapeg.nama_opd
+                                        td.hidden-xs=datapeg.jabatan
+                                        td.text-center.hidden-xs=datapeg.status_peg
+                                        td.text-center.hidden-xs=datapeg.tgl_lahir
+                                        #pegGolDarah
+                                            if pegGolDarah
+                                                td.hidden-xs.text-center=pegGolDarah
+                                            else if ceknull
+                                                td.hidden-xs.text-center -
+                                            else
+                                else 
+                                    tr
+                                        td.hidden-xs
+                                            .album-image
+                                                a.thumb(href='#')
+                                                    img.img-responsive.center-block(width='74', height='74', src=base_url+'images/pegawai/small/'+datapeg.foto_peg+'.jpg', alt=datapeg.nama_gelar)
+                                        td
+                                            table.table.table-condensed.hidden-xs
+                                                tbody
+                                                    tr
+                                                        td(width='80px')
+                                                            |   Nama
+                                                        td
+                                                            |    : 
+                                                        td
+                                                            strong=datapeg.nama_gelar
+                                                    tr
+                                                        td=datapeg.ket_nip
+                                                        td
+                                                            |    : 
+                                                        td=datapeg.nip
+                                                    #pegGolRuang
+                                                        if pegGolRuang=='-'
+                                                        else if pegGolRuang
+                                                            tr
+                                                                td
+                                                                    |   Gol. Ruang
+                                                                td
+                                                                    |    : 
+                                                                td
+                                                                    |   #{datapeg.gol}, #{datapeg.ruang}
+                                                        else
+                                                    tr
+                                                        td(colspan='3')
+                                                            .panel-collapse.collapse(id=datapeg.id_peg)
+                                                                table.table.table-condensed.hidden-xs
+                                                                    tr
+                                                                        td
+                                                                            |   Ket. Jabatan
+                                                                        td
+                                                                            |    : 
+                                                                        td=datapeg.ket_jabatan
+                                                                    tr
+                                                                        td(width='80px')
+                                                                            |   Jenis Kelamin
+                                                                        td
+                                                                            |    : 
+                                                                        td=datapeg.jk
+                                                                    tr
+                                                                        td
+                                                                            |   Agama
+                                                                        td
+                                                                            |    : 
+                                                                        td=datapeg.agama
+                                                                    #pegTampilAlamat
+                                                                        if pegTampilAlamat
+                                                                            #pegAlamat
+                                                                                if pegAlamat
+                                                                                    tr
+                                                                                        td
+                                                                                            |   Alamat
+                                                                                        td
+                                                                                            |    : 
+                                                                                        td=pegAlamatLengkap
+                                                                                else if ceknull
+                                                                                else
+                                                                        else if cekkosong
+                                                                        else
+                                                                    #pegTampilPonsel1
+                                                                        if pegTampilPonsel1
+                                                                            #pegPonsel1
+                                                                                if pegPonsel1
+                                                                                    tr
+                                                                                        td
+                                                                                            |   Ponsel 1
+                                                                                        td
+                                                                                            |    : 
+                                                                                        td
+                                                                                            a(href='tel:'+pegPonsel1)=pegPonsel1
+                                                                                else if ceknull
+                                                                                else
+                                                                        else if cekkosong
+                                                                        else
+                                                                    #pegTampilPonsel2
+                                                                        if pegTampilPonsel2
+                                                                            #pegPonsel2
+                                                                                if pegPonsel2
+                                                                                    tr
+                                                                                        td
+                                                                                            |   Ponsel 2
+                                                                                        td
+                                                                                            |    : 
+                                                                                        td
+                                                                                            a(href='tel:'+pegPonsel2)=pegPonsel2
+                                                                                else if ceknull
+                                                                                else
+                                                                        else if cekkosong
+                                                                        else
+                                                                    #pegTampilEmail1
+                                                                        if pegTampilEmail1
+                                                                            #pegEmail1
+                                                                                if pegEmail1
+                                                                                    tr
+                                                                                        td
+                                                                                            |   Email 1
+                                                                                        td
+                                                                                            |    : 
+                                                                                        td
+                                                                                            a(href='mailto:'+pegEmail1, target='_top')=pegEmail1
+                                                                                else if ceknull
+                                                                                else
+                                                                        else if cekkosong
+                                                                        else
+                                                                    #pegTampilEmail2
+                                                                        if pegTampilEmail2
+                                                                            #pegEmail2
+                                                                                if pegEmail2
+                                                                                    tr
+                                                                                        td
+                                                                                            |   Email 2
+                                                                                        td
+                                                                                            |    : 
+                                                                                        td
+                                                                                            a(href='mailto:'+pegEmail2, target='_top')=pegEmail2
+                                                                                else if ceknull
+                                                                                else
+                                                                        else if cekkosong
+                                                                        else
+                                                                    #pegFB
+                                                                        if pegFB
+                                                                            tr
+                                                                                td
+                                                                                    |   Akun FB
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href=pegFB, target='_BLANK')=pegFB
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegTw
+                                                                        if pegTw
+                                                                            tr
+                                                                                td
+                                                                                    |   Akun Twitter
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href=pegTw, target='_BLANK')=pegTw
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegTelegram
+                                                                        if pegTelegram
+                                                                            tr
+                                                                                td
+                                                                                    |   Akun Telegram
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href=pegTelegram, target='_BLANK')=pegTelegram
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegTentang
+                                                                        if pegTentang
+                                                                            tr
+                                                                                td(colspan='3')
+                                                                                    blockquote
+                                                                                        |   "#{pegTentang}"
+                                                                        else if ceknull
+                                                                        else
+                                                            button(data-toggle='collapse', href='#'+datapeg.id_peg).btn.btn-icon.btn-icon-standalone.btn-xs.btn-primary
+                                                                i.fa-eye
+                                                                span Selengkapnya 
+                                            table.table.table-condensed.visible-xs
+                                                tbody
+                                                    tr
+                                                        td(colspan='3')
+                                                            img.img-responsive.visible-xs.center-block.text-center(width='100%', src=base_url+'images/pegawai/big/'+datapeg.foto_peg+'.jpg', alt='User Image')
+                                                    tr
+                                                        td(colspan='3').text-center
+                                                            p.lead(style='font-size:16px;')=datapeg.nama_gelar
+                                                            #pegTentang
+                                                                if pegTentang
+                                                                    blockquote
+                                                                        |   "#{pegTentang}"
+                                                                else if ceknull
+                                                                else
+                                                    tr
+                                                        td(width='100px')=datapeg.ket_nip
+                                                        td
+                                                            |    : 
+                                                        td=datapeg.nip
+                                                    #pegGolRuang
+                                                        if pegGolRuang=='-'
+                                                        else if pegGolRuang
+                                                            tr
+                                                                td
+                                                                    |   Gol. Ruang
+                                                                td
+                                                                    |    : 
+                                                                td
+                                                                    |   #{datapeg.gol}, #{datapeg.ruang}
+                                                        else
+                                                    tr
+                                                        td
+                                                            |   Unit Kerja
+                                                        td
+                                                            |    : 
+                                                        td
+                                                            |   #{datapeg.nama_opd} (#{datapeg.akronim_opd})
+                                                    tr
+                                                        td
+                                                            |   Jabatan
+                                                        td
+                                                            |    : 
+                                                        td=datapeg.jabatan
+                                                    tr
+                                                        td
+                                                            |   Ket. Jabatan
+                                                        td
+                                                            |    : 
+                                                        td=datapeg.ket_jabatan
+                                                    tr
+                                                        td(colspan='3')
+                                                            .panel-collapse.collapse(id=datapeg.id_peg+'small')
+                                                                table.table.table-condensed.visible-xs
+                                                                    tr
+                                                                        td(width='100px')
+                                                                            |   Status Kepegawaian
+                                                                        td
+                                                                            |    : 
+                                                                        td=datapeg.status_peg_panjang
+                                                                    tr
+                                                                        td
+                                                                            |   Tempat, Tanggal Lahir
+                                                                        td
+                                                                            |    : 
+                                                                        td
+                                                                            |   #{datapeg.tmp_lahir}, #{datapeg.tgl_lahir}
+                                                                    tr
+                                                                        td
+                                                                            |   Jenis Kelamin
+                                                                        td
+                                                                            |    : 
+                                                                        td=datapeg.jk
+                                                                    tr
+                                                                        td
+                                                                            |   Agama
+                                                                        td
+                                                                            |    : 
+                                                                        td=datapeg.agama
+                                                                    #pegGolDarah
+                                                                        if pegGolDarah
+                                                                            tr
+                                                                                td
+                                                                                    |   Golongan Darah
+                                                                                td
+                                                                                    |    : 
+                                                                                td=pegGolDarah
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegTampilAlamat
+                                                                        if pegTampilAlamat
+                                                                            #pegAlamat
+                                                                                if pegAlamat
+                                                                                    tr
+                                                                                        td
+                                                                                            |   Alamat
+                                                                                        td
+                                                                                            |    : 
+                                                                                        td=pegAlamatLengkap
+                                                                                else if ceknull
+                                                                                else
+                                                                        else if cekkosong
+                                                                        else
+                                                                    #pegTampilPonsel1
+                                                                        if pegTampilPonsel1
+                                                                            #pegPonsel1
+                                                                                if pegPonsel1
+                                                                                    tr
+                                                                                        td
+                                                                                            |   Ponsel 1
+                                                                                        td
+                                                                                            |    : 
+                                                                                        td
+                                                                                            a(href='tel:'+pegPonsel1)=pegPonsel1
+                                                                                else if ceknull
+                                                                                else
+                                                                        else if cekkosong
+                                                                        else
+                                                                    #pegTampilPonsel2
+                                                                        if pegTampilPonsel2
+                                                                            #pegPonsel2
+                                                                                if pegPonsel2
+                                                                                    tr
+                                                                                        td
+                                                                                            |   Ponsel 2
+                                                                                        td
+                                                                                            |    : 
+                                                                                        td
+                                                                                            a(href='tel:'+pegPonsel2)=pegPonsel2
+                                                                                else if ceknull
+                                                                                else
+                                                                        else if cekkosong
+                                                                        else
+                                                                    #pegTampilEmail1
+                                                                        if pegTampilEmail1
+                                                                            #pegEmail1
+                                                                                if pegEmail1
+                                                                                    tr
+                                                                                        td
+                                                                                            |   Email 1
+                                                                                        td
+                                                                                            |    : 
+                                                                                        td
+                                                                                            a(href='mailto:'+pegEmail1, target='_top')=pegEmail1
+                                                                                else if ceknull
+                                                                                else
+                                                                        else if cekkosong
+                                                                        else
+                                                                    #pegTampilEmail2
+                                                                        if pegTampilEmail2
+                                                                            #pegEmail2
+                                                                                if pegEmail2
+                                                                                    tr
+                                                                                        td
+                                                                                            |   Email 2
+                                                                                        td
+                                                                                            |    : 
+                                                                                        td
+                                                                                            a(href='mailto:'+pegEmail2, target='_top')=pegEmail2
+                                                                                else if ceknull
+                                                                                else
+                                                                        else if cekkosong
+                                                                        else
+                                                                    #pegFB
+                                                                        if pegFB
+                                                                            tr
+                                                                                td
+                                                                                    |   Akun FB
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href=pegFB, target='_BLANK')=pegFB
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegTw
+                                                                        if pegTw
+                                                                            tr
+                                                                                td
+                                                                                    |   Akun Twitter
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href=pegTw, target='_BLANK')=pegTw
+                                                                        else if ceknull
+                                                                        else
+                                                                    #pegTelegram
+                                                                        if pegTelegram
+                                                                            tr
+                                                                                td
+                                                                                    |   Akun Telegram
+                                                                                td
+                                                                                    |    : 
+                                                                                td
+                                                                                    a(href=pegTelegram, target='_BLANK')=pegTelegram
+                                                                        else if ceknull
+                                                                        else
+                                                            button(data-toggle='collapse', href='#'+datapeg.id_peg+'small').btn.btn-icon.btn-icon-standalone.btn-md.btn-primary.btn-block
+                                                                i.fa-eye
+                                                                span Selengkapnya
+                                        td.hidden-xs=datapeg.nama_opd
+                                        td.hidden-xs=datapeg.jabatan
+                                        td.text-center.hidden-xs=datapeg.status_peg
+                                        td.text-center.hidden-xs=datapeg.tgl_lahir
+                                        #pegGolDarah
+                                            if pegGolDarah
+                                                td.hidden-xs.text-center=pegGolDarah
+                                            else if ceknull
+                                                td.hidden-xs.text-center -
+                                            else

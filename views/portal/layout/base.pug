@@ -1,0 +1,29 @@
+doctype html
+html(lang='id')
+    head
+        include header.pug
+        title= title
+    body.page-body(data-url='http://tanjungpinangkota.go.id')
+        include navbar2.pug
+        .page-container
+            block content
+            //.container
+                .main-wrapper
+                    include mod-kontak-penting-home
+            .white-wrapper(class=(menu === 'gallery' ? 'hidden' : ''))
+                .container
+                    include ../mod/mod-gallery-home
+            .container
+                .main-wrapper
+                    include ../mod/mod-ppid-callout
+            .white-wrapper
+                .container
+                    include ../mod/mod-link-home
+            .container(class=(menu === 'pages/aksidaerah' ? 'hidden' : ''))
+                .main-wrapper
+                    include ../mod/mod-rencana-aksi-ppk
+            include footer
+            //include ../mod/mod-backtop
+            //include chat
+        //include chat-sticky
+        include js

@@ -1,0 +1,27 @@
+.box
+    .box-body
+    - data = artikel_list
+        table.table.table-bordered.table-striped.table-hover
+            thead
+                tr: th(style="width:500px").text-center.middle-align Judul Slideshow
+                    th(style="width:400px").text-center.middle-align Slideshow                
+                    th.text-center.middle-align Tgl. Terbit
+            tbody
+            each val in data
+                if session.user.id_hakakses == 3
+                    if val.id_user == session.user.id_user
+                        tr: td
+                            a(href='#'+ val.id_berita) #{val.judul_berita}
+                            td.a(src='/images/gallery/small/'+ val.gambar)
+                            //- td.text-center.middle-align= val.gambar
+                            td.text-center.middle-align= ((val.gelar_depan)?val.gelar_depan:'') +' '+ val.penulis +' '+ ((val.gelar_belakang)?val.gelar_belakang:'')
+                            td.text-center.middle-align= val.tgl_post
+                else
+                    tr: td
+                        a(href='#'+ val.id_berita) #{val.judul_berita}
+                        td.a(src='/images/gallery/small/'+ val.gambar)
+                        //- td.img.img-responsive(src='/images/gallery/small/'+val.gambar)
+                        //- td.text-center.middle-align= val.gambar
+                        td.text-center.middle-align= val.tgl_post
+    // /.box-body
+// /.box

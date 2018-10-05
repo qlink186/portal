@@ -1,0 +1,131 @@
+.panel.panel-default
+    .panel-heading
+        h3.panel-title
+            i.el-address-book
+            |   Data 
+            strong Kontak
+    .panel-body
+        form.form-horizontal.validate(role='form', method='post')
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKontakPhone1') Ponsel 1*
+                .col-sm-4
+                    .input-group.input-group-minimal
+                        span.input-group-addon
+                            i.fa-phone
+                        input#isianProfilKontakPhone1.form-control(type='text', data-mask='(+62) 999-9999-9999',name='dataPhone1', data-validate='required', data-message-required='Ponsel 1 Wajib Diisi', placeholder='(+62) 852-1234-5678')
+                    em.small Contoh Penulisan Nomor Ponsel (+62) 812-3456-7890
+                .col-sm-6
+                    label.radio-inline
+                        input.cbr.cbr-secondary(type='radio', name='tampilPonsel1', checked='')
+                        |   Tampilkan Untuk Umum
+                    label.radio-inline
+                        input.cbr.cbr-pink(type='radio', name='tampilPonsel1')
+                        |   Hanya Member
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKontakPhone2') Ponsel 2
+                .col-sm-4
+                    .input-group.input-group-minimal
+                        span.input-group-addon
+                            i.fa-phone
+                        input#isianProfilKontakPhone2.form-control(type='text', data-mask='(+62) 999-9999-9999', name='dataPhone2', placeholder='(+62) 852-1234-5678')
+                    em.small Contoh Penulisan Nomor Ponsel (+62) 812-3456-7890 
+                .col-sm-6
+                    label.radio-inline
+                        input.cbr.cbr-secondary(type='radio', name='tampilPonsel2', checked='')
+                        |   Tampilkan Untuk Umum
+                    label.radio-inline
+                        input.cbr.cbr-pink(type='radio', name='tampilPonsel2')
+                        |   Hanya Member
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKontakEmail1') Email 1*
+                .col-sm-4
+                    .input-group.input-group-minimal
+                        span.input-group-addon
+                            i.fa-at
+                        input#isianProfilKontakEmail1.form-control(type='text', data-mask='email', name='dataEmail1', data-validate='required', data-message-required='Email Wajib diisi', placeholder='email1@gmail.com')
+                    em.small Email Pribadi
+                .col-sm-6
+                    label.radio-inline
+                        input.cbr.cbr-secondary(type='radio', name='tampilEmail1', checked='')
+                        |   Tampilkan Untuk Umum
+                    label.radio-inline
+                        input.cbr.cbr-pink(type='radio', name='tampilEmail1')
+                        |   Hanya Member
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKontakEmail2') Email 2
+                .col-sm-4
+                    .input-group.input-group-minimal
+                        span.input-group-addon
+                            i.fa-at
+                        input#isianProfilKontakEmail2.form-control(type='text', data-mask='email', name='dataEmail2', placeholder='nama_lengkap@tanjungpinangkota.go.id')
+                    em.small Email 2 adalah email dengan subdomain @tanjungpinangkota.go.id 
+                .col-sm-6
+                    label.radio-inline
+                        input.cbr.cbr-secondary(type='radio', name='tampilEmail2', checked='')
+                        |   Tampilkan Untuk Umum
+                    label.radio-inline
+                        input.cbr.cbr-pink(type='radio', name='tampilEmail2')
+                        |   Hanya Member
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKontakTwitter') Twitter
+                .col-sm-4
+                    .input-group.input-group-minimal
+                        span.input-group-addon
+                            i.fa-twitter
+                        input#isianProfilKontakTwitter.form-control(type='text', name='dataTwitter', placeholder='@akun_Twitter')
+                    em.small Akun Twitter
+                .col-sm-6
+                    label.radio-inline
+                        input.cbr.cbr-secondary(type='radio', name='tampilTwitter', checked='')
+                        |   Tampilkan Untuk Umum
+                    label.radio-inline
+                        input.cbr.cbr-pink(type='radio', name='tampilTwitter')
+                        |   Hanya Member
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKontakFacebook') Facebook
+                .col-sm-4
+                    .input-group.input-group-minimal
+                        span.input-group-addon
+                            i.fa-facebook
+                        input#isianProfilKontakFacebook.form-control(type='text', name='dataFacebook', placeholder='/akun_facebook')
+                    em.small Akun Facebook
+                .col-sm-6
+                    label.radio-inline
+                        input.cbr.cbr-secondary(type='radio', name='tampilFacebook', checked='')
+                        |   Tampilkan Untuk Umum
+                    label.radio-inline
+                        input.cbr.cbr-pink(type='radio', name='tampilFacebook')
+                        |   Hanya Member
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKontakTelegram') Telegram
+                .col-sm-4
+                    .input-group.input-group-minimal
+                        span.input-group-addon
+                            i.fa-facebook
+                        input#isianProfilKontakTelegram.form-control(type='text', name='dataTelegram', placeholder='@akun_telegram')
+                    em.small Akun Telegram
+                .col-sm-6
+                    label.radio-inline
+                        input.cbr.cbr-secondary(type='radio', name='tampilTelegram', checked='')
+                        |   Tampilkan Untuk Umum
+                    label.radio-inline
+                        input.cbr.cbr-pink(type='radio', name='tampilTelegram')
+                        |   Hanya Member
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKontakTentang') Tentang anda / Motto
+                .col-sm-10
+                    textarea#isianProfilKontakTentang.form-control.autogrow(name='dataKontangTentang', data-validate='required', data-message-required='Tentang anda wajib diisi', rows='5', placeholder='Deskripsi singkat anda / Motto')
+                    em.small Deskripsi singkat anda / Motto
+            .form-group-separator
+            .form-group
+                .col-sm-12
+                    button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-icon-standalone.pull-right(type='submit')
+                        i.fa-save
+                        span Simpan

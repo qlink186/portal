@@ -1,0 +1,50 @@
+.box
+    .box-body
+    - data = artikel_list
+        table.table.table-bordered.table-striped.table-hover
+            thead
+                tr: th(style="width:500px").text-center.middle-align Judul Berita
+                    th.text-center.middle-align Kategori
+                    th.text-center.middle-align Penulis
+                    th.text-center.middle-align Tgl. Post
+                    th.text-center.middle-align Tgl. Terbit
+                    th.text-center.middle-align Aksi
+            tbody
+            each val in data
+                if session.user.id_hakakses == 3
+                    if val.id_user == session.user.id_user
+                        tr: td
+                            a(href=base_url+'adm/adm-artikel-detail/'+ val.id_berita) #{val.judul_berita}
+                            td.text-center.middle-align= val.kategori
+                            td.text-center.middle-align= ((val.gelar_depan)?val.gelar_depan:'') +' '+ val.penulis +' '+ ((val.gelar_belakang)?val.gelar_belakang:'')
+                            td.text-center.middle-align= val.tgl_post
+                            td.text-center.middle-align= val.tgl_terbit
+                            td.text-center.middle-align
+                                if val.tayang_umum == 0
+                                    |   #[a(href=base_url+'adm/adm-artikel-edit/'+val.id_berita).btn.btn-xs.btn-success.tombol-table Edit]
+                                if session.user.id_hakakses == 0
+                                    |   #[a(href=base_url+'adm/adm-artikel-delete/'+val.id_berita).btn.btn-xs.btn-success.tombol-table Delete]
+                                    if val.tayang_umum == 0
+                                        |   #[a(href=base_url+'adm/adm-artikel-terbitkan/'+val.id_berita).btn.btn-xs.btn-success.tombol-table Terbitkan]
+                else
+                    tr: td
+                        a(href=base_url+'adm/adm-artikel-detail/'+ val.id_berita) #{val.judul_berita}
+                        td.text-center.middle-align= val.kategori
+                        td.text-center.middle-align= ((val.gelar_depan)?val.gelar_depan:'') +' '+ val.penulis +' '+ ((val.gelar_belakang)?val.gelar_belakang:'')
+                        td.text-center.middle-align= val.tgl_post
+                        td.text-center.middle-align= val.tgl_terbit
+                        td.text-center.middle-align
+                            if val.tayang_umum == 0
+                                |   #[a(href=base_url+'adm/adm-artikel-edit/'+val.id_berita).btn.btn-xs.btn-success.tombol-table Edit]
+                            if session.user.id_hakakses == 0
+                                |   #[a(href=base_url+'adm/adm-artikel-delete/'+val.id_berita).btn.btn-xs.btn-success.tombol-table Delete]
+                                if val.tayang_umum == 0
+                                    |   #[a(href=base_url+'adm/adm-artikel-terbitkan/'+val.id_berita).btn.btn-xs.btn-success.tombol-table Terbitkan]
+                            if val.tayang_umum == 2
+                                |   #[a(href=base_url+'adm/adm-artikel-edit/'+val.id_berita).btn.btn-xs.btn-success.tombol-table Edit]
+                            if session.user.id_hakakses == 2
+                                |   #[a(href=base_url+'adm/adm-artikel-delete/'+val.id_berita).btn.btn-xs.btn-success.tombol-table Delete]
+                                if val.tayang_umum == 0
+                                    |   #[a(href=base_url+'adm/adm-artikel-terbitkan/'+val.id_berita).btn.btn-xs.btn-success.tombol-table Terbitkan]
+    // /.box-body
+// /.box

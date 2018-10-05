@@ -1,0 +1,105 @@
+.row
+    .col-md-2
+        a.btn.btn-primary.btn-block.margin-bottom(href='./adm-email-tulis') Tulis E-Mail
+        include mod-email-nav.pug
+    .col-md-10
+        .box.box-primary
+            .box-header.with-border
+                h3.box-title Email Masuk
+                .box-tools.pull-right
+                    a.btn.btn-box-tool(href='#', data-toggle='tooltip', title='Previous')
+                        i.fa.fa-chevron-left
+                    |   &nbsp;
+                    a.btn.btn-box-tool(href='#', data-toggle='tooltip', title='Next')
+                        i.fa.fa-chevron-right
+            // /.box-header
+            .box-body.no-padding
+                .mailbox-read-info
+                    h3 Message Subject Is Placed Here
+                    h5 Dari: help@example.com
+                        span.mailbox-read-time.pull-right 15 Feb. 2016 11:03 PM
+                // /.mailbox-read-info
+                .mailbox-controls.with-border.text-center
+                    .btn-group
+                        button.btn.btn-default.btn-sm(type='button', data-toggle='tooltip', data-container='body', title='Hapus')
+                            i.fa.fa-trash-o
+                        button.btn.btn-default.btn-sm(type='button', data-toggle='tooltip', data-container='body', title='Balas')
+                            i.fa.fa-reply
+                        button.btn.btn-default.btn-sm(type='button', data-toggle='tooltip', data-container='body', title='Teruskan')
+                            i.fa.fa-share
+                    // /.btn-group
+                    button.btn.btn-default.btn-sm(type='button', data-toggle='tooltip', title='Print')
+                        i.fa.fa-print
+                // /.mailbox-controls
+                .mailbox-read-message
+                    p Hello John,
+                    p Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwave put a bird on it aesthetic, bitters brunch meggings vegan iPhone. Dreamcatcher vegan scenester mlkshk. Ethical master cleanse Bushwick, occupy Thundercats banjo cliche ennui farm-to-table mlkshk fanny pack gluten-free. Marfa butcher vegan quinoa, bicycle rights disrupt tofu scenester chillwave 3 wolf moon asymmetrical taxidermy pour-over. Quinoa tote bag fashion axe, Godard disrupt migas church-key tofu blog locavore. Thundercats cronut polaroid Neutra tousled, meh food truck selfies narwhal American Apparel.
+                    p Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwave put a bird on it aesthetic, bitters brunch meggings vegan iPhone. Dreamcatcher vegan scenester mlkshk. Ethical master cleanse Bushwick, occupy Thundercats banjo cliche ennui farm-to-table mlkshk fanny pack gluten-free. Marfa butcher vegan quinoa, bicycle rights disrupt tofu scenester chillwave 3 wolf moon asymmetrical taxidermy pour-over. Quinoa tote bag fashion axe, Godard disrupt migas church-key tofu blog locavore. Thundercats cronut polaroid Neutra tousled, meh food truck selfies narwhal American Apparel.
+                    p Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwave put a bird on it aesthetic, bitters brunch meggings vegan iPhone. Dreamcatcher vegan scenester mlkshk. Ethical master cleanse Bushwick, occupy Thundercats banjo cliche ennui farm-to-table mlkshk fanny pack gluten-free. Marfa butcher vegan quinoa, bicycle rights disrupt tofu scenester chillwave 3 wolf moon asymmetrical taxidermy pour-over. Quinoa tote bag fashion axe, Godard disrupt migas church-key tofu blog locavore. Thundercats cronut polaroid Neutra tousled, meh food truck selfies narwhal American Apparel.
+                    p Keffiyeh blog actually fashion axe vegan, irony biodiesel. Cold-pressed hoodie chillwave put a bird on it aesthetic, bitters brunch meggings vegan iPhone. Dreamcatcher vegan scenester mlkshk. Ethical master cleanse Bushwick, occupy Thundercats banjo cliche ennui farm-to-table mlkshk fanny pack gluten-free. Marfa butcher vegan quinoa, bicycle rights disrupt tofu scenester chillwave 3 wolf moon asymmetrical taxidermy pour-over. Quinoa tote bag fashion axe, Godard disrupt migas church-key tofu blog locavore. Thundercats cronut polaroid Neutra tousled, meh food truck selfies narwhal American Apparel.
+                    p Thanks
+                // /.mailbox-read-message
+            // /.box-body
+            .box-footer
+                ul.mailbox-attachments.clearfix
+                    li
+                        span.mailbox-attachment-icon
+                            i.fa.fa-file-pdf-o
+                        .mailbox-attachment-info
+                            a.mailbox-attachment-name(href='#')
+                                i.fa.fa-paperclip
+                                |   Sep2014-report.pdf
+                            span.mailbox-attachment-size 1,245 KB
+                                a.btn.btn-default.btn-xs.pull-right(href='#')
+                                    i.fa.fa-cloud-download
+                    li
+                        span.mailbox-attachment-icon
+                            i.fa.fa-file-word-o
+                        .mailbox-attachment-info
+                            a.mailbox-attachment-name(href='#')
+                                i.fa.fa-paperclip
+                                |   App Description.docx
+                            span.mailbox-attachment-size 1,245 KB
+                                a.btn.btn-default.btn-xs.pull-right(href='#')
+                                    i.fa.fa-cloud-download
+                    li
+                        span.mailbox-attachment-icon.has-img
+                            img(src='/adminlte/dist/img/photo1.png', alt='Attachment')
+                        .mailbox-attachment-info
+                            a.mailbox-attachment-name(href='#')
+                                i.fa.fa-camera
+                                |   photo1.png
+                            span.mailbox-attachment-size 2.67 MB
+                                a.btn.btn-default.btn-xs.pull-right(href='#')
+                                    i.fa.fa-cloud-download
+                    li
+                        span.mailbox-attachment-icon.has-img
+                            img(src='/adminlte/dist/img/photo2.png', alt='Attachment')
+                        .mailbox-attachment-info
+                            a.mailbox-attachment-name(href='#')
+                                i.fa.fa-camera
+                                |   photo2.png
+                            span.mailbox-attachment-size 1.9 MB
+                                a.btn.btn-default.btn-xs.pull-right(href='#')
+                                    i.fa.fa-cloud-download
+            // /.box-footer
+            .box-footer
+                .pull-right
+                    button.btn.btn-default(type='button')
+                        i.fa.fa-reply
+                        |   &nbsp;Balas
+                    |   &nbsp;
+                    button.btn.btn-default(type='button')
+                        i.fa.fa-share
+                        |   &nbsp;Teruskan
+                button.btn.btn-default(type='button')
+                    i.fa.fa-trash-o
+                    |   &nbsp;Hapus
+                |   &nbsp;
+                button.btn.btn-default(type='button')
+                    i.fa.fa-print
+                    |   &nbsp;Print
+            // /.box-footer
+        // /. box
+    // /.col
+    // /.row

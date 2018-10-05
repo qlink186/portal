@@ -1,0 +1,97 @@
+if kalenderevent.length == 1
+    #modalKalender.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalKalender', aria-hidden='true')
+        .modal-dialog.modal-sm
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h5 EVENT TERKINI
+                .modal-body
+                    .row
+                        each val in kalenderevent
+                            - dateEvent = new Date(val.tgl_event)
+                            - monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+                            // TENTH EXAMPLE
+                            .col-xs-12.col-md-12.text-center
+                                .modalKalender
+                                    h5=val.judul
+                                    img.img-responsive(src=base_url+'images/kalender-event/'+val.gambar, alt='Kalender Event')
+                                    h1(data-countdown=val.tgl_event)
+                                    h4 HARI LAGI
+                                    .modalKalenderKet
+                                        h6
+                                            span.day=dateEvent.getDate()+' '
+                                            span.month=monthNames[dateEvent.getMonth()]+' '
+                                            span.year=dateEvent.getFullYear()
+                                        p.small!=val.keterangan
+                .modal-footer
+                    button.btn.flat-color.btn-sm(type='button', data-dismiss='modal') Keluar
+    // Modal Event Terkini
+    script(type='text/javascript').
+        jQuery(document).ready(function() {
+            $('#modalKalender').modal('show');
+        });
+else if kalenderevent.length == 2
+    #modalKalender.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalKalender', aria-hidden='true')
+        .modal-dialog.modal-md
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h5 EVENT TERKINI
+                .modal-body
+                    .row
+                        each val in kalenderevent
+                            - dateEvent = new Date(val.tgl_event)
+                            - monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+                            // TENTH EXAMPLE
+                            .col-xs-12.col-md-6.text-center
+                                .modalKalender
+                                    h5=val.judul
+                                    img.img-responsive(src=base_url+'images/kalender-event/'+val.gambar, alt='Kalender Event')
+                                    h1(data-countdown=val.tgl_event)
+                                    h4 HARI LAGI
+                                    .modalKalenderKet
+                                        h6
+                                            span.day=dateEvent.getDate()+' '
+                                            span.month=monthNames[dateEvent.getMonth()]+' '
+                                            span.year=dateEvent.getFullYear()
+                                        p.small!=val.keterangan
+                .modal-footer
+                    button.btn.flat-color.btn-sm(type='button', data-dismiss='modal') Keluar
+    // Modal Event Terkini
+    script(type='text/javascript').
+        jQuery(document).ready(function() {
+            $('#modalKalender').modal('show');
+        });
+else if kalenderevent.length == 3
+    #modalKalender.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalKalender', aria-hidden='true')
+        .modal-dialog.modal-lg
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+                    h5 EVENT TERKINI
+                .modal-body
+                    .row
+                        each val in kalenderevent
+                            - dateEvent = new Date(val.tgl_event)
+                            - monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+                            // TENTH EXAMPLE
+                            .col-xs-12.col-md-4.text-center
+                                .modalKalender
+                                    h5=val.judul
+                                    img.img-responsive(src=base_url+'images/kalender-event/'+val.gambar, alt='Kalender Event')
+                                    h1(data-countdown=val.tgl_event)
+                                    h4 HARI LAGI
+                                    .modalKalenderKet
+                                        h6
+                                            span.day=dateEvent.getDate()+' '
+                                            span.month=monthNames[dateEvent.getMonth()]+' '
+                                            span.year=dateEvent.getFullYear()
+                                        p.small!=val.keterangan
+                .modal-footer
+                    button.btn.flat-color.btn-sm(type='button', data-dismiss='modal') Keluar
+    // Modal Event Terkini
+    script(type='text/javascript').
+        jQuery(document).ready(function() {
+            $('#modalKalender').modal('show');
+        });
+else

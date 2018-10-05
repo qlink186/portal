@@ -1,0 +1,138 @@
+.panel.panel-default
+    .panel-heading
+        h3.panel-title
+            i.fa-bank 
+            |   Data 
+            strong Kepegawaian
+    .panel-body
+        form.form-horizontal.validate(role='form', method='post')
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKepegawaianStatus') Status Kepegawaian*
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#isianProfilKepegawaianStatus").select2({
+                            placeholder: 'Pilih Status Kepegawaian...',
+                            allowClear: true
+                        }).on('select2-open', function()
+                        {
+                            // Adding Custom Scrollbar
+                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                        });
+                        
+                    });
+                .col-sm-5
+                    select#isianProfilKepegawaianStatus.form-control(name='dataKepegawaianStatus', data-validate='required', data-message-required='Status Kepegawaian Wajib Diisi')
+                        option
+                        option Pegawai Negeri Sipil (PNS)
+                        option Tenaga Ahli
+                        option Calon Pegawai Negeri Sipil (CPNS)
+                        option Pegawai Tidak Tetap (PTT)
+                        option Out Sourching
+                    em.small Silakan Pilih Data Status Kepegawaian dengan klik list di atas
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKepegawaianGol') Golongan Ruang*
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#isianProfilKepegawaianGol").select2({
+                            placeholder: 'Pilih Golongan Ruang...',
+                            allowClear: true
+                        }).on('select2-open', function()
+                        {
+                            // Adding Custom Scrollbar
+                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                        });
+                        
+                    });
+                .col-sm-5
+                    select#isianProfilKepegawaianGol.form-control(name='dataKepegawaianGolongan', data-validate='required', data-message-required='Golongan Ruang Wajib Diisi')
+                        option
+                        option Non PNS
+                        option I/a - Juru Muda
+                        option I/b - Juru Muda Tk. I
+                        option I/c - Juru
+                        option I/d - Juru Tk. I
+                    em.small Silakan Pilih Golongan Ruang dengan klik list di atas
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKepegawaianJabatan') Jabatan*
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#isianProfilKepegawaianJabatan").select2({
+                            placeholder: 'Pilih Jabatan...',
+                            allowClear: true
+                        }).on('select2-open', function()
+                        {
+                            // Adding Custom Scrollbar
+                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                        });
+                        
+                    });
+                .col-sm-5
+                    select#isianProfilKepegawaianJabatan.form-control(name='dataKepegawaianJabatan', data-validate='required', data-message-required='Jabatan Wajib Diisi')
+                        option
+                        option Fungsional Umum
+                        option Pembantu Fungsional Umum
+                        option Kepala Bidang
+                        option Kepala Sub Bidang / Kepala Seksi
+                        option Kepala Sub Bagian
+                    em.small Silakan Pilih Jabatan dengan klik list di atas
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKepegawaianEselon') Eselon*
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#isianProfilKepegawaianEselon").select2({
+                            placeholder: 'Pilih Eleson...',
+                            allowClear: true
+                        }).on('select2-open', function()
+                        {
+                            // Adding Custom Scrollbar
+                            $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+                        });
+                    });
+                .col-sm-4
+                    select#isianProfilKepegawaianEselon.form-control(name='dataKepegawaianEselon', data-validate='required', data-message-required='Data Eselon Wajib Diisi')
+                        option
+                        option Non Eselon
+                        option I.a
+                        option I.b
+                        option II.a
+                        option II.b
+                        option III.a
+                        option III.b
+                        option IV.a
+                        option IV.b
+                    em.small Silakan Pilih Eselon dengan klik list di atas
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKepegawaianKetJabatan') Keterangan Jabatan*
+                .col-sm-10
+                    textarea#isianProfilKepegawaianKetJabatan.form-control.autogrow(name='dataKepegawaianKetJabatan', data-validate='required', data-message-required='Keterangan Jabatan Wajib diisi', rows='3', placeholder='Kepala Seksi e-Government dan Keamanan Sistem Informasi pada Bidang Teknologi Informasi dan Komunikasi')
+                    em.small Diisi berdasarkan keterangan jabatan, contoh: Fungsional umum Pada Sub Bidang e-government dan Keamanan Sistem Informasi, Bidang Teknologi Informasi dan Komunikasi
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilKepegawaianTMTPNS') TMT PNS
+                .col-sm-4
+                    .input-group
+                        input#isianProfilKepegawaianTMTPNS.form-control.datepicker(type='text', name='dataTMTPNS', data-format='D, dd MM yyyy')
+                        .input-group-addon
+                            a(href='#')
+                                i.linecons-calendar
+                label.col-sm-2.control-label(for='isianProfilKepegawaianTMTCPNS') TMT CPNS
+                .col-sm-4
+                    .input-group
+                        input#isianProfilKepegawaianTMTCPNS.form-control.datepicker(type='text', name='dataTMTCPNS', data-format='D, dd MM yyyy')
+                        .input-group-addon
+                            a(href='#')
+                                i.linecons-calendar
+            .form-group-separator
+            .form-group
+                .col-sm-12
+                    button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-icon-standalone.pull-right(type='submit')
+                        i.fa-save
+                        span Simpan

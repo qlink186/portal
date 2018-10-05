@@ -1,0 +1,20 @@
+.white-wrapper
+    .container
+        if session.is_login
+            .row
+                .col-md-3
+                    include mod-sidebar-2
+                .col-md-9
+                    if menu=='data/internal/kepegawaian'
+                        include mod-data-internal-kepegawaian
+                    else if menu=='data/internal/reg-email'
+                        include mod-data-internal-reg-email
+                    else if menu=='data/internal/reg-subdomain'
+                        include mod-data-internal-reg-subdomain
+                    else
+                        h1 DATA INTERNAL 
+                            span=session.user.nama_opd
+        else
+            .row
+                .col-sm-12
+                    h1.text-center Anda belum login, silakan login terlebih dahulu

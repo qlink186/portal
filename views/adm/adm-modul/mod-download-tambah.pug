@@ -1,0 +1,80 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Tambah Member
+            // /.box-header
+            .box-body.pad
+                form(action="/adm-download-tambah", method="post")
+                    .form-group
+                        label.col-sm-2.control-label(for='nama_file')
+                            |   Nama File
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='nama_file', placeholder='Masukkan Nama File', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='deskripsi_file')
+                            |   Deskripsi File
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='deskripsi_file', placeholder='Masukkan Deskripsi File', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='idodp')
+                            |   OPD
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih OPD', name='id_opd')
+                                each val in opd
+                                    option(value=(val.id_opd))=val.nama_opd
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='upload_file')
+                            |   Upload File
+                            span.required *
+                        .col-sm-10
+                            input#file.form-control(type='file', name='uploaded_file', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='jenisfile')
+                            |   Jenis File
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih jenis file', name='jenis_file')
+                                each val in jenis_file
+                                    option(value=(val.id_jenis_file))=val.jenis_file
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='kategori_file')
+                            |   Kategori File
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih kategori file', name='kategori_file')
+                                    each val in kategori_file
+                                        option(value=(val.id_kategori_dip))=val.kategori_dip
+                            br 
+                    .form-group
+                        label.col-sm-2.control-label(for='tgl_file')
+                            |   Tanggal File
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='date', name='tgl_file', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='status_file')
+                            |   Status File
+                            span
+                        .col-sm-10
+                            select.form-control(placeholder='Pilih Hak Akses', name='status_file')
+                                option(value='1') Aktif    
+                                option(value='0') Tidak Aktif                              
+                            br                      
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box

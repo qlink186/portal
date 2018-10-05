@@ -1,0 +1,17 @@
+extends adm-layout/base
+block content
+    section.content-header
+        h1
+            |   Pengaturan Photo Profil
+        ol.breadcrumb
+            li
+                a(href='./adm')
+                    i.fa.fa-dashboard 
+                    |   Dashboard
+            li
+                a(href='#') Pengaturan
+            li.active Pengaturan Photo Profil
+    // Main content
+    section.content
+        include adm-modul/mod-profile-picture.pug
+    // /.content

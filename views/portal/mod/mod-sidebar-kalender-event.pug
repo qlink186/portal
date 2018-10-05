@@ -1,0 +1,19 @@
+h5.subpage-title
+    span KALENDER EVENT
+    a.btn-xs.btn-flat.flat-danger.pull-right(href=base_url+'kalender/event')
+        span LAINNYA
+.main
+    each val in kalenderevent
+        - dateEvent = new Date(val.tgl_event)
+        - monthNames = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+        // TENTH EXAMPLE
+        .view.view-tenth
+            img(src=base_url+'images/kalender-event/'+val.gambar, alt='Kalender Event')
+            .mask
+                h2=val.judul
+                    .ket
+                        small
+                            span.day=dateEvent.getDate()+' '
+                            span.month=monthNames[dateEvent.getMonth()]+' '
+                            span.year=dateEvent.getFullYear()
+                        !=val.keterangan

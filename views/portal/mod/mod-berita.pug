@@ -1,0 +1,47 @@
+.row
+    .col-sm-12
+        script(type='text/javascript').
+            jQuery(document).ready(function($)
+            {
+                oTable = $("#table-berita").DataTable(
+                    {
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                    "sDom": '<"top visible-xs"p><"subpage-title"><"top pull-right"l>t<"bottom text-center"i><"bottom text-center"p>',
+                    "pagingType": "full_numbers",
+                    "ajax": {
+                        "url": '#{api_url}berita',
+                        "dataSrc": "berita"
+                    },
+                    "columns": [
+                        {
+                            "searchable": true,
+                            "render": function ( data, type, row ){
+                                return '<div class="post"><div class="post-thumb-single"><img class="img-responsive" src="#{base_url}images/berita/big/'+row["gambar"]+'" alt="'+row["judul_berita"]+'" /><div class="image-overlay"></div><a class="post-zoom" href="#{base_url}images/berita/big/'+row["gambar"]+'" rel="prettyPhoto[pp_berita]"><i class="fa-eye"></i></a><a class="post-link" href="#{base_url}berita/'+row["link_berita"]+'"><i class="fa-link"></i></a></div><div class="post-content"><h4 class="post-title"><a href="#{base_url}berita/'+row["link_berita"]+'">'+row["judul_berita"]+'</a></h4><p>'+row["isi_berita_ringkas"]+' ........</p></div><div class="post-meta"><ul class="meta-list"><li><span>Terbit: </span><span class="black">'+row["tgl_terbit"]+'</span></li><li><span>Kategori:</span><span class="black">'+row["kategori"]+'</span></li><li><span>Penulis: </span><span class="black">'+row["nama_penulis"]+'</span></li><li><a class="read-more" href="#{base_url}berita/'+row["link_berita"]+'"><span>Selengkapnya </span><i class="fa-arrow-right"></i></a></li></ul></div></div>';
+                            },
+                            "targets": 1
+                        }
+                    ],
+                    "ordering": false,
+                    "processing":true,
+                    "deferRender": true,
+                    "oLanguage": {
+                        "sLengthMenu": "Menampilkan _MENU_ Artikel per halaman",
+                        "sZeroRecords": "Artikel yang anda cari tidak ditemukan",
+                        "sInfo": "Menampilkan artikel ke _START_ sampai ke _END_, dari _TOTAL_ Artikel",
+                        "sInfoEmpty": "Menampilkan artikel ke 0 sampai 0 dari total 0 Artikel",
+                        "sEmptyTable": "Tidak ada Artikel yang tersedia",
+                        "sInfoFiltered": "(Filter dari _MAX_ berita)",
+                        "oPaginate": {
+                            "sFirst": "Pertama",
+                            "sLast": "Terakhir",
+                            "sNext": "Selanjutnya",
+                            "sPrevious": "Sebelumnya"
+                        }
+                    },
+                    select: true
+                });
+                $('#cariBerita').keyup(function(){
+                    oTable.search($(this).val()).draw() ;
+                })
+            });
+        table#table-berita.table(width='100%')

@@ -1,0 +1,116 @@
+.page-body.login-page
+    .login-container
+        .row
+            .col-sm-6
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        // Reveal Login form
+                        setTimeout(function(){ $(".fade-in-effect").addClass('in'); }, 1);
+
+
+                        // Validation and Ajax action
+                        $("form#login").validate({
+                            rules: {
+                                username: {
+                                    required: true
+                                },
+
+                                passwd: {
+                                    required: true
+                                }
+                            },
+
+                            messages: {
+                                username: {
+                                    required: 'Silakan Masukkan Username Anda.'
+                                },
+
+                                passwd: {
+                                    required: 'Silakan Masukkan Password Anda.'
+                                }
+                            },
+
+                            // Form Processing via AJAX
+                            submitHandler: function(form)
+                            {
+                                show_loading_bar(70); // Fill progress bar to 70% (just a given value)
+
+                                var opts = {
+                                    "closeButton": true,
+                                    "debug": false,
+                                    "positionClass": "toast-top-full-width",
+                                    "onclick": null,
+                                    "showDuration": "300",
+                                    "hideDuration": "1000",
+                                    "timeOut": "5000",
+                                    "extendedTimeOut": "1000",
+                                    "showEasing": "swing",
+                                    "hideEasing": "linear",
+                                    "showMethod": "fadeIn",
+                                    "hideMethod": "fadeOut"
+                                };
+
+                                $.ajax({
+                                    url: "./data/login-check.pug",
+                                    method: 'POST',
+                                    dataType: 'json',
+                                    data: {
+                                        do_login: true,
+                                        username: $(form).find('#username').val(),
+                                        passwd: $(form).find('#passwd').val(),
+                                    },
+                                    success: function(resp)
+                                    {
+                                        show_loading_bar({
+                                            delay: .5,
+                                            pct: 100,
+                                            finish: function(){
+
+                                                // Redirect after successful login page (when progress bar reaches 100%)
+                                                if(resp.accessGranted)
+                                                {
+                                                        window.location.href = './adm';
+                                                    }
+                                                else
+                                                {
+                                                    toastr.error("You have entered wrong password, please try again. User and password is <strong>demo/demo</strong> :)", "Invalid Login!", opts);
+                                                    $(form).find('#passwd').select();
+                                                }
+                                                                                        }
+                                        });
+
+                                                                        }
+                                });
+
+                            }
+                        });
+
+                        // Set Form focus
+                        $("form#login .form-group:has(.form-control):first .form-control").focus();
+                    });
+                // Errors container
+                .errors-container
+                // Add class "fade-in-effect" for login form effect
+                form#login.login-form.fade-in-effect(method='post', role='form')
+                    .login-header
+                        a.logo(href=base_url+'adm')
+                            img(src=base_url+'/adm-assets/images/logo@2x.png', alt='', width='80')
+                            |   &nbsp;
+                            span log in
+                        p Dear user, log in to access the admin area!
+                    .form-group
+                        label.control-label(for='username') Username
+                        input#username.form-control.input-dark(type='text', name='username', autocomplete='off')
+                    .form-group
+                        label.control-label(for='passwd') Password
+                        input#passwd.form-control.input-dark(type='password', name='passwd', autocomplete='off')
+                    .form-group
+                        button.btn.btn-dark.btn-block.text-left(type='submit')
+                            i.fa-lock
+                            |   MASUK
+                    .login-footer
+                        a(href='#') Lupa Password?
+                        .info-links
+                            a(href='#') ToS&nbsp;-&nbsp;
+                            a(href='#') Privacy Policy

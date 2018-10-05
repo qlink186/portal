@@ -1,0 +1,18 @@
+extends adm-layout/base
+block content
+    // Content Header (Page header)
+    section.content-header
+        h1
+            |   Item Terkirim
+        ol.breadcrumb
+            li
+                a(href='./adm')
+                    i.fa.fa-dashboard
+                    |   Dahsboard
+            li
+                |   Email
+            li.active Item Terkirim
+    // Main content
+    section.content
+        include adm-modul/mod-email-inbox.pug
+    // /.content

@@ -1,0 +1,52 @@
+
+.contact-us
+    .container
+        .row
+            #google-map.section.google-map
+                iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.2520657679593!2d104.43879861434505!3d0.9653216992958362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d97196daaf02e5%3A0x626846e66741c188!2sKantor+Walikota+Tanjungpinang!5e0!3m2!1sid!2sid!4v1524498189042', width='100%', height='450', frameborder='0', scrolling='no', marginheight='0', marginwidth='0',)
+            br
+            // /#google-map
+            .col-md-4
+                h5.subpage-title
+                    i.fa-compass
+                    |   Alamat
+                address
+                    strong SEKRETARIAT DAERAH KOTA TANJUNGPINANG
+                    br
+                    |   Jl. Daeng Marewa
+                    br
+                    |   Kel. Senggarang
+                    br
+                    |   Kec. Tanjungpinang Kota
+                    br
+                    |   Kota Tanjungpinang - 29115
+                    br
+                    |   Provinsi Kepulauan Riau
+                h5.subpage-title
+                    i.fa-phone
+                    |   Kontak
+                address
+                    |   Telp: (+62 771) 7334004-05 
+                    br
+                    |   Fax: (+62 771) 7334006
+                    br
+                    |   E-mail:
+                    a(href='mailto:kominfo@tanjungpinangkota.go.id') kominfo@tanjungpinangkota.go.id
+            .col-md-8
+                form.contact-form
+                    h5.subpage-title Buku Tamu
+                    .row
+                        .col-md-6
+                            input.form-control.flat-input(placeholder='Nama (wajib diisi)', type='text')
+                        .col-md-6
+                            input.form-control.flat-input(placeholder='Ponsel (wajib diisi)', type='text')
+                        .col-md-6
+                            input.form-control.flat-input(placeholder='Email (wajib diisi)', type='text')
+                        .col-md-6
+                            input.form-control.flat-input(placeholder='Subjek (Tidak Wajib)', type='text')
+                    // row-fluid
+                    textarea.form-control.flat-input(placeholder='Pesan Anda (wajib diisi)', rows='5')
+                    button.btn.btn-md.flat-color Kirim
+                // /.contact-form
+        // /.row
+    // /.container

@@ -1,0 +1,138 @@
+script(type='text/javascript').
+    jQuery(document).ready(function($)
+    {
+        $("#salinLink").click(function(ev)
+        {
+            ev.preventDefault();
+
+            var copyText = document.getElementById("copasurl");
+            copyText.select();
+            document.execCommand("Copy");
+            
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.success("Data URL Berhasil disalin", "Berhasil", opts);
+        });
+
+        $("#tombolKonfirmTerbitkan").click(function(ev)
+        {
+            ev.preventDefault();
+            
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.success("Halaman This is a lead parapraph Berhasil diterbitkan", "Peneribitan Halaman Berhasil", opts);
+            $('#konfirmTerbitkan').modal('toggle');
+        });
+
+        $("#tombolKonfirmHapus").click(function(ev)
+        {
+            ev.preventDefault();
+            
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.error("Halaman This is a lead parapraph Berhasil dihapus", "Hapus Halaman Berhasil", opts);
+            $('#konfirmHapus').modal('toggle');
+        });
+
+        $("#tombolKonfirmDraft").click(function(ev)
+        {
+            ev.preventDefault();
+            
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.warning("Halaman This is a lead parapraph Berhasil diubah menjadi draft", "Draft Berhasil", opts);
+            $('#konfirmDraft').modal('toggle');
+        });
+
+        $("#tombolKonfirmTambahKategori").click(function(ev)
+        {
+            ev.preventDefault();
+            
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.success("Kategori This is a lead parapraph Berhasil diterbitkan", "Penambahan Kategori Berhasil", opts);
+            $('#konfirmTambahKategori').modal('toggle');
+        });
+
+        $("#tombolKonfirmHapusKategori").click(function(ev)
+        {
+            ev.preventDefault();
+            
+            var opts = {
+                "closeButton": true,
+                "debug": false,
+                "positionClass": "toast-top-right",
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr.error("Kategori This is a lead parapraph Berhasil dihapus", "Hapus Kategori Berhasil", opts);
+            $('#konfirmHapusKategori').modal('toggle');
+        });
+    });

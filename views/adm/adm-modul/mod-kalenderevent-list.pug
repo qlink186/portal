@@ -1,0 +1,23 @@
+.box
+    .box-body
+    - data = kalenderevent
+        table.table.table-bordered.table-striped.table-hover
+            thead
+                tr: th(style="width:400px").text-center.middle-align Judul
+                    th(style="width:200px").text-center.middle-align Penulis                    
+                    th(style="width:150px").text-center.middle-align Tgl. Event
+                    th(style="width:150px").text-center.middle-align Tgl. Post
+                    th(style="width:200px").text-center.middle-align Status
+            tbody
+            each val in data
+                tr: td
+                    a(href='./adm-kalenderevent-detail/'+ val.id_kalenderevent) #{val.judul}
+                    td.text-center.middle-align= ((val.gelar_depan)?val.gelar_depan:'') +' '+ val.penulis +' '+ ((val.gelar_belakang)?val.gelar_belakang:'')
+                    td.text-center.middle-align= val.tgl_event
+                    td.text-center.middle-align= val.tgl_post
+                    td.text-center.middle-align
+                        if session.user.id_hakakses != 3
+                            |   #[a(href='/adm-kalenderevent-edit/'+val.id_kalenderevent).btn.btn-xs.btn-success.tombol-table Edit]
+                            |   #[a(href='/adm-kalenderevent-delete/'+val.id_kalenderevent).btn.btn-xs.btn-success.tombol-table Delete]
+    // /.box-body
+// /.box

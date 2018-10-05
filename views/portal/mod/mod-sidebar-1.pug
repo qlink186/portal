@@ -1,0 +1,19 @@
+.sidebar
+    .widget
+        include mod-sidebar-login-panel
+    .widget
+        include mod-sidebar-pengumuman
+    //.widget
+        include mod-sidebar-bukutamu
+    .widget.kategori-berita(class=(menu === '/' ? 'hidden' : ''))
+        include mod-sidebar-berita-kategori
+    .widget.kalender-event
+        include mod-sidebar-kalender-event
+    .widget.popular-posts
+        include mod-sidebar-berita-populer
+    .widget.pranalaLuar
+        include mod-sidebar-pranala-luar
+    .widget.gpr
+        h5.subpage-title Government Public Relations (GPR)
+        #gpr-kominfo-widget-container
+// /.sidebar

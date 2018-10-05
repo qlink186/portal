@@ -1,0 +1,65 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Artikel/Berita
+            // /.box-header
+            .box-body.pad
+                form(action=base_url+"adm/adm-artikel-tulis", method="post", enctype="multipart/form-data")
+                    .form-group
+                        label.col-sm-2.control-label(for='title')
+                            |   Judul Artikel
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='title', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='title')
+                            |   Gambar
+                            span.required *
+                        .col-sm-10
+                            input#gambar.form-control(type='file', name='uploaded_image', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='kategori')
+                            |   Kategori
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Kategori', name='kategori')
+                                each val in kategori
+                                    option(value=(val.id_kategori))=val.kategori
+                            br
+
+                    .form-group
+                        label.col-sm-12.control-label(for='isi')
+                            |   Isi Berita
+                            span.required *
+                        .col-sm-12
+                            textarea#editor1(name='editorberita', rows='15', cols='80')
+                            br
+                            
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box
+    //- .col-md-4
+    //-     .box.box-info
+    //-         .box-header
+    //-             h3.box-title
+    //-                 |   Artikel/Berita
+    //-             // tools box
+    //-             .pull-right.box-tools
+    //-                 button.btn.btn-info.btn-sm(type='button', data-widget='collapse', data-toggle='tooltip', title='Collapse')
+    //-                     i.fa.fa-minus
+    //-                 button.btn.btn-info.btn-sm(type='button', data-widget='remove', data-toggle='tooltip', title='Remove')
+    //-                     i.fa.fa-times
+    //-             // /. tools
+    //-         // /.box-header
+    //-         .box-body.pad
+    //-             form
+    //-                 textarea#editor1(name='editor1', rows='10', cols='80')
+        // /.box

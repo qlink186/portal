@@ -1,0 +1,79 @@
+h5.subpage-title
+    span PENGUMUMAN
+    // Controls
+    span#pengumuman-next.next
+        i.fa-chevron-right
+    span#pengumuman-prev.prev
+        i.fa-chevron-left
+    //a.btn-xs.btn-flat.flat-danger.pull-right.geserkanan(href='post-1.html')
+        span PENGUMUMAN LAINNYA
+.row
+    #pengumuman-caroufredsel
+        for sp, index in siaranpers
+            .col-md-12.pengumuman-wrapper
+                .pengumuman-item
+                    .pengumuman-thumb
+                        img.img-responsive(src=sp.alamat_file_small, alt=sp.judul)
+                        .image-overlay
+                        a.pengumuman-zoom(href=sp.alamat_file_big, rel='prettyPhoto[pp_pengumuman]')
+                            i.fa-eye
+                        a.pengumuman-link(href=base_url+'pengumuman/'+sp.id_pengumuman)
+                            i.fa-link
+                    .pengumuman-content
+                        h5=sp.judul
+                        p=sp.desk_singkat
+
+        //.col-md-12.pengumuman-wrapper
+            .pengumuman-item
+                .pengumuman-thumb
+                    img.img-responsive(src=base_url+'images/pengumuman/small/Poster_LKTI_OK.png', alt='Lomba LKTI')
+                    .image-overlay
+                    a.pengumuman-zoom(href=base_url+'images/pengumuman/big/Poster_LKTI_OK.png', rel='prettyPhoto[pp_pengumuman]')
+                        i.fa-eye
+                    a.pengumuman-link(href='#')
+                        i.fa-link
+                .pengumuman-content
+                    h5 LKTI 2018
+                    p Lomba Karya Tulis Ilmiah 2018.
+        // /.pengumuman-wrapper
+        //.col-md-12.pengumuman-wrapper
+            .pengumuman-item
+                .pengumuman-thumb
+                    img.img-responsive(src=base_url+'images/pengumuman/small/IMG-20180518-WA0052.jpg', alt='Pasar Murah')
+                    .image-overlay
+                    a.pengumuman-zoom(href=base_url+'images/pengumuman/big/IMG-20180518-WA0052.jpg', rel='prettyPhoto[pp_pengumuman]')
+                        i.fa-eye
+                    a.pengumuman-link(href=base_url+'berita/500')
+                        i.fa-link
+                .pengumuman-content
+                    h5 Pasar Murah
+                    p Pasar Murah Menjelang Idul Fitri 1439H.
+        // /.pengumuman-wrapper
+        //.col-md-12.pengumuman-wrapper
+            .pengumuman-item
+                .pengumuman-thumb
+                    img.img-responsive(src=base_url+'images/pengumuman/small/table_zakat.jpg', alt='Tabel Zakat')
+                    .image-overlay
+                    a.pengumuman-zoom(href=base_url+'images/pengumuman/big/table_zakat.jpg', rel='prettyPhoto[pp_pengumuman]')
+                        i.fa-eye
+                    a.pengumuman-link(href='#')
+                        i.fa-link
+                .pengumuman-content
+                    h5 Harga Beras Zakat Fitrah
+                    p Penetapan Harga Beras Zakat Fitrah 1439 H / 2018 M.
+        //.col-md-12.pengumuman-wrapper
+            .pengumuman-item
+                .pengumuman-thumb
+                    img.img-responsive(src=base_url+'images/pengumuman/small/disdukcapil.jpg', alt='Disdukcapil')
+                    .image-overlay
+                    a.pengumuman-zoom(href=base_url+'images/pengumuman/big/disdukcapil.jpg', rel='prettyPhoto[pp_pengumuman]')
+                        i.fa-eye
+                    a.pengumuman-link(href='http://tanjungpinangkota.go.id/berita/529')
+                        i.fa-link
+                .pengumuman-content
+                    h5 Informasi Penting Disdukcapil
+                    p Percepatan Perekaman Kepemilikan E-KTP
+        // /.pengumuman-wrapper
+    // /.pengumuman-caroufredsel
+    //a.btn-xs.btn-flat.flat-danger.pull-right(href='#')
+        span PENGUMUMAN LAINNYA

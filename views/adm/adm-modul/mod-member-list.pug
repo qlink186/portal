@@ -1,0 +1,41 @@
+.box
+    .box-body
+        table(width="100%").table.table-bordered.table-striped
+            thead
+                tr
+                    th(style="width:80px").text-center.middle-align Foto
+                    th(style="width:200px").text-center.middle-align Nama
+                    th(style="width:50px").text-center.middle-align Email
+                    th(style="width:100px").text-center.middle-align Ponsel
+                    th(style="width:100px").text-center.middle-align OPD
+                    th(style="width:150px").text-center.middle-align Hak Akses
+                    th(style="width:100px").text-center.middle-align Status User
+                    th(style="width:100px").text-center.middle-align Aksi
+            tbody
+                for dp, index in all_member 
+                    if (dp.username != session.user.username)
+                        tr
+                            td
+                                |   #[img.img-responsive(src='images/pegawai/small/'+dp.foto_peg+'.jpg', alt='Foto Pegawai', style='max-width:75px;')]
+                            td
+                                strong 
+                                    |   #{dp.nama_gelar} 
+                                    //- |   #[a(href='/adm-member-detail/'+dp.id_user) 
+                                br
+                                |   #{dp.username}
+                            td.text-center.middle-align 
+                                | #{dp.email}
+                                br
+                                | #{dp.email2}
+                            td.text-center.middle-align 
+                                | #{dp.ponsel1}
+                                br
+                                | #{dp.ponsel2}                        
+                            td.text-center.middle-align #{dp.nama_opd}
+                            td.text-center.middle-align #{dp.hakakses}
+                            td.text-center.middle-align #{dp.status_user==1?'Active':'Not Active'}
+                            td.text-center.middle-align
+                                |   #[a(href='/adm-member-edit/'+dp.username).btn.btn-xs.btn-success.tombol-table Edit]
+                                |   #[a(href='/adm-member-delete/'+dp.username).btn.btn-xs.btn-success.tombol-table Delete]
+    // /.box-body
+// /.box

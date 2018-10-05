@@ -1,0 +1,18 @@
+// User Account: style can be found in dropdown.less
+li.dropdown.user.user-menu
+    a.dropdown-toggle(href='#', data-toggle='dropdown')
+        img.user-image(src=base_url+'images/pegawai/small/'+session.user.foto_peg, alt='User Image')
+        span.hidden-xs #{session.user.nama_gelar}
+    ul.dropdown-menu
+        // User image
+        li.user-header
+            img.img-circle(src=base_url+'images/pegawai/small/'+session.user.foto_peg, alt='User Image')
+            p
+                |   #{session.user.nama_gelar} - #{session.user.hakakses}
+                //- small Since Feb. 2015   
+        // Menu Footer
+        li.user-footer
+            .pull-left
+                a.btn.btn-default.btn-flat(href=base_url+'adm/adm-profil-setting') Profil
+            .pull-right
+                a.btn.btn-danger.btn-flat(href='/logout') Keluar

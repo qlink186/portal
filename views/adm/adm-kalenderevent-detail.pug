@@ -1,0 +1,22 @@
+extends adm-layout/base
+block content
+    section.content-header
+        h1
+            |   Kalender Event
+            small Detail
+        ol.breadcrumb
+            li
+                a(href='./adm')
+                    i.fa.fa-dashboard 
+                    |   Beranda
+            li
+                a(href='./adm-kalenderevent-list') Kalender Event
+            li.active Detail Kalender Event
+    // Main content
+    section.content
+        .row
+            .col-xs-12
+                include adm-modul/mod-kalenderevent-detail.pug
+            // /.col
+        // /.row
+    // /.content

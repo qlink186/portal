@@ -1,0 +1,14 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Siaran Pers
+            // /.box-header
+            .box-body.no-padding
+                .mailbox-read-info
+                    h3 #{siaranpers.judul}
+                    span.mailbox-read-time.pull-right #{siaranpers.tgl_post} 
+                .mailbox-read-message
+                    p!=siaranpers.isi
+        // /.box

@@ -1,0 +1,339 @@
+
+aside.main-sidebar
+    // sidebar: style can be found in sidebar.less
+    section.sidebar
+        // Sidebar user panel
+        .user-panel
+            .pull-left.image
+                img.img-circle(src='/images/pegawai/small/'+session.user.foto_peg, alt='User Image')
+            .pull-left.info
+                p #{session.user.nama_gelar}
+                a(href='#')
+                    i.fa.fa-circle.text-success
+                    |   Online
+        //- // search form
+        //- form.sidebar-form(action='#', method='get')
+        //-     .input-group
+        //-         input.form-control(type='text', name='q', placeholder='Search...')
+        //-         span.input-group-btn
+        //-             button#search-btn.btn.btn-flat(type='submit', name='search')
+        //-                 i.fa.fa-search
+        //- // /.search form
+        // sidebar menu: : style can be found in sidebar.less
+        ul.sidebar-menu(data-widget='tree')
+            li.treeview(class=(menu === 'adm' ? 'active' : ''))
+                a(href=base_url+'adm')
+                    i.fa.fa-dashboard &nbsp;
+                    span Dashboard
+        
+            li.treeview(class=(menu === 'adm-artikel-tulis' ? 'active' : ''))
+                a(href=base_url+'adm/adm-artikel-tulis')
+                    i.fa.fa-pencil
+                    span Artikel
+                    span.pull-right-container
+                        i.fa.fa-angle-left.pull-right
+                        //- span.label.label-danger.pull-right 3
+                ul.treeview-menu
+                    li(class=(menu === 'adm-artikel-list' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-artikel-list')
+                            i.fa.fa-list-ul
+                            |   Data Artikel &nbsp;
+                            //- span.label.label-danger.pull-right 3
+                    li(class=(menu === 'adm-artikel-tulis' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-artikel-tulis')
+                            i.fa.fa-pencil
+                            |   Tulis Artikel
+                    li(class=(menu === 'adm-artikel-kategori' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-artikel-kategori')
+                            i.fa.fa-bookmark
+                            |   Kategori
+                    //- li(class=(menu === 'adm-artikel-komentar' ? 'active' : ''))
+                    //-     a(href=base_url+'adm/adm-artikel-komentar')
+                    //-         i.fa.fa-comments-o
+                    //-         |   Komentar Berita
+                    li(class=(menu === 'adm-artikel-editor' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-artikel-editor')
+                            i.fa.fa-group
+                            |   Data Editor
+
+            li.treeview
+                li(class=(menu === 'adm-halaman-list' ? 'active' : ''))
+                    a(href=base_url+'adm/adm-halaman-list')
+                        i.fa.fa-anchor
+                        span Halaman Profile
+                        span.pull-right-container
+                            //- i.fa.fa-angle-left.pull-right
+            //-     ul.treeview-menu
+            //-         li.treeview
+            //-             a(href='#')
+            //-                 i.fa.fa-list-ol
+            //-                 |   Data Hal
+            //-                 span.pull-right-container
+            //-         li.treeview
+            //-             a(href='#')
+            //-                 i.fa.fa-pencil-square
+            //-                 |   Halaman
+            //-                 span.pull-right-container
+            //-         li
+            //-             a(href='#')
+            //-                 i.fa.fa-external-link-square
+            //-                 |   Pengaturan Menu
+            li.treeview
+                a(href='#')
+                    i.fa.fa-bullhorn
+                    |   Siaran Pers
+                    span.pull-right-container
+                        i.fa.fa-angle-left.pull-right
+                ul.treeview-menu
+                    li(class=(menu === 'adm-siaranpers-list' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-siaranpers-list')
+                            i.fa.fa-list-ul
+                            |   Data Siaran Pers &nbsp;
+                            //- span.label.label-danger.pull-right 3
+                    li(class=(menu === 'adm-siaranpers-tambah' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-siaranpers-tambah')
+                            i.fa.fa-pencil
+                            |   Tulis Siaran Pers
+            li.treeview
+                a(href='#')
+                    i.fa.fa-calendar
+                    |   Kalender Event
+                    span.pull-right-container
+                        i.fa.fa-angle-left.pull-right
+                ul.treeview-menu
+                    li(class=(menu === 'adm-kalenderevent-list' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-kalenderevent-list')
+                            i.fa.fa-list-ul
+                            |   Data Kalender Event &nbsp;
+                            //- span.label.label-danger.pull-right 3
+                    li(class=(menu === 'adm-kalenderevent-tambah' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-kalenderevent-tambah')
+                            i.fa.fa-pencil
+                            |   Tulis Kalender Event
+            //- li.treeview
+            //-     a(href='#')
+            //-         i.fa.fa-calendar
+            //-         |  Kalender Event &nbsp;
+            li.treeview
+            li(class=(menu === 'adm-slideshow-list' ? 'active' : ''))
+                a(href=base_url+'adm/adm-slideshow-list')
+                    i.fa.fa-spinner
+                    |   Slideshow
+                    //- span.pull-right-container
+                //-         i.fa.fa-angle-left.pull-right
+                //- ul.treeview-menu
+                //-     li.treeview
+                //-         li(class=(menu === 'adm-slideshow-list' ? 'active' : ''))
+                //-             a(href=base_url+'adm/adm-slideshow-list')
+                //-                 i.fa.fa-spinner
+                //-                 |   Data Slideshow
+                //-     li(class=(menu === 'adm-slideshow-tambah' ? 'active' : ''))
+                //-             a(href=base_url+'adm/adm-slideshow-tambah')
+                //-                 i.fa.fa-pencil
+                //-                 |   Tambah Slideshow
+            li.treeview
+                a(href='#')
+                    i.fa.fa-user
+                    span Kepegawaian
+                    span.pull-right-container
+                        i.fa.fa-angle-left.pull-right
+                ul.treeview-menu
+                    li(class=(menu === 'adm-kepegawaian-list' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-kepegawaian-list')
+                            i.fa.fa-address-book-o
+                            |   Data Pegawai &nbsp;
+                    li(class=(menu === 'adm-kepegawaian-tambah' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-kepegawaian-tambah')
+                            i.fa.fa-user-plus
+                            |   Tambah Pegawai &nbsp;
+                    //- li
+                    //-     a(href='#')
+                    //-         i.fa.fa-user-times
+                    //-         |   Pindah Pegawai
+                    //- li
+                    //-     a(href='#')
+                    //-         i.fa.fa-building
+                    //-         |   Unit Kerja
+            li.treeview
+                a(href='#')
+                    i.fa.fa-users
+                    span Member &nbsp;
+                    span.pull-right-container
+                        i.fa.fa-angle-left.pull-right
+                        //- span.label.label-warning.pull-right 15
+                ul.treeview-menu
+                    li(class=(menu === 'adm-member-list' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-member-list')
+                            i.fa.fa-users
+                            |   Data Member
+                    li
+                        a(href=base_url+'adm/adm-member-tambah')
+                            i.fa.fa-user-plus
+                            |   Tambah Member
+                    //- li
+                    //-     a(href='#')
+                    //-         i.fa.fa-times-circle
+                    //-         |   Konfirmasi &nbsp;
+                    //-         //- span.label.label-warning.pull-right 15
+            li.treeview
+                a(href='#')
+                    i.fa.fa-photo
+                    span Galeri
+                    span.pull-right-container
+                        i.fa.fa-angle-left.pull-right
+                ul.treeview-menu
+                    li
+                        a(href=base_url+"adm/adm-gallery-album")
+                            i.fa.fa-camera
+                            |   Data Gallery
+                    li
+                        a(href=base_url+"adm/adm-gallery-tambah")
+                            i.fa.fa-tag
+                            |   Tambah Gallery
+                //- ul.treeview-menu
+                //-     li.treeview
+                //-         a.accordion-toggle.collapsed(data-toggle='collapse', data-parent='#menu-levels-collapse', href='')
+                //-             i.fa.fa-camera
+                //-             |   Data Galeri
+                        //- ul.treeview-menu
+                        //-     li
+                        //-         a(href="#")
+                        //-             i.fa.fa-camera
+                        //-             |   Data Gambar
+                        //-     li
+                        //-         a(href="#")
+                        //-             i.fa.fa-tag
+                        //-             |   Album Gambar
+                    //- li.treeview
+                    //-     a(href='#')
+                    //-         i.fa.fa-list-ol
+                    //-         |   Tambah Album
+                    //-         span.pull-right-container
+                                //- i.fa.fa-angle-left.pull-right
+                        //- ul.treeview-menu
+                        //-     li
+                        //-         a(href="#")
+                        //-             i.fa.fa-file-video-o
+                        //-             |   Data Video
+                        //-     li
+                        //-         a(href="#")
+                        //-             i.fa.fa-tag
+                        //-             |   Album Video
+
+            li.treeview
+                a(href='#')
+                    i.fa.fa-folder-open
+                    span Download Area
+                    span.pull-right-container
+                        i.fa.fa-angle-left.pull-right
+                ul.treeview-menu
+                    li(class=(menu === 'adm-download-list' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-download-list')
+                            i.fa.fa-folder-open
+                            |   Data File &nbsp;
+                    li(class=(menu === 'adm-download-tambah' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-download-tambah')
+                            i.fa.fa-files-o
+                            |   Tambah Data File &nbsp;
+            //- li.treeview
+            //-     a(href='#')
+            //-         i.fa.fa-book
+            //-         |   Buku Tamu &nbsp;
+                    //- span.label.label-danger.pull-right 300
+            //- li.treeview
+            //-     a(href='#')
+            //-         i.fa.fa-comments
+            //-         |   Pengaturan Chat
+            //- li.treeview
+            //-     a(href='#')
+            //-         i.fa.fa-external-link
+            //-         span Laman
+            //-         span.pull-right-container
+            //-             i.fa.fa-angle-left.pull-right
+                ul.treeview-menu
+                    li
+                        a(href='#')
+                            i.fa.fa-external-link
+                            |   Laman Unit Kerja
+                    li
+                        a(href='#')
+                            i.fa.fa-external-link-square
+                            |   Laman Luar
+            li.treeview(class=(menu === 'adm-profil-setting' ? 'active' : ''))
+                a(href='#')
+                    i.fa.fa-cogs
+                    span Pengaturan
+                    span.pull-right-container
+                        i.fa.fa-angle-left.pull-right
+                ul.treeview-menu
+                    li(class=(menu === 'adm-profil-setting' ? 'active' : ''))
+                        a(href=base_url+'adm/adm-profil-setting')
+                            i.fa.fa-user-md
+                            |   Pengaturan Profil
+                    //- li
+                    //-     a(href='#')
+                    //-         i.fa.fa-cog
+                    //-         |   Pengaturan Sistem
+                    //- li
+                    //-     a(href='#')
+                    //-         i.fa.fa-database
+                    //-         |   Backup Database
+                    //- li
+                    //-     a(href='#')
+                    //-         i.fa.fa-history
+                    //-         |   Log Activity
+            li.visible-xs
+                a(href='/logout')
+                    i.fa.fa-sign-out
+                    span Keluar
+            //- li.treeview
+            //-     a(href='#')
+            //-         i.fa.fa-share
+            //-         span Multilevel
+            //-         span.pull-right-container
+            //-             i.fa.fa-angle-left.pull-right
+            //-     ul.treeview-menu
+            //-         li
+            //-             a(href='#')
+            //-                 i.fa.fa-circle-o
+            //-                 |   Menu 1
+            //-         li.treeview
+            //-             a(href='#')
+            //-                 i.fa.fa-circle-o
+            //-                 |   Menu 2
+            //-                 span.pull-right-container
+            //-                     i.fa.fa-angle-left.pull-right
+            //-             ul.treeview-menu
+            //-                 li
+            //-                     a(href='#')
+            //-                         i.fa.fa-circle-o
+            //-                         |   Menu 2.1
+            //-                 li.treeview
+            //-                     a(href='#')
+            //-                         i.fa.fa-circle-o
+            //-                         |   Menu 2.2
+            //-                         span.pull-right-container
+            //-                             i.fa.fa-angle-left.pull-right
+            //-                     ul.treeview-menu
+            //-                         li
+            //-                             a(href='#')
+            //-                                 i.fa.fa-circle-o
+            //-                                 |   Menu 2.2.1
+            //-                         li
+            //-                             a(href='#')
+            //-                                 i.fa.fa-circle-o
+            //-                                 |   Menu 2.2.2
+            //- li.header LABELS
+            //- li
+            //-     a(href='#')
+            //-         i.fa.fa-circle-o.text-red
+            //-         span Important
+            //- li
+            //-     a(href='#')
+            //-         i.fa.fa-circle-o.text-yellow
+            //-         span Warning
+            //- li
+            //-     a(href='#')
+            //-         i.fa.fa-circle-o.text-aqua
+            //-         span Information
+    // /.sidebar

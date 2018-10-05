@@ -1,0 +1,75 @@
+.row
+    .col-md-3
+        // Profile Image
+        .box.box-primary
+            .box-body.box-profile
+                if (session.user.foto_peg)
+                    img.profile-user-img.img-responsive.img-circle(src='/images/pegawai/small/'+member.foto_peg, alt='User profile picture')
+                h3.profile-username.text-center #{session.user.nama_gelar}
+                p.text-muted.text-center #{session.user.hakakses}
+                p.text-muted.text-center 
+                    strong
+                        |   NIP. #{member.nip}
+                p.text-muted.text-center #{session.user.nama_opd}
+                hr
+                p.text-center
+                    a(href='mailto:'+member.email) #{member.email}
+                    br
+                    a(href='mailto:'+memberemail2) #{member.email2}
+            // /.box-body
+        // /.box
+        // About Me Box
+        .box.box-primary
+            .box-header.with-border
+                h3.box-title Setup
+            // /.box-header
+            .box-body
+                a(href='/adm-profile-picture/'+member.id_peg)
+                    strong
+                        i.fa.fa-image.margin-r-5
+                        |   Change Profile Picture
+                    hr
+                strong
+                    i.fa.fa-key.margin-r-5
+                    |   Account Setting
+                hr
+            // /.box-body
+        // /.box
+    // /.col
+    .col-md-9
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Gallery
+            // /.box-header
+            .box-body.pad
+                form(action="/adm-profile-akun", method="post", enctype="multipart/form-data")
+                    input#title.form-control(type='hidden', name='id_peg', value=user.id_peg)
+                    .form-group
+                        label.col-sm-2.control-label(for='username')
+                            |   Username
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='username', required='required', value=user.username)
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='password')
+                            |   New Password
+                        .col-sm-10
+                            input#title.form-control(type='text', name='password')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='c_password')
+                            |   Confirm New Password
+                        .col-sm-10
+                            input#title.form-control(type='text', name='c_password')
+                            br
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box
+    // /.col
+// /.row

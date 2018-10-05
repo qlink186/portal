@@ -1,0 +1,99 @@
+.white-wrapper
+    .container
+        .row
+            .col-sm-12
+                h5.subpage-title
+                    span Sub Domain
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#table-subdomain").dataTable(
+                            {
+                            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                            "sDom": "<'row'<'col-md-5 col-xs-12'l><'col-md-7 col-xs-12 hidden-xs'Tf>r>"+
+                                    "t"+
+                                    "<'row'<'col-md-6 col-xs-12'i><'col-md-6 col-xs-12 small'p>>",
+                            tableTools: {
+                                sSwfPath: "#{base_url}adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                            },
+                            "ajax": {
+                                "url": "#{api_url}subdomain",
+                                "dataSrc": "subdomain"
+                            },
+                            "columns": [
+                                {
+                                    "searchable": false,
+                                    "class":"hidden-xs",
+                                    "render": function ( data, type, row ){
+                                        var id_subdomain = row["id_subdomain"];
+                                        var logo = row["logo"];
+                                        return '<div class="album-image"><a class="thumb" href="#{base_url}data/unitkerja/'+id_subdomain+'"><img class="img-responsive center-block" src="#{base_url}images/link-opd/tiny/'+logo+'"/></a></div>';
+                                    },
+                                    "targets": 0
+                                },
+                                {
+                                    "searchable": true,
+                                    "render": function ( data, type, row ){
+                                        var logo = row["logo"];
+                                        var id_subdomain = row["id_subdomain"];
+                                        var nama_opd = row["nama_opd"];
+                                        var akronim_opd = row["akronim_opd"];
+                                        var link = row["subdomain"]+row["prefix"];
+
+                                        return '<table class="table table-condensed">'
+                                        +'<tbody>'
+                                        +   '<tr>'
+                                        +       '<td colspan="3">'
+                                        +           '<img class="img-responsive visible-xs center-block" src="#{base_url}images/link-opd/tiny/'+logo+'" />'
+                                        +           '<br class="visible-xs" />'
+                                        +           '<a class="text-center visible-xs lead" href="http://'+link+'" target="_BLANK">'+nama_opd
+                                        +               '<br>('+akronim_opd+')'
+                                        +           '</a>'
+                                        +           '<a class="hidden-xs lead" href="http://'+link+'" target="_BLANK">'+nama_opd+' ('+akronim_opd+')'
+                                        +           '</a>'
+                                        +       '</td>'
+                                        +   '</tr>'
+                                        +'</tbody></table>';
+                                    },
+                                    "targets": 1
+                                },
+                                {
+                                    "searchable": true,
+                                    "class":"hidden-xs",
+                                    "width":"200px",
+                                    "render": function ( data, type, row ){
+                                        var link = row["subdomain"]+row["prefix"];
+                                        return '<a class="hidden-xs" href="http://'+link+'" target="_BLANK">'+link+'</a>';
+                                    },
+                                    "targets": 2
+                                }
+                            ],
+                            "processing":true,
+                            "deferRender": true,
+                            select: true,
+                            "oLanguage": {
+                                "sLengthMenu": "Tampilkan _MENU_ Sub Domain per halaman",
+                                "sZeroRecords": "Sub Domain yang anda cari tidak ditemukan",
+                                "sInfo": "Menampilkan Sub Domain ke _START_ sampai ke _END_, dari _TOTAL_ Sub Domain",
+                                "sInfoEmpty": "Menampilkan Sub Domain ke 0 sampai 0 dari total 0 Sub Domain",
+                                "sEmptyTable": "Tidak ada Sub Domain yang tersedia",
+                                "sInfoFiltered": "(Filter dari _MAX_ Sub Domain)",
+                                "oPaginate": {
+                                    "sFirst": "Pertama",
+                                    "sLast": "Terakhir",
+                                    "sNext": "Selanjutnya",
+                                    "sPrevious": "Sebelumnya"
+                                }
+                            }
+                        }).yadcf([
+                            {column_number : 0, filter_type: 'text'},
+                            {column_number : 1, filter_type: 'text'},
+                            {column_number : 2, filter_type: 'text'}
+                        ]);
+                    });
+                table#table-subdomain.table.table-hover.table-responsive(width='100%')
+                    thead
+                        tr
+                            th.text-center(width='55px').hidden-xs Logo
+                            th.text-center Nama Instansi
+                            th.text-center.hidden-xs Pranala Luar

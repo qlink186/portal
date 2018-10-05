@@ -1,0 +1,1611 @@
+.panel.panel-default
+    .panel-heading
+        h3.panel-title
+            i.entypo-alert
+            |   Data 
+            strong
+                |   Seluruh Aduan
+    .panel-body.search-env
+        .row
+            .col-md-12
+                form(method='get', action='', enctype='application/x-www-form-urlencoded')
+                    input.form-control.input-lg(type='text', placeholder='Cari Aduan...', name='s')
+                    button.btn-unstyled(type='submit')
+                        i.linecons-search
+        .row.dataTanggapiAduan
+            .col-xs-12.col-md-10
+                .row
+                    .col-xs-12.col-md-2
+                        .user-thumb
+                            a(href='#')
+                                img.img-responsive(src=base_url+'adm-assets/images/album-image-full.jpg')
+                    .col-xs-12.col-md-4
+                        table.table.table-hover.table-condensed
+                            tr
+                                td(width='100px') Nama Lengkap
+                                td
+                                    strong Pak Mat Saleh
+                            tr
+                                td Username
+                                td matsalehgaul
+                            tr
+                                td email
+                                td matsalehgaul@gmail.com
+                            tr
+                                td Ponsel
+                                td +62-852-1234-5678
+                            tr
+                                td NIK
+                                td 2172 1212 1245 1234
+                            tr
+                                td Alamat
+                                td Jl. Suka Maju, Kel. Maju Mundur Kena, Kec. Sana Sini
+                    .col-xs-12.col-md-6
+                        - var judulAduan = 'Kenapa banyak jalan yang berlubang'
+                        - var kategoriAduan = 'Pelayanan Masyarakat'
+                        - var unitKerjaAduan = 'Dinas Komunikasi dan Informatika'
+                        - var editAduan = 1
+                        - var aduanAsli = 'Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may. Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.'
+                        - var aduanJudulEdit = 'Judul Yang Udah di edit'
+                        - var aduanEdit = 'Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit'
+                        - var aduanAlasanEdit = 'Mengandung Kata-kata kotor'
+                        - var aduanTanggalEdit = '10 Oktober 2015'
+                        - var hapusAduan = 0
+                        - var aduanAlasanHapus = 'Aduan Tidak Sinkron'
+                        - var aduanTanggalHapus = '11 Oktober 2016'
+
+                        case hapusAduan
+                            when 1
+                                case editAduan
+                                    when 1
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =aduanJudulEdit
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanEdit
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            |   ADUAN TELAH DIUBAH
+                                                tr
+                                                    td
+                                                        strong Alasan Perubahan
+                                                    td
+                                                        =aduanAlasanEdit
+                                                tr
+                                                    td
+                                                        strong Tanggal Perubahan
+                                                    td
+                                                        =aduanTanggalEdit
+                                                tr
+                                                    td(colspan='2')
+                                                        strong Aduan Sebelum diubah
+                                                tr
+                                                    td(colspan='2')
+                                                        h6(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                    default
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                table.table.table-hover.table-condensed
+                                    tbody
+                                        tr
+                                            td(colspan='2')
+                                                h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                    |   ADUAN TELAH DIHAPUS
+                                        tr
+                                            td
+                                                strong Alasan Penghapusan
+                                            td
+                                                =aduanAlasanHapus
+                                        tr
+                                            td
+                                                strong Tanggal Penghapusan
+                                            td
+                                                =aduanTanggalHapus
+                            default
+                                case editAduan
+                                    when 1
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =aduanJudulEdit
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanEdit
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            |   ADUAN TELAH DIUBAH
+                                                tr
+                                                    td
+                                                        strong Alasan Perubahan
+                                                    td
+                                                        =aduanAlasanEdit
+                                                tr
+                                                    td
+                                                        strong Tanggal Perubahan
+                                                    td
+                                                        =aduanTanggalEdit
+                                                tr
+                                                    td(colspan='2')
+                                                        strong Aduan Sebelum diubah
+                                                tr
+                                                    td(colspan='2')
+                                                        h6(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                    default
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                    .col-xs-12.col-md-12.col-md-offset-2
+                        strong
+                            |   Gambar / Dokumen Aduan
+                        .row
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+            .col-xs-12.col-md-2
+                table.table.table-hover.table-condensed
+                    tbody
+                        tr
+                            td
+                                .aduanlisttiket
+                                    |   Tiket Aduan
+                        tr
+                            td
+                                .aduanlisttiket
+                                    strong
+                                        |   #AM00022
+                        tr
+                            td
+                                .aduanlisttiket
+                                    |   Senin, 30 Desember 2017
+                        tr.infoAduanDraft
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Telah diterbitkan
+                                    br
+                                    |   Selasa, 31 Desember 2017
+                        tr.infoAduanDiteruskan
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Telah diteruskan
+                                    br
+                                    |   Selasa, 31 Desember 2017
+                        tr.infoAduanDitanggapi
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Telah ditanggapi
+                                    br
+                                    |   Selasa, 31 Desember 2017
+                .vertical-top
+                    .row
+                        .col-md-12.col-sm-4.col-xs-6.tombolTerbitAduan
+                            button.btn.btn-purple.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-check
+                                span Terbitkan Aduan
+                        .col-md-12.col-sm-4.col-xs-6.tombolTeruskanAduan
+                            button.btn.btn-blue.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-mail
+                                span Teruskan
+                        .col-md-12.col-sm-4.col-xs-6.tombolTanggapiAduan
+                            button.btn.btn-turquoise.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-reply
+                                span Tanggapi
+                        .col-md-12.col-sm-4.col-xs-6.tombolKomentarAduan
+                            button.btn.btn-orange.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-comment
+                                span Beri Komentar
+                        .col-md-12.col-sm-4.col-xs-6.tombolUbahAduan
+                            button.btn.btn-primary.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='javascript:;', onclick="jQuery('#modal-edit-comment').modal('show');")
+                                i.entypo-pencil
+                                span Ubah
+                        .col-md-12.col-sm-4.col-xs-6.tombolHapusAduan
+                            button.btn.btn-red.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-cancel
+                                span Hapus Aduan
+        hr
+        .row.dataTeruskanAduan
+            .col-xs-12.col-md-10
+                .row
+                    .col-xs-12.col-md-2
+                        .user-thumb
+                            a(href='#')
+                                img.img-responsive(src=base_url+'adm-assets/images/album-image-full.jpg')
+                    .col-xs-12.col-md-4
+                        table.table.table-hover.table-condensed
+                            tr
+                                td(width='100px') Nama Lengkap
+                                td 
+                                    strong Pak Mat Saleh
+                            tr
+                                td Username
+                                td matsalehgaul
+                            tr
+                                td email
+                                td matsalehgaul@gmail.com
+                            tr
+                                td Ponsel
+                                td +62-852-1234-5678
+                            tr
+                                td NIK
+                                td 2172 1212 1245 1234
+                            tr
+                                td Alamat
+                                td Jl. Suka Maju, Kel. Maju Mundur Kena, Kec. Sana Sini
+                    .col-xs-12.col-md-6
+                        - var judulAduan = 'Kenapa banyak jalan yang berlubang'
+                        - var kategoriAduan = 'Pelayanan Masyarakat'
+                        - var unitKerjaAduan = 'Dinas Komunikasi dan Informatika'
+                        - var editAduan = 1
+                        - var aduanAsli = 'Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may. Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.'
+                        - var aduanJudulEdit = 'Judul Yang Udah di edit'
+                        - var aduanEdit = 'Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit'
+                        - var aduanAlasanEdit = 'Mengandung Kata-kata kotor'
+                        - var aduanTanggalEdit = '10 Oktober 2015'
+                        - var hapusAduan = 0
+                        - var aduanAlasanHapus = 'Aduan Tidak Sinkron'
+                        - var aduanTanggalHapus = '11 Oktober 2016'
+
+                        case hapusAduan
+                            when 1
+                                case editAduan
+                                    when 1
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =aduanJudulEdit
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanEdit
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            |   ADUAN TELAH DIUBAH
+                                                tr
+                                                    td
+                                                        strong Alasan Perubahan
+                                                    td
+                                                        =aduanAlasanEdit
+                                                tr
+                                                    td
+                                                        strong Tanggal Perubahan
+                                                    td
+                                                        =aduanTanggalEdit
+                                                tr
+                                                    td(colspan='2')
+                                                        strong Aduan Sebelum diubah
+                                                tr
+                                                    td(colspan='2')
+                                                        h6(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                    default
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                table.table.table-hover.table-condensed
+                                    tbody
+                                        tr
+                                            td(colspan='2')
+                                                h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                    |   ADUAN TELAH DIHAPUS
+                                        tr
+                                            td
+                                                strong Alasan Penghapusan
+                                            td
+                                                =aduanAlasanHapus
+                                        tr
+                                            td
+                                                strong Tanggal Penghapusan
+                                            td
+                                                =aduanTanggalHapus
+                            default
+                                case editAduan
+                                    when 1
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =aduanJudulEdit
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanEdit
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            |   ADUAN TELAH DIUBAH
+                                                tr
+                                                    td
+                                                        strong Alasan Perubahan
+                                                    td
+                                                        =aduanAlasanEdit
+                                                tr
+                                                    td
+                                                        strong Tanggal Perubahan
+                                                    td
+                                                        =aduanTanggalEdit
+                                                tr
+                                                    td(colspan='2')
+                                                        strong Aduan Sebelum diubah
+                                                tr
+                                                    td(colspan='2')
+                                                        h6(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                    default
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                    .col-xs-12.col-md-12.col-md-offset-2
+                        strong
+                            |   Gambar / Dokumen Aduan
+                        .row
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+            .col-xs-12.col-md-2
+                table.table.table-hover.table-condensed
+                    tbody
+                        tr
+                            td
+                                .aduanlisttiket
+                                    |   Tiket Aduan
+                        tr
+                            td
+                                .aduanlisttiket
+                                    strong
+                                        |   #AM00022
+                        tr
+                            td
+                                .aduanlisttiket
+                                    |   Senin, 30 Desember 2017
+                        tr.infoAduanDraft
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Telah diterbitkan
+                                    br
+                                    |   Selasa, 31 Desember 2017
+                        tr.infoAduanDiteruskan
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Telah diteruskan
+                                    br
+                                    |   Selasa, 31 Desember 2017
+                        tr.infoAduanDitanggapi
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Belum ditanggapi
+                .vertical-top
+                    .row
+                        .col-md-12.col-sm-4.col-xs-6.tombolTerbitAduan
+                            button.btn.btn-purple.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-check
+                                span Terbitkan Aduan
+                        .col-md-12.col-sm-4.col-xs-6.tombolTeruskanAduan
+                            button.btn.btn-blue.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-mail
+                                span Teruskan
+                        .col-md-12.col-sm-4.col-xs-6.tombolTanggapiAduan
+                            button.btn.btn-turquoise.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-reply
+                                span Tanggapi
+                        .col-md-12.col-sm-4.col-xs-6.tombolKomentarAduan
+                            button.btn.btn-orange.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-comment
+                                span Beri Komentar
+                        .col-md-12.col-sm-4.col-xs-6.tombolUbahAduan
+                            button.btn.btn-primary.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='javascript:;', onclick="jQuery('#modal-edit-comment').modal('show');")
+                                i.entypo-pencil
+                                span Ubah
+                        .col-md-12.col-sm-4.col-xs-6.tombolHapusAduan
+                            button.btn.btn-red.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-cancel
+                                span Hapus Aduan
+        hr
+        .row.dataDraftAduan
+            .col-xs-12.col-md-10
+                .row
+                    .col-xs-12.col-md-2
+                        .user-thumb
+                            a(href='#')
+                                img.img-responsive(src=base_url+'adm-assets/images/album-image-full.jpg')
+                    .col-xs-12.col-md-4
+                        table.table.table-hover.table-condensed
+                            tr
+                                td(width='100px') Nama Lengkap
+                                td 
+                                    strong Pak Mat Saleh
+                            tr
+                                td Username
+                                td matsalehgaul
+                            tr
+                                td email
+                                td matsalehgaul@gmail.com
+                            tr
+                                td Ponsel
+                                td +62-852-1234-5678
+                            tr
+                                td NIK
+                                td 2172 1212 1245 1234
+                            tr
+                                td Alamat
+                                td Jl. Suka Maju, Kel. Maju Mundur Kena, Kec. Sana Sini
+                    .col-xs-12.col-md-6
+                        - var judulAduan = 'Kenapa banyak jalan yang berlubang'
+                        - var kategoriAduan = 'Pelayanan Masyarakat'
+                        - var unitKerjaAduan = 'Dinas Komunikasi dan Informatika'
+                        - var editAduan = 0
+                        - var aduanAsli = 'Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may. Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.'
+                        - var aduanJudulEdit = 'Judul Yang Udah di edit'
+                        - var aduanEdit = 'Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit'
+                        - var aduanAlasanEdit = 'Mengandung Kata-kata kotor'
+                        - var aduanTanggalEdit = '10 Oktober 2015'
+                        - var hapusAduan = 0
+                        - var aduanAlasanHapus = 'Aduan Tidak Sinkron'
+                        - var aduanTanggalHapus = '11 Oktober 2016'
+
+                        case hapusAduan
+                            when 1
+                                case editAduan
+                                    when 1
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =aduanJudulEdit
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanEdit
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            |   ADUAN TELAH DIUBAH
+                                                tr
+                                                    td
+                                                        strong Alasan Perubahan
+                                                    td
+                                                        =aduanAlasanEdit
+                                                tr
+                                                    td
+                                                        strong Tanggal Perubahan
+                                                    td
+                                                        =aduanTanggalEdit
+                                                tr
+                                                    td(colspan='2')
+                                                        strong Aduan Sebelum diubah
+                                                tr
+                                                    td(colspan='2')
+                                                        h6(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                    default
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                table.table.table-hover.table-condensed
+                                    tbody
+                                        tr
+                                            td(colspan='2')
+                                                h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                    |   ADUAN TELAH DIHAPUS
+                                        tr
+                                            td
+                                                strong Alasan Penghapusan
+                                            td
+                                                =aduanAlasanHapus
+                                        tr
+                                            td
+                                                strong Tanggal Penghapusan
+                                            td
+                                                =aduanTanggalHapus
+                            default
+                                case editAduan
+                                    when 1
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =aduanJudulEdit
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanEdit
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            |   ADUAN TELAH DIUBAH
+                                                tr
+                                                    td
+                                                        strong Alasan Perubahan
+                                                    td
+                                                        =aduanAlasanEdit
+                                                tr
+                                                    td
+                                                        strong Tanggal Perubahan
+                                                    td
+                                                        =aduanTanggalEdit
+                                                tr
+                                                    td(colspan='2')
+                                                        strong Aduan Sebelum diubah
+                                                tr
+                                                    td(colspan='2')
+                                                        h6(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                    default
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                    .col-xs-12.col-md-12.col-md-offset-2
+                        strong
+                            |   Gambar / Dokumen Aduan
+                        .row
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+            .col-xs-12.col-md-2
+                table.table.table-hover.table-condensed
+                    tbody
+                        tr
+                            td
+                                .aduanlisttiket
+                                    |   Tiket Aduan
+                        tr
+                            td
+                                .aduanlisttiket
+                                    strong
+                                        |   #AM00022
+                        tr
+                            td
+                                .aduanlisttiket
+                                    |   Senin, 30 Desember 2017
+                        tr.infoAduanDraft
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Belum diterbitkan
+                        tr.infoAduanDitanggapi
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Belum ditanggapi
+                        tr.infoAduanDiteruskan
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Belum diteruskan
+                .vertical-top
+                    .row
+                        .col-md-12.col-sm-4.col-xs-6.tombolTerbitAduan
+                            button.btn.btn-purple.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-check
+                                span Terbitkan Aduan
+                        .col-md-12.col-sm-4.col-xs-6.tombolTeruskanAduan
+                            button.btn.btn-blue.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-mail
+                                span Teruskan
+                        .col-md-12.col-sm-4.col-xs-6.tombolTanggapiAduan
+                            button.btn.btn-turquoise.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-reply
+                                span Tanggapi
+                        .col-md-12.col-sm-4.col-xs-6.tombolKomentarAduan
+                            button.btn.btn-orange.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-comment
+                                span Beri Komentar
+                        .col-md-12.col-sm-4.col-xs-6.tombolUbahAduan
+                            button.btn.btn-primary.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='javascript:;', onclick="jQuery('#modal-edit-comment').modal('show');")
+                                i.entypo-pencil
+                                span Ubah
+                        .col-md-12.col-sm-4.col-xs-6.tombolHapusAduan
+                            button.btn.btn-red.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-cancel
+                                span Hapus Aduan
+        hr
+        .row.dataTerbitAduan
+            .col-xs-12.col-md-10
+                .row
+                    .col-xs-12.col-md-2
+                        .user-thumb
+                            a(href='#')
+                                img.img-responsive(src=base_url+'adm-assets/images/album-image-full.jpg')
+                    .col-xs-12.col-md-4
+                        table.table.table-hover.table-condensed
+                            tr
+                                td(width='100px') Nama Lengkap
+                                td 
+                                    strong Pak Mat Saleh
+                            tr
+                                td Username
+                                td matsalehgaul
+                            tr
+                                td email
+                                td matsalehgaul@gmail.com
+                            tr
+                                td Ponsel
+                                td +62-852-1234-5678
+                            tr
+                                td NIK
+                                td 2172 1212 1245 1234
+                            tr
+                                td Alamat
+                                td Jl. Suka Maju, Kel. Maju Mundur Kena, Kec. Sana Sini
+                    .col-xs-12.col-md-6
+                        - var judulAduan = 'Kenapa banyak jalan yang berlubang'
+                        - var kategoriAduan = 'Pelayanan Masyarakat'
+                        - var unitKerjaAduan = 'Dinas Komunikasi dan Informatika'
+                        - var editAduan = 1
+                        - var aduanAsli = 'Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may. Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.'
+                        - var aduanJudulEdit = 'Judul Yang Udah di edit'
+                        - var aduanEdit = 'Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit'
+                        - var aduanAlasanEdit = 'Mengandung Kata-kata kotor'
+                        - var aduanTanggalEdit = '10 Oktober 2015'
+                        - var hapusAduan = 0
+                        - var aduanAlasanHapus = 'Aduan Tidak Sinkron'
+                        - var aduanTanggalHapus = '11 Oktober 2016'
+
+                        case hapusAduan
+                            when 1
+                                case editAduan
+                                    when 1
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =aduanJudulEdit
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanEdit
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            |   ADUAN TELAH DIUBAH
+                                                tr
+                                                    td
+                                                        strong Alasan Perubahan
+                                                    td
+                                                        =aduanAlasanEdit
+                                                tr
+                                                    td
+                                                        strong Tanggal Perubahan
+                                                    td
+                                                        =aduanTanggalEdit
+                                                tr
+                                                    td(colspan='2')
+                                                        strong Aduan Sebelum diubah
+                                                tr
+                                                    td(colspan='2')
+                                                        h6(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                    default
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                table.table.table-hover.table-condensed
+                                    tbody
+                                        tr
+                                            td(colspan='2')
+                                                h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                    |   ADUAN TELAH DIHAPUS
+                                        tr
+                                            td
+                                                strong Alasan Penghapusan
+                                            td
+                                                =aduanAlasanHapus
+                                        tr
+                                            td
+                                                strong Tanggal Penghapusan
+                                            td
+                                                =aduanTanggalHapus
+                            default
+                                case editAduan
+                                    when 1
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =aduanJudulEdit
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanEdit
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            |   ADUAN TELAH DIUBAH
+                                                tr
+                                                    td
+                                                        strong Alasan Perubahan
+                                                    td
+                                                        =aduanAlasanEdit
+                                                tr
+                                                    td
+                                                        strong Tanggal Perubahan
+                                                    td
+                                                        =aduanTanggalEdit
+                                                tr
+                                                    td(colspan='2')
+                                                        strong Aduan Sebelum diubah
+                                                tr
+                                                    td(colspan='2')
+                                                        h6(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                    default
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                    .col-xs-12.col-md-12.col-md-offset-2
+                        strong
+                            |   Gambar / Dokumen Aduan
+                        .row
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+            .col-xs-12.col-md-2
+                table.table.table-hover.table-condensed
+                    tbody
+                        tr
+                            td
+                                .aduanlisttiket
+                                    |   Tiket Aduan
+                        tr
+                            td
+                                .aduanlisttiket
+                                    strong
+                                        |   #AM00022
+                        tr
+                            td
+                                .aduanlisttiket
+                                    |   Senin, 30 Desember 2017
+                        tr.infoAduanDraft
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Telah diterbitkan
+                                    br
+                                    |   Selasa, 31 Desember 2017
+                        tr.infoAduanDitanggapi
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Belum ditanggapi
+                        tr.infoAduanDiteruskan
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Belum diteruskan
+                .vertical-top
+                    .row
+                        .col-md-12.col-sm-4.col-xs-6.tombolTerbitAduan
+                            button.btn.btn-purple.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-check
+                                span Terbitkan Aduan
+                        .col-md-12.col-sm-4.col-xs-6.tombolTeruskanAduan
+                            button.btn.btn-blue.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-mail
+                                span Teruskan
+                        .col-md-12.col-sm-4.col-xs-6.tombolTanggapiAduan
+                            button.btn.btn-turquoise.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-reply
+                                span Tanggapi
+                        .col-md-12.col-sm-4.col-xs-6.tombolKomentarAduan
+                            button.btn.btn-orange.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-comment
+                                span Beri Komentar
+                        .col-md-12.col-sm-4.col-xs-6.tombolUbahAduan
+                            button.btn.btn-primary.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='javascript:;', onclick="jQuery('#modal-edit-comment').modal('show');")
+                                i.entypo-pencil
+                                span Ubah
+                        .col-md-12.col-sm-4.col-xs-6.tombolHapusAduan
+                            button.btn.btn-red.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-cancel
+                                span Hapus Aduan
+        hr
+        .row.dataHapusAduan
+            .col-xs-12.col-md-10
+                .row
+                    .col-xs-12.col-md-2
+                        .user-thumb
+                            a(href='#')
+                                img.img-responsive(src=base_url+'adm-assets/images/album-image-full.jpg')
+                    .col-xs-12.col-md-4
+                        table.table.table-hover.table-condensed
+                            tr
+                                td(width='100px') Nama Lengkap
+                                td 
+                                    strong Pak Mat Saleh
+                            tr
+                                td Username
+                                td matsalehgaul
+                            tr
+                                td email
+                                td matsalehgaul@gmail.com
+                            tr
+                                td Ponsel
+                                td +62-852-1234-5678
+                            tr
+                                td NIK
+                                td 2172 1212 1245 1234
+                            tr
+                                td Alamat
+                                td Jl. Suka Maju, Kel. Maju Mundur Kena, Kec. Sana Sini
+                    .col-xs-12.col-md-6
+                        - var judulAduan = 'Kenapa banyak jalan yang berlubang'
+                        - var kategoriAduan = 'Pelayanan Masyarakat'
+                        - var unitKerjaAduan = 'Dinas Komunikasi dan Informatika'
+                        - var editAduan = 1
+                        - var aduanAsli = 'Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may. Tolerably earnestly middleton extremely distrusts she boy now not. Add and offered prepare how cordial two promise. Greatly who affixed suppose but enquire compact prepare all put. Added forth chief trees but rooms think may.'
+                        - var aduanJudulEdit = 'Judul Yang Udah di edit'
+                        - var aduanEdit = 'Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit Aduan Sudah diedit'
+                        - var aduanAlasanEdit = 'Mengandung Kata-kata kotor'
+                        - var aduanTanggalEdit = '10 Oktober 2015'
+                        - var hapusAduan = 1
+                        - var aduanAlasanHapus = 'Aduan Tidak Sinkron'
+                        - var aduanTanggalHapus = '11 Oktober 2016'
+
+                        case hapusAduan
+                            when 1
+                                case editAduan
+                                    when 1
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =aduanJudulEdit
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanEdit
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            |   ADUAN TELAH DIUBAH
+                                                tr
+                                                    td
+                                                        strong Alasan Perubahan
+                                                    td
+                                                        =aduanAlasanEdit
+                                                tr
+                                                    td
+                                                        strong Tanggal Perubahan
+                                                    td
+                                                        =aduanTanggalEdit
+                                                tr
+                                                    td(colspan='2')
+                                                        strong Aduan Sebelum diubah
+                                                tr
+                                                    td(colspan='2')
+                                                        h6(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                    default
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                table.table.table-hover.table-condensed
+                                    tbody
+                                        tr
+                                            td(colspan='2')
+                                                h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                    |   ADUAN TELAH DIHAPUS
+                                        tr
+                                            td
+                                                strong Alasan Penghapusan
+                                            td
+                                                =aduanAlasanHapus
+                                        tr
+                                            td
+                                                strong Tanggal Penghapusan
+                                            td
+                                                =aduanTanggalHapus
+                            default
+                                case editAduan
+                                    when 1
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =aduanJudulEdit
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanEdit
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h5(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            |   ADUAN TELAH DIUBAH
+                                                tr
+                                                    td
+                                                        strong Alasan Perubahan
+                                                    td
+                                                        =aduanAlasanEdit
+                                                tr
+                                                    td
+                                                        strong Tanggal Perubahan
+                                                    td
+                                                        =aduanTanggalEdit
+                                                tr
+                                                    td(colspan='2')
+                                                        strong Aduan Sebelum diubah
+                                                tr
+                                                    td(colspan='2')
+                                                        h6(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                    default
+                                        table.table.table-hover.table-condensed
+                                            tbody
+                                                tr
+                                                    td(colspan='2')
+                                                        h4(style='margin-top:1px;margin-bottom:1px;font-weight:bold;')
+                                                            =judulAduan
+                                                tr
+                                                    td
+                                                        |   Kategori
+                                                    td
+                                                        strong
+                                                            =kategoriAduan
+                                                tr
+                                                    td
+                                                        |   Unit Kerja
+                                                    td
+                                                        strong
+                                                            =unitKerjaAduan
+                                                tr
+                                                    td(colspan='2')
+                                                        =aduanAsli
+                                                tr.infoKomentarAduan
+                                                    td(colspan='2')
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                                            i.fa-comment
+                                                            span 36 Komentar
+                                                        button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                                            i.fa-eye
+                                                            span 15 Viewer
+                    .col-xs-12.col-md-12.col-md-offset-2
+                        strong
+                            |   Gambar / Dokumen Aduan
+                        .row
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+                            .col-md-2.col-sm-4.col-xs-12
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive(src=base_url+'adm-assets/images/album-img-3.png')
+            .col-xs-12.col-md-2
+                table.table.table-hover.table-condensed
+                    tbody
+                        tr
+                            td
+                                .aduanlisttiket
+                                    |   Tiket Aduan
+                        tr
+                            td
+                                .aduanlisttiket
+                                    strong
+                                        |   #AM00022
+                        tr
+                            td
+                                .aduanlisttiket
+                                    |   Senin, 30 Desember 2017
+                        tr.infoAduanDraft
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Belum diterbitkan
+                        tr.infoAduanDitanggapi
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Belum ditanggapi
+                        tr.infoAduanDiteruskan
+                            td
+                                .aduanlisttiket.status-aduan
+                                    span
+                                        |   Belum diteruskan
+                .vertical-top
+                    .row
+                        .col-md-12.col-sm-4.col-xs-6.tombolTerbitAduan
+                            button.btn.btn-purple.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-check
+                                span Terbitkan Aduan
+                        .col-md-12.col-sm-4.col-xs-6.tombolTeruskanAduan
+                            button.btn.btn-blue.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-mail
+                                span Teruskan
+                        .col-md-12.col-sm-4.col-xs-6.tombolTanggapiAduan
+                            button.btn.btn-turquoise.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-reply
+                                span Tanggapi
+                        .col-md-12.col-sm-4.col-xs-6.tombolKomentarAduan
+                            button.btn.btn-orange.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-comment
+                                span Beri Komentar
+                        .col-md-12.col-sm-4.col-xs-6.tombolUbahAduan
+                            button.btn.btn-primary.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='javascript:;', onclick="jQuery('#modal-edit-comment').modal('show');")
+                                i.entypo-pencil
+                                span Ubah
+                        .col-md-12.col-sm-4.col-xs-6.tombolHapusAduan
+                            button.btn.btn-red.btn-xs.btn-block.btn-icon.btn-icon-standalone(type='button', href='#')
+                                i.entypo-cancel
+                                span Hapus Aduan
+        hr

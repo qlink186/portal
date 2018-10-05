@@ -1,0 +1,22 @@
+extends adm-layout/base
+block content
+    section.content-header
+        h1
+            |   Member
+            small List
+        ol.breadcrumb
+            li
+                a(href='./adm')
+                    i.fa.fa-dashboard 
+                    |   Beranda
+            li
+                a(href='./adm-member-list') Member
+            li.active Data Member
+    // Main content
+    section.content
+        .row
+            .col-xs-12
+                include adm-modul/mod-member-list.pug
+            // /.col
+        // /.row
+    // /.content

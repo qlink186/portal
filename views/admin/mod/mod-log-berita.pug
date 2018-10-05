@@ -1,0 +1,160 @@
+.panel.panel-default
+    .panel-heading
+        h3.panel-title
+            i.entypo-alert 
+            |   Log 
+            strong
+                |   Artikel
+    .panel-body
+        form.form-horizontal(role='form')
+            .form-group
+                .col-sm-6
+                    #cari_artikel
+            .form-group
+                .col-sm-2
+                    #filter_status_artikel
+                .col-sm-2
+                    #filter_kategori
+                .col-sm-3
+                    #filter_penulis
+                .col-sm-2
+                    #filter_tgl_tulis
+                .col-sm-2
+                    #filter_tgl_terbit
+            .form-group-separator
+        script(type='text/javascript').
+            var oTable;
+            var sess = '#{session.user.id_hakakses}';
+            var sessygbikin = '#{session.user.id_user}';
+            jQuery(document).ready(function($)
+            {
+                'use strict';
+                oTable = $("#table-log-berita").dataTable(
+                    {
+                    "bStateSave": true,
+                    
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                    "sDom": '<"top visible-xs"p><"top pull-right"l>t<"col-sm-5"i><"col-sm-7 small"p>',
+                    tableTools: {
+                        sSwfPath: "#{base_url}adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                    },
+                    "pagingType": "full_numbers",
+                    "ajax": {
+                        "url": '#{api_url}adm_log_berita',
+                        "dataSrc": "log_berita"
+                    },
+                    "columns":
+                    [
+                        {
+                            "searchable": true,
+                            "class":"text-center",
+                            "render": function ( data, type, row ){
+                                var waktu_proses = row["waktu_proses"];
+                                return waktu_proses;
+                            },
+                            "targets": 0
+                        },
+                        { 
+                            "data": "proses", 
+                            "class":"text-center",
+                            "targets": 1
+                        },
+                        { 
+                            "data": "ip", 
+                            "class":"text-center",
+                            "targets": 2
+                        },
+                        { 
+                            "data": "id_berita", 
+                            "class":"text-center",
+                            "targets": 3
+                        },
+                        { 
+                            "data": "perubahan_id_kategori", 
+                            "class":"text-center",
+                            "targets": 4
+                        },
+                        { 
+                            "data": "nama_gelar_yg_ngubah", 
+                            "class":"text-center",
+                            "targets": 5
+                        }
+                    ],
+                    "processing":true,
+                    "deferRender": true,
+                    select: true,
+                    "oLanguage": {
+                        "sLengthMenu": "Tampilkan _MENU_ Log per halaman",
+                        "sZeroRecords": "Log yang anda cari tidak ditemukan",
+                        "sInfo": "Menampilkan log ke _START_ sampai ke _END_, dari _TOTAL_ log berita",
+                        "sInfoEmpty": "Menampilkan log ke 0 sampai 0 dari total 0 log berita",
+                        "sEmptyTable": "Log berita Tidak Tersedia",
+                        "sInfoFiltered": "(Filter dari _MAX_ log)",
+                        "oPaginate": {
+                            "sFirst": "Pertama",
+                            "sLast": "Terakhir",
+                            "sNext": "Selanjutnya",
+                            "sPrevious": "Sebelumnya"
+                        }
+                    }
+                }).yadcf([
+                    {
+                        column_number : 0, 
+                        filter_type: 'none'
+                    },
+                    {
+                        column_number : 1, 
+                        filter_type: 'text',
+                        filter_container_id: 'cari_artikel',
+                        filter_default_label: 'Cari Seluruh Artikel / Berita'
+                    },
+                    {
+                        column_number : 2,
+                        filter_container_id: 'filter_kategori',
+                        filter_default_label: 'Semua Kategori',
+                        select_type_options: {
+                            width: '350px',
+                            allowClear: false  // show 'x' (remove) next to selection inside the select itself
+                        }
+                    },
+                    {
+                        column_number : 3, 
+                        filter_container_id: 'filter_penulis',
+                        filter_default_label: 'Semua Penulis'
+                    },
+                    {
+                        column_number : 4,
+                        filter_container_id: 'filter_tgl_tulis',
+                        filter_default_label: 'Tanggal Tulis'
+                    },
+                    {
+                        column_number : 5, 
+                        filter_container_id: 'filter_status_artikel',
+                        filter_type: 'custom_func',
+                        custom_func: status_artikel,
+                        data: [{
+                            value: 'TERBIT',
+                            label: 'Artikel Terbit'
+                        }, {
+                            value: 'DRAFT',
+                            label: 'Artikel Draft'
+                        }, {
+                            value: 'HAPUS',
+                            label: 'Artikel Dihapus'
+                        }],
+                        filter_default_label: "Semua Status"
+                    }
+                ],
+                {
+                    externally_triggered: true
+                });
+            });
+        table#table-log-berita.table.table-hover(width='100%')
+            thead
+                tr
+                    th.text-center Waktu
+                    th.text-center Aksi
+                    th.text-center IP
+                    th.text-center id Berita
+                    th.text-center Keterangan Aksi
+                    th.text-center User

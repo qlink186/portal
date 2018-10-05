@@ -1,0 +1,177 @@
+.page-title
+    .title-env
+        h1.title=title
+        p.description=desc
+    .breadcrumb-env
+        ol.breadcrumb.bc-1
+            li
+                a(href=base_url)
+                    i.fa-home
+                    |   Dahsboard
+            li.active
+                strong=title
+.row
+    .col-sm-12
+        .panel.panel-default
+            .panel-heading
+                h3.panel-title
+                    i.entypo-megaphone
+                    |   Siaran Pers
+                .panel-options
+                    a(href='#', data-toggle='panel')
+                        span.collapse-icon &ndash;
+                        span.expand-icon +
+            .panel-body
+                script(type='text/javascript').
+                    jQuery(document).ready(function($)
+                    {
+                        $("#table-siaran-pers").dataTable(
+                            {
+                            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                            dom: "<'row'<'col-sm-5'l><'col-sm-7'Tf>r>"+
+                                    "t"+
+                                    "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+                            tableTools: {
+                                sSwfPath: "./adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                            },
+                            select: true
+                        }).yadcf([
+                            {column_number : 0, filter_type: 'text'},
+                            {column_number : 1, filter_type: 'text'},
+                            {column_number : 2, filter_type: 'text'},
+                            {column_number : 3},
+                            {column_number : 4},
+                            {column_number : 5},
+                            {column_number : 6, filter_type: 'text'},
+                        ]);
+                    });
+                table#table-siaran-pers.table.table-hover
+                    thead
+                        tr
+                            th(width='150px') Gambar
+                            th(width='350px') Judul | Isi Siaran Pers
+                            th Penulis
+                            th Tgl Tulis
+                            th Tgl Terbit / Hapus
+                            th Stat
+                            th(width='40px') Aksi
+                    tbody
+                        tr.dataDraft
+                            td
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive.max150(src=base_url+'images/berita/small/0a84137e221bc4add674917744832f61.jpg')
+                            td
+                                p.lead.text-danger This is a lead parapraph.
+                                |   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat justo sit amet augue ullamcorper, rhoncus tincidunt velit fringilla. Vestibulum congue commodo velit, vel fringilla elit tincidunt elementum. Aenean scelerisque id turpis suscipit eleifend. Ut aliquam sagittis turpis eu ultricies. Nulla vel lectus ut est vehicula hendrerit vel id nisi. Sed ac posuere odio. Nullam sit amet elit tincidunt, molestie turpis id, laoreet odio. In pharetra ut magna sit amet interdum. Vestibulum mauris purus, tincidunt a tincidunt ut, molestie ut ligula.
+                                |   Curabitur metus erat, fringilla at nibh sed, tristique molestie ex. Nulla vel malesuada magna. Morbi auctor sem tortor, eget pellentesque risus sodales in. Aenean molestie dolor in tempor vehicula. Suspendisse ullamcorper lorem at massa aliquam pellentesque. Suspendisse vestibulum egestas placerat. Nullam pulvinar felis et ante lobortis sodales. Morbi sollicitudin velit leo. Mauris vitae risus sollicitudin, fringilla mi in, aliquam neque. Maecenas massa turpis, gravida facilisis justo eget, efficitur bibendum lectus. Suspendisse nec erat ut orci tincidunt malesuada sit amet quis sapien. Aenean egestas dignissim porta. Suspendisse potenti.
+                                hr(style='margin:2px 0 5px 0')
+                                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                    i.fa-comment
+                                    span 36 Komentar
+                                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                    i.fa-eye
+                                    span 15 Viewer
+                            td
+                                |   Aprinaldi
+                            td
+                                |   30 Desember 2017
+                            td
+                                |   1 Januari 2018
+                            td
+                                |   DRAFT
+                            td.center
+                                button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                    i.entypo-pencil
+                                    span   Ubah
+                                button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                    i.entypo-check
+                                    span Terbitkan
+                                button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                    i.entypo-archive
+                                    span Draft
+                                button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                    i.entypo-trash
+                                    span Hapus
+                        tr.dataTerbit
+                            td
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive.max150(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg')
+                            td
+                                p.lead This is a lead parapraph.
+                                p
+                                    |   Neglected
+                                    strong principle ask rapturous
+                                    |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                                    del chatty regard vulgar
+                                    |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                                hr(style='margin:2px 0 5px 0')
+                                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                    i.fa-comment
+                                    span 36 Komentar
+                                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                    i.fa-eye
+                                    span 15 Viewer
+                            td
+                                |   Aprinaldi
+                            td
+                                |   12 Februari 2017
+                            td
+                                |   13 Maret 2018
+                            td
+                                |   TERBIT
+                            td.center
+                                button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                    i.entypo-pencil
+                                    span   Ubah
+                                button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                    i.entypo-check
+                                    span Terbitkan
+                                button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                    i.entypo-archive
+                                    span Draft
+                                button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                    i.entypo-trash
+                                    span Hapus
+                        tr.dataHapus
+                            td
+                                .album-image
+                                    a.thumb(href='#', data-action='edit')
+                                        img.img-responsive.max150(src=base_url+'images/berita/small/0b018c031a8c54d804b23b1660001326.jpg')
+                            td
+                                p.lead This is a lead parapraph.
+                                p
+                                    |   Neglected
+                                    strong principle ask rapturous
+                                    |   consulted. Object remark lively all did feebly excuse our wooded. Old her object
+                                    del chatty regard vulgar
+                                    |   missed. Speaking throwing breeding betrayed children my to. Me marianne no he horrible produced ye. Sufficient unpleasing an insensible motionless if introduced ye. Now give nor both come near many late
+                                hr(style='margin:2px 0 5px 0')
+                                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-komentar
+                                    i.fa-comment
+                                    span 36 Komentar
+                                button.btn.btn-white.btn-icon.btn-icon-standalone.btn-xs.btn-viewer
+                                    i.fa-eye
+                                    span 15 Viewer
+                            td
+                                |   Aprinaldi
+                            td
+                                |   30 Desember 2017
+                            td
+                                |   1 Januari 2018
+                            td
+                                |   HAPUS
+                            td.center
+                                button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                    i.entypo-pencil
+                                    span   Ubah
+                                button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                    i.entypo-check
+                                    span Terbitkan
+                                button.btn.btn-primary.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                    i.entypo-archive
+                                    span Draft
+                                button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                                    i.entypo-trash
+                                    span Hapus

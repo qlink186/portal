@@ -1,0 +1,294 @@
+// Tabs
+.nav.nav-tabs {
+	border-bottom: 0;
+
+	> li {
+		display: inline-block;
+		float: none;
+		margin-bottom: 0;
+
+		> a {
+			border: none;
+			background-color: #f4f4f4;
+			margin-right: @base-padding/2;
+			padding-left: @base-margin;
+			padding-right: @base-margin;
+			padding-top: @base-padding - 5;
+			padding-bottom: @base-padding - 5;
+			cursor: pointer;
+
+			&:hover {
+				border: none;
+				background-color: lighten(#f4f4f4, 5%);
+			}
+		}
+
+		&.active {
+
+			> a {
+				border: 0;
+				background-color: #fff;
+				border-top:3px solid @darken-main;
+				margin-top: -3px;
+				font-weight: bold;
+			}
+		}
+	}
+
+	&.right-aligned, .right-aligned & {
+		text-align: right;
+
+		> li {
+			float: none;
+			display: inline-block;
+
+			> a {
+				margin-right: 0;
+				margin-left: @base-padding/2;
+			}
+		}
+	}
+
+	&.nav-tabs-justified, .nav-tabs-justified & {
+		display: table;
+		width: 100%;
+		table-layout: fixed;
+		border-collapse: separate;
+
+		&:before, &:after {
+			display: none;
+		}
+
+		> li {
+			display: table-cell;
+			vertical-align: top;
+			width: 1%;
+			text-align: center;
+
+			&:last-child {
+
+				> a {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+
+	+ .tab-content {
+		background: #FFF;
+		padding: @base-padding;
+		margin-bottom: @base-padding;
+
+		> p:last-child, * > p:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+
+// Accordions
+.panel-group {
+
+	.panel {
+
+		.panel-heading {
+			padding-bottom: 0;
+			border-bottom: 0;
+
+			.panel-title {
+				float: none;
+			}
+
+			a[data-toggle="collapse"], .accordion-toggle {
+				display: block;
+
+				&:before {
+					float: right;
+					display: block;
+					content: '–';
+					font-size: 18px;
+					width: 25px;
+					text-align: right;
+				}
+
+				&.collapsed {
+
+					&:before {
+						content: '+';
+					}
+				}
+			}
+
+			.accordion-toggle {
+				cursor: pointer;
+
+				&:before {
+					content: '+';
+				}
+			}
+
+			+ .panel-collapse {
+
+				.panel-body {
+					border-top: 2px solid #f5f5f5;
+					margin-top: @default-padding/2;
+				}
+			}
+		}
+	}
+
+	&.panel-group-joined, .panel-group-joined & {
+		border: 1px solid @default-border-color;
+
+		.panel {
+
+			.panel-collapse {
+
+				.panel-body {
+					border-top: 0;
+					padding-top: 0;
+				}
+			}
+
+			+ .panel {
+				margin-top: 0;
+				border-top: 1px solid @default-border-color;
+			}
+		}
+	}
+}
+
+.panel.expanded .accordion-toggle:before {
+	content: '–' !important;
+}
+
+
+// Vertical Tabs
+.tabs-vertical-env {
+	display: table;
+	margin-bottom: @default-padding;
+	width: 100%;
+
+	.nav.tabs-vertical,
+	.tab-content {
+		display: table-cell;
+		vertical-align: top;
+	}
+
+	.nav.tabs-vertical {
+		min-width: 140px;
+		width: 190px;
+
+		li {
+
+			> a {
+				background-color: #f4f4f4;
+				margin-bottom: @base-padding/2;
+				text-align: left;
+				white-space: nowrap;
+				font-size:@font-size-base - 2;
+				padding: (@base-padding - 5) @base-padding;
+				h4{
+					margin-top:1px; 
+					margin-bottom:1px;
+					font-weight:bold;
+					color: @main-active-color;
+				}
+				&.suAdminStatus{
+					background-color: lighten(@xe-red, 47%);
+				}
+				&.adminStatus{
+					background-color: lighten(@xe-blue, 47%);
+				}
+				&.opStatus{
+					background-color: lighten(@xe-orange, 27%);
+				}
+				&.editorStatus{
+					background-color: lighten(@xe-turquoise, 55%);
+				}
+				&.memberPegStatus{
+					background-color: lighten(@main-text-color, 27%);
+				}
+				&.memberBiasaStatus{
+					background-color: lighten(@xe-gray, 47%);
+				}
+			}
+
+			&.active > a {
+				background-color: #fff;
+				font-weight: bold;
+				&.suAdminStatus{
+					background-color: lighten(@xe-red, 35%);
+					color: @main-text-active-color;
+				}
+				&.adminStatus{
+					background-color: lighten(@xe-blue, 25%);
+					color: @main-text-active-color;
+				}
+				&.opStatus{
+					background-color: lighten(@xe-orange, 10%);
+					color: @main-text-active-color;
+				}
+				&.editorStatus{
+					background-color: lighten(@xe-turquoise, 5%);
+					color: @main-text-active-color;
+				}
+				&.memberPegStatus{
+					background-color: @main-text-color;
+					color: @main-text-active-color;
+				}
+				&.memberBiasaStatus{
+					background-color: @xe-gray;
+				}
+			}
+
+			&:last-child {
+				padding-bottom: @base-margin;
+			}
+		}
+	}
+
+	.tab-content {
+		padding: @default-padding;
+		background: #FFF;
+
+		* > p:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	// Bordered
+	&.tabs-vertical-bordered {
+
+		.tab-content, .nav.tabs-vertical > li > a {
+			border: 1px solid @default-border-color;
+		}
+
+		.nav.tabs-vertical {
+			position: relative;
+			right: -1px;
+
+			> li {
+
+				&.active > a {
+					border-right-color: #fff;
+				}
+			}
+		}
+
+		&.right-aligned {
+
+			.nav.tabs-vertical {
+				right: 1px;
+
+				> li {
+
+					&.active > a {
+						border-left-color: #fff;
+						border-right-color: @default-border-color;
+					}
+				}
+			}
+		}
+	}
+}

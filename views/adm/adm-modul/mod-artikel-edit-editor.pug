@@ -1,0 +1,63 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Artikel/Berita
+            // /.box-header
+            .box-body.pad
+                form(action=base_url+"adm/adm-artikel-edit/", method="post")
+                    input#id_berita.form-control(type='hidden', name='id_berita', value=artikel.id_berita)
+                    .form-group
+                        label.col-sm-2.control-label(for='title')
+                            |   Judul Artikel
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='title', required='required' value=artikel.judul_berita)
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='kategori')
+                            |   Kategori
+                            span.required *
+                        .col-sm-10
+                            select.form-control(required='required', placeholder='Pilih Kategori', name='kategori')
+                                option(value=(kategori_artikel.id_kategori))=kategori_artikel.kategori
+                                each val in kategori
+                                    if val.id_kategori != artikel.id_kategori
+                                        option(value=(val.id_kategori))=val.kategori
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='title')
+                            |   Gambar
+                            span.required *
+                        .col-sm-10
+                            input#gambar.form-control(type='file', name='uploaded_image', required='required')
+                            br
+                    .form-group
+                        label.col-sm-12.control-label(for='isi')
+                            |   Isi Berita
+                            span.required *
+                        .col-sm-12
+                            textarea#editor1(name='editorberita', rows='15', cols='80') #{artikel.isi_berita}
+                            br
+                            if session.user.id_hakakses != 3
+                                .form-group
+                                    label.col-sm-2.control-label(for='publish')
+                                        |   Status Berita
+                                        span.required *
+                                    .col-sm-10
+                                        select.form-control(required='required', placeholder='Pilih tampilkan diumum', name='publish')
+                                            if artikel.tayang_umum == 0
+                                                option(value=0) Draft                                                
+                                                option(value=1) Published
+                                            else                                      
+                                                option(value=1) Published
+                                                option(value=0) Draft          
+                                        br
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box

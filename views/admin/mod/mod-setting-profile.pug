@@ -1,0 +1,127 @@
+.page-title
+    .title-env
+        h1.title=title
+        p.description=desc
+    .breadcrumb-env
+        ol.breadcrumb.bc-1
+            li
+                a(href=base_url)
+                    i.fa-home
+                    |   Dahsboard
+            li
+                a(href=base_url+'setting') Pengaturan
+            li.active
+                strong=title
+section.profile-env
+    .row
+        .col-sm-2
+            // User Info Sidebar
+            .user-info-sidebar
+                a.user-img(href='#')
+                    img.img-cirlce.img-responsive.img-thumbnail(src=base_url+'adm-assets/images/user-4.png', alt='user-img')
+                a.user-name(href='#')
+                    |   Aprinaldi, S.Kom
+                    span.user-status.is-online
+                span.user-title
+                    strong Super Admin
+                span.user-title
+                    a(href='#')
+                        |   qlink186
+                hr
+                span.user-title
+                    strong
+                        |   NIP 19880410 201503 1 001
+                span.user-title
+                        |   Dinas Komunikasi dan Informatika
+                span.user-title
+                        |   Fungsional Umum
+                hr
+                span.user-title
+                    a(href='mailto:qlink186@hotmail.com')
+                        |   qlink186@hotmail.com
+                span.user-title
+                    a(href='mailto:aprinaldi@tanjungpinangkota.go.id')
+                        |   aprinaldi@tanjungpinangkota.go.id
+                span.user-title
+                    a(href='tel:+62 852 2819 8187')
+                        |   +62 852 2819 8187
+                span.user-title
+                    a(href='tel:+62 812 3456 7890')
+                        |   +62 812 3456 7890
+                hr
+                ul.list-unstyled.user-friends-count
+                    li
+                        span 643
+                        |   Artikel
+                    li
+                        span 108
+                        |   File
+                hr
+                strong.text-center STATUS MEMBER
+                button.btn.btn-red.btn-block.text-left.btn-xs.disabled(type='button')
+                    |   Super Admin
+                button.btn.btn-blue.btn-block.text-left.btn-xs.disabled(type='button')
+                    |   Adm. Kepegawaian
+                button.btn.btn-blue.btn-block.text-left.btn-xs.disabled(type='button')
+                    |   Adm Pelaporan Masy.
+                button.btn.btn-orange.btn-block.text-left.btn-xs.disabled(type='button')
+                    |   Op. Pelaporan Masy.
+                button.btn.btn-blue.btn-block.text-left.btn-xs.disabled(type='button')
+                    |   Adm. Email
+                button.btn.btn-blue.btn-block.text-left.btn-xs.disabled(type='button')
+                    |   Adm. PPID
+                button.btn.btn-orange.btn-block.text-left.btn-xs.disabled(type='button')
+                    |   PPID Pembantu
+                button.btn.btn-turquoise.btn-block.text-left.btn-xs.disabled(type='button')
+                    |   Editor
+                button.btn.btn-blue.btn-block.text-left.btn-xs.disabled(type='button')
+                    |   Adm. Statistik Sektoral
+                button.btn.btn-orange.btn-block.text-left.btn-xs.disabled(type='button')
+                    |   Op. Statistik
+                button.btn.btn-primary.btn-block.text-left.btn-xs.disabled(type='button')
+                    |   Member (Pegawai)
+        .col-sm-10
+            ul.nav.nav-tabs
+                li.active
+                    a(href='#profilDataDiri', data-toggle='tab')
+                        i.el-user
+                        span.hidden-xs
+                            |   Data Diri
+                li
+                    a(href='#profilDataAlamat', data-toggle='tab') 
+                        i.el-home
+                        span.hidden-xs
+                            |   Alamat
+                li
+                    a(href='#profilDataKepegawaian', data-toggle='tab') 
+                        i.fa-bank
+                        span.hidden-xs
+                            |   Kepegawaian
+                li
+                    a(href='#profilDataPendidikan', data-toggle='tab') 
+                        i.fa-graduation-cap
+                        span.hidden-xs
+                            |   Pendidikan
+                li
+                    a(href='#profilDataKontak', data-toggle='tab') 
+                        i.el-address-book
+                        span.hidden-xs
+                            |   Kontak
+                li
+                    a(href='#profilDataAkun', data-toggle='tab') 
+                        i.fa-at
+                        span.hidden-xs
+                            |   Akun
+            .tab-content
+                #profilDataDiri.tab-pane.active
+                    include mod-profil-datadiri.pug
+                #profilDataAlamat.tab-pane
+                    include mod-profil-alamat.pug
+                #profilDataKepegawaian.tab-pane
+                    include mod-profil-kepegawaian.pug
+                #profilDataPendidikan.tab-pane
+                    include mod-profil-pendidikan.pug
+                #profilDataKontak.tab-pane
+                    include mod-profil-kontak.pug
+                #profilDataAkun.tab-pane
+                    include mod-profil-akun.pug

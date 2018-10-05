@@ -1,0 +1,22 @@
+extends adm-layout/base
+block content
+    section.content-header
+        h1
+            |   Kepegawaian
+            small List
+        ol.breadcrumb
+            li
+                a(href='./adm')
+                    i.fa.fa-dashboard 
+                    |   Beranda
+            li
+                a(href='./adm-kepegawaian-list') Kepegawaian
+            li.active Data Pegawai
+    // Main content
+    section.content
+        .row
+            .col-xs-12
+                include adm-modul/mod-kepegawaian-list.pug
+            // /.col
+        // /.row
+    // /.content

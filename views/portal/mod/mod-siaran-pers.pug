@@ -1,0 +1,105 @@
+if siaranperskhusus.length >= 1
+    h5.subpage-title
+        span PENGUMUMAN KHUSUS
+        // Controls
+        span#tombol-next.next
+            i.fa-chevron-right
+        span#tombol-prev.prev
+            i.fa-chevron-left
+        //a.btn-xs.btn-flat.flat-danger.pull-right.geserkanan(href='post-1.html')
+            span PENGUMUMAN LAINNYA
+    .row
+        #siaranpers-caroufredsel
+            for spk, index in siaranperskhusus
+                .col-xs-12.col-sm-6.col-md-4.siaranpers-wrapper
+                    .siaranpers-item
+                        .siaranpers-thumb
+                            img.img-responsive(src=spk.alamat_file_khusus, alt=spk.judul)
+                            .image-overlay
+                            a.siaranpers-zoom(href=spk.alamat_file_big, rel='prettyPhoto[pp_siaran_pers]')
+                                i.fa-eye
+                            a.siaranpers-link(href=base_url+'pengumuman/'+spk.id_pengumuman)
+                                i.fa-link
+                    //.siaranpers-content
+                        h5 1st Portfolio Item
+                        p Nullam id dolor id nibh ultricies vehicula.
+                        //.siaranpers-meta
+                            ul.meta-list
+                                li
+                                    span Tanggal 
+                                    span.abuabu 10 July 2013
+            // /.siaranpers-wrapper
+            //.col-xs-12.col-sm-6.col-md-4.siaranpers-wrapper
+                .siaranpers-item
+                    .siaranpers-thumb
+                        img.img-responsive(src=base_url+'images/berita/small/0a121079a2a59e464b33d778b414025f.jpg', alt='2nd Portfolio Thumb')
+                        .image-overlay
+                        a.siaranpers-zoom(href=base_url+'images/berita/big/0a121079a2a59e464b33d778b414025f.jpg', rel='prettyPhoto[pp_siaran_pers]')
+                            i.fa-eye
+                        a.siaranpers-link(href='siaranpers-item-1.html')
+                            i.fa-link
+                    .siaranpers-content
+                        h5 2nd Portfolio Item
+                        p Nullam id dolor id nibh ultricies vehicula.
+                        .siaranpers-meta
+                            ul.meta-list
+                                li
+                                    span Tanggal 
+                                    span.abuabu 10 July 2013
+            // /.siaranpers-wrapper
+            //.col-xs-12.col-sm-6.col-md-4.siaranpers-wrapper
+                .siaranpers-item
+                    .siaranpers-thumb
+                        img.img-responsive(src=base_url+'images/berita/small/0b018c031a8c54d804b23b1660001326.jpg', alt='3rd Portfolio Thumb')
+                        .image-overlay
+                        a.siaranpers-zoom(href=base_url+'images/berita/big/0b018c031a8c54d804b23b1660001326.jpg', rel='prettyPhoto[pp_siaran_pers]')
+                            i.fa-eye
+                        a.siaranpers-link(href='siaranpers-item-1.html')
+                            i.fa-link
+                    .siaranpers-content
+                        h5 3rd Portfolio Item
+                        p Nullam id dolor id nibh ultricies vehicula.
+                        .siaranpers-meta
+                            ul.meta-list
+                                li
+                                    span Tanggal 
+                                    span.abuabu 10 July 2013
+            // /.siaranpers-wrapper
+            //.col-xs-12.col-sm-6.col-md-4.siaranpers-wrapper
+                .siaranpers-item
+                    .siaranpers-thumb
+                        img.img-responsive(src=base_url+'images/berita/small/0c77ac22343be3b972fcc1a70d28246c.jpg', alt='4th Portfolio Thumb')
+                        .image-overlay
+                        a.siaranpers-zoom(href=base_url+'images/berita/big/0c77ac22343be3b972fcc1a70d28246c.jpg', rel='prettyPhoto[pp_siaran_pers]')
+                            i.fa-eye
+                        a.siaranpers-link(href='siaranpers-item-1.html')
+                            i.fa-link
+                    .siaranpers-content
+                        h5 4th Portfolio Item
+                        p Nullam id dolor id nibh ultricies vehicula.
+                        .siaranpers-meta
+                            ul.meta-list
+                                li
+                                    span Tanggal 
+                                    span.abuabu 10 July 2013
+            // /.siaranpers-wrapper
+            //.col-xs-12.col-sm-6.col-md-4.siaranpers-wrapper
+                .siaranpers-item
+                    .siaranpers-thumb
+                        img.img-responsive(src=base_url+'images/berita/small/0a84137e221bc4add674917744832f61.jpg', alt='5th Portfolio Thumb')
+                        .image-overlay
+                        a.siaranpers-zoom(href=base_url+'images/berita/big/0a84137e221bc4add674917744832f61.jpg', rel='prettyPhoto[pp_siaran_pers]')
+                            i.fa-eye
+                        a.siaranpers-link(href='siaranpers-item-1.html')
+                            i.fa-link
+                    .siaranpers-content
+                        h5 5th Portfolio Item
+                        p Nullam id dolor id nibh ultricies vehicula.
+                        .siaranpers-meta
+                            ul.meta-list
+                                li
+                                    span Tanggal 
+                                    span.abuabu 10 July 2013
+            // /.siaranpers-wrapper
+        // /.siaranpers-caroufredsel
+else

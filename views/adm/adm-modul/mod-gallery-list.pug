@@ -1,0 +1,10 @@
+.box
+    .box-body 
+        .col-sm-12   
+             for dp, index in gallery
+                .row
+                    .col-sm-6
+                        img.img-responsive(src='/images/gallery/small/'+dp.gambar, alt='', style='max-width:150px; margin-top:10px')
+                        a(href='/adm-gallery-delete/'+dp.id_gallery+'/'+dp.id_gallery_album).btn.btn-xs.btn-success.tombol-table Delete
+    // /.box-body
+// /.box

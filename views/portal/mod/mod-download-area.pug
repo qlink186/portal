@@ -1,0 +1,265 @@
+script(type='text/javascript').
+    var oTable;
+    jQuery(document).ready(function($)
+    {
+        'use strict';
+        function jen_inf(filterVal, columnVal) {
+            var found;
+            if (columnVal === '') {
+                return true;
+            }
+            switch (filterVal) {
+            case 'SM':
+                found = columnVal.search(/SM/g);
+                break;
+            case 'SS':
+                found = columnVal.search(/SS/g);
+                break;
+            case 'DK':
+                found = columnVal.search(/DK/g);
+                break;
+            case 'BK':
+                found = columnVal.search(/BK/g);
+                break;
+            case 'HU':
+                found = columnVal.search(/HU/g);
+                break;
+            default:
+                found = 1;
+                break;
+            }
+    
+            if (found !== -1) {
+                return true;
+            }
+            return false;
+        }
+        oTable = $("#table-download-area").dataTable(
+        {
+            "bJQueryUI": true,
+            "bStateSave": true,
+            "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+            dom: '<"top visible-xs"p><"top pull-right"l>t<"bottom text-center"i><"bottom text-center"p>',
+            tableTools: {
+                sSwfPath: "#{base_url}adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+            },
+            "ajax": {
+                "url": '#{api_url}download-area',
+                "dataSrc": "download"
+            },
+            "columns": [
+                {
+                    "searchable": false,
+                    "class":"hidden-xs",
+                    "render": function ( data, type, row ){
+                        var format_file = row["format_file"];
+                        return '<img class="img-responsive center-block" src="#{base_url}adm-assets/images/ico/'+format_file+'.svg" />';
+                    },
+                    "targets": 0
+                },
+                {
+                    "searchable": true,
+                    "render": function ( data, type, row ){
+                        var link_file = row["link_file"];
+                        var id_file = row["id_download"];
+                        var nama_file = row["nama_file"];
+                        var deskripsi_file = row["deskripsi_file"];
+                        var jenis_file = row["jenis_file"];
+                        var kategori_dip = row["kategori_dip"];
+                        var tgl_file = row["tgl_file"];
+                        var format_file = row["format_file"];
+                        return '<table class="table table-condensed">'
+                        +   '<tbody>'
+                        +       '<tr>'
+                        +           '<td colspan="3">'
+                        +               '<a class="lead" href="#{base_url}data/download-area/'+id_file+'" />'
+                        +                   '<img class="img-responsive center-block visible-xs" src="#{base_url}adm-assets/images/ico/'+format_file+'.svg" width="75px" />'
+                        +                   '<br class="visible-xs" />'+nama_file
+                        +           '</td>'
+                        +       '</tr>'
+                        +       '<tr>'
+                        +           '<td class="visible-xs">Deskripsi</td>'
+                        +           '<td class="visible-xs">:</td>'
+                        +           '<td class="visible-xs">'+deskripsi_file+'</td>'
+                        +           '<td class="hidden-xs">'+deskripsi_file+'</td>'
+                        +       '</tr>'
+                        +       '<tr class="visible-xs">'
+                        +           '<td>Jenis Dokumen</td><td>:</td><td>'+jenis_file+'</td>'
+                        +       '</tr>'
+                        +       '<tr class="visible-xs"><td>Jenis Informasi</td>'
+                        +           '<td>:</td>'
+                        +           '<td>'
+                        +               '<div class="label label-secondary">'+kategori_dip+'</div>'
+                        +           '</td>'
+                        +       '</tr>'
+                        +       '<tr class="visible-xs">'
+                        +           '<td>Tanggal Dokumen</td>'
+                        +           '<td>:</td>'
+                        +           '<td>'+tgl_file+'</td>'
+                        +       '</tr>'
+                        +       '<tr class="visible-xs">'
+                        +           '<td colspan="3">'
+                        +               '<a class="btn btn-red btn-icon btn-icon-standalone btn-block" href="#{base_url}data-download/'+link_file+'"/>'
+                        +                   '<i class="fa-download"></i>'
+                        +                   '<span>Download Dokumen ('+format_file+')</span>'
+                        +           '</td>'
+                        +       '</tr>'
+                        +       '<tr class="visible-xs">'
+                        +           '<td colspan="3">'
+                        +               '<a class="btn btn-blue btn-icon btn-icon-standalone btn-block" href="#{base_url}data/download-area/'+id_file+'"/>'
+                        +                   '<i class="fa-search"></i>'
+                        +                   '<span>Selengkapnya</span>'
+                        +           '</td>'
+                        +       '</tr>'
+                        +   '</tbody>'
+                        +'</table>';
+                    },
+                    "targets": 1
+                },
+                { "data": "jenis_file", "class":"hidden-xs text-center" },
+                {
+                    "searchable": true,
+                    "class":"hidden-xs text-center",
+                    "render": function ( data, type, row ){
+                        var kat_dip = row["kat_dip"];
+                        return '<div class="label label-secondary">'+kat_dip+'</div>';
+                    },
+                    "targets": 3
+                },
+                { "data": "tgl_file", "class":"hidden-xs text-center" },
+                {
+                    "searchable": false,
+                    "class":"hidden-xs",
+                    "render": function ( data, type, row ){
+                        var id_file = row["id_download"];
+                        var link_file = row["link_file"];
+                        return '<a class="btn btn-red btn-xs btn-icon btn-icon-standalone btn-block" href="#{base_url}data-download/'+link_file+'">'
+                        +   '<i class="fa-download"></i>'
+                        +   '<span>Download</span>'
+                        +'</a>'
+                        +'<a class="btn btn-blue btn-xs btn-icon btn-icon-standalone btn-block" href="#{base_url}data/download-area/'+id_file+'">'
+                        +   '<i class="fa-search"></i>'
+                        +   '<span>Selengkapnya</span>'
+                        +'</a>';
+                    },
+                    "targets": 4
+                }
+            ],
+            "deferRender": true,
+            "processing":true,
+            select: true,
+            "oLanguage": {
+                "sLengthMenu": "Tampilkan _MENU_ Berkas per halaman",
+                "sZeroRecords": "Berkas yang anda cari tidak ditemukan",
+                "sInfo": "Menampilkan berkas ke _START_ sampai ke _END_, dari _TOTAL_ berkas",
+                "sInfoEmpty": "Menampilkan berkas ke 0 sampai 0 dari total 0 berkas",
+                "sEmptyTable": "Tidak ada Berkas yang tersedia",
+                "sInfoFiltered": "(Filter dari _MAX_ berkas)",
+                "oPaginate": {
+                    "sFirst": "Pertama",
+                    "sLast": "Terakhir",
+                    "sNext": ">>",
+                    "sPrevious": "<<"
+                }
+            }
+        }).yadcf([
+            {
+                column_number : 0,
+                filter_type: 'none'
+            },
+            {
+                column_number : 1, 
+                filter_container_id: 'filter_pencarian_semua',
+                filter_type: 'text'
+            },
+            {
+                column_number : 2,
+                filter_container_id: 'filter_jenis_dokumen',
+                filter_default_label: "Semua Jenis Dokumen"
+            },
+            {
+                column_number: 3,
+                filter_container_id: 'filter_jenis_informasi',
+                filter_type: 'custom_func',
+                custom_func: jen_inf,
+                data: [{
+                    value: 'SM',
+                    label: 'Serta Merta'
+                }, {
+                    value: 'SS',
+                    label: 'Setiap Saat'
+                }, {
+                    value: 'BK',
+                    label: 'Berkala'
+                }, {
+                    value: 'DK',
+                    label: 'Dikecualikan'
+                }, {
+                    value: 'HU',
+                    label: 'Produk Hukum'
+                }],
+                filter_default_label: "Semua Jenis Informasi"
+            },
+            {
+                column_number : 4,
+                filter_container_id: 'external_filter_container_2',
+                filter_type: 'range_date'
+            },
+            {column_number : 5, filter_type: 'none'},
+        ],
+        {
+            externally_triggered: true
+        });
+    });
+                
+.col-sm-10
+    .panel.panel-default
+        .panel-heading
+            h3.panel-title Default form inputs
+            .panel-options
+                a(href='#', data-toggle='panel')
+                    span.collapse-icon &ndash;
+                    span.expand-icon +
+                a(href='#', data-toggle='remove')
+        .panel-body
+            form.form-horizontal(role='form')
+                .form-group
+                    label.col-sm-2.control-label(for='field-1') Cari Dokumen
+                    .col-sm-10
+                        #filter_pencarian_semua
+                        input#field-1.form-control(type='text', placeholder='Placeholder')
+                .form-group-separator
+.filterPencarian
+    span Cari Dokumen:
+    span(placeholder='Cari Dokumen')
+    #filter_jenis_dokumen
+    #filter_jenis_informasi
+    #external_filter_container_2
+table#table-download-area.table.table-hover.table-responsive(width='100%')
+    thead
+        tr
+            th(width='40px').text-center.hidden-xs Format
+            th.text-center Nama File
+            th.text-center.hidden-xs Jenis Dok.
+            th.text-center.hidden-xs Jenis Inf.
+            th.text-center.hidden-xs Tanggal Dokumen
+            th.text-center.hidden-xs Aksi
+
+h5.subpage-title
+    span Keterangan
+ul
+    li 
+        .label.label-secondary SM
+        |   : Informasi Serta Merta adalah Informasi yang dapat mengancam hajat hidup orang banyak dan ketertiban umum yang wajib diumumkan secara serta merta
+    li 
+        .label.label-blue SS
+        |   : Informasi Yang Tersedia Setiap Saat meliputi : Daftar Seluruh Informasi Publik yang berada di bawah penguasaannya, tidak termasuk informasi yang dikecualikan, hasil keputusan badan publik dan pertimbangannya, seluruh kebijakan yang ada berikut dokumen pendukungnya, rencana kerja proyek termasuk di dalamnya perkiraan pengeluaran tahunan Badan Publik, perjanjian Badan Publik dengan pihak ketiga, informasi dan kebijakan yang disampaikan Pejabat Publik dalam pertemuan yang terbuka untuk umum, prosedur kerja pegawai Badan Publik yang berkaitan dengan pelayanan masyarakat, dan / atau laporan mengenai pelayanan akses informasi publik. Untuk memperoleh informasi, wajib melakukan permohonan informasi kepada Pejabat Pengelola Informasi dan Dokumentasi (PPID)
+    li 
+        .label.label-warning BK
+        |   : Informasi yang wajib diumukan secara berkala (paling singkat 6 bulan sekali), Informasi yang berkaitan dengan Badan Publik, Informasi mengenai kegiatan dan kinerja Badan Publik terkait, Informasi mengenai Laporan Keuangan
+    li 
+        .label.label-danger DK
+        |   : Informasi DiKecualikan yaitu Informasi yang tidak boleh dibuka untuk umum
+    li
+        .label.label-purple HU
+        |   : Produk Hukum

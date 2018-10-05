@@ -1,0 +1,36 @@
+// Notifications: style can be found in dropdown.less
+li.dropdown.notifications-menu
+    a.dropdown-toggle(href='#', data-toggle='dropdown')
+        i.fa.fa-bell-o
+        span.label.label-warning 10
+    ul.dropdown-menu
+        li.header Anda Memiliki 10 Notifikasi
+        li
+            // inner menu: contains the actual data
+            ul.menu
+                li
+                    a(href='#')
+                        i.fa.fa-users.text-aqua
+                        |   5 artikel baru perlu persetujuan
+                li
+                    a(href='#')
+                        i.fa.fa-warning.text-yellow
+                        |   1 user baru perlu persetujuan
+                li
+                    a(href='#')
+                        i.fa.fa-users.text-red
+                        |   1 user baru perlu persetujuan
+                li
+                    a(href='#')
+                        i.fa.fa-shopping-cart.text-green
+                        |   15 aduan baru
+                li
+                    a(href='#')
+                        i.fa.fa-user.text-red
+                        |   125 komentar artikel
+                li
+                    a(href='#')
+                        i.fa.fa-user.text-red
+                        |   dan lain-lain
+        li.footer
+            a(href='#') Lihat Semua

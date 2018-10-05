@@ -1,0 +1,51 @@
+doctype html
+html
+	head
+		title
+			| #{title}
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='description', content='Pemerintah Kota Tanjungpinang')
+		meta(name='keywords', content='Pemerintah Kota Tanjungpinang, Pemko, Pemko, Tanjungpinang, Diskominfo, Kota Tanjungpinang, Tanjungpinang, Tanjung Pinang, Dinas Komunikasi dan Informatika Kota Tanjungpinang, Dinas Kominfo, Kominfo')
+		meta(name='author', content='Agus Setiyandi')
+		link(href='./less/login.less', rel='stylesheet/less', type='text/css')
+		link(href='./stylesheets/animate.min.css', rel='stylesheet', type='text/css')
+		title= title
+		// HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries
+		//if lt IE 9
+			script(src='./assets/js/html5shiv.js')
+			script(src='./assets/js/respond.min.js')
+	.form.animated.flipInX
+		h2
+			strong LOGIN
+			|	PEMERINTAH
+			br
+			small Kota Tanjungpinang
+		form(action="/login/",method="post")
+			.form-group.has-feedback
+				input(type="text",placeholder="Username",name="txtUsername",autofocus='').form-control
+				span.glyphicon.glyphicon-envelope.form-control-feedback
+			.form-group.has-feedback
+				input(type="password",placeholder="Password",name="txtPassword").form-control
+				span.glyphicon.glyphicon-lock.form-control-feedback
+			.row
+				.col-xs-12
+					button(type="submit").animated.infinite.pulse
+						| Masuk
+		.signin-help
+			p
+				|	lupa password? 
+				a(href='#') klik disini
+		- if (messages.msg_error) 
+			.alert.alert-danger.alert-dismissable 
+				.notif-login-salah
+					button.close(type='button', data-dismiss='alert', aria-hidden='true') 
+						| !{messages.msg_error}
+// jQuery
+script(type='text/javascript', src='./javascripts/jquery-2.2.3.min.js')
+// Bootstrap Core JavaScript
+script(type='text/javascript', src='./javascripts/bootstrap.min.js')
+// Custom JavaScript
+script(type='text/javascript', src='./javascripts/less.min.js')
+script(type='text/javascript', src='./javascripts/prefixfree.min.js')
+script(type='text/javascript', src='./javascripts/login.js')

@@ -1,0 +1,27 @@
+h5.subpage-title
+    span Pranala Luar
+    // Controls
+    span#client-next.next
+        i.fa-chevron-right
+    span#client-prev.prev
+        i.fa-chevron-left
+    a.btn-xs.btn-flat.flat-danger.pull-right.geserkanan(href=base_url+'pranala-luar')(class=(menu === 'pranala-luar' ? 'hidden' : ''))
+        span PRANALA LUAR LAINNYA
+.row
+    #opdlink-caroufredsel.grid.cs-style-3
+        for subdomain, index in datasubdomain
+            .col-xs-12.col-sm-4.col-md-3
+                figure
+                    img.img-responsive.center-block(src=base_url+'images/link-opd/big/'+subdomain.logo, alt=subdomain.nama_opd)
+                    figcaption
+                        a(href='http://'+subdomain.subdomain+subdomain.prefix, target='_BLANK')
+                            h5.text-center=subdomain.subdomain
+                            span.text-center=subdomain.nama_subdomain
+        for link, index in pranala
+            .col-xs-12.col-sm-4.col-md-3
+                figure
+                    img.img-responsive.center-block(src=base_url+'images/pranala-luar/small/'+link.logo, alt=link.ket_link)
+                    figcaption
+                        a(href=link.alamat_link, target='_BLANK')
+                            h5.text-center=link.nama_link
+                            span.text-center=link.ket_link

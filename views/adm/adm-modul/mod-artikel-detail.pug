@@ -1,0 +1,15 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Artikel/Berita
+            // /.box-header
+            .box-body.no-padding
+                .mailbox-read-info
+                    h3 #{artikel.judul_berita}
+                    h5 #{artikel.kategori}
+                    span.mailbox-read-time.pull-right #{artikel.tgl_post} 
+                .mailbox-read-message
+                    p!=artikel.isi_berita
+        // /.box

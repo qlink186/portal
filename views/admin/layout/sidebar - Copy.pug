@@ -1,0 +1,240 @@
+// Add "fixed" class to make the sidebar fixed always to the browser viewport.
+// Adding class "toggle-others" will keep only one menu item open at a time.
+// Adding class "collapsed" collapse sidebar root elements and show only icons.
+.sidebar-menu.toggle-others.fixed
+    .sidebar-menu-inner
+        header.logo-env
+            // logo
+            .logo
+                a.logo-expanded(href=base_url+'adm')
+                    img(src=base_url+'images/logo_title_w_icon_200.png', width='200', alt='')
+                a.logo-collapsed(href=base_url+'adm')
+                    img(src=base_url+'images/lambang_40.png', width='40', alt='')
+            // This will toggle the mobile menu and will be visible only on mobile devices
+            .mobile-menu-toggle.visible-xs
+                a(href='#', data-toggle='user-info-menu')
+                    i.fa-bell-o
+                    span.badge.badge-success 7
+                a(href='#', data-toggle='mobile-menu')
+                    i.fa-bars
+        // Sidebar User Info Bar - Added in 1.3
+        section.sidebar-user-info
+            .sidebar-user-info-inner
+                a.user-profile(href=base_url+'adm-setting-profile')
+                    img.img-circle.img-corona.superadmin(src=base_url+'images/pegawai/small/198804102015031001.jpg', alt='user-pic')
+                    strong Aprinaldi, S.Kom
+                    span Super Admin
+                ul.user-links.list-unstyled
+                    li.profil-link
+                        a(href=base_url+'adm-setting-profile', title='Edit profile')
+                            i.linecons-user
+                            |   Profil
+                    li.pengaturan-link
+                        a(href=base_url+'adm-setting-sistem', title='Pengaturan Sistem')
+                            i.entypo-cog
+                            |   Pengaturan
+                    li.logout-link
+                        a(href=base_url+'logout', title='Log out')
+                            i.fa-power-off
+        ul#main-menu.main-menu
+            // add class "multiple-expanded" to allow multiple submenus to open
+            // class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active"
+            li(class=(menu === 'adm' ? 'active' : ''))
+                a(href=base_url+'adm')
+                    i.entypo-gauge
+                    span.title Dashboard
+            li(class=(menu === 'adm-artikel-list' ? 'opened' : '' ? 'active' : '')).sidebarArtikel
+                a(href=base_url+'adm-artikel-list')
+                    i.entypo-pencil
+                    span.title Artikel
+                    span.badge.badge-secondary.pull-right 8
+                ul
+                    li(class=(menu === 'adm-artikel-list' ? 'active' : ''))
+                        a(href=base_url+'adm-artikel-list')
+                            i.entypo-list
+                            span.title Data Artikel
+                            span.badge.badge-secondary.pull-right 8
+                    li(class=(menu === 'adm-artikel-tulis' ? 'active' : ''))
+                        a(href=base_url+'adm-artikel-tulis')
+                            i.entypo-pencil
+                            span.title Tulis Artikel
+                    li(class=(menu === 'adm-artikel-kategori' ? 'active' : ''))
+                        a(href=base_url+'adm-artikel-kategori')
+                            i.entypo-tag
+                            span.title Kategori
+                    li(class=(menu === 'adm-artikel-komentar' ? 'active' : ''))
+                        a(href=base_url+'adm-artikel-komentar')
+                            i.entypo-comment
+                            span.title Komentar Artikel
+                    li(class=(menu === 'adm-artikel-editor' ? 'active' : ''))
+                        a(href=base_url+'adm-artikel-editor')
+                            i.entypo-users
+                            span.title Data Editor
+            li(class=(menu === 'adm-halaman-list' ? 'opened' : '' ? 'active' : '')).sidebarArtikel
+                a(href='#')
+                    i.entypo-flow-cascade
+                    span.title Halaman
+                ul
+                    li(class=(menu === 'adm-halaman-list' ? 'active' : ''))
+                        a(href=base_url+'adm-halaman-list')
+                            i.entypo-flow-cascade
+                            span.title Data Halaman
+                    li(class=(menu === 'adm-halaman-tulis' ? 'active' : ''))
+                        a(href=base_url+'adm-halaman-tulis')
+                            i.entypo-pencil
+                            span.title Buat Halaman Baru
+                    li(class=(menu === 'adm-setting-menu' ? 'active' : ''))
+                        a(href=base_url+'adm-setting-menu')
+                            i.entypo-flow-parallel
+                            span.title Pengaturan Menu
+            li(class=(menu === 'adm-siaran-pers' ? 'active' : ''))
+                a(href=base_url+'adm-siaran-pers')
+                    i.entypo-megaphone
+                    span.title Siaran Pers
+            li(class=(menu === 'adm-kalender-event' ? 'active' : ''))
+                a(href=base_url+'adm-kalender-event')
+                    i.entypo-calendar
+                    span.title Kalender Event
+            li(class=(menu === 'adm-slideshow' ? 'active' : ''))
+                a(href=base_url+'adm-slideshow')
+                    i.entypo-monitor
+                    span.title Slideshow
+            li(class=(menu === 'adm-aduan-list' ? 'opened' : '' ? 'active' : '')).sidebarAduan
+                a(href='#')
+                    i.entypo-alert
+                    span.title Aduan Masyarakat
+                    span.badge.badge-danger.pull-right 20
+                ul
+                    li(class=(menu === 'adm-aduan-list' ? 'active' : ''))
+                        a(href=base_url+'adm-aduan-list')
+                            i.entypo-list
+                            span.title Data Aduan
+                            span.badge.badge-danger.pull-right 18
+                    li(class=(menu === 'adm-aduan-tanggapan' ? 'active' : ''))
+                        a(href=base_url+'adm-aduan-tanggapan')
+                            i.entypo-reply
+                            span.title Tanggapan
+                    li(class=(menu === 'adm-aduan-kategori' ? 'active' : ''))
+                        a(href=base_url+'adm-aduan-kategori')
+                            i.entypo-tag
+                            span.title Kategori Aduan
+                    li(class=(menu === 'adm-aduan-operator' ? 'active' : ''))
+                        a(href=base_url+'adm-aduan-operator')
+                            i.entypo-users
+                            span.title Data Operator Aduan
+                    li(class=(menu === 'adm-setting-aduan' ? 'active' : ''))
+                        a(href=base_url+'adm-setting-aduan')
+                            i.entypo-cog
+                            span.title Pengaturan Aduan
+            li(class=(menu === 'adm-peg-list' ? 'opened' : '' ? 'active' : ''))
+                a(href=base_url+'adm-peg-list')
+                    i.entypo-user
+                    span.title Kepegawaian
+                ul
+                    li(class=(menu === 'adm-peg-list' ? 'active' : ''))
+                        a(href=base_url+'adm-peg-list')
+                            i.entypo-users
+                            span.title Data Pegawai
+                    li(class=(menu === 'adm-peg-tambah' ? 'active' : ''))
+                        a(href=base_url+'adm-peg-tambah')
+                            i.entypo-user-add
+                            span.title Tambah Pegawai
+                    li(class=(menu === 'adm-peg-mutasi' ? 'active' : ''))
+                        a(href=base_url+'adm-peg-mutasi')
+                            i.entypo-flight
+                            span.title Mutasi Pegawai
+                    li(class=(menu === 'adm-unit-kerja' ? 'active' : ''))
+                        a(href=base_url+'adm-unit-kerja')
+                            i.entypo-home
+                            span.title Unit Kerja
+            li(class=(menu === 'adm-member-list' ? 'opened' : '' ? 'active' : ''))
+                a(href=base_url+'adm-member-list')
+                    i.entypo-users
+                    span.title Member
+                    span.badge.badge-default.pull-right 1
+                ul
+                    li(class=(menu === 'adm-member-list' ? 'active' : ''))
+                        a(href=base_url+'adm-member-list')
+                            i.entypo-users
+                            span.title Data Member Peg.
+                    li(class=(menu === 'adm-member-tambah' ? 'active' : ''))
+                        a(href=base_url+'adm-member-tambah')
+                            i.entypo-user-add
+                            span.title Tambah Member Peg.
+                    li(class=(menu === 'adm-member-umum-list' ? 'active' : ''))
+                        a(href=base_url+'adm-member-umum-list')
+                            i.entypo-users
+                            span.title Data Member Umum
+                            span.badge.badge-default.pull-right 1
+            li(class=(menu === 'adm-gallery-gambar-list' ? 'opened' : '' ? 'active' : ''))
+                a(href=base_url+'adm-gallery-gambar-list')
+                    i.entypo-camera
+                    span.title Gallery
+                ul
+                    li(class=(menu === 'adm-gallery-gambar-list' ? 'active' : ''))
+                        a(href=base_url+'adm-gallery-gambar-list')
+                            i.fa-file-image-o
+                            span.title Data Gambar
+                    li(class=(menu === 'adm-gallery-video-list' ? 'active' : ''))
+                        a(href=base_url+'adm-gallery-video-list')
+                            i.fa-video-camera
+                            span.title Data Video
+            li(class=(menu === 'adm-download-list' ? 'opened' : '' ? 'active' : ''))
+                a(href=base_url+'adm-download-list')
+                    i.entypo-archive
+                    span.title Download Area
+                ul
+                    li(class=(menu === 'adm-download-list' ? 'active' : ''))
+                        a(href=base_url+'adm-download-list')
+                            i.entypo-docs
+                            span.title Data File
+                    li(class=(menu === 'adm-download-kategori' ? 'active' : ''))
+                        a(href=base_url+'adm-download-kategori')
+                            i.entypo-folder
+                            span.title Kategori File
+            li(class=(menu === 'adm-data-opd' ? 'opened' : '' ? 'active' : ''))
+                a(href=base_url+'adm-data-opd')
+                    i.entypo-archive
+                    span.title Data
+                ul
+                    li(class=(menu === 'adm-data-opd' ? 'active' : ''))
+                        a(href=base_url+'adm-data-opd')
+                            i.fa-institution
+                            span.title Data Unit Kerja
+                    li(class=(menu === 'adm-data-link' ? 'active' : ''))
+                        a(href=base_url+'adm-data-link')
+                            i.entypo-link
+                            span.title Pranala Luar
+                    li(class=(menu === 'adm-data-kontak-penting' ? 'active' : ''))
+                        a(href=base_url+'adm-data-kontak-penting')
+                            i.fa-phone
+                            span.title Kontak Penting
+            li(class=(menu === 'adm-buku-tamu' ? 'active' : ''))
+                a(href=base_url+'adm-buku-tamu')
+                    i.entypo-book-open
+                    span.title Buku Tamu
+            li(class=(menu === 'adm-setting-profile' ? 'opened' : '' ? 'active' : ''))
+                a(href=base_url+'adm-setting-profile')
+                    i.entypo-cog
+                    span.title Pengaturan
+                ul
+                    li(class=(menu === 'adm-setting-profile' ? 'active' : ''))
+                        a(href=base_url+'adm-setting-profile')
+                            i.entypo-users
+                            span.title Pengaturan Profil
+                    li(class=(menu === 'adm-setting-sistem' ? 'active' : ''))
+                        a(href=base_url+'adm-setting-sistem')
+                            i.entypo-layout
+                            span.title Pengaturan Sistem
+                    li(class=(menu === 'adm-setting-db' ? 'active' : ''))
+                        a(href=base_url+'adm-setting-db')
+                            i.entypo-database
+                            span.title Backup Database
+                    li(class=(menu === 'adm-setting-log' ? 'active' : ''))
+                        a(href=base_url+'adm-setting-log')
+                            i.entypo-alert
+                            span.title Log Record
+            li.visible-xs
+                a(href=base_url+'logout')
+                    i.entypo-logout
+                    span.title KELUAR

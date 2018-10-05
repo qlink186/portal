@@ -1,0 +1,16 @@
+.page-title
+    .title-env
+        h1.title=title
+        p.description=desc
+    .breadcrumb-env
+        ol.breadcrumb.bc-1
+            li
+                a(href=base_url)
+                    i.fa-home
+                    |   Dashboard
+            li
+                a(href=base_url+'artikel-list') Artikel
+            li.active
+                strong=title
+.col-md-12
+    include mod-member-list-editor.pug

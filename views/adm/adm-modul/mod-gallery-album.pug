@@ -1,0 +1,18 @@
+.box
+    .box-body
+        table(width="100%").table.table-bordered.table-striped
+            thead
+                tr
+                    th.text-center.middle-align Nama Album
+                    th.text-center.middle-align Tanggal Post
+                    th.text-center.middle-align Aksi
+            tbody
+                for dp, index in gallery_album
+                    tr
+                        td #{dp.nama}
+                        td.text-center.middle.align #{dp.tgl_post}
+                        td.text-center.middle-align
+                            |   #[a(href='/adm-gallery-list/'+dp.id_gallery_album).btn.btn-xs.btn-success.tombol-table Edit]
+                            |   #[a(href='/adm-gallery-delete/'+dp.id_gallery_album).btn.btn-xs.btn-success.tombol-table Delete]
+    // /.box-body
+// /.box

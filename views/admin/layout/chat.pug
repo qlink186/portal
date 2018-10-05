@@ -1,0 +1,130 @@
+#chat.fixed
+    // start: Chat Section
+    .chat-inner
+        h2.chat-header
+            a.chat-close(href='#', data-toggle='chat')
+                i.fa-plus-circle.rotate-45deg
+            |   Chat
+            span.badge.badge-success.is-hidden 0
+        script(type='text/javascript').
+            // Here is just a sample how to open chat conversation box
+            jQuery(document).ready(function($)
+            {
+            var $chat_conversation = $(".chat-conversation");
+            $(".chat-group a").on('click', function(ev)
+            {
+            ev.preventDefault();
+            $chat_conversation.toggleClass('is-open');
+            $(".chat-conversation textarea").trigger('autosize.resize').focus();
+            });
+            $(".conversation-close").on('click', function(ev)
+            {
+            ev.preventDefault();
+            $chat_conversation.removeClass('is-open');
+            });
+            });
+        .chat-group
+            strong Favorites
+            a(href='#')
+                span.user-status.is-online
+                em Catherine J. Watkins
+            a(href='#')
+                span.user-status.is-online
+                em Nicholas R. Walker
+            a(href='#')
+                span.user-status.is-busy
+                em Susan J. Best
+            a(href='#')
+                span.user-status.is-idle
+                em Fernando G. Olson
+            a(href='#')
+                span.user-status.is-offline
+                em Brandon S. Young
+        .chat-group
+            strong Work
+            a(href='#')
+                span.user-status.is-busy
+                em Rodrigo E. Lozano
+            a(href='#')
+                span.user-status.is-offline
+                em Robert J. Garcia
+            a(href='#')
+                span.user-status.is-offline
+                em Daniel A. Pena
+        .chat-group
+            strong Other
+            a(href='#')
+                span.user-status.is-online
+                em Dennis E. Johnson
+            a(href='#')
+                span.user-status.is-online
+                em Stuart A. Shire
+            a(href='#')
+                span.user-status.is-online
+                em Janet I. Matas
+            a(href='#')
+                span.user-status.is-online
+                em Mindy A. Smith
+            a(href='#')
+                span.user-status.is-busy
+                em Herman S. Foltz
+            a(href='#')
+                span.user-status.is-busy
+                em Gregory E. Robie
+            a(href='#')
+                span.user-status.is-busy
+                em Nellie T. Foreman
+            a(href='#')
+                span.user-status.is-busy
+                em William R. Miller
+            a(href='#')
+                span.user-status.is-idle
+                em Vivian J. Hall
+            a(href='#')
+                span.user-status.is-offline
+                em Melinda A. Anderson
+            a(href='#')
+                span.user-status.is-offline
+                em Gary M. Mooneyham
+            a(href='#')
+                span.user-status.is-offline
+                em Robert C. Medina
+            a(href='#')
+                span.user-status.is-offline
+                em Dylan C. Bernal
+            a(href='#')
+                span.user-status.is-offline
+                em Marc P. Sanborn
+            a(href='#')
+                span.user-status.is-offline
+                em Kenneth M. Rochester
+            a(href='#')
+                span.user-status.is-offline
+                em Rachael D. Carpenter
+    // conversation template
+    .chat-conversation
+        .conversation-header
+            a.conversation-close(href='#') &times;
+            span.user-status.is-online
+            span.display-name Arlind Nushi
+            small Online
+        ul.conversation-body
+            li
+                span.user Arlind Nushi
+                span.time 09:00
+                p Are you here?
+            li.odd
+                span.user Brandon S. Young
+                span.time 09:25
+                p This message is pre-queued.
+            li
+                span.user Brandon S. Young
+                span.time 09:26
+                p Whohoo!
+            li.odd
+                span.user Arlind Nushi
+                span.time 09:27
+                p Do you like it?
+        .chat-textarea
+            textarea.form-control.autogrow(placeholder='Type your message')
+    // end: Chat Section

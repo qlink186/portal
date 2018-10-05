@@ -1,0 +1,22 @@
+extends adm-layout/base
+block content
+    section.content-header
+        h1
+            |   Siaran Pers
+            small Tambah
+        ol.breadcrumb
+            li
+                a(href='./adm')
+                    i.fa.fa-dashboard 
+                    |   Beranda
+            li
+                a(href='./adm-siaranpers-list') Siaran Pers
+            li.active Data Siaran Pers
+    // Main content
+    section.content
+        .row
+            .col-xs-12
+                include adm-modul/mod-siaranpers-tambah.pug
+            // /.col
+        // /.row
+    // /.content

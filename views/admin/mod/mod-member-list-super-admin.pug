@@ -1,0 +1,89 @@
+// Removing search and results count filter
+.panel.panel-default
+    .panel-heading
+        h3.panel-title
+            i.entypo-users 
+            |   Data Member - 
+            strong 
+                |   Super Admin
+    .panel-body
+        script(type='text/javascript').
+            jQuery(document).ready(function($)
+            {
+                $("#table-member-list-su-admin").dataTable(
+                    {
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                    dom: "<'row'<'col-sm-5'l><'col-sm-7'Tf>r>"+
+                            "t"+
+                            "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+                    tableTools: {
+                        sSwfPath: "./adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                    },
+                    select: true
+                }).yadcf([
+                    {column_number : 0, filter_type: 'text'},
+                    {column_number : 1, filter_type: 'text'},
+                    {column_number : 2, filter_type: 'text'},
+                    {column_number : 3, filter_type: 'text'},
+                ]);
+            });
+        table#table-member-list-su-admin.table.datatable.table-hover.table-responsive
+            thead
+                tr
+                    th(width='55px') Foto
+                    th Data Member
+                    th Data Akun
+                    th(width='40px') Aksi
+            tbody
+                tr
+                    td
+                        .user-thumb
+                            a(href='#')
+                                img.img-responsive.img-rounded.full-width(src='/adm-assets/images/thumb-1@2x.png', alt='')
+                    td
+                        table.table.table-hover.table-condensed
+                            tr
+                                td
+                                    strong
+                                        |   Aprinaldi, S.Kom
+                            tr
+                                td
+                                    |   NIP. 19880410 201503 1 001
+                            tr
+                                td
+                                    |   III.a / Penata Muda
+                            tr
+                                td
+                                    |   Fungsional Umum
+                            tr
+                                td
+                                    |   Dinas Komunikasi dan Informatika
+                    td
+                        table.table.table-hover.table-condensed
+                            tr
+                                td
+                                    strong
+                                        |   qlink186 &nbsp;
+                                    span.label.label-blue Super Admin
+                            tr
+                                td
+                                    |   aprinaldi@tanjungpinangkota.go.id
+                            tr
+                                td
+                                    |   +62 852 2819 9298
+                            tr
+                                td
+                                    |   Sejak 01 Jan 2017
+                    td.center
+                        button.btn.btn-info.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-pencil
+                            span   Ubah
+                        button.btn.btn-danger.btn-icon.btn-icon-standalone.btn-xs.btn-block(type='button')
+                            i.entypo-trash
+                            span Hapus
+            tfoot
+                tr
+                    th Foto
+                    th Data Member
+                    th Data Akun
+                    th Aksi

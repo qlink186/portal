@@ -1,0 +1,94 @@
+// Imported styles on this page
+link(rel='stylesheet', href=base_url+'adm-assets/js/datatables/dataTables.bootstrap.css')
+link(rel='stylesheet', href='https://cdn.datatables.net/responsive/2.2.1/css/responsive.bootstrap.min.css')
+link(rel='stylesheet', href='https://cdn.datatables.net/buttons/1.5.1/css/buttons.bootstrap.min.css')
+link(rel='stylesheet', href=base_url+'adm-assets/js/datatables/yadcf/jquery.dataTables.yadcf.css')
+link(rel='stylesheet', href=base_url+'adm-assets/css/fonts/meteocons/css/meteocons.css')
+link(rel='stylesheet', href=base_url+'adm-assets/css/fonts/elusive/css/elusive.css')
+link(rel='stylesheet', href=base_url+'adm-assets/js/wysihtml5/src/bootstrap-wysihtml5.css')
+link(rel='stylesheet', href=base_url+'adm-assets/js/uikit/vendor/codemirror/codemirror.css')
+link(rel='stylesheet', href=base_url+'adm-assets/js/uikit/uikit.css')
+link(rel='stylesheet', href=base_url+'adm-assets/js/uikit/css/addons/uikit.almost-flat.addons.min.css')
+link(rel='stylesheet', href=base_url+'adm-assets/js/daterangepicker/daterangepicker-bs3.css')
+link(rel='stylesheet', href=base_url+'adm-assets/js/select2/select2.css')
+link(rel='stylesheet', href=base_url+'adm-assets/js/select2/select2-bootstrap.css')
+link(rel='stylesheet', href=base_url+'adm-assets/js/multiselect/css/multi-select.css')
+link(rel='stylesheet', href=base_url+'adm-assets/js/dropzone/css/dropzone.css')
+// Bottom Scripts
+script(src=base_url+'adm-assets/js/bootstrap.min.js')
+script(src=base_url+'adm-assets/js/TweenMax.min.js')
+script(src=base_url+'adm-assets/js/resizeable.js')
+script(src=base_url+'adm-assets/js/joinable.js')
+script(src=base_url+'adm-assets/js/xenon-api.js')
+script(src=base_url+'adm-assets/js/xenon-toggles.js')
+script(src=base_url+'adm-assets/js/datatables/js/jquery.dataTables.min.js')
+script(src=base_url+'adm-assets/js/wysihtml5/lib/js/wysihtml5-0.3.0.js')
+// Imported scripts on this page
+script(src=base_url+'adm-assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js')
+script(src=base_url+'adm-assets/js/jvectormap/regions/jquery-jvectormap-world-mill-en.js')
+script(src=base_url+'adm-assets/js/xenon-widgets.js')
+script(src=base_url+'adm-assets/js/datatables/dataTables.bootstrap.js')
+script(src='https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js')
+script(src='https://cdn.datatables.net/responsive/2.2.1/js/responsive.bootstrap.min.js')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/yadcf/0.8.6/jquery.dataTables.yadcf.min.js')
+script(src=base_url+'adm-assets/js/datatables/tabletools/dataTables.tableTools.min.js')
+script(src='https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js')
+script(src='https://cdn.datatables.net/buttons/1.5.1/js/buttons.bootstrap.min.js')
+script(src='https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js')
+script(src=base_url+'adm-assets/js/datatables/jszip.min.js')
+script(src=base_url+'adm-assets/js/datatables/pdfmake.min.js')
+script(src=base_url+'adm-assets/js/datatables/vfs_fonts.js')
+script(src=base_url+'adm-assets/js/jquery-validate/jquery.validate.min.js')
+script(src=base_url+'adm-assets/js/wysihtml5/src/bootstrap-wysihtml5.js')
+script(src=base_url+'adm-assets/js/uikit/vendor/codemirror/codemirror.js')
+script(src=base_url+'adm-assets/js/uikit/vendor/marked.js')
+script(src=base_url+'adm-assets/js/uikit/js/uikit.min.js')
+script(src=base_url+'adm-assets/js/uikit/js/addons/htmleditor.min.js')
+script(src=base_url+'adm-assets/js/ckeditor/ckeditor.js')
+script(src=base_url+'adm-assets/js/ckeditor/adapters/jquery.js')
+script(src=base_url+'adm-assets/js/daterangepicker/daterangepicker.js')
+script(src=base_url+'adm-assets/js/datepicker/bootstrap-datepicker.js')
+script(src=base_url+'adm-assets/js/timepicker/bootstrap-timepicker.min.js')
+script(src=base_url+'adm-assets/js/colorpicker/bootstrap-colorpicker.min.js')
+script(src=base_url+'adm-assets/js/select2/select2.min.js')
+script(src=base_url+'adm-assets/js/jquery-ui/jquery-ui.min.js')
+script(src=base_url+'adm-assets/js/selectboxit/jquery.selectBoxIt.min.js')
+script(src=base_url+'adm-assets/js/tagsinput/bootstrap-tagsinput.min.js')
+script(src=base_url+'adm-assets/js/typeahead.bundle.js')
+script(src=base_url+'adm-assets/js/handlebars.min.js')
+script(src=base_url+'adm-assets/js/multiselect/js/jquery.multi-select.js')
+script(src=base_url+'adm-assets/js/dropzone/dropzone.min.js')
+script(src=base_url+'adm-assets/js/inputmask/jquery.inputmask.bundle.js')
+script(src=base_url+'adm-assets/js/toastr/toastr.min.js')
+// JavaScripts initializations and stuff
+script(src=base_url+'adm-assets/js/xenon-custom.js')
+
+script(type='text/javascript').
+    $(document).ready(function(){
+        $.ajax({
+            url: '#{api_url}berita_jumlah',
+            dataType: "json",
+            success: function(data) {
+                $.each(data.jum_berita,function(key,row){
+                    var jum_berita_all = row["jum_berita_all"];
+                    var jum_berita_draft = row["jum_berita_draft"];
+                    var jum_berita_terbit = row["jum_berita_terbit"];
+                    var jum_berita_hapus = row["jum_berita_hapus"];
+                    $('.jumBeritaAll').append('<span>'+jum_berita_all+'</span>');
+                    $('.jumBeritaDraft').append('<span>'+jum_berita_draft+'</span>');
+                    $('.jumBeritaTerbit').append('<span>'+jum_berita_terbit+'</span>');
+                    $('.jumBeritaHapus').append('<span>'+jum_berita_hapus+'</span>');
+                });
+            }//end data return. 
+        });
+        $.ajax({
+            url: '#{api_url}users/#{session.user.id_user}',
+            dataType: "json",
+            success: function(data) {
+                $.each(data.user,function(key,row){
+                    var nama_gelar = row["nama_gelar"];
+                    $('.namanya').append(nama_gelar);
+                });
+            }//end data return. 
+        });
+    });

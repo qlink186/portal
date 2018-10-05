@@ -1,0 +1,275 @@
+.panel.panel-default
+    .panel-heading
+        h3.panel-title
+            i.entypo-list 
+            |   Data Artikel
+            strong
+                |   TERBIT
+    .panel-body
+        form.form-horizontal(role='form')
+            .form-group
+                .col-sm-6
+                    #cari_artikel_terbit
+            .form-group
+                .col-sm-2
+                    #filter_kategori_terbit
+                .col-sm-3
+                    #filter_penulis_terbit
+                .col-sm-2
+                    #filter_tgl_tulis_terbit
+                .col-sm-2
+                    #filter_tgl_terbit_terbit
+        script(type='text/javascript').
+            var oTable;
+            var sess = '#{session.user.id_hakakses}';
+            jQuery(document).ready(function($)
+            {
+                'use strict';
+                function status_artikel(filterVal, columnVal) {
+                    var found;
+                    if (columnVal === '') {
+                        return true;
+                    }
+                    switch (filterVal) {
+                    case 'TERBIT':
+                        found = columnVal.search(/TERBIT/g);
+                        break;
+                    case 'DRAFT':
+                        found = columnVal.search(/DRAFT/g);
+                        break;
+                    case 'HAPUS':
+                        found = columnVal.search(/HAPUS/g);
+                        break;
+                    default:
+                        found = 1;
+                        break;
+                    }
+            
+                    if (found !== -1) {
+                        return true;
+                    }
+                    return false;
+                }
+                oTable = $("#table-artikel-list-terbit").dataTable(
+                    {
+                    "bStateSave": true,
+                    "fnRowCallback": function( nRow, aData, iDisplayIndex ) {
+                        var status_berita = aData["status"];
+                        if ( status_berita == 0){
+                            $(nRow).addClass('dataDraft');
+                        } else if ( status_berita == 1){
+                            $(nRow).addClass('dataTerbit');
+                        } else if ( status_berita == 99) {
+                            $(nRow).addClass('dataHapus');
+                        } else {
+                            $(nRow).addClass('hidden');
+                        }
+                        return nRow;
+                    },
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                    "sDom": '<"top visible-xs"p><"top pull-right"l>t<"bottom text-center"i><"bottom text-center"p>',
+                    tableTools: {
+                        sSwfPath: "#{base_url}adm-assets/js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                    },
+                    "pagingType": "full_numbers",
+                    "ajax": {
+                        "url": '#{base_url}api/adm_berita_terbit',
+                        "dataSrc": "berita"
+                    },
+                    "columns":
+                    [
+                        {
+                            "searchable": false,
+                            "class":"hidden-xs",
+                            "render": function ( data, type, row ){
+                                var gambar = row["gambar"];
+                                return '<div class="album-image"><a class="thumb" href="#" data-action="edit"><img width="150px" class="img-responsive" src="#{base_url}images/berita/small/'+gambar+'"/></a></div>';
+                            },
+                            "targets": 0
+                        },
+                        {
+                            "searchable": true,
+                            "render": function ( data, type, row ){
+                                var gambar = '<div class="album-image text-center visible-xs"><a class="thumb" href="#" data-action="edit"><img class="img-responsive" src="#{base_url}images/berita/small/'+row["gambar"]+'"/></a></div>';
+                                var judul_berita = '<p class="lead text-danger">'+row["judul_berita"]+'</p>';
+                                var isi_berita = '<p>'+row["isi_berita_ringkas"]+'</p>';
+                                var jum_komentar = row["jml_komentar"];
+                                var jum_klik = row["jml_klik"];
+
+                                // cek jumlah komentar
+                                if (jum_komentar == null) {
+                                    var komentar = '';
+                                } else if (jum_komentar == 0) {
+                                    var komentar = '';
+                                } else {
+                                    var komentar = '<button class="btn btn-white btn-icon btn-icon-standalone btn-xs btn-komentar"><i class="fa-comment"></i><span>'+jum_komentar+' Komentar</span></button>';
+                                };
+
+                                // cek jumlah viewer
+                                if (jum_klik == null) {
+                                    var viewer = '';
+                                } else if (jum_klik == 0) {
+                                    var viewer = '';
+                                } else {
+                                    var viewer = '<button class="btn btn-white btn-icon btn-icon-standalone btn-xs btn-viewer"><i class="fa-eye"></i><span>'+jum_klik+' Viewer</span></button>';
+                                };
+                                return gambar+judul_berita+'<hr style="margin:2px 0 5px 0"/>'+isi_berita+komentar+viewer;
+                            },
+                            "targets": 1
+                        },
+                        { "data": "kategori", "class":"hidden-xs text-center" },
+                        { "data": "nama_penulis", "class":"hidden-xs text-center" },
+                        { "data": "tgl_post", "class":"hidden-xs text-center" },
+                        { 
+                            "searchable": true,
+                            "class":"text-center hidden-xs",
+                            "render": function ( data, type, row ){
+                                var tgl_terbit = row["tgl_terbit"];
+                                if (tgl_terbit){
+                                    var tgl_terbit = row["tgl_terbit"];
+                                } else {
+                                    var tgl_terbit = 'Artikel Belum Diterbitkan';
+                                }
+                                return tgl_terbit;
+                            },
+                            "targets": 5
+                        },
+                        { "data": "status_berita", "class":"hidden" },
+                        {
+                            "searchable": true,
+                            "class":"text-center hidden-xs",
+                            "render": function ( data, type, row ){
+                                var status = row["status"];
+                                var status_berita = '<div class="statusDok"><strong>'+row["status_berita"]+'</strong></div>';
+
+                                 if (sess == 0){
+                                    var tampil_tombol = status_berita
+                                        +'<button class="btn btn-info btn-icon btn-icon-standalone btn-xs btn-block" type="button">'
+                                            +'<i class="entypo-pencil"></i>'
+                                            +'<span>Ubah</span>'
+                                        +'</button>'
+                                        +'<button class="btn btn-secondary btn-icon btn-icon-standalone btn-xs btn-block" type="button" href="javascript:;" onclick="jQuery(id="#{konfirmTerbitkan}") modal(show {backdrop:"fade"});">'
+                                            +'<i class="entypo-check"></i>'
+                                            +'<span>Terbitkan</span>'
+                                        +'</button>'
+                                        +'<button class="btn btn-primary btn-icon btn-icon-standalone btn-xs btn-block" type="button" href="javascript:;" onclick="jQuery("#{konfirmDraft}").modal("show", {backdrop:"fade"});">'
+                                            +'<i class="entypo-archive"></i>'
+                                            +'<span>Draft</span>'
+                                        +'</button>'
+                                        +'<button class="btn btn-danger btn-icon btn-icon-standalone btn-xs btn-block" type="button" href="javascript:;" onclick="jQuery("#{konfirmHapus}").modal("show", {backdrop:"fade"});">'
+                                            +'<i class="entypo-trash"></i>'
+                                            +'<span>Hapus</span>'
+                                        +'</button>';
+                                } else if (sess == 2){
+                                    var tampil_tombol = status_berita
+                                        +'<button class="btn btn-info btn-icon btn-icon-standalone btn-xs btn-block" type="button">'
+                                            +'<i class="entypo-pencil"></i>'
+                                            +'<span>Ubah</span>'
+                                        +'</button>'
+                                        +'<button class="btn btn-secondary btn-icon btn-icon-standalone btn-xs btn-block" type="button" href="javascript:;" onclick="jQuery(id="#{konfirmTerbitkan}") modal(show {backdrop:"fade"});">'
+                                            +'<i class="entypo-check"></i>'
+                                            +'<span>Terbitkan</span>'
+                                        +'</button>'
+                                        +'<button class="btn btn-primary btn-icon btn-icon-standalone btn-xs btn-block" type="button" href="javascript:;" onclick="jQuery("#{konfirmDraft}").modal("show", {backdrop:"fade"});">'
+                                            +'<i class="entypo-archive"></i>'
+                                            +'<span>Draft</span>'
+                                        +'</button>'
+                                        +'<button class="btn btn-danger btn-icon btn-icon-standalone btn-xs btn-block" type="button" href="javascript:;" onclick="jQuery("#{konfirmHapus}").modal("show", {backdrop:"fade"});">'
+                                            +'<i class="entypo-trash"></i>'
+                                            +'<span>Hapus</span>'
+                                        +'</button>';
+                                } else {
+                                    var tampil_tombol = status_berita;
+                                }
+                                return tampil_tombol;
+                            },
+                            "targets": 7
+                        }
+                    ],
+                    "processing":true,
+                    "deferRender": true,
+                    select: true,
+                    "oLanguage": {
+                        "sLengthMenu": "Tampilkan _MENU_ Artikel per halaman",
+                        "sZeroRecords": "Artikel yang anda cari tidak ditemukan",
+                        "sInfo": "Menampilkan artikel ke _START_ sampai ke _END_, dari _TOTAL_ artikel",
+                        "sInfoEmpty": "Menampilkan artikel ke 0 sampai 0 dari total 0 artikel",
+                        "sEmptyTable": "Artikel Tidak Tersedia",
+                        "sInfoFiltered": "(Filter dari _MAX_ artikel)",
+                        "oPaginate": {
+                            "sFirst": "Pertama",
+                            "sLast": "Terakhir",
+                            "sNext": "Selanjutnya",
+                            "sPrevious": "Sebelumnya"
+                        }
+                    }
+                }).yadcf([
+                    {
+                        column_number : 0, 
+                        filter_type: 'none'
+                    },
+                    {
+                        column_number : 1, 
+                        filter_type: 'text',
+                        filter_container_id: 'cari_artikel_terbit',
+                        filter_default_label: 'Cari Artikel / Berita yang telah diterbitkan'
+                    },
+                    {
+                        column_number : 2,
+                        filter_container_id: 'filter_kategori_terbit',
+                        filter_default_label: 'Semua Kategori'
+                    },
+                    {
+                        column_number : 3, 
+                        filter_container_id: 'filter_penulis_terbit',
+                        filter_default_label: 'Semua Penulis'
+                    },
+                    {
+                        column_number : 4,
+                        filter_container_id: 'filter_tgl_tulis_terbit',
+                        filter_default_label: 'tanggal Tulis'
+                    },
+                    {
+                        column_number : 5,
+                        filter_container_id: 'filter_tgl_terbit_terbit',
+                        filter_default_label: 'Tanggal Terbit'
+                    },
+                    {
+                        column_number : 6, 
+                        filter_container_id: 'filter_status_artikel',
+                        filter_type: 'custom_func',
+                        custom_func: status_artikel,
+                        data: [{
+                            value: 'TERBIT',
+                            label: 'Artikel Terbit'
+                        }, {
+                            value: 'DRAFT',
+                            label: 'Artikel Draft'
+                        }, {
+                            value: 'HAPUS',
+                            label: 'Artikel Dihapus'
+                        }],
+                        filter_default_label: "Semua Status"
+                    },
+                    {
+                        column_number : 7,
+                        filter_type: 'none'
+                    }
+                ],
+                {
+                    externally_triggered: true
+                });
+            });
+        table#table-artikel-list-terbit.table.table-hover(width='100%')
+            thead
+                tr
+                    th(width='150px').text-center.small Gambar
+                    th(width='250px').text-center.small Judul | Isi
+                    th.text-center.small Kat.
+                    th.text-center.small Penulis
+                    th.text-center.small Tgl Tulis
+                    th.text-center.small Tgl Terbit / Hapus
+                    th.text-center.small.hidden
+                    th(width='70px').text-center.small Aksi
+include mod-modal-artikel-list.pug
+include mod-notifikasi-toastr.pug

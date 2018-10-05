@@ -1,0 +1,354 @@
+.white-wrapper
+    .container
+        .row
+            .gallery
+                .col-sm-3
+                    h5.subpage-title
+                        span Menu
+                    // Add "fixed" class to make the sidebar fixed always to the browser viewport.
+                    // Adding class "toggle-others" will keep only one menu item open at a time.
+                    // Adding class "collapsed" collapse sidebar root elements and show only icons.
+
+
+                    script(type='text/javascript').
+                        $(document).ready(function(){
+                            $.ajax({
+                                url: '#{api_url}gallery_album_th',
+                                dataType: "json",
+                                success: function(data) {
+                                    $.each(data.gallery_album_th,function(key,row){
+                                        var th_album = row["th_album"];
+                                        var jum_album = row["jum_gallery"];
+                                        $('#th_album').append('<li><a href="#" data-filter=".'+th_album+'">'+th_album+' ('+jum_album+')'
+                                            +'</a></li>');
+                                    });
+                                }//end data return. 
+                            });
+                        });
+
+
+                    .sidebar-menu.toggle-others
+                        ul.main-menu.portfolio-filter
+                            li.active
+                                a(href='#', data-filter='*') Semua
+                            #th_album
+                            //li
+                                a(href='#', data-filter='.th-2016') 2016
+                                ul
+                                    li
+                                        a(href='#', data-filter='.artwork') Artwork
+                                    li
+                                        a(href='#', data-filter='.creative') Creative
+                                    li
+                                        a(href='#', data-filter='.nature') Nature
+                                    li
+                                        a(href='#', data-filter='.outside') Outside
+                                    li
+                                        a(href='#', data-filter='.photography') Photography
+                            //li
+                                a(href='#', data-filter='.th-2016') 2017
+                                ul
+                                    li
+                                        a(href='#', data-filter='.artwork') Artwork
+                                    li
+                                        a(href='#', data-filter='.creative') Creative
+                                    li
+                                        a(href='#', data-filter='.nature') Nature
+                                    li
+                                        a(href='#', data-filter='.outside') Outside
+                                    li
+                                        a(href='#', data-filter='.photography') Photography
+                .col-sm-9
+                    h5.subpage-title
+                        span Gallery
+                    .row
+                        #gallery-container
+                            script(type='text/javascript').
+                                $(document).ready(function(){
+                                    $.ajax({
+                                        url: '#{api_url}gallery',
+                                        dataType: "json",
+                                        success: function(data) {
+                                            $.each(data.gallery,function(key,row){
+                                                var id_gallery = row["id_gallery"];
+                                                var id_gallery_album = row["id_gallery_album"];
+                                                var th_album = row["th_album"];
+                                                var nama_album = row["nama_album"];
+                                                var judul_gambar = row["judul_gambar"];
+                                                var thumb = row["alamat_file_thumb"];
+                                                var small = row["alamat_file_small"];
+                                                var big = row["alamat_file_big"];
+                                                var tgl_gambar = row["tgl_gambar"];
+                                                $('#gal').append('<div class="col-xs-12.col-sm-6 col-md-4 gallery-item-wrapper '+nama_album+' '+th_album+'">'
+                                                +   '<div class="gallery-item">'
+                                                +       '<div class="gallery-thumb">'
+                                                +           '<img class="img-responsive" src="'+thumb+'" alt="'+judul_gambar+'" />'
+                                                +               '<div class="image-overlay"></div>'
+                                                +               '<a class="gallery-zoom" rel="prettyPhoto[pp_gal'+nama_album+']" href="'+big+'">'
+                                                +                   '<i class="fa-eye" />'
+                                                +               '</a>'
+                                                +               '<a class="gallery-link" href="'+big+'" target="_BLANK" >'
+                                                +                   '<i class="fa-link" />'
+                                                +               '</a>'
+                                                +           '</div>'
+                                                +           '<div class="gallery-content">'
+                                                +               '<h5>'+judul_gambar+'</h5>'
+                                                +               '<span>'+tgl_gambar+'</span>'
+                                                +               '<div>Album : '+nama_album+'</div>'
+                                                +           '</div>'
+                                                +       '</div>'
+                                                +   '</div>'
+                                                +'</div>');
+                                            });
+                                        }//end data return. 
+                                    });
+                                });
+                            #gal
+                                
+                //.col-sm-9
+                    h5.subpage-title
+                        span Gallery
+                    .row
+                        #gallery-container
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.artwork.creative
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/0dff065d7af54b77990de38bdcb2e932.jpg', alt='1st Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/0dff065d7af54b77990de38bdcb2e932.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 Bapak Walikota Bla bla bla bla
+                                        p Album : 
+                                            strong Adipura 2016
+                                        p Tanggal : 10 April 2016
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.nature.outside.th-2016
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/2b424a1a4a9cdd22f5ed02e408c5fcc2.jpg', alt='2nd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/2b424a1a4a9cdd22f5ed02e408c5fcc2.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 2nd Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.photography.artwork
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/5b44e6ae8887e7e5d65cb960a3eff9a3.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/5b44e6ae8887e7e5d65cb960a3eff9a3.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 3rd Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.creative.nature.th-2016
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/6d274639a4d416783bc0eb61b8996b91.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/6d274639a4d416783bc0eb61b8996b91.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 4th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.nature
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/8b0ed407d8b57997b979b018617cdc8a.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/8b0ed407d8b57997b979b018617cdc8a.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 5th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.artwork.creative.th-2016
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/9f8320d76baf8f565cd34b173433f1fd.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/9f8320d76baf8f565cd34b173433f1fd.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 6th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.nature.outside
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/50e27c7169d08faa871f71a8359c1c32.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/50e27c7169d08faa871f71a8359c1c32.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 7th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.photography.artwork
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/51e8cafaa177157c1cc20e7741880693.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/51e8cafaa177157c1cc20e7741880693.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 8th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.creative.nature
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/80a9d58f91a77a32253bca19bb95b226.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/80a9d58f91a77a32253bca19bb95b226.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 9th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.nature
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/81b4126aef1437f059b55c2782ee9c07.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/81b4126aef1437f059b55c2782ee9c07.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 10th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.artwork.creative.th-2016
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/82ecd31f520bbaff47ae33b9c45fab6e.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/82ecd31f520bbaff47ae33b9c45fab6e.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 11th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.nature.outside
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/115f8ddf79bcb8cb956a913320bd53f0.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/115f8ddf79bcb8cb956a913320bd53f0.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 12th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.photography.artwork
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/5b44e6ae8887e7e5d65cb960a3eff9a3.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/5b44e6ae8887e7e5d65cb960a3eff9a3.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 13th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.creative.nature
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/453e080ef6869e5d6d3cbe075bc8fdab.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/453e080ef6869e5d6d3cbe075bc8fdab.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 14th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.nature
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/628c8406a232164e385b48d639ebc6da.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/628c8406a232164e385b48d639ebc6da.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 15th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                            .col-xs-12.col-sm-6.col-md-4.gallery-item-wrapper.artwork.creative
+                                .gallery-item
+                                    .gallery-thumb
+                                        img.img-responsive(src=base_url+'images/gallery/thumb/7084e90856833a372ba6f1210e3943a2.jpg', alt='3rd Portfolio Thumb')
+                                        .image-overlay
+                                        a.gallery-zoom(href=base_url+'images/gallery/big/7084e90856833a372ba6f1210e3943a2.jpg', rel='prettyPhoto[pp_gal]')
+                                            i.fa-eye
+                                        a.gallery-link(href='portfolio-item-1.html')
+                                            i.fa-link
+                                    .gallery-content
+                                        h5 16th Portfolio Item
+                                        p Nullam id dolor id nibh ultricies vehicula.
+                            // /.gallery-item-wrapper
+                        // /.isotope-portfolio-container
+                    // /.row
+script(type='text/javascript').
+    $(document).ready(function () {
+        // PrettyPhoto
+        $("a[rel^='prettyPhoto']").prettyPhoto({
+            theme: 'light_square',
+            social_tools: false
+        });
+    });
+    // Isotope Portfolio
+    var $container = $('#gallery-container');
+    var $filter = $('.portfolio-filter');
+    $(window).load(function () {
+        // Initialize Isotope
+        $container.isotope({
+            itemSelector: '.gallery-item-wrapper'
+        });
+        $('.portfolio-filter a').click(function () {
+            var selector = $(this).attr('data-filter');
+            $container.isotope({ filter: selector });
+            return false;
+        });
+        $filter.find('a').click(function () {
+            var selector = $(this).attr('data-filter');
+            $filter.find('a').parent().removeClass('active');
+            $(this).parent().addClass('active');
+        });
+    });
+    $(window).smartresize(function () {
+        $container.isotope('reLayout');
+    });

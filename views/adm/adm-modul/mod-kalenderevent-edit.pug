@@ -1,0 +1,38 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Kalender Event
+            // /.box-header
+            .box-body.pad
+                form(action="/adm-kalenderevent-edit/", method="post", enctype="multipart/form-data")
+                    input#id_berita.form-control(type='hidden', name='id_kalenderevent', value=kalenderevent.id_kalenderevent)
+                    .form-group
+                        label.col-sm-2.control-label(for='title')
+                            |   Judul Event
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='judul', required='required' value=kalenderevent.judul)
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='tgl_event')
+                            |   Tanggal Event
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='date', name='tgl_event', required='required' value=kalenderevent.tgl_event)
+                            br
+                    .form-group
+                        label.col-sm-12.control-label(for='isi')
+                            |   Keterangan Event
+                            span.required *
+                        .col-sm-12
+                            textarea#editor3(name='editorkalenderevent', rows='15', cols='80') #{kalenderevent.keterangan}
+                            br
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box

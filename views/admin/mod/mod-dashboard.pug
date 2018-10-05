@@ -1,0 +1,540 @@
+section.profile-env
+    .row
+        .col-sm-3
+            // User Info Sidebar
+            .user-info-sidebar
+                a.user-img(href='#')
+                    img.img-cirlce.img-responsive.img-thumbnail.superadmin(src=base_url+'images/pegawai/big/198804102015031001.jpg', alt='user-img')
+                a.user-name(href='#')
+                    |   Aprinaldi, S.Kom
+                    span.user-status.is-online
+                span.user-title
+                    strong Super Admin
+                span.user-title
+                    a(href='#')
+                        |   qlink186
+                hr
+                span.user-title
+                    strong
+                        |   NIP 19880410 201503 1 001
+                span.user-title
+                        |   Dinas Komunikasi dan Informatika
+                span.user-title
+                        |   Fungsional Umum
+                hr
+                ul.list-unstyled.user-friends-count
+                    li
+                        span 643
+                        |   Artikel
+                    li
+                        span 108
+                        |   File
+            .row
+                .col-sm-12
+                    .xe-widget.xe-counter(data-count='.num', data-from='0', data-to='99.9', data-suffix='%', data-duration='2')
+                        .xe-icon
+                            i.linecons-cloud
+                        .xe-label
+                            strong.num 0.0%
+                            span Server uptime
+                .col-sm-12
+                    .xe-widget.xe-counter.xe-counter-blue(data-count='.num', data-from='1', data-to='117', data-suffix='k', data-duration='3', data-easing='false')
+                        .xe-icon
+                            i.linecons-user
+                        .xe-label
+                            strong.num 1k
+                            span Users Total
+                .col-sm-12
+                    .xe-widget.xe-counter.xe-counter-info(data-count='.num', data-from='1000', data-to='2470', data-duration='4', data-easing='true')
+                        .xe-icon
+                            i.linecons-camera
+                        .xe-label
+                            strong.num 1000
+                            span New Daily Photos
+                .col-sm-12
+                    .xe-widget.xe-counter.xe-counter-red(data-count='.num', data-from='0', data-to='57', data-prefix='-,', data-suffix='%', data-duration='5', data-easing='true', data-delay='1')
+                        .xe-icon
+                            i.linecons-lightbulb
+                        .xe-label
+                            strong.num -,0%
+                            span Exchange Commission
+                .col-sm-12
+                    .xe-widget.xe-counter-block(data-count='.num', data-from='0', data-to='99.9', data-suffix='%', data-duration='2')
+                        .xe-upper
+                            .xe-icon
+                                i.linecons-cloud
+                            .xe-label
+                                strong.num 0.0%
+                                span Server uptime
+                        .xe-lower
+                            .border
+                            span Result
+                            strong 78% Increase
+                .col-sm-12
+                    .xe-widget.xe-counter-block.xe-counter-block-purple(data-count='.num', data-from='0', data-to='512', data-duration='3')
+                        .xe-upper
+                            .xe-icon
+                                i.linecons-camera
+                            .xe-label
+                                strong.num 0
+                                span Photos Taken
+                        .xe-lower
+                            .border
+                            span Increase
+                            strong 512 more photos
+                .col-sm-12
+                    .xe-widget.xe-counter-block.xe-counter-block-blue(data-suffix='k', data-count='.num', data-from='0', data-to='310', data-duration='4', data-easing='false')
+                        .xe-upper
+                            .xe-icon
+                                i.linecons-user
+                            .xe-label
+                                strong.num 0k
+                                span Daily Visits
+                        .xe-lower
+                            .border
+                            span Bounce Rate
+                            strong 51.55%
+        .col-sm-9
+            include mod-profil-timeline.pug
+.row
+    .col-sm-3
+        .xe-widget.xe-counter(data-count='.num', data-from='0', data-to='99.9', data-suffix='%', data-duration='2')
+            .xe-icon
+                i.linecons-cloud
+            .xe-label
+                strong.num 0.0%
+                span Server uptime
+    .col-sm-3
+        .xe-widget.xe-counter.xe-counter-blue(data-count='.num', data-from='1', data-to='117', data-suffix='k', data-duration='3', data-easing='false')
+            .xe-icon
+                i.linecons-user
+            .xe-label
+                strong.num 1k
+                span Users Total
+    .col-sm-3
+        .xe-widget.xe-counter.xe-counter-info(data-count='.num', data-from='1000', data-to='2470', data-duration='4', data-easing='true')
+            .xe-icon
+                i.linecons-camera
+            .xe-label
+                strong.num 1000
+                span New Daily Photos
+    .col-sm-3
+        .xe-widget.xe-counter.xe-counter-red(data-count='.num', data-from='0', data-to='57', data-prefix='-,', data-suffix='%', data-duration='5', data-easing='true', data-delay='1')
+            .xe-icon
+                i.linecons-lightbulb
+            .xe-label
+                strong.num -,0%
+                span Exchange Commission
+    .col-sm-3
+        .xe-widget.xe-counter-block(data-count='.num', data-from='0', data-to='99.9', data-suffix='%', data-duration='2')
+            .xe-upper
+                .xe-icon
+                    i.linecons-cloud
+                .xe-label
+                    strong.num 0.0%
+                    span Server uptime
+            .xe-lower
+                .border
+                span Result
+                strong 78% Increase
+    .col-sm-3
+        .xe-widget.xe-counter-block.xe-counter-block-purple(data-count='.num', data-from='0', data-to='512', data-duration='3')
+            .xe-upper
+                .xe-icon
+                    i.linecons-camera
+                .xe-label
+                    strong.num 0
+                    span Photos Taken
+            .xe-lower
+                .border
+                span Increase
+                strong 512 more photos
+    .col-sm-3
+        .xe-widget.xe-counter-block.xe-counter-block-blue(data-suffix='k', data-count='.num', data-from='0', data-to='310', data-duration='4', data-easing='false')
+            .xe-upper
+                .xe-icon
+                    i.linecons-user
+                .xe-label
+                    strong.num 0k
+                    span Daily Visits
+            .xe-lower
+                .border
+                span Bounce Rate
+                strong 51.55%
+    .col-sm-3
+        .xe-widget.xe-counter-block.xe-counter-block-orange
+            .xe-upper
+                .xe-icon
+                    i.fa-life-ring
+                .xe-label
+                    strong.num 24/7
+                    span Live Support
+            .xe-lower
+                .border
+                span Tickets Opened
+                strong(data-count='this', data-from='0', data-to='14215', data-duration='2') 0
+    .col-sm-3
+        .xe-widget.xe-progress-counter.xe-progress-counter-pink(data-count='.num', data-from='0', data-to='12425', data-duration='2')
+            .xe-background
+                i.linecons-heart
+            .xe-upper
+                .xe-icon
+                    i.linecons-heart
+                .xe-label
+                    span likes
+                    strong.num 0
+            .xe-progress
+                span.xe-progress-fill(data-fill-from='0', data-fill-to='56', data-fill-unit='%', data-fill-property='width', data-fill-duration='2', data-fill-easing='true')
+            .xe-lower
+                span Likes p/ Month
+                strong 41% more likes
+        // Todo list
+        .xe-widget.xe-todo-list
+            .xe-header
+                .xe-icon
+                    i.fa-file-text-o
+                .xe-label
+                    span to do list
+                    strong Tasks
+            .xe-body
+                ul.list-unstyled
+                    li.done
+                        label
+                            input.cbr(type='checkbox', checked='')
+                            span Web Design
+                    li
+                        label
+                            input.cbr(type='checkbox')
+                            span Slicing
+                    li
+                        label
+                            input.cbr(type='checkbox')
+                            span WooCommerce
+                    li
+                        label
+                            input.cbr(type='checkbox')
+                            span Programming
+                    li
+                        label
+                            input.cbr(type='checkbox')
+                            span SEO Optimize
+            .xe-footer
+                input.form-control(type='text', placeholder='Add task...')
+    .col-sm-3
+        .xe-widget.xe-progress-counter.xe-progress-counter-turquoise(data-count='.num', data-from='0', data-to='520', data-suffix='k', data-duration='3')
+            .xe-background
+                i.linecons-paper-plane
+            .xe-upper
+                .xe-icon
+                    i.linecons-paper-plane
+                .xe-label
+                    span chat lines
+                    strong.num 0
+            .xe-progress
+                span.xe-progress-fill(data-fill-from='0', data-fill-to='82', data-fill-unit='%', data-fill-property='width', data-fill-duration='3', data-fill-easing='true')
+            .xe-lower
+                span Chat lines p/ Month
+                strong 82% more communication
+        // Tweets
+        .xe-widget.xe-status-update(data-auto-switch='5')
+            .xe-header
+                .xe-icon
+                    i.fa-twitter
+                .xe-nav
+                    a.xe-prev(href='#')
+                        i.fa-angle-left
+                    a.xe-next(href='#')
+                        i.fa-angle-right
+            .xe-body
+                ul.list-unstyled
+                    li.active
+                        span.status-date 21 May
+                        p
+                    li
+                        span.status-date 18 April
+                        p
+                    li
+                        span.status-date 08 March
+                        p
+            .xe-footer
+                a(href='#')
+                    i.fa-retweet
+    .col-sm-3
+        .xe-widget.xe-vertical-counter.xe-vertical-counter-primary(data-count='.num', data-from='0', data-to='128.4', data-decimal=',', data-suffix='%', data-duration='2.5')
+            .xe-icon
+                i.linecons-videocam
+            .xe-label
+                strong.num 0,0%
+                span Video Views
+    .col-sm-3
+        .xe-widget.xe-vertical-counter.xe-vertical-counter-danger(data-count='.num', data-from='0', data-to='67.9', data-decimal=',', data-suffix='%', data-duration='3')
+            .xe-icon
+                i.linecons-doc
+            .xe-label
+                strong.num 0,0%
+                span Document Downloads
+    .col-sm-3
+        .xe-widget.xe-counter-block.xe-counter-block-red(data-count='.num', data-from='0', data-to='99.9', data-suffix='%', data-duration='2')
+            .xe-upper
+                .xe-icon
+                    i.linecons-beaker
+                .xe-label
+                    strong.num 0.0%
+                    span Server uptime
+            .xe-lower
+                .border
+                span Result
+                strong 78% Increase
+    .col-sm-3
+        .xe-widget.xe-counter-block.xe-counter-block-yellow(data-count='.num', data-from='0', data-to='512', data-duration='3')
+            .xe-upper
+                .xe-icon
+                    i.linecons-attach
+                .xe-label
+                    strong.num 0
+                    span Photos Taken
+            .xe-lower
+                .border
+                span Increase
+                strong 512 more photos
+    .clearfix
+    .col-sm-8
+        script(type='text/javascript').
+            jQuery(document).ready(function($)
+            {
+            var map = $("#sample-map-widget");
+            var gdpData = { "AF": 16.63, "AL": 11.58, "DZ": 158.97, "AO": 85.81, "AG": 1.1, "AR": 351.02, "AM": 8.83, "AU": 1219.72, "AT": 366.26, "AZ": 52.17, "BS": 7.54, "BH": 21.73, "BD": 105.4, "BB": 3.96, "BY": 52.89, "BE": 461.33, "BZ": 1.43, "BJ": 6.49, "BT": 1.4, "BO": 19.18, "BA": 16.2, "BW": 12.5, "BR": 2023.53, "BN": 11.96, "BG": 44.84, "BF": 8.67, "BI": 1.47, "KH": 11.36, "CM": 21.88, "CA": 1563.66, "CV": 1.57, "CF": 2.11, "TD": 7.59, "CL": 199.18, "CN": 5745.13, "CO": 283.11, "KM": 0.56, "CD": 12.6, "CG": 11.88, "CR": 35.02, "CI": 22.38, "HR": 59.92, "CY": 22.75, "CZ": 195.23, "DK": 304.56, "DJ": 1.14, "DM": 0.38, "DO": 50.87, "EC": 61.49, "EG": 216.83, "SV": 21.8, "GQ": 14.55, "ER": 2.25, "EE": 19.22, "ET": 30.94, "FJ": 3.15, "FI": 231.98, "FR": 2555.44, "GA": 12.56, "GM": 1.04, "GE": 11.23, "DE": 3305.9, "GH": 18.06, "GR": 305.01, "GD": 0.65, "GT": 40.77, "GN": 4.34, "GW": 0.83, "GY": 2.2, "HT": 6.5, "HN": 15.34, "HK": 226.49, "HU": 132.28, "IS": 12.77, "IN": 1430.02, "ID": 695.06, "IR": 337.9, "IQ": 84.14, "IE": 204.14, "IL": 201.25, "IT": 2036.69, "JM": 13.74, "JP": 5390.9, "JO": 27.13, "KZ": 129.76, "KE": 32.42, "KI": 0.15, "KR": 986.26, "UNDEFINED": 5.73, "KW": 117.32, "KG": 4.44, "LA": 6.34, "LV": 23.39, "LB": 39.15, "LS": 1.8, "LR": 0.98, "LY": 77.91, "LT": 35.73, "LU": 52.43, "MK": 9.58, "MG": 8.33, "MW": 5.04, "MY": 218.95, "MV": 1.43, "ML": 9.08, "MT": 7.8, "MR": 3.49, "MU": 9.43, "MX": 1004.04, "MD": 5.36, "MN": 5.81, "ME": 3.88, "MA": 91.7, "MZ": 10.21, "MM": 35.65, "NA": 11.45, "NP": 15.11, "NL": 770.31, "NZ": 138, "NI": 6.38, "NE": 5.6, "NG": 206.66, "NO": 413.51, "OM": 53.78, "PK": 174.79, "PA": 27.2, "PG": 8.81, "PY": 17.17, "PE": 153.55, "PH": 189.06, "PL": 438.88, "PT": 223.7, "QA": 126.52, "RO": 158.39, "RU": 1476.91, "RW": 5.69, "WS": 0.55, "ST": 0.19, "SA": 434.44, "SN": 12.66, "RS": 38.92, "SC": 0.92, "SL": 1.9, "SG": 217.38, "SK": 86.26, "SI": 46.44, "SB": 0.67, "ZA": 354.41, "ES": 1374.78, "LK": 48.24, "KN": 0.56, "LC": 1, "VC": 0.58, "SD": 65.93, "SR": 3.3, "SZ": 3.17, "SE": 444.59, "CH": 522.44, "SY": 59.63, "TW": 426.98, "TJ": 5.58, "TZ": 22.43, "TH": 312.61, "TL": 0.62, "TG": 3.07, "TO": 0.3, "TT": 21.2, "TN": 43.86, "TR": 729.05, "TM": 0, "UG": 17.12, "UA": 136.56, "AE": 239.65, "GB": 2258.57, "US": 14624.18, "UY": 40.71, "UZ": 37.72, "VU": 0.72, "VE": 285.21, "VN": 101.99, "YE": 30.02, "ZM": 15.69, "ZW": 5.57 };
+            var vmap = map.vectorMap({
+            map: 'world_mill_en',
+            backgroundColor: '',
+            regionStyle: {
+            initial: {
+            "fill": '#fff',
+            "fill-opacity": 0.2,
+            "stroke": '',
+            "stroke-width": .7,
+            "stroke-opacity": .5
+            },
+            hover: {
+            "fill-opacity": 1,
+            "fill": "#ddd"
+            }
+            },
+            markerStyle: {
+            initial: {
+            fill: '#fff',
+            "stroke": "#fff",
+            "stroke-width": 0,
+            r: 2.5
+            },
+            selected: {
+            fill: '#7c38bc',
+            "stroke-width": 0
+            }
+            },
+            markers: [
+            {latLng: [42.58, 20.88], name: 'Kosovo'},
+            {latLng: [40.71, -74.00], name: 'New York'},
+            {latLng: [36.77, -119.41], name: 'California'},
+            {latLng: [-22.90, -43.19], name: 'Rio De Janiero'},
+            {latLng: [35.68, 139.69], name: 'Tokyo'},
+            {latLng: [59.32, 18.06], name: 'Stockholm'},
+            {latLng: [25.04, 55.18], name: 'Dubai'},
+            {latLng: [51.50, -0.12], name: 'London'},
+            {latLng: [-33.92, 18.42], name: 'Cape Town'},
+            ]
+            });
+            });
+        .xe-widget.xe-map-stats
+            .xe-map
+                #sample-map-widget
+            .xe-details
+                .xe-label
+                    h3 Top Destinations
+                    p 3 month period
+                ul.list-unstyled
+                    li
+                        .xe-map-data
+                            span.label.label-secondary 5k
+                            span.xe-label Los Angeles
+                    li
+                        .xe-map-data
+                            span.label.label-purple 2k
+                            span.xe-label Barcelona
+                    li
+                        .xe-map-data
+                            span.label.label-yellow 311
+                            span.xe-label Helsinki
+                    li
+                        .xe-map-data
+                            span.label.label-red 892
+                            span.xe-label Sao Paolo
+    .col-sm-4
+        .xe-widget.xe-status-update.xe-status-update-facebook(data-auto-switch='3')
+            .xe-header
+                .xe-icon
+                    i.fa-facebook
+                .xe-nav
+            .xe-body
+                ul.list-unstyled
+                    li
+                        span.status-date 21 May
+                        p
+                    li.active
+                        span.status-date 18 April
+                        p
+                    li
+                        span.status-date 08 March
+                        p
+            .xe-footer
+                a(href='#')
+                    i.linecons-megaphone
+    .clearfix
+    .col-sm-4
+        .xe-widget.xe-status-update.xe-status-update-google-plus(data-auto-switch='0')
+            .xe-header
+                .xe-icon
+                    i.fa-google-plus
+                .xe-nav
+                    a.xe-prev(href='#')
+                        i.fa-angle-left
+                    a.xe-next(href='#')
+                        i.fa-angle-right
+            .xe-body
+                ul.list-unstyled
+                    li.active
+                        span.status-date 21 May
+                        p
+                    li
+                        span.status-date 18 April
+                        p
+                    li
+                        span.status-date 08 March
+                        p
+            .xe-footer
+                a(href='#')
+                    i.linecons-thumbs-up
+    .col-sm-8
+        .xe-widget.xe-weather
+            .xe-background.xe-background-animated
+                img(src='./adm-assets/images/clouds.png')
+            .xe-current-day
+                .xe-now
+                    .xe-temperature
+                        .xe-icon
+                            i.meteocons-cloud-moon
+                        .xe-label
+                            strong 21&deg;
+                    .xe-location
+                        h4 San Francisco, USA
+                        time Today, 06 December
+                .xe-forecast
+                    ul
+                        li
+                            .xe-forecast-entry
+                                time 11:00
+                                .xe-icon
+                                    i.meteocons-sunrise
+                                strong.xe-temp 12&deg;
+                        li
+                            .xe-forecast-entry
+                                time 12:00
+                                .xe-icon
+                                    i.meteocons-clouds-flash
+                                strong.xe-temp 13&deg;
+                        li
+                            .xe-forecast-entry
+                                time 13:00
+                                .xe-icon
+                                    i.meteocons-cloud-moon-inv
+                                strong.xe-temp 16&deg;
+                        li
+                            .xe-forecast-entry
+                                time 14:00
+                                .xe-icon
+                                    i.meteocons-eclipse
+                                strong.xe-temp 19&deg;
+                        li
+                            .xe-forecast-entry
+                                time 15:00
+                                .xe-icon
+                                    i.meteocons-rain
+                                strong.xe-temp 21&deg;
+                        li
+                            .xe-forecast-entry
+                                time 16:00
+                                .xe-icon
+                                    i.meteocons-cloud-sun
+                                strong.xe-temp 25&deg;
+            .xe-weekdays
+                ul.list-unstyled
+                    li
+                        .xe-weekday-forecast
+                            .xe-temp 21&deg;
+                            .xe-day Monday
+                            .xe-icon
+                                i.meteocons-windy-inv
+                    li
+                        .xe-weekday-forecast
+                            .xe-temp 23&deg;
+                            .xe-day Tuesday
+                            .xe-icon
+                                i.meteocons-sun
+                    li
+                        .xe-weekday-forecast
+                            .xe-temp 19&deg;
+                            .xe-day Wednesday
+                            .xe-icon
+                                i.meteocons-na
+                    li
+                        .xe-weekday-forecast
+                            .xe-temp 18&deg;
+                            .xe-day Thursday
+                            .xe-icon
+                                i.meteocons-windy
+                    li
+                        .xe-weekday-forecast
+                            .xe-temp 20&deg;
+                            .xe-day Friday
+                            .xe-icon
+                                i.meteocons-sun
+    .col-sm-12
+        .xe-widget.xe-conversations
+            .xe-bg-icon
+                i.linecons-comment
+            .xe-header
+                .xe-icon
+                    i.linecons-comment
+                .xe-label
+                    h3
+                        small Chatting arround
+            .xe-body
+                ul.list-unstyled
+                    li
+                        .xe-comment-entry
+                            a.xe-user-img(href='#')
+                                img.img-circle(src='./adm-assets/images/user-2.png', width='40')
+                            .xe-comment
+                                a.xe-user-name(href='#')
+                                    strong Jack Gates
+                                p
+                                    br
+                    li
+                        .xe-comment-entry
+                            a.xe-user-img(href='#')
+                                img.img-circle(src='./adm-assets/images/user-5.png', width='40')
+                            .xe-comment
+                                a.xe-user-name(href='#')
+                                    strong Arlind Nushi
+                                    span.label.label-secondary 5
+                                p
+                    li
+                        .xe-comment-entry
+                            a.xe-user-img(href='#')
+                                img.img-circle(src='./adm-assets/images/user-4.png', width='40')
+                            .xe-comment
+                                a.xe-user-name(href='#')
+                                    strong Bryan Green
+                                p
+            .xe-footer
+                a(href='#') View All

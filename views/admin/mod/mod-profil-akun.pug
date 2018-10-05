@@ -1,0 +1,39 @@
+.panel.panel-default
+    .panel-heading
+        h3.panel-title
+            i.fa-at
+            |   Data 
+            strong Akun
+    .panel-body
+        form.form-horizontal.validate(role='form', method='post')
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilAkunUsername') Username*
+                .col-sm-6
+                    .input-group.input-group-minimal
+                        span.input-group-addon
+                            i.linecons-user
+                        input#isianProfilAkunUsername.form-control.lowercase(type='text',name='dataUsername', data-mask='[a-z0-9_-.]{}', data-is-regex='true', data-validate='required', data-message-required='Username Wajib Diisi', placeholder='@username')
+                    em.small Isi dengan karakter a-z (huruf kecil) dan angka 0-9 serta karakter "-" (strip) dan "_" (underscore) atau gabungannya
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilAkunPassword1') Password*
+                .col-sm-6
+                    .input-group.input-group-minimal
+                        span.input-group-addon
+                            i.linecons-key
+                        input#isianProfilAkunPassword1.form-control.lowercase(type='password', name='dataAkunPassword1', data-validate='required', data-message-required='Password Wajib Diisi', placeholder='Password')
+            .form-group-separator
+            .form-group
+                label.col-sm-2.control-label(for='isianProfilAkunPassword2') Konfirmasi Password*
+                .col-sm-6
+                    .input-group.input-group-minimal
+                        span.input-group-addon
+                            i.linecons-key
+                        input#isianProfilAkunPassword2.form-control.lowercase(type='password', name='dataAkunPassword2', data-validate='required', data-message-required='Password Wajib Diisi', placeholder='Password')
+            .form-group-separator
+            
+            .form-group
+                .col-sm-12
+                    button.btn.btn-secondary.btn-icon.btn-icon-standalone.btn-icon-standalone.pull-right(type='submit')
+                        i.fa-save
+                        span Simpan

@@ -1,0 +1,38 @@
+.row
+    .col-md-12
+        .box.box-info
+            .box-header
+                h3.box-title
+                    |   Siaran Pers
+            // /.box-header
+            .box-body.pad
+                form(action="/adm-siaranpers-tambah", method="post", enctype="multipart/form-data")
+                    .form-group
+                        label.col-sm-2.control-label(for='judul')
+                            |   Judul Siaran Pers
+                            span.required *
+                        .col-sm-10
+                            input#title.form-control(type='text', name='judul', required='required')
+                            br
+                    .form-group
+                        label.col-sm-2.control-label(for='gambar')
+                            |   Gambar
+                            span.required *
+                        .col-sm-10
+                            input#gambar.form-control(type='file', name='uploaded_image', required='required')
+                            br
+                    .form-group
+                        label.col-sm-12.control-label(for='isi')
+                            |   Isi Siaran Pers
+                            span.required *
+                        .col-sm-12
+                            textarea#editor2(name='editorsiaranpers', rows='15', cols='80')
+                            br
+                            
+                    .form-actions
+                        .row
+                            .col-sm-12.col-sm-offset-10
+                                .btn-toolbar
+                                    button.btn.btn-success(type='submit') Simpan
+                                    button.btn.btn-default(type='button') Batal
+        // /.box

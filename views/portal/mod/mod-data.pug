@@ -1,0 +1,77 @@
+.white-wrapper
+    .container
+        if menu=='data/unitkerja'
+            include mod-data-unitkerja
+        else if menu=='data/peg'
+            include mod-data-peg
+        else if menu=='data/download-area'
+            include mod-download-area
+        else if menu=='data/internal-instansi'
+            include mod-data-internal-instansi
+        else if menu=='data/dip'
+            include mod-dip
+        else
+            .row
+                .col-sm-4
+                    a(href=base_url+'data/unitkerja')
+                        .xe-widget.xe-progress-counter.xe-progress-counter-purple(data-count='.num', data-from='0', data-to='48', data-duration='2')
+                            .xe-background
+                                i.fa-institution
+                            .xe-upper
+                                .xe-icon
+                                    i.fa-institution
+                                .xe-label
+                                    span Data Unit Kerja
+                                    strong.num 0
+                            .xe-lower
+                                .border
+                                span Badan : 3000 Unit
+                                span Dinas : 1500 Unit
+                                span ULP : 500 Unit
+                .col-sm-4
+                    a(href=base_url+'data/peg')
+                        each jum in jumpeg
+                            .xe-widget.xe-progress-counter.xe-progress-counter-red(data-count='.num', data-from='0', data-to=jum.jum_peg_all, data-duration='2')
+                                .xe-background
+                                    i.fa-users
+                                .xe-upper
+                                    .xe-icon
+                                        i.fa-users
+                                    .xe-label
+                                        span Data Pegawai
+                                        strong.num 0
+                                .xe-lower
+                                    .border
+                                    span PNS : #{jum.jum_peg_pns} Orang
+                                    span CPNS : #{jum.jum_peg_cpns} Orang
+                                    span PTT : #{jum.jum_peg_ptt} orang
+                                    span Tenaga Ahli : #{jum.jum_peg_ta} orang
+                                    span OS : #{jum.jum_peg_os} orang
+                .col-sm-4
+                    a(href=base_url+'data/download-area')
+                        .xe-widget.xe-progress-counter.xe-progress-counter-black(data-count='.num', data-from='0', data-to='3307', data-duration='2')
+                            .xe-background
+                                i.fa-file-text-o
+                            .xe-upper
+                                .xe-icon
+                                    i.fa-file-text-o
+                                .xe-label
+                                    span Download Area
+                                    strong.num 0
+                            .xe-lower
+                                .border
+                                span Surat : 3000 Dokumen
+                .col-sm-4
+                    a(href=base_url+'data/internal-opd')
+                        .xe-widget.xe-progress-counter.xe-progress-counter-black(data-count='.num', data-from='0', data-to='3307', data-duration='2')
+                            .xe-background
+                                i.fa-file-text-o
+                            .xe-upper
+                                .xe-icon
+                                    i.fa-file-text-o
+                                .xe-label
+                                    span Data Internal Instansi
+                                    strong.num 0
+                            .xe-lower
+                                .border
+                                span Surat : 3000 Dokumen

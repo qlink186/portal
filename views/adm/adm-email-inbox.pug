@@ -1,0 +1,19 @@
+extends adm-layout/base
+block content
+    // Content Header (Page header)
+    section.content-header
+        h1
+            |   Kotak Masuk
+            small 4 email baru
+        ol.breadcrumb
+            li
+                a(href='#')
+                    i.fa.fa-dashboard
+                    |   Dahsboard
+            li
+                |   Email
+            li.active Kotak Masuk
+    // Main content
+    section.content
+        include adm-modul/mod-email-inbox.pug
+    // /.content
