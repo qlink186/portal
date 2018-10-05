@@ -86,7 +86,7 @@ var postAlbumGallery = function(post, cb) {
     return apiCaller(alamat + post, cb);
 };
 
-/* ---------- PANGGIL API GALLERY ---------- */
+/* ---------- PANGGIL API DIP ---------- */
 var panggilDip = function(cb) {
     var dataApi = 'dip';
     var alamat = alamatAPI+dataApi;
@@ -95,6 +95,19 @@ var panggilDip = function(cb) {
 
 var postDip = function(post, cb) {
     var dataApi = 'dip';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat + post, cb);
+};
+
+/* ---------- PANGGIL API DIP berdasarkan KATEGORI ---------- */
+var panggilDipKat = function(cb) {
+    var dataApi = 'dip/kategori';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat, cb);
+};
+
+var postDipKat = function(post, cb) {
+    var dataApi = 'dip/kategori';
     var alamat = alamatAPI+dataApi;
     return apiCaller(alamat + post, cb);
 };
@@ -113,6 +126,8 @@ module.exports = {
     panggilAlbumGallery: panggilAlbumGallery,
     postAlbumGallery: postAlbumGallery,
     panggilDip: panggilDip,
-    postDip: postDip
+    postDip: postDip,
+    panggilDipKat: panggilDipKat,
+    postDipKat: postDipKat
     
 };

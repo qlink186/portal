@@ -375,11 +375,32 @@ function(req, res, next) {
 	});
 });
 
-router.get('/dip/(:link)',
+router.get('/dip/(:link)/',
 function(req, res, next) {
 	req.getConnection(function(err,connection){
 		var link_opd = req.params.link;
 		var query = connection.query('SELECT * FROM v_download where link_opd="'+link_opd+'"',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"dip": results
+				}));
+            }
+		});
+	});
+});
+
+router.get('/dip/kategori/(:link)/',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var kat_dip = req.params.link;
+		var query = connection.query('SELECT * FROM v_download where kat_dip="'+kat_dip+'"',function(err, results, fields)
 		{
 			accesslog(req, res);
 			if(err) {
