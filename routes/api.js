@@ -8,233 +8,7 @@ var ip = require('ip');
 var accesslog = require('access-log');
 var session_store;
 
-router.get('/users',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT id_user, username, nama_gelar, nama_opd FROM v_users_active WHERE status_user = "1"',function(err, results, fields)
-		{
-			accesslog(req, res);
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null}));
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"users": results
-				}));
-			}
-		});
-	});
-});
-
-router.get('/users/(:id)',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var id_user = req.params.id;
-		var query = connection.query('SELECT id_user, id_peg, username, nama_gelar, nama_opd, foto_peg, tentang_peg, id_hakakses, status_user FROM v_users_active WHERE id_user='+id_user,function(err, results, fields)
-		{
-			accesslog(req, res);
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"user": results
-				}));
-            }
-		});
-	});
-});
-
-router.get('/peg',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT * FROM v_peg',function(err, results, fields)
-		{
-			accesslog(req, res);
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"pegawai": results
-				}));
-            }
-		});
-	});
-});
-
-router.get('/peg/(:id)',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var id_peg = req.params.id;
-		var query = connection.query('SELECT * FROM v_peg WHERE id_peg='+id_peg,function(err, results, fields)
-		{
-			accesslog(req, res);
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"pegawai": results
-				}));
-            }
-		});
-	});
-});
-
-router.get('/peg_instansi',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var id_opd = req.session.user.id_opd;
-		var query = connection.query('SELECT * FROM v_peg WHERE id_opd='+id_opd,function(err, results, fields)
-		{
-			accesslog(req, res);
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"pegawai": results
-				}));
-            }
-		});
-	});
-});
-
-router.get('/data/jum_peg',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT * FROM v_peg_jum',function(err, results, fields)
-		{
-			accesslog(req, res);
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"jum_pegawai": results
-				}));
-            }
-		});
-	});
-});
-
-router.get('/berita',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT * FROM v_berita',function(err, results, fields)
-		{
-			accesslog(req, res);
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"berita": results
-				}));
-            }
-		});
-	});
-});
-
-router.get('/berita_populer',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT * FROM v_berita_populer',function(err, results, fields)
-		{
-			accesslog(req, res);
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"berita": results
-				}));
-            }
-		});
-	});
-});
-
-/*
-router.get('/berita/(:id)',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var id_berita =req.params.id;
-		var query = connection.query('SELECT * FROM v_berita where id_berita='+id_berita,function(err, results, fields)
-		{
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"berita": results
-				}));
-            }
-		});
-	});
-});
-*/
-
-router.get('/berita/(:link)',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var link_berita =req.params.link;
-		var query = connection.query('SELECT * FROM v_berita where status = 1 AND link_berita="'+link_berita+'"',function(err, results, fields)
-		{
-			accesslog(req, res);
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"berita": results
-				}));
-            }
-		});
-	});
-});
-
-
-router.get('/berita_jumlah',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT * FROM v_adm_berita_hitung',function(err, results, fields)
-		{
-			accesslog(req, res);
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"jum_berita": results
-				}));
-            }
-		});
-	});
-});
-
+// ----------------------------- START ADMIN BERITA SEMUA -----------------------------//
 router.get('/adm_berita_all',
 function(req, res, next) {
 	req.getConnection(function(err,connection){
@@ -334,11 +108,140 @@ function(req, res, next) {
 		});
 	});
 });
+// ----------------------------- START BERITA SEMUA -----------------------------//
+router.get('/berita',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_berita',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"berita": results
+				}));
+            }
+		});
+	});
+});
+// ----------------------------- AKHIR BERITA SEMUA -----------------------------//
+
+// ----------------------------- START BERITA POPULER -----------------------------//
+router.get('/berita_populer',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_berita_populer',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"berita": results
+				}));
+            }
+		});
+	});
+});
+// ----------------------------- AKHIR BERITA POPULER -----------------------------//
+
+router.get('/berita/(:link)',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var link_berita =req.params.link;
+		var query = connection.query('SELECT * FROM v_berita where status = 1 AND link_berita="'+link_berita+'"',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"berita": results
+				}));
+            }
+		});
+	});
+});
+// ----------------------------- AKHIR BERITA POPULER -----------------------------//
+
+// ----------------------------- START JUMLAH BERITA -----------------------------//
+router.get('/berita_jumlah',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_adm_berita_hitung',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"jum_berita": results
+				}));
+            }
+		});
+	});
+});
+// ----------------------------- AKHIR BERITA BERITA -----------------------------//
+
+// ----------------------------- START KATEGORI BERITA -----------------------------//
+router.get('/berita_kategori',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_berita_kategori',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"berita_kategori": results
+				}));
+            }
+		});
+	});
+});
+// ----------------------------- AKHIR KATEGORI BERITA -----------------------------//
 
 router.get('/download-area',
 function(req, res, next) {
 	req.getConnection(function(err,connection){
 		var query = connection.query('SELECT * FROM v_download',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"download": results
+				}));
+            }
+		});
+	});
+});
+
+router.get('/download_home',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_download_home',function(err, results, fields)
 		{
 			accesslog(req, res);
 			if(err) {
@@ -438,6 +341,25 @@ function(req, res, next) {
 });
 
 
+router.get('/gallery',
+function(req, res) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_gallery',function(err, results)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"gallery": results
+				}));
+            }
+		});
+	});
+});
 
 router.get('/gallery_album',
 function(req, res) {
@@ -500,10 +422,11 @@ function(req, res) {
 	});
 });
 
-router.get('/gallery',
+router.get('/gallery/(:link)',
 function(req, res) {
 	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT * FROM v_gallery',function(err, results)
+		var id_gallery =req.params.link;
+		var query = connection.query('SELECT * FROM v_gallery where id_gallery='+id_gallery,function(err, results)
 		{
 			accesslog(req, res);
 			if(err) {
@@ -520,11 +443,10 @@ function(req, res) {
 	});
 });
 
-router.get('/gallery/(:link)',
-function(req, res) {
+router.get('/peg',
+function(req, res, next) {
 	req.getConnection(function(err,connection){
-		var id_gallery =req.params.link;
-		var query = connection.query('SELECT * FROM v_gallery where id_gallery='+id_gallery,function(err, results)
+		var query = connection.query('SELECT * FROM v_peg',function(err, results, fields)
 		{
 			accesslog(req, res);
 			if(err) {
@@ -534,7 +456,149 @@ function(req, res) {
                 res.send(JSON.stringify({
 					"status":200,
 					"error":null,
-					"gallery": results
+					"pegawai": results
+				}));
+            }
+		});
+	});
+});
+
+router.get('/peg/(:id)',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var id_peg = req.params.id;
+		var query = connection.query('SELECT * FROM v_peg WHERE id_peg='+id_peg,function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"pegawai": results
+				}));
+            }
+		});
+	});
+});
+
+router.get('/peg_instansi',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var id_opd = req.session.user.id_opd;
+		var query = connection.query('SELECT * FROM v_peg WHERE id_opd='+id_opd,function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"pegawai": results
+				}));
+            }
+		});
+	});
+});
+
+router.get('/data/jum_peg',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_peg_jum',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"jum_pegawai": results
+				}));
+            }
+		});
+	});
+});
+
+router.get('/pengumuman',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_siaranpers',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"pengumuman": results
+				}));
+            }
+		});
+	});
+});
+
+router.get('/pranala-luar',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM d_pranala_luar',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"pranala_luar": results
+				}));
+            }
+		});
+	});
+});
+
+router.get('/subdomain',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT id_subdomain, id_opd, nama_opd, akronim_opd, nama_subdomain, subdomain, prefix, ip_pointing, fungsi, status_subdomain, logo, alamat_logo_big, alamat_logo_small, alamat_logo_tiny FROM v_subdomain',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"subdomain": results
+				}));
+            }
+		});
+	});
+});
+
+router.get('/data/subdomain',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_subdomain',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"subdomain": results
 				}));
             }
 		});
@@ -582,10 +646,31 @@ function(req, res, next) {
 	});
 });
 
-router.get('/subdomain',
+router.get('/users',
 function(req, res, next) {
 	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT id_subdomain, id_opd, nama_opd, akronim_opd, nama_subdomain, subdomain, prefix, ip_pointing, fungsi, status_subdomain, logo, alamat_logo_big, alamat_logo_small, alamat_logo_tiny FROM v_subdomain',function(err, results, fields)
+		var query = connection.query('SELECT id_user, username, nama_gelar, nama_opd FROM v_users_active WHERE status_user = "1"',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null}));
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"users": results
+				}));
+			}
+		});
+	});
+});
+
+router.get('/users/(:id)',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var id_user = req.params.id;
+		var query = connection.query('SELECT id_user, id_peg, username, nama_gelar, nama_opd, foto_peg, tentang_peg, id_hakakses, status_user FROM v_users_active WHERE id_user='+id_user,function(err, results, fields)
 		{
 			accesslog(req, res);
 			if(err) {
@@ -595,51 +680,12 @@ function(req, res, next) {
                 res.send(JSON.stringify({
 					"status":200,
 					"error":null,
-					"subdomain": results
+					"user": results
 				}));
             }
 		});
 	});
 });
 
-router.get('/data/subdomain',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT * FROM v_subdomain',function(err, results, fields)
-		{
-			accesslog(req, res);
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"subdomain": results
-				}));
-            }
-		});
-	});
-});
-
-router.get('/pranala-luar',
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT * FROM d_pranala_luar',function(err, results, fields)
-		{
-			accesslog(req, res);
-			if(err) {
-				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
-	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"pranala_luar": results
-				}));
-            }
-		});
-	});
-});
 
 module.exports = router;

@@ -222,7 +222,6 @@ function gallery_album_data(req, res, next)
 				var errornya  = ("Error Memilih : %s ",err );
 				console.log(errornya);
 			} else 
-				console.log(rows);
 				req.gallery_album = rows;
 				next();
 		});
@@ -244,7 +243,6 @@ function gallery_data(req, res, next)
 		});
 	 });
 }
-
 
 /* 	----------------FRONTEND---------------- */
 /* 	-------INDEX------- */
@@ -306,40 +304,54 @@ function(req, res, next) {
 	});
 });
 */
-
 router.get('/tes2',
-function(req, res, next){
-	panggilApi.panggilDip(function (data) {
+function(req, res){
+	panggilApi.panggilBerita(function (data){
 		res.render('portal/tes', {
 			title: 'Tes',
 			menu:'data/tes',
 			desc: 'Halaman Tes ',
 			desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
 			icon: 'fa-users',
-			dip :data.dip
+			berita:data.berita
 		});
 	});
 });
 
-router.get('/tes2/(:id)',
+router.get('/tes2/(:link)',
+	siaranpers_data, 
+	berita_populer_data, 
+	kategori_berita,
+	kalenderevent_data, 
+	data_subdomain,
+	data_download_home,
+	pranala_data,
 	function(req, res, next) {
   		//panggil fungsi panggilApi dengan methode apiGET dan create callback function
-		panggilApi.panggilPeg(function (data) {
+		panggilApi.panggilBerita(function (data) {
 		    // render to the index.jade dan pass data dari panggilan api
-		    let id = req.params.id;
+		    let id = req.params.link;
 			let dataKeluaran;
-		    data.pegawai.forEach((keluaran)=>{
-		    	if(keluaran.id_peg == id) {
+		    data.berita.forEach((keluaran)=>{
+		    	if(keluaran.link_berita == id) {
 		    		dataKeluaran = keluaran;
 		    	}
 		    });
 		    res.render('portal/tes', {
-		    	title: 'Tes',
-				menu:'data/tes',
-				desc: 'Halaman Tes ',
-				desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
-				icon: 'fa-users',
-		    	peg :dataKeluaran
+		    	title:dataKeluaran.judul_berita,
+				bread1:'Berita',
+				bread1_url:'berita',
+				beritapopuler: req.berita_populers,
+				beritakat:req.kategoriberita,
+				session_store:req.session, 
+				siaranpers:req.siaranpers, 
+				siaranperskhusus:siaranperskhusus_data, 
+				datadownloadhome:req.datadownloadhome,
+				datasubdomain:req.data_subdomains,
+				kalenderevent:req.kalenderevents,
+				pranala:req.pranala,
+				session: req.session,
+		    	berita :dataKeluaran
 		    });
 		});
 	});
@@ -372,6 +384,7 @@ function(req, res, next) {
 		});
 	});
 });
+
 
 /* 	-------HALAMAN BERITA------- */
 router.get('/berita', 
@@ -410,59 +423,46 @@ function(req, res) {
 				session: req.session
 			});
 		});
-		//console.log(query.sql);
 	});
 });
-router.get('/berita/(:link)', 
-siaranpers_data, 
-berita_populer_data, 
-kategori_berita,
-kalenderevent_data, 
-data_subdomain,
-data_download_home,
-pranala_data,
-function(req,res,next){
-	req.getConnection(function(err,connection){
-		var id_berita =req.params.link;
-		var query = connection.query('SELECT * FROM v_berita where link_berita="'+id_berita+'"',function(err,rows)
-		{
-			accesslog(req, res);
-			if(err)
-			{
-				var errornya  = ("Error Selecting : %s ",err );
-				req.flash('msg_error', errors_detail);
-				res.redirect('/berita');
-			}else
-			{
-				if(rows.length <=0)
-				{
-					req.flash('msg_error', "Berita Tidak Ditemukan"); 
-					res.redirect('/berita');
-				}
-				else
-				{	
-					console.log(rows);
-					res.render('portal/berita-single',{
-						title:rows[0].judul_berita,
-						bread1:'Berita',
-						bread1_url:'berita',
-						beritaview:rows[0], 
-						beritapopuler: req.berita_populers,
-						beritakat:req.kategoriberita,
-						session_store:req.session, 
-						siaranpers:req.siaranpers, 
-						siaranperskhusus:siaranperskhusus_data, 
-						datadownloadhome:req.datadownloadhome,
-						datasubdomain:req.data_subdomains,
-						kalenderevent:req.kalenderevents,
-						pranala:req.pranala,
-						session: req.session
-					});
-				}
-			}
+router.get('/berita/(:link)',
+	siaranpers_data, 
+	berita_populer_data, 
+	kategori_berita,
+	kalenderevent_data, 
+	data_subdomain,
+	data_download_home,
+	pranala_data,
+	function(req, res, next) {
+  		//panggil fungsi panggilApi dengan methode apiGET dan create callback function
+		panggilApi.panggilBerita(function (data) {
+		    // render to the index.jade dan pass data dari panggilan api
+		    let id = req.params.link;
+			let dataKeluaran;
+		    data.berita.forEach((keluaran)=>{
+		    	if(keluaran.link_berita == id) {
+		    		dataKeluaran = keluaran;
+		    	}
+		    });
+		    res.render('portal/berita-single', {
+		    	title:dataKeluaran.judul_berita,
+				bread1:'Berita',
+				bread1_url:'berita',
+				beritapopuler: req.berita_populers,
+				beritakat:req.kategoriberita,
+				session_store:req.session, 
+				siaranpers:req.siaranpers, 
+				siaranperskhusus:siaranperskhusus_data, 
+				datadownloadhome:req.datadownloadhome,
+				datasubdomain:req.data_subdomains,
+				kalenderevent:req.kalenderevents,
+				pranala:req.pranala,
+				session: req.session,
+		    	berita :dataKeluaran
+		    });
 		});
 	});
-});
+
 router.get('/berita/view/(:link)', 
 siaranpers_data, 
 siaranperskhusus_data,
@@ -492,7 +492,6 @@ function(req,res,next){
 				}
 				else
 				{	
-					console.log(rows);
 					res.render('portal/berita-single',{
 						title:"Berita ", 
 						beritaview:rows[0], 
@@ -649,7 +648,6 @@ router.get('/data/unitkerja/(:link)',
 		    data.opd.forEach((keluaran)=>{
 		    	if(keluaran.link_opd == id) {
 		    		dataKeluaran = keluaran;
-		    		console.log(dataKeluaran);
 		    	}
 		    });
 		res.render('portal/data-unit-kerja-single',{
@@ -836,7 +834,6 @@ function(req,res,next){
 				}
 				else
 				{
-					console.log(rows);
 					res.render('portal/data-single', {
 						title: 'Download Area - '+rows[0].nama_file,
 						menu:'data/download-area',
@@ -1310,7 +1307,7 @@ function(req, res, next) {
 /* 	-------AKHIR HALAMAN AKSI DAERAH------- */
 
 /* 	-------HALAMAN PENGUMUMAN------- */
-router.get('/pengumuman/(:link)', 
+router.get('/pengumumansssssss/(:link)', 
 siaranpers_data, 
 berita_populer_data, 
 kategori_berita,
@@ -1337,8 +1334,7 @@ function(req,res,next){
 					res.redirect('/');
 				}
 				else
-				{	
-					console.log(rows);
+				{
 					res.render('portal/siaran-pers-single',{
 						title:rows[0].judul,
 						bread1:'Pengumuman',
@@ -1359,6 +1355,48 @@ function(req,res,next){
 					});
 				}
 			}
+		});
+	});
+});
+/* 	-------AKHIR PENGUMUMAN------- */
+
+/* 	-------HALAMAN PENGUMUMAN------- */
+router.get('/pengumuman/(:link)', 
+siaranpers_data, 
+berita_populer_data, 
+kategori_berita,
+kalenderevent_data, 
+data_subdomain,
+data_download_home,
+pranala_data,
+function(req,res,next){
+	accesslog(req, res);
+	panggilApi.panggilPengumuman(function (data) {
+	    // render to the index.jade dan pass data dari panggilan api
+	    var id = req.params.link;
+	    var dataKeluaran;
+	    data.pengumuman.forEach((keluaran)=>{
+	    	if(keluaran.id_pengumuman == id) {
+	    		dataKeluaran = keluaran;
+	    	}
+		});
+		res.render('portal/siaran-pers-single',{
+			title:dataKeluaran.judul,
+			bread1:'Pengumuman',
+			bread1_url:'pengumuman',
+			desc: 'PENGUMAMAN KHUSUS ',
+			desc2:'Pemerintah Kota Tanjungpinang',
+			icon: 'fa-bullhorn',
+			siaranpersview:dataKeluaran, 
+			beritapopuler: req.berita_populers,
+			beritakat:req.kategoriberita,
+			session_store:req.session, 
+			siaranpers:req.siaranpers,
+			datadownloadhome:req.datadownloadhome,
+			datasubdomain:req.data_subdomains,
+			kalenderevent:req.kalenderevents,
+			pranala:req.pranala,
+			session: req.session
 		});
 	});
 });
