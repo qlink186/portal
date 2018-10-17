@@ -1,9 +1,14 @@
 var express = require('express');
+var helmet = require('helmet');
 var router = express.Router();
-var https = require('https');
+var request = require('request');
+var http = require('http');
 var async = require('async');
 var modul = require('../modul/modul');
+var panggilApi = require('./panggilApi');
 var authentication_mdl = require('../middlewares/authentication');
+var accesslog = require('access-log');
+var fs = require('fs');
 
 var session_store;
 
@@ -475,6 +480,7 @@ function convertToSlug(Text)
         .replace(/[^\w-]+/g,'')
         ;
 }
+
 
 /* ---------------- GET HALAMAN ADMIN ----------------  */
 router.get('/',

@@ -304,17 +304,172 @@ function(req, res, next) {
 	});
 });
 */
-router.get('/tes2',
-function(req, res){
+
+function tempMenu(req, res, next)
+{
+	panggilApi.panggilTempMenu(function (data){
+		req.arMenu = data.tempMenu;
+		next();
+	});
+}
+
+function dataBerita(req, res, next)
+{
 	panggilApi.panggilBerita(function (data){
-		res.render('portal/tes', {
-			title: 'Tes',
-			menu:'data/tes',
-			desc: 'Halaman Tes ',
-			desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
-			icon: 'fa-users',
-			berita:data.berita
-		});
+		req.arBerita = data.berita;
+		next();
+	});
+}
+
+function dataBeritaPopuler(req, res, next)
+{
+	panggilApi.panggilBeritaPopuler(function (data){
+		req.arBeritaPopuler = data.berita;
+		next();
+	});
+}
+
+function dataBeritaJumlah(req, res, next)
+{
+	panggilApi.panggilBeritaJumlah(function (data){
+		req.arBeritaJumlah = data.jum_berita;
+		next();
+	});
+}
+
+function dataBeritaKategori(req, res, next)
+{
+	panggilApi.panggilBeritaKategori(function (data){
+		req.arBeritaKategori = data.berita_kategori;
+		next();
+	});
+}
+
+function dataDip(req, res, next)
+{
+	panggilApi.panggilDip(function (data) {
+		req.arDip = data.dip;
+		next();
+	});
+}
+
+function dataDownloadArea(req, res, next)
+{
+	panggilApi.panggilDownloadArea(function (data) {
+		req.arDownloadArea = data.download;
+		next();
+	});
+}
+
+function dataDownloadHome(req, res, next)
+{
+	panggilApi.panggilDownloadHome(function (data) {
+		req.arDownloadHome = data.download;
+		next();
+	});
+}
+
+function dataGallery(req, res, next)
+{
+	panggilApi.panggilGallery(function (data) {
+		req.arGallery = data.gallery;
+		next();
+	});
+}
+
+function dataGalleryAlbum(req, res, next)
+{
+	panggilApi.panggilAlbumGallery(function (data) {
+		req.arGalleryAlbum = data.gallery_album;
+		next();
+	});
+}
+
+function dataGalleryAlbumTh(req, res, next)
+{
+	panggilApi.panggilAlbumGalleryTh(function (data) {
+		req.arGalleryAlbumTh = data.gallery_album_th;
+		next();
+	});
+}
+
+function dataOpd(req, res, next)
+{
+	panggilApi.panggilOpd(function (data) {
+		req.arOpd = data.opd;
+		next();
+	});
+}
+
+function dataUsers(req, res, next)
+{
+	panggilApi.panggilUsers(function (data) {
+		req.arUsers = data.users;
+		next();
+	});
+}
+
+function dataPeg(req, res, next)
+{
+	panggilApi.panggilPeg(function (data) {
+		req.arPeg = data.pegawai;
+		next();
+	});
+}
+
+function dataPegJum(req, res, next)
+{
+	panggilApi.panggilJumPeg(function (data) {
+		req.arPegJum = data.jum_pegawai;
+		next();
+	});
+}
+
+function dataPengumuman(req, res, next)
+{
+	panggilApi.panggilPengumuman(function (data) {
+		req.arPengumuman = data.pengumuman;
+		next();
+	});
+}
+
+function dataPengumumanKhusus(req, res, next)
+{
+	panggilApi.panggilPengumumanKhusus(function (data) {
+		req.arPengumumanKhusus = data.pengumuman_khusus;
+		next();
+	});
+}
+
+function dataPranalaLuar(req, res, next)
+{
+	panggilApi.panggilPranalaLuar(function (data) {
+		req.arPranalaLuar = data.pranala_luar;
+		next();
+	});
+}
+
+function dataSubdomain(req, res, next)
+{
+	panggilApi.panggilSubdomain(function (data) {
+		req.arSubdomain = data.subdomain;
+		next();
+	});
+}
+
+
+router.get('/tes2',
+tempMenu,
+dataSubdomain,
+function(req, res){
+	res.render('portal/tes', {
+		title: 'Tes',
+		menu:'data/tes',
+		desc: 'Halaman Tes ',
+		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
+		icon: 'fa-users',
+		arMenu: req.arMenu,
+		arSubdomain: req.arSubdomain
 	});
 });
 

@@ -30,6 +30,18 @@ var panggilBeritaPopuler = function(cb) {
     return apiCaller(alamat, cb);
 };
 
+var panggilBeritaJumlah = function(cb) {
+    var dataApi = 'berita_jumlah';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat, cb);
+};
+
+var panggilBeritaKategori = function(cb) {
+    var dataApi = 'berita_kategori';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat, cb);
+};
+
 /* ---------- PANGGIL API DIP ---------- */
 var panggilDip = function(cb) {
     var dataApi = 'dip';
@@ -56,6 +68,27 @@ var postDipKat = function(post, cb) {
     return apiCaller(alamat + post, cb);
 };
 
+/* ---------- PANGGIL API DOWNLOAD AREA ---------- */
+var panggilDownloadArea = function(cb) {
+    var dataApi = 'download-area';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat, cb);
+};
+
+var postDownloadArea = function(post, cb) {
+    var dataApi = 'download-area';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat + post, cb);
+};
+
+/* ---------- PANGGIL API DOWNLOAD HOME ---------- */
+var panggilDownloadHome = function(cb) {
+    var dataApi = 'download_home';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat, cb);
+};
+
+
 /* ---------- PANGGIL API GALLERY ---------- */
 var panggilGallery = function(cb) {
     var dataApi = 'gallery';
@@ -80,6 +113,13 @@ var postAlbumGallery = function(post, cb) {
     var dataApi = 'gallery_album';
     var alamat = alamatAPI+dataApi;
     return apiCaller(alamat + post, cb);
+};
+
+/* ---------- PANGGIL API TAHUN ALBUM GALLERY ---------- */
+var panggilAlbumGalleryTh = function(cb) {
+    var dataApi = 'gallery_album_th';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat, cb);
 };
 
 /* ---------- PANGGIL API INSTANSI ---------- */
@@ -135,6 +175,46 @@ var panggilPengumuman = function(cb) {
     return apiCaller(alamat, cb);
 };
 
+/* ---------- PANGGIL API PENGUMUMAN KHUSUS ---------- */
+var panggilPengumumanKhusus = function(cb) {
+    var dataApi = 'pengumuman_khusus';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat, cb);
+};
+
+/* ---------- PANGGIL API PRANALA LUAR ---------- */
+var panggilPranalaLuar = function(cb) {
+    var dataApi = 'pranala-luar';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat, cb);
+};
+
+var postPranalaLuar= function(post, cb) {
+    var dataApi = 'pranala-luar';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat + post, cb);
+};
+
+/* ---------- PANGGIL API SUBDOMAIN ---------- */
+var panggilSubdomain = function(cb) {
+    var dataApi = 'data/subdomain';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat, cb);
+};
+
+var postSubdomain= function(post, cb) {
+    var dataApi = 'data/subdomain';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat + post, cb);
+};
+
+/* ---------- PANGGIL ADMIN MENU ---------- */
+var panggilTempMenu = function(cb) {
+    var dataApi = 'temp_menu';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat, cb);
+};
+
 // Export the functions for external access
 module.exports = {
     panggilUsers: panggilUsers,
@@ -142,17 +222,29 @@ module.exports = {
     panggilPeg: panggilPeg,
     panggilJumPeg: panggilJumPeg,
     postPeg: postPeg,
+    panggilPranalaLuar: panggilPranalaLuar,
+    postPranalaLuar: postPranalaLuar,
     panggilOpd: panggilOpd,
     postOpd: postOpd,
     panggilGallery: panggilGallery,
     postGallery: postGallery,
     panggilAlbumGallery: panggilAlbumGallery,
     postAlbumGallery: postAlbumGallery,
+    panggilAlbumGalleryTh: panggilAlbumGalleryTh,
     panggilDip: panggilDip,
     postDip: postDip,
     panggilDipKat: panggilDipKat,
     postDipKat: postDipKat,
+    panggilDownloadArea: panggilDownloadArea,
+    postDownloadArea: postDownloadArea,
+    panggilDownloadHome: panggilDownloadHome,
     panggilBerita: panggilBerita,
     panggilBeritaPopuler: panggilBeritaPopuler,
-    panggilPengumuman: panggilPengumuman
+    panggilBeritaJumlah: panggilBeritaJumlah,
+    panggilBeritaKategori: panggilBeritaKategori,
+    panggilPengumuman: panggilPengumuman,
+    panggilPengumumanKhusus: panggilPengumumanKhusus,
+    panggilSubdomain: panggilSubdomain,
+    postSubdomain: postSubdomain,
+    panggilTempMenu: panggilTempMenu
 };

@@ -8,6 +8,47 @@ var ip = require('ip');
 var accesslog = require('access-log');
 var session_store;
 
+router.get('/temp_menu',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_temp_menu',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"tempMenu": results
+				}));
+            }
+		});
+	});
+});
+
+router.get('/adm_menu',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_adm_menu',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"admMenu": results
+				}));
+            }
+		});
+	});
+});
+
+
 // ----------------------------- START ADMIN BERITA SEMUA -----------------------------//
 router.get('/adm_berita_all',
 function(req, res, next) {
@@ -539,6 +580,26 @@ function(req, res, next) {
 					"status":200,
 					"error":null,
 					"pengumuman": results
+				}));
+            }
+		});
+	});
+});
+
+router.get('/pengumuman_khusus',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_siaranpers_khusus',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"pengumuman_khusus": results
 				}));
             }
 		});
