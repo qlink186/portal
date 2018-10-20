@@ -9,7 +9,7 @@ h5.subpage-title
         span PRANALA LUAR LAINNYA
 .row
     #opdlink-caroufredsel.grid.cs-style-3
-        for subdomain, index in datasubdomain
+        for subdomain, index in arSubdomain
             .col-xs-12.col-sm-4.col-md-3
                 figure
                     img.img-responsive.center-block(src=base_url+'images/link-opd/big/'+subdomain.logo, alt=subdomain.nama_opd)
@@ -17,7 +17,7 @@ h5.subpage-title
                         a(href='http://'+subdomain.subdomain+subdomain.prefix, target='_BLANK')
                             h5.text-center=subdomain.subdomain
                             span.text-center=subdomain.nama_subdomain
-        for link, index in pranala
+        for link, index in arPranalaLuar
             .col-xs-12.col-sm-4.col-md-3
                 figure
                     img.img-responsive.center-block(src=base_url+'images/pranala-luar/small/'+link.logo, alt=link.ket_link)

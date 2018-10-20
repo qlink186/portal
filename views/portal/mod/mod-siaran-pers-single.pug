@@ -3,32 +3,32 @@
         .row
             .col-md-9
                 h5.subpage-title
-                    span=siaranpersview.judul
+                    span=arSiaranPers.judul
                     //a.btn-xs.btn-flat.flat-danger.pull-right(href=base_url+'berita')
                         span BERITA LAINNYA
                 .post
                     .post-thumb-single
-                        img.img-responsive(src=siaranpersview.alamat_file_big, alt=siaranpersview.judul)
+                        img.img-responsive(src=arSiaranPers.alamat_file_big, alt=arSiaranPers.judul)
                         .image-overlay
-                        a.post-zoom(href=siaranpersview.alamat_file_big, rel='prettyPhoto[pp_siaran_pers_single]')
+                        a.post-zoom(href=arSiaranPers.alamat_file_big, rel='prettyPhoto[pp_siaran_pers_single]')
                             i.fa-eye
                     // /.post-thumb-single
                     .post-content(style='margin-top:20px')
                         h4.text-center
-                            strong=siaranpersview.judul
-                        h4.text-center Nomor : #{siaranpersview.no_pengumuman} 
-                        h5.text-center Tanggal : #{siaranpersview.tgl_tulis} 
-                        p!=siaranpersview.isi
+                            strong=arSiaranPers.judul
+                        h4.text-center Nomor : #{arSiaranPers.no_pengumuman} 
+                        h5.text-center Tanggal : #{arSiaranPers.tgl_tulis} 
+                        p!=arSiaranPers.isi
                         
                     // /.post-content
                     .post-meta
                         ul.meta-list
                             li
                                 span Terbit: 
-                                span.black=siaranpersview.tgl_terbit
+                                span.black=arSiaranPers.tgl_terbit
                             li
                                 span Instansi:
-                                span.black=siaranpersview.opd
+                                span.black=arSiaranPers.opd
                             //li
                                 a.read-more(href=base_url+'pengumuman')
                                     i.fa-arrow-left 

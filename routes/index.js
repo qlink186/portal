@@ -244,66 +244,10 @@ function gallery_data(req, res, next)
 	 });
 }
 
-/* 	----------------FRONTEND---------------- */
-/* 	-------INDEX------- */
-router.get('/', 
-siaranpers_data, 
-siaranperskhusus_data,
-berita_populer_data, 
-kategori_berita,
-kalenderevent_data, 
-data_subdomain,
-pranala_data,
-data_download_home,
-function(req, res, next) {
-	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT * FROM v_berita_home',function(err,rows)
-		{
-			accesslog(req, res);
-			if(err)
-				var errornya  = ("Error Memilih : %s ",err );
-			req.flash('msg_error', errornya);
-			res.render('portal/index', {
-				title:"Pemerintah Kota Tanjungpinang",
-				menu:'/', 
-				beritahome:rows, 
-				beritapopuler: req.berita_populers,
-				beritakat:req.kategoriberita,
-				datadownloadhome:req.datadownloadhome,
-				siaranpers:req.siaranpers, 
-				siaranperskhusus:req.siaranperskhusus, 
-				datasubdomain:req.data_subdomains,
-				kalenderevent:req.kalenderevents,
-				pranala:req.pranala,
-				session: req.session
-			});
-		});
-         //console.log(query.sql);
-	});
-});
-/* 	-------AKHIR INDEX------- */
-/*
-router.get('/tes2', 
-berita_populer_data,
-data_download_home,
-data_subdomain,
-pranala_data,
-function(req, res, next) {
-	accesslog(req, res);
-	res.render('portal/tes', { 
-		title: 'Tes', 
-		menu:'data/tes',
-		desc: 'Halaman Tes ',
-		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
-		icon: 'fa-users',
-		beritapopuler: req.berita_populers,
-		datadownloadhome:req.datadownloadhome,
-		datasubdomain:req.data_subdomains,
-		pranala:req.pranala,
-		session: req.session
-	});
-});
-*/
+
+
+
+
 
 function tempMenu(req, res, next)
 {
@@ -317,6 +261,14 @@ function dataBerita(req, res, next)
 {
 	panggilApi.panggilBerita(function (data){
 		req.arBerita = data.berita;
+		next();
+	});
+}
+
+function dataBeritaHome(req, res, next)
+{
+	panggilApi.panggilBeritaHome(function (data){
+		req.arBeritaHome = data.berita;
 		next();
 	});
 }
@@ -393,6 +345,14 @@ function dataGalleryAlbumTh(req, res, next)
 	});
 }
 
+function dataEvent(req, res, next)
+{
+	panggilApi.panggilEvent(function (data) {
+		req.arEvent = data.event;
+		next();
+	});
+}
+
 function dataOpd(req, res, next)
 {
 	panggilApi.panggilOpd(function (data) {
@@ -457,8 +417,8 @@ function dataSubdomain(req, res, next)
 	});
 }
 
-
 router.get('/tes2',
+dataBeritaHome,
 tempMenu,
 dataSubdomain,
 function(req, res){
@@ -469,6 +429,7 @@ function(req, res){
 		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
 		icon: 'fa-users',
 		arMenu: req.arMenu,
+		arBeritaHome: req.arBeritaHome,
 		arSubdomain: req.arSubdomain
 	});
 });
@@ -511,112 +472,143 @@ router.get('/tes2/(:link)',
 		});
 	});
 
+
+/* 	----------------FRONTEND---------------- */
+/* 	-------INDEX------- */
+router.get('/',
+dataBeritaHome,
+dataBeritaPopuler,
+dataBeritaKategori,
+dataDownloadHome,
+dataEvent, 
+dataGallery,
+dataPengumuman, 
+dataPengumumanKhusus,
+dataPranalaLuar,
+dataSubdomain,
+function(req, res, next) {
+	
+	accesslog(req, res);
+	res.render('portal/index', {
+		title:"Pemerintah Kota Tanjungpinang",
+		menu:'/', 
+		arBeritaHome: req.arBeritaHome,
+		arBeritaPopuler: req.arBeritaPopuler,
+		arBeritaKategori:req.arBeritaKategori,
+		arDownloadHome:req.arDownloadHome,
+		arEvent:req.arEvent,
+		arGallery:req.arGallery,
+		arPengumuman:req.arPengumuman, 
+		arPengumumanKhusus:req.arPengumumanKhusus, 
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
+		session: req.session
+	});
+});
+/* 	-------AKHIR INDEX------- */
+
+
 /* 	-------HALAMAN DIP------- */
-router.get('/data/dip', 
-berita_populer_data, 
-data_download,
-data_download_home,
-data_subdomain,
-pranala_data,
+router.get('/data/dip',
+dataBeritaPopuler,
+dataDownloadHome,
+dataGallery,
+dataOpd,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
-	panggilApi.panggilOpd(function (data) {
-		res.render('portal/data', { 
-			title: 'Daftar Informasi Publik', 
-			menu:'data/dip',
-			bread1:'Data',
-			bread1_url:'data',
-			desc: 'Daftar Informasi Publik ',
-			desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
-			icon: 'fa-file-text-o',
-			beritapopuler: req.berita_populers,
-			datasubdomain:req.data_subdomains,
-			datadownload:req.datadownload,
-			datadownloadhome:req.datadownloadhome,
-			pranala:req.pranala,
-			opd :data.opd,
-			session: req.session
-		});
+	res.render('portal/data', {
+		title: 'Daftar Informasi Publik',
+		menu:'data/dip',
+		bread1:'Data',
+		bread1_url:'data',
+		desc: 'Daftar Informasi Publik ',
+		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
+		icon: 'fa-file-text-o',
+		arBeritaPopuler: req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arOpd :req.arOpd,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
+		session: req.session
 	});
 });
 
 
 /* 	-------HALAMAN BERITA------- */
-router.get('/berita', 
-siaranpers_data, 
-siaranperskhusus_data, 
-berita_populer_data, 
-kategori_berita,
-kalenderevent_data, 
-data_subdomain,
-data_download_home,
-pranala_data,
+router.get('/berita',
+dataBeritaPopuler,
+dataBeritaKategori,
+dataDownloadHome,
+dataEvent,
+dataGallery,
+dataPengumuman,
+dataPengumumanKhusus,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res) {
-	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT * FROM v_berita',function(err,rows)
-		{
-			accesslog(req, res);
-			if(err)
-				var errornya  = ("Error Selecting : %s ",err );
-			req.flash('msg_error', errornya);
-			res.render('portal/berita',{
-				title:'Berita',
-				menu: 'berita',
-				desc: 'Berita / Artikel ',
-				desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
-				icon: 'linecons-note',
-				beritaall:rows, 
-				beritapopuler: req.berita_populers,
-				beritakat:req.kategoriberita,
-				datadownloadhome:req.datadownloadhome,
-				session_store:req.session, 
-				siaranpers:req.siaranpers, 
-				siaranperskhusus:req.siaranperskhusus, 
-				datasubdomain:req.data_subdomains,
-				kalenderevent:req.kalenderevents,
-				pranala:req.pranala,
-				session: req.session
-			});
-		});
+	accesslog(req, res);
+	res.render('portal/berita',{
+		title:'Berita',
+		menu: 'berita',
+		desc: 'Berita / Artikel ',
+		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
+		icon: 'linecons-note',
+		arBeritaPopuler: req.arBeritaPopuler,
+		arBeritaKategori:req.arBeritaKategori,
+		arDownloadHome:req.arDownloadHome,
+		arEvent:req.arEvent,
+		arGallery:req.arGallery,
+		arPengumuman:req.arPengumuman,
+		arPengumumanKhusus:req.arPengumumanKhusus,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
+		session: req.session
 	});
 });
+
 router.get('/berita/(:link)',
-	siaranpers_data, 
-	berita_populer_data, 
-	kategori_berita,
-	kalenderevent_data, 
-	data_subdomain,
-	data_download_home,
-	pranala_data,
-	function(req, res, next) {
-  		//panggil fungsi panggilApi dengan methode apiGET dan create callback function
-		panggilApi.panggilBerita(function (data) {
-		    // render to the index.jade dan pass data dari panggilan api
-		    let id = req.params.link;
-			let dataKeluaran;
-		    data.berita.forEach((keluaran)=>{
-		    	if(keluaran.link_berita == id) {
-		    		dataKeluaran = keluaran;
-		    	}
-		    });
-		    res.render('portal/berita-single', {
-		    	title:dataKeluaran.judul_berita,
-				bread1:'Berita',
-				bread1_url:'berita',
-				beritapopuler: req.berita_populers,
-				beritakat:req.kategoriberita,
-				session_store:req.session, 
-				siaranpers:req.siaranpers, 
-				siaranperskhusus:siaranperskhusus_data, 
-				datadownloadhome:req.datadownloadhome,
-				datasubdomain:req.data_subdomains,
-				kalenderevent:req.kalenderevents,
-				pranala:req.pranala,
-				session: req.session,
-		    	berita :dataKeluaran
-		    });
-		});
+dataBeritaPopuler,
+dataBeritaKategori,
+dataDownloadHome,
+dataEvent,
+dataGallery,
+dataPengumuman,
+dataPengumumanKhusus,
+dataPranalaLuar,
+dataSubdomain,
+function(req, res, next) {
+		//panggil fungsi panggilApi dengan methode apiGET dan create callback function
+	panggilApi.panggilBerita(function (data) {
+	    // render to the index.jade dan pass data dari panggilan api
+	    let id = req.params.link;
+		let dataKeluaran;
+	    data.berita.forEach((keluaran)=>{
+	    	if(keluaran.link_berita == id) {
+	    		dataKeluaran = keluaran;
+	    	}
+	    });
+	    res.render('portal/berita-single', {
+	    	title:dataKeluaran.judul_berita,
+			bread1:'Berita',
+			bread1_url:'berita',
+			arBeritaPopuler: req.arBeritaPopuler,
+			arBeritaKategori:req.arBeritaKategori,
+			arDownloadHome:req.arDownloadHome,
+			arEvent:req.arEvent,
+			arGallery:req.arGallery,
+			arPengumuman:req.arPengumuman,
+			arPengumumanKhusus:req.arPengumumanKhusus,
+			arPranalaLuar:req.arPranalaLuar,
+			arSubdomain:req.arSubdomain,
+			session: req.session,
+	    	berita :dataKeluaran
+	    });
 	});
+});
+
 
 router.get('/berita/view/(:link)', 
 siaranpers_data, 
@@ -669,12 +661,14 @@ function(req,res,next){
 /* 	-------AKHIR HALAMAN BERITA------- */
 
 /* 	-------DATA------- */
-router.get('/data', 
-berita_populer_data,
-data_download_home,
-data_subdomain,
-peg_jum,
-pranala_data,
+router.get('/data',
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPegJum,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/data', { 
@@ -683,11 +677,13 @@ function(req, res, next) {
 		desc: 'Data ',
 		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
 		icon: 'fa-users',
-		beritapopuler: req.berita_populers,
-		datadownloadhome:req.datadownloadhome,
-		datasubdomain:req.data_subdomains,
-		jumpeg:req.jumpeg,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arBeritaHome:req.arBeritaHome,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPegJum:req.arPegJum,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
@@ -696,15 +692,55 @@ function(req, res, next) {
 
 
 /* 	------- DATA KEPEGAWAIAN SEMUA ------- */
-router.get('/data/peg', 
-	berita_populer_data,
-	peg_data, 
-	data_download_home,
-	data_subdomain,
-	pranala_data,
-	function(req, res, next) {
-		accesslog(req, res);
-		res.render('portal/data', { 
+router.get('/data/peg',
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
+function(req, res, next) {
+	accesslog(req, res);
+	res.render('portal/data', { 
+		title: 'Data Pegawai', 
+		menu:'data/peg',
+		bread1:'Data',
+		bread1_url:'data',
+		desc: 'Data Kepegawaian ',
+		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
+		icon: 'fa-users',
+		arBeritaPopuler:req.arBeritaPopuler,
+		arBeritaHome:req.arBeritaHome,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
+		pranala:req.pranala,
+		session: req.session
+	});
+});
+/* 	------- AKHIR DATA KEPEGAWAIAN SEMUA ------- */
+
+/* 	------- DATA KEPEGAWAIAN SINGLE ------- */
+router.get('/data/peg/(:id)',
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
+function(req, res, next) {
+		//panggil fungsi panggilApi dengan methode apiGET dan create callback function
+	panggilApi.panggilPeg(function (data) {
+	    // render to the index.jade dan pass data dari panggilan api
+	    let id = req.params.id;
+	    let dataKeluaran;
+	    data.pegawai.forEach((keluaran)=>{
+	    	if(keluaran.id_peg == id) {
+	    		dataKeluaran = keluaran;
+	    	}
+	    });
+	    res.render('portal/data', { 
 			title: 'Data Pegawai', 
 			menu:'data/peg',
 			bread1:'Data',
@@ -712,61 +748,27 @@ router.get('/data/peg',
 			desc: 'Data Kepegawaian ',
 			desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
 			icon: 'fa-users',
-			beritapopuler: req.berita_populers,
-			datadownloadhome:req.datadownloadhome,
-			datasubdomain:req.data_subdomains,
-			peg:req.peg,
-			pranala:req.pranala,
-			session: req.session
-		});
+			arBeritaPopuler:req.arBeritaPopuler,
+			arBeritaHome:req.arBeritaHome,
+			arDownloadHome:req.arDownloadHome,
+			arGallery:req.arGallery,
+			arPranalaLuar:req.arPranalaLuar,
+			arSubdomain:req.arSubdomain,
+			session: req.session,
+	    	peg :dataKeluaran
+	    });
 	});
-/* 	------- AKHIR DATA KEPEGAWAIAN SEMUA ------- */
-
-/* 	------- DATA KEPEGAWAIAN SINGLE ------- */
-router.get('/data/peg/(:id)',
-	berita_populer_data,
-	peg_data,
-	data_download_home,
-	data_subdomain,
-	pranala_data,
-	function(req, res, next) {
-  		//panggil fungsi panggilApi dengan methode apiGET dan create callback function
-		panggilApi.panggilPeg(function (data) {
-		    // render to the index.jade dan pass data dari panggilan api
-		    let id = req.params.id;
-		    let dataKeluaran;
-		    data.pegawai.forEach((keluaran)=>{
-		    	if(keluaran.id_peg == id) {
-		    		dataKeluaran = keluaran;
-		    	}
-		    });
-		    res.render('portal/data', { 
-				title: 'Data Pegawai', 
-				menu:'data/peg',
-				bread1:'Data',
-				bread1_url:'data',
-				desc: 'Data Kepegawaian ',
-				desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
-				icon: 'fa-users',
-				beritapopuler: req.berita_populers,
-				datadownloadhome:req.datadownloadhome,
-				datasubdomain:req.data_subdomains,
-				peg:req.peg,
-				pranala:req.pranala,
-				session: req.session,
-		    	peg :dataKeluaran
-		    });
-		});
-	});
+});
 /* 	------- AKHIR DATA KEPEGAWAIAN SINGLE ------- */
 
 /* 	------- START DATA PROFIL INSTANSI DAN UNIT KERJA SEMUA ------- */
 router.get('/data/unitkerja',
-berita_populer_data,
-data_unit_kerja,
-data_subdomain,
-data_download_home,
-pranala_data,
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/data', { 
@@ -777,11 +779,12 @@ function(req, res, next) {
 		desc: 'Data Unit Kerja ',
 		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
 		icon: 'fa-institution',
-		beritapopuler: req.berita_populers,
-		datadownloadhome:req.datadownloadhome,
-		datasubdomain:req.data_subdomains,
-		dataunitkerja: req.data_unit_kerjas,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arBeritaHome:req.arBeritaHome,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
@@ -789,11 +792,12 @@ function(req, res, next) {
 
 /* 	------- START DATA PROFIL INSTANSI DAN UNIT KERJA SINGLE ------- */
 router.get('/data/unitkerja/(:link)',
-	berita_populer_data,
-	data_unit_kerja,
-	data_subdomain,
-	data_download_home,
-	pranala_data,
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 	function(req, res, next) {
 		accesslog(req, res);
 		panggilApi.panggilOpd(function (data) {
@@ -815,11 +819,12 @@ router.get('/data/unitkerja/(:link)',
 			desc: dataKeluaran.nama_opd,
 			desc2:null,
 			icon: 'fa-bank',
-			beritapopuler: req.berita_populers,
-			datadownloadhome:req.datadownloadhome,
-			datasubdomain:req.data_subdomains,
-			dataunitkerja: req.data_unit_kerjas,
-			pranala:req.pranala,
+			arBeritaPopuler:req.arBeritaPopuler,
+			arBeritaHome:req.arBeritaHome,
+			arDownloadHome:req.arDownloadHome,
+			arGallery:req.arGallery,
+			arPranalaLuar:req.arPranalaLuar,
+			arSubdomain:req.arSubdomain,
 			session: req.session,
 			opd :dataKeluaran
 		});
@@ -829,11 +834,12 @@ router.get('/data/unitkerja/(:link)',
 
 router.get('/data/internal-opd',
 authentication_mdl.is_login,
-berita_populer_data,
-data_unit_kerja,
-data_subdomain,
-data_download_home,
-pranala_data,
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 authentication_mdl.is_login,
 function(req, res, next) {
 	accesslog(req, res);
@@ -845,23 +851,25 @@ function(req, res, next) {
 		desc: 'Data Internal OPD ',
 		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
 		icon: 'fa-institution',
-		beritapopuler: req.berita_populers,
-		datadownloadhome:req.datadownloadhome,
-		datasubdomain:req.data_subdomains,
-		dataunitkerja: req.data_unit_kerjas,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arBeritaHome:req.arBeritaHome,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
 
 router.get('/data/internal/kepegawaian',
 authentication_mdl.is_login,
-berita_populer_data,
-data_unit_kerja,
-data_subdomain,
-data_download_home,
-pranala_data,
-peg_jum,
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataPegJum,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 authentication_mdl.is_login,
 function(req, res, next) {
 	accesslog(req, res);
@@ -873,23 +881,25 @@ function(req, res, next) {
 		desc: 'Data Kepegawaian ',
 		desc2:req.session.user.nama_opd,
 		icon: 'fa-users',
-		jumpeg: req.jumpeg,
-		beritapopuler: req.berita_populers,
-		datadownloadhome:req.datadownloadhome,
-		datasubdomain:req.data_subdomains,
-		dataunitkerja: req.data_unit_kerjas,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arBeritaHome:req.arBeritaHome,
+		arDownloadHome:req.arDownloadHome,
+		arPegJum:req.arPegJum,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
 
 router.get('/data/internal/reg-email',
 authentication_mdl.is_login,
-berita_populer_data,
-data_unit_kerja,
-data_subdomain,
-data_download_home,
-pranala_data,
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 authentication_mdl.is_login,
 function(req, res, next) {
 	accesslog(req, res);
@@ -901,22 +911,24 @@ function(req, res, next) {
 		desc: 'Data Kepegawaian ',
 		desc2:req.session.user.nama_opd,
 		icon: 'fa-users',
-		beritapopuler: req.berita_populers,
-		datadownloadhome:req.datadownloadhome,
-		datasubdomain:req.data_subdomains,
-		dataunitkerja: req.data_unit_kerjas,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arBeritaHome:req.arBeritaHome,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
 
 router.get('/data/internal/reg-subdomain',
 authentication_mdl.is_login,
-berita_populer_data,
-data_unit_kerja,
-data_subdomain,
-data_download_home,
-pranala_data,
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 authentication_mdl.is_login,
 function(req, res, next) {
 	accesslog(req, res);
@@ -928,22 +940,24 @@ function(req, res, next) {
 		desc: 'Data Kepegawaian ',
 		desc2:req.session.user.nama_opd,
 		icon: 'fa-users',
-		beritapopuler: req.berita_populers,
-		datadownloadhome:req.datadownloadhome,
-		datasubdomain:req.data_subdomains,
-		dataunitkerja: req.data_unit_kerjas,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arBeritaHome:req.arBeritaHome,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
 
 
 router.get('/data/download-area', 
-berita_populer_data, 
-data_download,
-data_download_home,
-data_subdomain,
-pranala_data,
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/data', { 
@@ -954,72 +968,64 @@ function(req, res, next) {
 		desc: 'Download Area ',
 		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
 		icon: 'fa-file-text-o',
-		beritapopuler: req.berita_populers,
-		datasubdomain:req.data_subdomains,
-		datadownload:req.datadownload,
-		datadownloadhome:req.datadownloadhome,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arBeritaHome:req.arBeritaHome,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
 
 router.get('/data/download-area/(:link)',
-berita_populer_data,
-data_download,
-data_download_home,
-data_subdomain,
-pranala_data,
-function(req,res,next){
-	req.getConnection(function(err,connection){
-		var id_download =req.params.link;
-		var query = connection.query('SELECT * FROM v_download where id_download='+id_download,function(err,rows)
-		{
-			accesslog(req, res);
-			if(err)
-			{
-				var errornya  = ("Error Selecting : %s ",err );
-				req.flash('msg_error', errors_detail);
-				res.redirect('/data/download-area');
-			}else
-			{
-				if(rows.length <=0)
-				{
-					req.flash('msg_error', "Berita Tidak Ditemukan");
-					res.redirect('/data/download-area');
-				}
-				else
-				{
-					res.render('portal/data-single', {
-						title: 'Download Area - '+rows[0].nama_file,
-						menu:'data/download-area',
-						bread1:'Data',
-						bread1_url:'data',
-						desc: 'Download Area ',
-						desc2:'',
-						icon: 'fa-file-text-o',
-						dw:rows[0],
-						beritapopuler: req.berita_populers,
-						datasubdomain:req.data_subdomains,
-						datadownload:req.datadownload,
-						datadownloadhome:req.datadownloadhome,
-						pranala:req.pranala,
-						session: req.session
-					});
-				}
-			}
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
+function(req, res, next) {
+	accesslog(req, res);
+	panggilApi.panggilDownloadArea(function (data) {
+	    // render to the index.jade dan pass data dari panggilan api
+	    let id = req.params.link;
+	    let dataKeluaran;
+	    data.download.forEach((keluaran)=>{
+	    	if(keluaran.id_download == id) {
+	    		dataKeluaran = keluaran;
+	    	}
+	    });
+		res.render('portal/data-single',{
+			title:dataKeluaran.nama_file,
+			menu:'data/download-area',
+			bread1:'Data',
+			bread1_url:'data',
+			desc: 'Download Area ',
+			desc2:'',
+			icon: 'fa-file-text-o',
+			arBeritaPopuler:req.arBeritaPopuler,
+			arBeritaHome:req.arBeritaHome,
+			arDownloadHome:req.arDownloadHome,
+			arGallery:req.arGallery,
+			arPranalaLuar:req.arPranalaLuar,
+			arSubdomain:req.arSubdomain,
+			session: req.session,
+			dw :dataKeluaran
 		});
 	});
 });
-/* 	-------AKHIR DATA------- */
+/* 	-------AKHIR DATA DOWNLOAD AREA ------- */
 
 /* 	-------HALAMAN GALLERY------- */
 router.get('/gallery', 
-gallery_album_data, 
-gallery_data, 
-berita_populer_data, 
-data_subdomain,
-data_download_home,
-pranala_data,
+dataBeritaPopuler,
+dataDownloadHome,
+dataGallery,
+dataGalleryAlbum,
+dataGalleryAlbumTh,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/gallery', { 
@@ -1028,21 +1034,25 @@ function(req, res, next) {
 		desc: 'Gallery Gambar / Video ',
 		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
 		icon: 'linecons-photo',
-		gallery_album:req.gallery_album, 
-		gallery:req.gallery,
-		beritapopuler: req.berita_populers,
-		datasubdomain:req.data_subdomains,
-		datadownloadhome:req.datadownloadhome,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arGalleryAlbum:req.arGalleryAlbum,
+		arGalleryAlbumTh:req.arGalleryAlbumTh,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
 
 router.get('/gallery-single', 
-berita_populer_data, 
-data_download_home,
-data_subdomain,
-pranala_data,
+dataBeritaPopuler,
+dataDownloadHome,
+dataGallery,
+dataGalleryAlbum,
+dataGalleryAlbumTh,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/gallery-single', { 
@@ -1051,10 +1061,13 @@ function(req, res, next) {
 		desc: 'Gallery Gambar / Video ',
 		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
 		icon: 'linecons-photo',
-		beritapopuler: req.berita_populers,
-		datasubdomain:req.data_subdomains,
-		datadownloadhome:req.datadownloadhome,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arGalleryAlbum:req.arGalleryAlbum,
+		arGalleryAlbumTh:req.arGalleryAlbumTh,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
@@ -1062,10 +1075,11 @@ function(req, res, next) {
 
 /* 	-------HALAMAN HUBUNGI KAMI------- */
 router.get('/pages/hubungi-kami', 
-berita_populer_data, 
-data_download_home,
-data_subdomain,
-pranala_data,
+dataBeritaPopuler,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/pages', { 
@@ -1074,10 +1088,11 @@ function(req, res, next) {
 		desc: 'Hubungi Kami ',
 		desc2:'',
 		icon: 'el-comment',
-		beritapopuler: req.berita_populers,
-		datasubdomain:req.data_subdomains,
-		datadownloadhome:req.datadownloadhome,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
@@ -1085,10 +1100,12 @@ function(req, res, next) {
 
 /* 	-------HALAMAN PAGES------- */
 router.get('/pages', 
-berita_populer_data, 
-data_download_home,
-data_subdomain,
-pranala_data,
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/pages', { 
@@ -1097,20 +1114,23 @@ function(req, res, next) {
 		desc: 'Halaman Profil ',
 		desc2:'',
 		icon: 'fa-bullhorn',
-		beritapopuler: req.berita_populers,
-		datasubdomain:req.data_subdomains,
-		datadownloadhome:req.datadownloadhome,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
 
 /* 	-------HALAMAN PAGES PROFIL------- */
 router.get('/pages/profil', 
-berita_populer_data, 
-data_download_home,
-data_subdomain,
-pranala_data,
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/pages', { 
@@ -1121,10 +1141,11 @@ function(req, res, next) {
 		desc: 'Selayang Pandang ',
 		desc2:'Pemerintah Kota Tanjungpinang',
 		icon: 'fa-bullhorn',
-		beritapopuler: req.berita_populers,
-		datasubdomain:req.data_subdomains,
-		datadownloadhome:req.datadownloadhome,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
@@ -1132,11 +1153,12 @@ function(req, res, next) {
 
 /* 	-------HALAMAN AKSI DAERAH------- */
 router.get('/pages/aksidaerah', 
-berita_populer_data,
-data_aksi_daerah, 
-data_download_home,
-data_subdomain,
-pranala_data,
+dataBeritaPopuler,
+dataBeritaHome,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/pages', { 
@@ -1147,11 +1169,11 @@ function(req, res, next) {
 		desc: 'RAD-PPK ',
 		desc2:'Pemerintah Kota Tanjungpinang',
 		icon: 'linecons-eye',
-		beritapopuler: req.berita_populers,
-		datasubdomain:req.data_subdomains,
-		datadownloadhome:req.datadownloadhome,
-		datadownload:req.dataaksidaerah,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
@@ -1517,13 +1539,14 @@ function(req,res,next){
 
 /* 	-------HALAMAN PENGUMUMAN------- */
 router.get('/pengumuman/(:link)', 
-siaranpers_data, 
-berita_populer_data, 
-kategori_berita,
-kalenderevent_data, 
-data_subdomain,
-data_download_home,
-pranala_data,
+dataPengumuman, 
+dataBeritaPopuler, 
+dataBeritaKategori,
+dataEvent,
+dataSubdomain,
+dataDownloadHome,
+dataPranalaLuar,
+dataGallery,
 function(req,res,next){
 	accesslog(req, res);
 	panggilApi.panggilPengumuman(function (data) {
@@ -1542,15 +1565,17 @@ function(req,res,next){
 			desc: 'PENGUMAMAN KHUSUS ',
 			desc2:'Pemerintah Kota Tanjungpinang',
 			icon: 'fa-bullhorn',
-			siaranpersview:dataKeluaran, 
-			beritapopuler: req.berita_populers,
-			beritakat:req.kategoriberita,
-			session_store:req.session, 
+			arSiaranPers:dataKeluaran,
+			arPengumuman: req.arPengumuman,
+			arBeritaPopuler: req.arBeritaPopuler,
+			arBeritaKategori:req.arBeritaKategori,
+			session_store:req.session,
 			siaranpers:req.siaranpers,
-			datadownloadhome:req.datadownloadhome,
-			datasubdomain:req.data_subdomains,
-			kalenderevent:req.kalenderevents,
-			pranala:req.pranala,
+			arDownloadHome:req.arDownloadHome,
+			arGallery:req.arGallery,
+			arSubdomain:req.arSubdomain,
+			arEvent:req.arEvent,
+			arPranalaLuar:req.arPranalaLuar,
 			session: req.session
 		});
 	});
@@ -1559,10 +1584,11 @@ function(req,res,next){
 
 /* 	-------HALAMAN VISI DAN MISI------- */
 router.get('/pages/visimisi', 
-berita_populer_data, 
-data_download_home,
-data_subdomain,
-pranala_data,
+dataBeritaPopuler,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/pages', { 
@@ -1573,10 +1599,11 @@ function(req, res, next) {
 		desc: 'Visi dan Misi ',
 		desc2:'Pemerintah Kota Tanjungpinang',
 		icon: 'fa-tasks',
-		beritapopuler: req.berita_populers,
-		datasubdomain:req.data_subdomains,
-		datadownloadhome:req.datadownloadhome,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
@@ -1584,10 +1611,11 @@ function(req, res, next) {
 
 /* 	-------HALAMAN LAMBANG DAN MOTTO------- */
 router.get('/pages/lambangmoto', 
-berita_populer_data, 
-data_download_home,
-data_subdomain,
-pranala_data,
+dataBeritaPopuler,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/pages', { 
@@ -1598,10 +1626,11 @@ function(req, res, next) {
 		desc: 'Lambang dan Motto ',
 		desc2:'Pemerintah Kota Tanjungpinang',
 		icon: 'fa-shield',
-		beritapopuler: req.berita_populers,
-		datasubdomain:req.data_subdomains,
-		datadownloadhome:req.datadownloadhome,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
@@ -1609,10 +1638,11 @@ function(req, res, next) {
 
 /* 	-------HALAMAN KEPALA DAERAH------- */
 router.get('/pages/kepaladaerah', 
-berita_populer_data, 
-data_download_home,
-data_subdomain,
-pranala_data,
+dataBeritaPopuler,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/pages', { 
@@ -1623,10 +1653,11 @@ function(req, res, next) {
 		desc: 'Sambutan Kepala Daerah ',
 		desc2:'Pemerintah Kota Tanjungpinang',
 		icon: 'el-torso',
-		beritapopuler: req.berita_populers,
-		datasubdomain:req.data_subdomains,
-		datadownloadhome:req.datadownloadhome,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
@@ -1634,10 +1665,11 @@ function(req, res, next) {
 
 /* 	-------HALAMAN STRUKTUR ORGANISASI------- */
 router.get('/pages/strukturorg', 
-berita_populer_data, 
-data_download_home,
-data_subdomain,
-pranala_data,
+dataBeritaPopuler,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/pages', {
@@ -1648,10 +1680,11 @@ function(req, res, next) {
 		desc: 'Struktur Organisasi ',
 		desc2:'Pemerintah Kota Tanjungpinang',
 		icon: 'fa-group',
-		beritapopuler: req.berita_populers,
-		datasubdomain:req.data_subdomains,
-		datadownloadhome:req.datadownloadhome,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
@@ -1659,11 +1692,12 @@ function(req, res, next) {
 
 /* 	-------HALAMAN PROFIL INSTANSI SEMUA ------- */
 router.get('/pages/profilinstansi', 
-berita_populer_data,
-data_unit_kerja,
-data_subdomain,
-data_download_home,
-pranala_data,
+dataBeritaPopuler,
+dataDownloadHome,
+dataGallery,
+dataOpd,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/pages', { 
@@ -1674,11 +1708,12 @@ function(req, res, next) {
 		desc: 'Profil Instansi ',
 		desc2:'Pemerintah Kota Tanjungpinang',
 		icon: 'fa-bank',
-		beritapopuler: req.berita_populers,
-		datadownloadhome:req.datadownloadhome,
-		datasubdomain:req.data_subdomains,
-		dataunitkerja: req.data_unit_kerjas,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arOpd:req.arOpd,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
@@ -1686,11 +1721,12 @@ function(req, res, next) {
 
 /* 	------- START DATA PROFIL INSTANSI DAN UNIT KERJA SINGLE ------- */
 router.get('/pages/profilinstansi/(:link)',
-	berita_populer_data,
-	data_unit_kerja,
-	data_subdomain,
-	data_download_home,
-	pranala_data,
+dataBeritaPopuler,
+dataDownloadHome,
+dataGallery,
+dataOpd,
+dataPranalaLuar,
+dataSubdomain,
 	function(req, res, next) {
 		accesslog(req, res);
 		panggilApi.panggilOpd(function (data) {
@@ -1712,11 +1748,12 @@ router.get('/pages/profilinstansi/(:link)',
 			desc: 'Profil Instansi '+dataKeluaran.link_opd+' ',
 			desc2:'Pemerintah Kota Tanjungpinang',
 			icon: 'fa-bank',
-			beritapopuler: req.berita_populers,
-			datadownloadhome:req.datadownloadhome,
-			datasubdomain:req.data_subdomains,
-			dataunitkerja: req.data_unit_kerjas,
-			pranala:req.pranala,
+			arBeritaPopuler:req.arBeritaPopuler,
+			arDownloadHome:req.arDownloadHome,
+			arGallery:req.arGallery,
+			arOpd:req.arOpd,
+			arPranalaLuar:req.arPranalaLuar,
+			arSubdomain:req.arSubdomain,
 			session: req.session,
 			opd :dataKeluaran,
 		});
@@ -1727,10 +1764,11 @@ router.get('/pages/profilinstansi/(:link)',
 
 /* 	------- START PRANALA LUAR ------- */
 router.get('/pranala-luar', 
-berita_populer_data,
-data_download_home,
-data_subdomain,
-pranala_data,
+dataBeritaPopuler,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/pranala-luar', { 
@@ -1739,10 +1777,11 @@ function(req, res, next) {
 		desc: 'Pranala Luar ',
 		desc2:null,
 		icon: 'fa-link',
-		beritapopuler: req.berita_populers,
-		datadownloadhome:req.datadownloadhome,
-		datasubdomain:req.data_subdomains,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });
@@ -1750,10 +1789,11 @@ function(req, res, next) {
 
 /* 	------- START PRANALA LUAR ------- */
 router.get('/data/subdomain', 
-berita_populer_data,
-data_download_home,
-data_subdomain,
-pranala_data,
+dataBeritaPopuler,
+dataDownloadHome,
+dataGallery,
+dataPranalaLuar,
+dataSubdomain,
 function(req, res, next) {
 	accesslog(req, res);
 	res.render('portal/pranala-luar', { 
@@ -1764,10 +1804,11 @@ function(req, res, next) {
 		desc: 'Sub Domain ',
 		desc2:'tanjungpinangkota.go.id',
 		icon: 'fa-link',
-		beritapopuler: req.berita_populers,
-		datadownloadhome:req.datadownloadhome,
-		datasubdomain:req.data_subdomains,
-		pranala:req.pranala,
+		arBeritaPopuler:req.arBeritaPopuler,
+		arDownloadHome:req.arDownloadHome,
+		arGallery:req.arGallery,
+		arPranalaLuar:req.arPranalaLuar,
+		arSubdomain:req.arSubdomain,
 		session: req.session
 	});
 });

@@ -9,29 +9,13 @@
                     // Adding class "toggle-others" will keep only one menu item open at a time.
                     // Adding class "collapsed" collapse sidebar root elements and show only icons.
 
-
-                    script(type='text/javascript').
-                        $(document).ready(function(){
-                            $.ajax({
-                                url: '#{api_url}gallery_album_th',
-                                dataType: "json",
-                                success: function(data) {
-                                    $.each(data.gallery_album_th,function(key,row){
-                                        var th_album = row["th_album"];
-                                        var jum_album = row["jum_gallery"];
-                                        $('#th_album').append('<li><a href="#" data-filter=".'+th_album+'">'+th_album+' ('+jum_album+')'
-                                            +'</a></li>');
-                                    });
-                                }//end data return. 
-                            });
-                        });
-
-
                     .sidebar-menu.toggle-others
                         ul.main-menu.portfolio-filter
                             li.active
                                 a(href='#', data-filter='*') Semua
-                            #th_album
+                            each th in arGalleryAlbumTh
+                                li
+                                    a(href='#', data-filter='.'+th.th_album)=th.th_album+' ('+th.jum_gallery+')'
                             //li
                                 a(href='#', data-filter='.th-2016') 2016
                                 ul
@@ -63,48 +47,20 @@
                         span Gallery
                     .row
                         #gallery-container
-                            script(type='text/javascript').
-                                $(document).ready(function(){
-                                    $.ajax({
-                                        url: '#{api_url}gallery',
-                                        dataType: "json",
-                                        success: function(data) {
-                                            $.each(data.gallery,function(key,row){
-                                                var id_gallery = row["id_gallery"];
-                                                var id_gallery_album = row["id_gallery_album"];
-                                                var th_album = row["th_album"];
-                                                var nama_album = row["nama_album"];
-                                                var judul_gambar = row["judul_gambar"];
-                                                var thumb = row["alamat_file_thumb"];
-                                                var small = row["alamat_file_small"];
-                                                var big = row["alamat_file_big"];
-                                                var tgl_gambar = row["tgl_gambar"];
-                                                $('#gal').append('<div class="col-xs-12.col-sm-6 col-md-4 gallery-item-wrapper '+nama_album+' '+th_album+'">'
-                                                +   '<div class="gallery-item">'
-                                                +       '<div class="gallery-thumb">'
-                                                +           '<img class="img-responsive" src="'+thumb+'" alt="'+judul_gambar+'" />'
-                                                +               '<div class="image-overlay"></div>'
-                                                +               '<a class="gallery-zoom" rel="prettyPhoto[pp_gal'+nama_album+']" href="'+big+'">'
-                                                +                   '<i class="fa-eye" />'
-                                                +               '</a>'
-                                                +               '<a class="gallery-link" href="'+big+'" target="_BLANK" >'
-                                                +                   '<i class="fa-link" />'
-                                                +               '</a>'
-                                                +           '</div>'
-                                                +           '<div class="gallery-content">'
-                                                +               '<h5>'+judul_gambar+'</h5>'
-                                                +               '<span>'+tgl_gambar+'</span>'
-                                                +               '<div>Album : '+nama_album+'</div>'
-                                                +           '</div>'
-                                                +       '</div>'
-                                                +   '</div>'
-                                                +'</div>');
-                                            });
-                                        }//end data return. 
-                                    });
-                                });
-                            #gal
-                                
+                            each gal in arGallery
+                                - var classalbum = 'div class="col-xs-12.col-sm-6 col-md-4 gallery-item-wrapper '+gal.nama_album+' '+gal.th_album+'"';
+                                #{classalbum}
+                                    .gallery-item
+                                        .gallery-thumb
+                                            img.img-responsive(src=gal.alamat_file_thumb, alt=gal.judul_gambar)
+                                            .image-overlay
+                                            a.gallery-zoom(rel='prettyPhoto[pp_gal'+gal.nama_album+']', href=gal.alamat_file_big)
+                                                i.fa-eye
+                                            a.gallery-link(href=gal.alamat_file_big, target='_BLANK')
+                                                i.fa-link
+                                        .gallery-content
+                                            h5=gal.judul_gambar
+                                            span=gal.nama_album
                 //.col-sm-9
                     h5.subpage-title
                         span Gallery

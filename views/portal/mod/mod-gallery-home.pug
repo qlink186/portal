@@ -8,45 +8,18 @@ h5.subpage-title
     a.btn-xs.btn-flat.flat-danger.pull-right.geserkanan(href=base_url+'gallery')
         span GALLERY LAINNYA
 
-script(type='text/javascript').
-    $(document).ready(function(){
-        $.ajax({
-            url: '#{api_url}gallery',
-            dataType: "json",
-            success: function(data) {
-                $.each(data.gallery,function(key,row){
-                    var id_gallery = row["id_gallery"];
-                    var judul_gambar = row["judul_gambar"];
-                    var thumb = row["alamat_file_thumb"];
-                    var small = row["alamat_file_small"];
-                    var big = row["alamat_file_big"];
-                    var tgl_gambar = row["tgl_gambar"];
-                    $('#gallery-caroufredsel').append('<div class="col-xs-12 col-sm-4 col-md-2 galleryhome-wrapper">'
-                    +   '<div class="galleryhome-item">'
-                    +       '<div class="galleryhome-thumb">'
-                    +           '<img class="img-responsive" src="'+thumb+'" alt="'+judul_gambar+'" />'
-                    +           '<div class="image-overlay"></div>'
-                    +           '<a class="galleryhome-zoom" rel="prettyPhoto[pp_gal_home]" href="'+big+'">'
-                    +               '<i class="fa-eye" />'
-                    +           '</a>'
-                    +           '<a class="galleryhome-link" href="'+big+'" target="_BLANK" >'
-                    +               '<i class="fa-link" />'
-                    +           '</a>'
-                    +       '</div>'
-                    +       '<div class="galleryhome-content">'
-                    +           '<h5>'+judul_gambar+'</h5>'
-                    +           '<span>'+tgl_gambar+'</span>'
-                    +       '</div>'
-                    +   '</div>'
-                    +'</div>');
-                    $("a[rel^='prettyPhoto']").prettyPhoto({
-                        theme: 'light_square',
-                        social_tools: false
-                    });
-                });
-            }//end data return. 
-        });
-    });
-
 .row
     #gallery-caroufredsel
+        for g in arGallery
+            .col-xs-12.col-sm-4.col-md-2.galleryhome-wrapper
+                .galleryhome-item
+                    .galleryhome-thumb
+                        img.img-responsive(src=g.alamat_file_thumb, alt=g.judul_gambar)
+                        .image-overlay
+                        a.galleryhome-zoom(href=g.alamat_file_big, rel='prettyPhoto[pp_gal_home]')
+                            i.fa-eye
+                        a.galleryhome-link(href=g.alamat_file_big, target='_BLANK')
+                            i.fa-link
+                    .galleryhome-content
+                        h5=g.judul_gambar
+                        span=g.tgl_gambar

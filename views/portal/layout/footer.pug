@@ -59,7 +59,7 @@ footer#footer-1.footer
             .col-md-3
                 h5.subpage-title Download Populer
                 ul.footer-menu
-                    each val in datadownloadhome
+                    each val in arDownloadHome
                         li
                             a(href=base_url+'data-download/'+val.link_file)=val.nama_file
                 a(href=base_url+'data/download-area').btn.btn-flat.flat-color.btn-xs
@@ -70,7 +70,7 @@ footer#footer-1.footer
                 .widget.popular-posts
                     h5.subpage-title Berita Populer
                     ul.recent-posts
-                        each val in beritapopuler
+                        each val in arBeritaPopuler
                             li
                                 img.img-responsive(src=base_url+'images/berita/thumb/'+val.gambar, alt=val.judul_berita)
                                 h5

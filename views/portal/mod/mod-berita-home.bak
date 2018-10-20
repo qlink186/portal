@@ -3,7 +3,7 @@ h5.subpage-title
     a.btn-xs.btn-flat.flat-danger.pull-right(href=base_url+'berita')
         span BERITA LAINNYA
 .row
-    for berita, index in arBeritaHome
+    for berita, index in beritahome
         .col-sm-6
             .post
                 .post-thumb

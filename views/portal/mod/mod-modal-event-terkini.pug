@@ -1,4 +1,4 @@
-if kalenderevent.length == 1
+if arEvent.length == 1
     #modalKalender.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalKalender', aria-hidden='true')
         .modal-dialog.modal-sm
             .modal-content
@@ -7,7 +7,7 @@ if kalenderevent.length == 1
                     h5 EVENT TERKINI
                 .modal-body
                     .row
-                        each val in kalenderevent
+                        each val in arEvent
                             - dateEvent = new Date(val.tgl_event)
                             - monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
                             // TENTH EXAMPLE
@@ -30,7 +30,7 @@ if kalenderevent.length == 1
         jQuery(document).ready(function() {
             $('#modalKalender').modal('show');
         });
-else if kalenderevent.length == 2
+else if arEvent.length == 2
     #modalKalender.modal.fade(tabindex='-1', role='dialog', aria-labelledby='modalKalender', aria-hidden='true')
         .modal-dialog.modal-md
             .modal-content

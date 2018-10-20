@@ -8,22 +8,23 @@ var ip = require('ip');
 var accesslog = require('access-log');
 var session_store;
 
+
+
+
 router.get('/temp_menu',
 function(req, res, next) {
 	req.getConnection(function(err,connection){
-		var query = connection.query('SELECT * FROM v_temp_menu',function(err, results, fields)
+		var query = connection.query('SELECT * FROM v_temp_menu where level_menu = 1',function(err, results, fields)
 		{
 			accesslog(req, res);
-			if(err) {
+			if(err)
 				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
 	  		//If there is error, we send the error in the error section with 500 status
-			} else {
-                res.send(JSON.stringify({
-					"status":200,
-					"error":null,
-					"tempMenu": results
-				}));
-            }
+            res.send(JSON.stringify({
+				"status":200,
+				"error":null,
+				"tempMenu": results
+			}));
 		});
 	});
 });
@@ -176,6 +177,28 @@ router.get('/berita_populer',
 function(req, res, next) {
 	req.getConnection(function(err,connection){
 		var query = connection.query('SELECT * FROM v_berita_populer',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"berita": results
+				}));
+            }
+		});
+	});
+});
+// ----------------------------- AKHIR BERITA POPULER -----------------------------//
+
+// ----------------------------- START BERITA POPULER -----------------------------//
+router.get('/berita_home',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_berita_home',function(err, results, fields)
 		{
 			accesslog(req, res);
 			if(err) {
@@ -483,6 +506,27 @@ function(req, res) {
 		});
 	});
 });
+
+router.get('/kalenderevent',
+function(req, res, next) {
+	req.getConnection(function(err,connection){
+		var query = connection.query('SELECT * FROM v_kalenderevent',function(err, results, fields)
+		{
+			accesslog(req, res);
+			if(err) {
+				res.send(JSON.stringify({"status": 500, "error": err, "response": null})); 
+	  		//If there is error, we send the error in the error section with 500 status
+			} else {
+                res.send(JSON.stringify({
+					"status":200,
+					"error":null,
+					"event": results
+				}));
+            }
+		});
+	});
+});
+
 
 router.get('/peg',
 function(req, res, next) {

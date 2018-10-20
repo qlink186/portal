@@ -23,6 +23,13 @@ var panggilBerita = function(cb) {
     return apiCaller(alamat, cb);
 };
 
+/* ---------- PANGGIL API BERITA HOME ---------- */
+var panggilBeritaHome = function(cb) {
+    var dataApi = 'berita_home';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat, cb);
+};
+
 /* ---------- PANGGIL API BERITA POPULER ---------- */
 var panggilBeritaPopuler = function(cb) {
     var dataApi = 'berita_populer';
@@ -120,6 +127,19 @@ var panggilAlbumGalleryTh = function(cb) {
     var dataApi = 'gallery_album_th';
     var alamat = alamatAPI+dataApi;
     return apiCaller(alamat, cb);
+};
+
+/* ---------- PANGGIL API INSTANSI ---------- */
+var panggilEvent = function(cb) {
+    var dataApi = 'kalenderevent';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat, cb);
+};
+
+var postEvent= function(post, cb) {
+    var dataApi = 'kalenderevent';
+    var alamat = alamatAPI+dataApi;
+    return apiCaller(alamat + post, cb);
 };
 
 /* ---------- PANGGIL API INSTANSI ---------- */
@@ -231,6 +251,8 @@ module.exports = {
     panggilAlbumGallery: panggilAlbumGallery,
     postAlbumGallery: postAlbumGallery,
     panggilAlbumGalleryTh: panggilAlbumGalleryTh,
+    panggilEvent: panggilEvent,
+    postEvent: postEvent,
     panggilDip: panggilDip,
     postDip: postDip,
     panggilDipKat: panggilDipKat,
@@ -239,6 +261,7 @@ module.exports = {
     postDownloadArea: postDownloadArea,
     panggilDownloadHome: panggilDownloadHome,
     panggilBerita: panggilBerita,
+    panggilBeritaHome: panggilBeritaHome,
     panggilBeritaPopuler: panggilBeritaPopuler,
     panggilBeritaJumlah: panggilBeritaJumlah,
     panggilBeritaKategori: panggilBeritaKategori,

@@ -1,17 +1,6 @@
-ul.navbar-nav.navbar-right.click-to-expand
-	each mn in arMenu
-		- var menu1 = mn.id_menu.substr(0,3);
-		- var menu2 = mn.id_menu.substr(0,7);
-		- var menu3 = mn.id_menu.substr(0,11);
-		- var icon = "i class='"+mn.icon+"'";
-
-		if (mn.id_menu.length = 11)
-			li
-				if mn.eksin === 'I'
-					a(href=base_url+mn.alamat)
-						#{icon}
-						span.title=mn.nama
-				else
-					a(href=mn.alamat target='_BLANK')
-						#{icon}
-						span.title=mn.nama
+h5.subpage-title
+    span Berita Terkini
+    a.btn-xs.btn-flat.flat-danger.pull-right(href=base_url+'berita')
+        span BERITA LAINNYA
+.row
+    p=berita.judul_berita

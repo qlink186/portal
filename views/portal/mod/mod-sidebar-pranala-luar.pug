@@ -3,7 +3,7 @@ h5.subpage-title
     a.btn-xs.btn-flat.flat-danger.pull-right(href=base_url+'data/subdomain')
         span LAINNYA
 ul.subdomainList
-    for subdomain, index in datasubdomain
+    for subdomain, index in arSubdomain
         li
             a(href='http://'+subdomain.subdomain+subdomain.prefix, target='_BLANK')
                 img.img-responsive.center-block(src=base_url+'images/link-opd/tiny/'+subdomain.logo, alt=subdomain.nama_opd)
