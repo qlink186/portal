@@ -1,0 +1,95 @@
+footer#footer-1.footer
+    .container
+        .row
+            .col-md-4
+                img(src=base_url+'images/Lambang_Kota_Tanjung_Pinang_GRA.png', alt='Logo Pemko', height='80')
+                br
+                span.footer-brand
+                    | TANJUNG
+                    span PINANG.
+                p
+                    |   Telp. (+62771) 733 4004 - 05 
+                    br
+                    |   Email : kominfo@tanjungpinangkota.go.id
+                    br
+                    |   Sekretariat Daerah Kota Tanjungpinang
+                    br
+                    |   Jl. Daeng Marewa
+                    br
+                    |   Kel. Senggarang
+                    br
+                    |   Kec. Tanjungpinang Kota
+                    br
+                    |   Kota Tanjungpinang - 29115
+                    br
+                    |   Provinsi Kepulauan Riau
+            // /.col-md-4
+            .col-md-2
+                h5.subpage-title Profil
+                ul.footer-menu
+                    li
+                        a(href=base_url+'pages/profil') Selayang Pandang
+                    li
+                        a(href=base_url+'pages/visimisi') Visi dan Misi
+                    li
+                        a(href=base_url+'pages/lambangmoto') Lambang dan Motto
+                    li
+                        a(href=base_url+'pages/kepaladaerah') Kepala Daerah
+                    li
+                        a(href=base_url+'pages/strukturorg') Struktur Organisasi
+                br
+                h5.subpage-title Lainnya
+                ul.footer-menu
+                    li
+                        a(href=base_url+'berita') Berita
+                    li
+                        a(href=base_url+'gallery') Gallery
+                    li
+                        a(href=base_url+'data') Data
+                    li
+                        a(href=base_url+'layanan') Layanan
+                    li
+                        a(href='http://ppid.tanjungpinangkota.go.id', target='_BLANK') PPID
+                    li
+                        a(href=base_url+'pages/hubungi-kami') Hubungi Kami
+                    li
+                        a(href=base_url+'pages/aksidaerah') Aksi Daerah PPK
+                // /.footer-menu
+            // /.col-md-2
+            .col-md-3
+                h5.subpage-title Download Populer
+                ul.footer-menu
+                    each val in arDownloadHome
+                        li
+                            a(href=base_url+'data-download/'+val.link_file)=val.nama_file
+                a(href=base_url+'data/download-area').btn.btn-flat.flat-color.btn-xs
+                    small Selengkapnya ...
+                // /.tagcloud
+            // /.col-md-2
+            .col-md-3.hidden-xs
+                .widget.popular-posts
+                    h5.subpage-title Berita Populer
+                    ul.recent-posts
+                        each val in arBeritaPopuler
+                            li
+                                img.img-responsive(src=base_url+'images/berita/thumb/'+val.gambar, alt=val.judul_berita)
+                                h5
+                                    a(href=base_url+'berita/'+val.link_berita)=val.judul_berita
+                                    small Posted #{val.tgl_post}
+                // /.popular-posts
+            // /.col-md-3
+        // /.row
+    // /.container
+// /#footer-1
+footer#footer-2.footer
+    .container
+        .footer-inner
+            // Add your copyright text here
+            .footer-text
+                |   &copy; 2018&nbsp;
+                br.visible-xs
+                strong PEMERINTAH KOTA TANJUNGPINANG&nbsp;
+                br.visible-xs
+                |   Theme by&nbsp; 
+                a(href='http://kominfo.tanjungpinangkota.go.id', target='_blank') Diskominfo TIK Team&nbsp;
+            // Go to Top Link, just add rel="go-top" to any link to add this functionality

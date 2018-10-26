@@ -1,0 +1,515 @@
+nav.navbar.horizontal-menu.navbar-fixed-top.navbar-minimal
+    // set fixed position by adding class "navbar-fixed-top"
+    .navbar-inner
+        // Navbar Brand
+        .navbar-brand
+            a.logo(href='dashboard-1.html')
+                img.hidden-xs(src='assets/images/logo-white-bg@2x.png', width='80', alt='')
+                img.visible-xs(src='assets/images/logo@2x.png', width='80', alt='')
+            a(href='#', data-toggle='settings-pane', data-animate='true')
+                i.linecons-cog
+        // Mobile Toggles Links
+        .nav.navbar-mobile
+            // This will toggle the mobile menu and will be visible only on mobile devices
+            .mobile-menu-toggle
+                // This will open the popup with user profile settings, you can use for any purpose, just be creative
+                a(href='#', data-toggle='settings-pane', data-animate='true')
+                    i.linecons-cog
+                a(href='#', data-toggle='user-info-menu-horizontal')
+                    i.fa-bell-o
+                    span.badge.badge-success 7
+                // data-toggle="mobile-menu-horizontal" will show horizontal menu links only
+                // data-toggle="mobile-menu" will show sidebar menu links only
+                // data-toggle="mobile-menu-both" will show sidebar and horizontal menu links
+                a(href='#', data-toggle='mobile-menu-horizontal')
+                    i.fa-bars
+        .navbar-mobile-clear
+        // main menu
+        ul.navbar-nav
+            li
+                a(href='dashboard-1.html')
+                    i.linecons-cog
+                    span.title Dashboard
+                ul
+                    li
+                        a(href='dashboard-1.html')
+                            span.title Dashboard 1
+                    li
+                        a(href='dashboard-2.html')
+                            span.title Dashboard 2
+                    li
+                        a(href='dashboard-3.html')
+                            span.title Dashboard 3
+                    li
+                        a(href='dashboard-4.html')
+                            span.title Dashboard 4
+                    li
+                        a(href='skin-generator.html')
+                            span.title Skin Generator
+                    li
+                        a(href='update-highlights.html')
+                            span.title Update Highlights
+                            span.label.label-pink.pull-right.hidden-collapsed v1.3
+            li.opened.active
+                a(href='layout-variants.html')
+                    i.linecons-desktop
+                    span.title Layouts
+                ul
+                    li
+                        a(href='layout-variants.html')
+                            span.title Layout Variants &amp; API
+                    li
+                        a(href='layout-collapsed-sidebar.html')
+                            span.title Collapsed Sidebar
+                    li
+                        a(href='layout-static-sidebar.html')
+                            span.title Static Sidebar
+                    li
+                        a(href='layout-horizontal-menu.html')
+                            span.title Horizontal Menu
+                    li
+                        a(href='layout-horizontal-plus-sidebar.html')
+                            span.title Horizontal &amp; Sidebar Menu
+                    li
+                        a(href='layout-horizontal-menu-click-to-open-subs.html')
+                            span.title Horizontal Open On Click
+                    li
+                        a(href='layout-horizontal-menu-min.html')
+                            span.title Horizontal Menu Minimal
+                    li
+                        a(href='layout-right-sidebar.html')
+                            span.title Right Sidebar
+                    li
+                        a(href='layout-chat-open.html')
+                            span.title Chat Open
+                    li
+                        a(href='layout-horizontal-sidebar-menu-collapsed-right.html')
+                            span.title Both Menus &amp; Collapsed
+                    li
+                        a(href='layout-boxed.html')
+                            span.title Boxed Layout
+                    li
+                        a(href='layout-boxed-horizontal-menu.html')
+                            span.title Boxed &amp; Horizontal Menu
+            li
+                a(href='ui-panels.html')
+                    i.linecons-note
+                    span.title UI Elements
+                ul
+                    li
+                        a(href='ui-panels.html')
+                            span.title Panels
+                    li
+                        a(href='ui-buttons.html')
+                            span.title Buttons
+                    li
+                        a(href='ui-tabs-accordions.html')
+                            span.title Tabs &amp; Accordions
+                    li
+                        a(href='ui-modals.html')
+                            span.title Modals
+                    li
+                        a(href='ui-breadcrumbs.html')
+                            span.title Breadcrumbs
+                    li
+                        a(href='ui-blockquotes.html')
+                            span.title Blockquotes
+                    li
+                        a(href='ui-progressbars.html')
+                            span.title Progress Bars
+                    li
+                        a(href='ui-navbars.html')
+                            span.title Navbars
+                    li
+                        a(href='ui-alerts.html')
+                            span.title Alerts
+                    li
+                        a(href='ui-pagination.html')
+                            span.title Pagination
+                    li
+                        a(href='ui-typography.html')
+                            span.title Typography
+                    li
+                        a(href='ui-other-elements.html')
+                            span.title Other Elements
+            li
+                a(href='forms-native.html')
+                    i.linecons-params
+                    span.title Forms
+                ul
+                    li
+                        a(href='forms-native.html')
+                            span.title Native Elements
+                    li
+                        a(href='forms-advanced.html')
+                            span.title Advanced Plugins
+                    li
+                        a(href='forms-wizard.html')
+                            span.title Form Wizard
+                    li
+                        a(href='forms-validation.html')
+                            span.title Form Validation
+                    li
+                        a(href='forms-input-masks.html')
+                            span.title Input Masks
+                    li
+                        a(href='forms-file-upload.html')
+                            span.title File Upload
+                    li
+                        a(href='forms-editors.html')
+                            span.title Editors
+                    li
+                        a(href='forms-sliders.html')
+                            span.title Sliders
+            li
+                a(href='')
+                    i.linecons-diamond
+                    span.title Other
+                ul
+                    li
+                        a(href='ui-widgets.html')
+                            i.linecons-star
+                            span.title Widgets
+                    li
+                        a(href='mailbox-main.html')
+                            i.linecons-mail
+                            span.title Mailbox
+                            span.label.label-success.pull-right 5
+                        ul
+                            li
+                                a(href='mailbox-main.html')
+                                    span.title Inbox
+                            li
+                                a(href='mailbox-compose.html')
+                                    span.title Compose Message
+                            li
+                                a(href='mailbox-message.html')
+                                    span.title View Message
+                    li
+                        a(href='tables-basic.html')
+                            i.linecons-database
+                            span.title Tables
+                        ul
+                            li
+                                a(href='tables-basic.html')
+                                    span.title Basic Tables
+                            li
+                                a(href='tables-responsive.html')
+                                    span.title Responsive Table
+                            li
+                                a(href='tables-datatables.html')
+                                    span.title Data Tables
+                    li
+                        a(href='extra-gallery.html')
+                            i.linecons-beaker
+                            span.title Extra
+                            span.label.label-purple.pull-right.hidden-collapsed New Items
+                        ul
+                            li
+                                a(href='extra-icons-fontawesome.html')
+                                    span.title Icons
+                                ul
+                                    li
+                                        a(href='extra-icons-fontawesome.html')
+                                            span.title Font Awesome
+                                    li
+                                        a(href='extra-icons-linecons.html')
+                                            span.title Linecons
+                                    li
+                                        a(href='extra-icons-elusive.html')
+                                            span.title Elusive
+                                    li
+                                        a(href='extra-icons-meteocons.html')
+                                            span.title Meteocons
+                            li
+                                a(href='extra-maps-google.html')
+                                    span.title Maps
+                                ul
+                                    li
+                                        a(href='extra-maps-google.html')
+                                            span.title Google Maps
+                                    li
+                                        a(href='extra-maps-advanced.html')
+                                            span.title Advanced Map
+                                    li
+                                        a(href='extra-maps-vector.html')
+                                            span.title Vector Map
+                            li
+                                a(href='extra-members-list.html')
+                                    span.title Members
+                                    span.label.label-warning.pull-right New
+                                ul
+                                    li
+                                        a(href='extra-members-list.html')
+                                            span.title Members List
+                                    li
+                                        a(href='extra-members-add.html')
+                                            span.title Add Member
+                            li
+                                a(href='extra-gallery.html')
+                                    span.title Gallery
+                            li
+                                a(href='extra-calendar.html')
+                                    span.title Calendar
+                            li
+                                a(href='extra-profile.html')
+                                    span.title Profile
+                            li
+                                a(href='extra-login.html')
+                                    span.title Login
+                            li
+                                a(href='extra-lockscreen.html')
+                                    span.title Lockscreen
+                            li
+                                a(href='extra-login-light.html')
+                                    span.title Login Light
+                            li
+                                a(href='extra-timeline.html')
+                                    span.title Timeline
+                            li
+                                a(href='extra-timeline-center.html')
+                                    span.title Timeline Centerd
+                            li
+                                a(href='extra-notes.html')
+                                    span.title Notes
+                            li
+                                a(href='extra-image-crop.html')
+                                    span.title Image Crop
+                            li
+                                a(href='extra-portlets.html')
+                                    span.title Portlets
+                            li
+                                a(href='blank-sidebar.html')
+                                    span.title Blank Page
+                            li
+                                a(href='extra-search.html')
+                                    span.title Search
+                            li
+                                a(href='extra-invoice.html')
+                                    span.title Invoice
+                            li
+                                a(href='extra-not-found.html')
+                                    span.title 404 Page
+                            li
+                                a(href='extra-tocify.html')
+                                    span.title Tocify
+                            li
+                                a(href='extra-loader.html')
+                                    span.title Loading Progress
+                            li
+                                a(href='extra-page-loading-ol.html')
+                                    span.title Page Loading Overlay
+                            li
+                                a(href='extra-notifications.html')
+                                    span.title Notifications
+                            li
+                                a(href='extra-nestable-lists.html')
+                                    span.title Nestable Lists
+                            li
+                                a(href='extra-scrollable.html')
+                                    span.title Scrollable
+                    li
+                        a(href='charts-main.html')
+                            i.linecons-globe
+                            span.title Charts
+                        ul
+                            li
+                                a(href='charts-main.html')
+                                    span.title Chart Variants
+                            li
+                                a(href='charts-range.html')
+                                    span.title Range Selector
+                            li
+                                a(href='charts-sparklines.html')
+                                    span.title Sparklines
+                            li
+                                a(href='charts-map.html')
+                                    span.title Map Charts
+                            li
+                                a(href='charts-gauges.html')
+                                    span.title Circular Gauges
+                            li
+                                a(href='charts-bar-gauges.html')
+                                    span.title Bar Gauges
+                    li
+                        a(href='#')
+                            i.linecons-cloud
+                            span.title Menu Levels
+                        ul
+                            li
+                                a(href='#')
+                                    i.entypo-flow-line
+                                    span.title Menu Level 1.1
+                                ul
+                                    li
+                                        a(href='#')
+                                            i.entypo-flow-parallel
+                                            span.title Menu Level 2.1
+                                    li
+                                        a(href='#')
+                                            i.entypo-flow-parallel
+                                            span.title Menu Level 2.2
+                                        ul
+                                            li
+                                                a(href='#')
+                                                    i.entypo-flow-cascade
+                                                    span.title Menu Level 3.1
+                                            li
+                                                a(href='#')
+                                                    i.entypo-flow-cascade
+                                                    span.title Menu Level 3.2
+                                                ul
+                                                    li
+                                                        a(href='#')
+                                                            i.entypo-flow-branch
+                                                            span.title Menu Level 4.1
+                                    li
+                                        a(href='#')
+                                            i.entypo-flow-parallel
+                                            span.title Menu Level 2.3
+                            li
+                                a(href='#')
+                                    i.entypo-flow-line
+                                    span.title Menu Level 1.2
+                            li
+                                a(href='#')
+                                    i.entypo-flow-line
+                                    span.title Menu Level 1.3
+        // notifications and other links
+        ul.nav.nav-userinfo.navbar-right
+            li.search-form
+                // You can add "always-visible" to show make the search input visible
+                form(method='get', action='extra-search.html')
+                    input.form-control.search-field(type='text', name='s', placeholder='Type to search...')
+                    button.btn.btn-link(type='submit')
+                        i.linecons-search
+            li.dropdown.xs-left
+                a.notification-icon(href='#', data-toggle='dropdown')
+                    i.fa-envelope-o
+                    span.badge.badge-green 15
+                ul.dropdown-menu.messages
+                    li
+                        ul.dropdown-menu-list.list-unstyled.ps-scrollbar
+                            li.active
+                                // "active" class means message is unread
+                                a(href='#')
+                                    span.line
+                                        strong Luc Chartier
+                                        span.light.small - yesterday
+                                    span.line.desc.small
+                            li.active
+                                a(href='#')
+                                    span.line
+                                        strong Salma Nyberg
+                                        span.light.small - 2 days ago
+                                    span.line.desc.small
+                            li
+                                a(href='#')
+                                    span.line
+                                        span.light.small - a week ago
+                                    span.line.desc.small
+                            li
+                                a(href='#')
+                                    span.line
+                                        span.light.small - 16 days ago
+                                    span.line.desc.small
+                            // Repeated
+                            li.active
+                                // "active" class means message is unread
+                                a(href='#')
+                                    span.line
+                                        strong Luc Chartier
+                                        span.light.small - yesterday
+                                    span.line.desc.small
+                            li.active
+                                a(href='#')
+                                    span.line
+                                        strong Salma Nyberg
+                                        span.light.small - 2 days ago
+                                    span.line.desc.small
+                            li
+                                a(href='#')
+                                    span.line
+                                        span.light.small - a week ago
+                                    span.line.desc.small
+                            li
+                                a(href='#')
+                                    span.line
+                                        span.light.small - 16 days ago
+                                    span.line.desc.small
+                    li.external
+                        a(href='mailbox-main.html')
+                            span All Messages
+                            i.fa-link-ext
+            li.dropdown.xs-left
+                a.notification-icon.notification-icon-messages(href='#', data-toggle='dropdown')
+                    i.fa-bell-o
+                    span.badge.badge-purple 7
+                ul.dropdown-menu.notifications
+                    li.top
+                        p.small
+                            a.pull-right(href='#') Mark all Read
+                            strong 3
+                    li
+                        ul.dropdown-menu-list.list-unstyled.ps-scrollbar
+                            li.active.notification-success
+                                a(href='#')
+                                    i.fa-user
+                                    span.line
+                                        strong New user registered
+                                    span.line.small.time
+                            li.active.notification-secondary
+                                a(href='#')
+                                    i.fa-lock
+                                    span.line
+                                        strong Privacy settings have been changed
+                                    span.line.small.time
+                            li.notification-primary
+                                a(href='#')
+                                    i.fa-thumbs-up
+                                    span.line
+                                        strong Someone special liked this
+                                    span.line.small.time
+                            li.notification-danger
+                                a(href='#')
+                                    i.fa-calendar
+                                    span.line
+                                    span.line.small.time
+                            li.notification-info
+                                a(href='#')
+                                    i.fa-database
+                                    span.line
+                                    span.line.small.time
+                            li.notification-warning
+                                a(href='#')
+                                    i.fa-envelope-o
+                                    span.line
+                                    span.line.small.time
+                    li.external
+                        a(href='#')
+                            span View all notifications
+                            i.fa-link-ext
+            li.dropdown.user-profile
+                a(href='#', data-toggle='dropdown')
+                    img.img-circle.img-inline.userpic-32(src='assets/images/user-1.png', alt='user-image', width='28')
+                    span
+                        i.fa-angle-down
+                ul.dropdown-menu.user-profile-menu.list-unstyled
+                    li
+                        a(href='#edit-profile')
+                            i.fa-edit
+                    li
+                        a(href='#settings')
+                            i.fa-wrench
+                    li
+                        a(href='#profile')
+                            i.fa-user
+                    li
+                        a(href='#help')
+                            i.fa-info
+                    li.last
+                        a(href='extra-lockscreen.html')
+                            i.fa-lock
+            li
+                a(href='#', data-toggle='chat')
+                    i.fa-comments-o

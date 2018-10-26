@@ -1,0 +1,32 @@
+.page-title-wrapper
+    .container
+        .row
+            .col-xs-12.col-sm-6.col-md-8.page-title
+                h4
+                    i(class=icon)
+                    =desc
+                    span=desc2
+            // /.page-title
+            .col-xs-4.hidden-xs.breadcrumb-wrapper
+                ol.breadcrumb.pull-right
+                    li
+                        a(href=base_url)
+                            i.fa-home 
+                            |   Beranda 
+                    if bread1
+                        if bread2
+                            li
+                                a(href=base_url+bread1_url)=bread1
+                            li
+                                a(href=base_url+bread2_url)=bread2
+                            li.active=title
+
+                        else
+                            li
+                                a(href=base_url+bread1_url)=bread1
+                            li.active=title
+                    else
+                        li.active=title
+            // /.breadcrumb-wrapper
+        // /.row
+    // /.container

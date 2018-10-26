@@ -1,0 +1,12 @@
+doctype html
+html(lang='id')
+    head
+        include header.pug
+        title=title
+    body.page-body(data-url='http://tanjungpinangkota.go.id')
+        include navbar.pug
+        .page-container.container
+            // add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always
+            .main-content
+                block content
+        include js

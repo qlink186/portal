@@ -1,0 +1,39 @@
+.row
+    .col-sm-12
+        script(type='text/javascript').
+            jQuery(document).ready(function($)
+            {
+                 oTable = $("#example").DataTable(
+                    {
+                    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "Semua"]],
+                    "sDom": '<"top visible-xs"p><"subpage-title"><"top pull-right"l>t<"bottom text-center"i><"bottom text-center"p>',
+                    "pagingType": "full_numbers",
+                    "ajax": {
+                        "url": 'http://sedang.online/api/berita',
+                        "type": "GET"
+                    },
+                    "columns": [
+                        {"Berita":"judul"}
+                    ],
+                    "processing":true,
+                    "deferRender": true,
+                    "oLanguage": {
+                        "sLengthMenu": "Menampilkan _MENU_ Artikel per halaman",
+                        "sZeroRecords": "Artikel yang anda cari tidak ditemukan",
+                        "sInfo": "Menampilkan artikel ke _START_ sampai ke _END_, dari _TOTAL_ Artikel",
+                        "sInfoEmpty": "Menampilkan artikel ke 0 sampai 0 dari total 0 Artikel",
+                        "sEmptyTable": "Tidak ada Artikel yang tersedia",
+                        "sInfoFiltered": "(Filter dari _MAX_ berita)",
+                        "oPaginate": {
+                            "sFirst": "Pertama",
+                            "sLast": "Terakhir",
+                            "sNext": "Selanjutnya",
+                            "sPrevious": "Sebelumnya"
+                        }
+                    }
+                });
+            } );
+        table#example.display(style='width:100%')
+            thead
+                tr
+                    th Judul

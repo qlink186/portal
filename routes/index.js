@@ -417,20 +417,16 @@ function dataSubdomain(req, res, next)
 	});
 }
 
-router.get('/tes2',
-dataBeritaHome,
-tempMenu,
-dataSubdomain,
+router.get('/v2',
+dataPeg,
 function(req, res){
-	res.render('portal/tes', {
+	res.render('v2/index', {
 		title: 'Tes',
 		menu:'data/tes',
 		desc: 'Halaman Tes ',
 		desc2:'di Lingkungan Pemerintah Kota Tanjungpinang',
 		icon: 'fa-users',
-		arMenu: req.arMenu,
-		arBeritaHome: req.arBeritaHome,
-		arSubdomain: req.arSubdomain
+		arPeg:req.arPeg
 	});
 });
 
